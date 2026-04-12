@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Geist_Mono } from 'next/font/google';
-import localFont from 'next/font/local';
 import Script from 'next/script';
 import './globals.css';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
@@ -20,14 +19,6 @@ const geistMono = Geist_Mono({
   weight: ['400', '500', '600'],
   display: 'swap',
   variable: '--font-geist-mono',
-});
-
-const calSans = localFont({
-  src: '../../public/CalSans-SemiBold.ttf',
-  variable: '--font-display',
-  display: 'swap',
-  weight: '600',
-  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -146,8 +137,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} ${calSans.variable}`}>
+    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
       <head>
+        {/* Preload Cal Sans — font-display:swap in globals.css prevents render-blocking */}
+        <link rel="preload" href="/CalSans-SemiBold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.oyechats.com" />
         <link rel="dns-prefetch" href="https://cdn.oyechats.com" />
         <script
