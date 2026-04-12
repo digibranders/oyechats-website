@@ -26,7 +26,6 @@ export default function FeaturesPage() {
       <Navbar />
       <main>
         <FeaturesHero />
-        <AnimatedSeparator />
         <FeatureCategoryNav />
         <RAGPipelineSection />
         <AnimatedSeparator />

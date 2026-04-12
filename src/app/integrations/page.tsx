@@ -19,9 +19,7 @@ export default function IntegrationsPage() {
       <Navbar />
       <main>
         <IntegrationsHero />
-        <AnimatedSeparator />
         <IntegrationFilter active={filter} onChange={setFilter} />
-        <AnimatedSeparator />
         <IntegrationsGrid filter={filter} />
         <AnimatedSeparator />
         <WebhookSetup />
