@@ -41,7 +41,7 @@ export function Testimonials() {
             {testimonials.map((t, i) => (
               <motion.div
                 key={t.id}
-                className="glass-2 rounded-2xl p-6 min-w-[320px] max-w-[360px] border border-white/10 flex-shrink-0 group hover:border-white/15 transition-all"
+                className="glass-2 rounded-2xl p-6 min-w-[clamp(280px,80vw,360px)] max-w-[360px] border border-white/10 flex-shrink-0 group hover:border-white/15 transition-all"
                 data-gsap
               >
                 {/* Stars */}

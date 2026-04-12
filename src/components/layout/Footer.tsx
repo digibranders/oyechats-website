@@ -118,7 +118,7 @@ export default function Footer() {
         <span
           className="animate-brand-float block text-center select-none font-display font-semibold tracking-[-0.04em] leading-[.88]"
           style={{
-            fontSize: 'clamp(4.5rem, 18vw, 21rem)',
+            fontSize: 'clamp(3rem, 16vw, 21rem)',
             background: 'linear-gradient(172deg, rgba(255,255,255,.98) 0%, rgba(155,190,255,.72) 24%, rgba(50,100,210,.28) 58%, rgba(10,45,150,.03) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',

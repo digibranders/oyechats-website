@@ -239,7 +239,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-0 top-0 bottom-0 w-80 bg-[#030D1F] border-l border-white/10 p-6 flex flex-col gap-6"
+              className="absolute right-0 top-0 bottom-0 w-80 max-w-[calc(100vw-1rem)] bg-[#030D1F] border-l border-white/10 p-6 flex flex-col gap-6"
             >
               <div className="flex items-center justify-between">
                 <span className="font-display font-semibold text-lg">Menu</span>

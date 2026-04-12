@@ -17,7 +17,7 @@ export function HomeCTA() {
 
       {/* Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,90vw)] h-[min(400px,60vh)] pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse, rgba(37,99,235,.12) 0%, transparent 70%)',
           filter: 'blur(40px)',
