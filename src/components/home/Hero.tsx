@@ -7,7 +7,11 @@ import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import { AnimatedGradientText } from '@/components/magic/AnimatedGradientText';
-import { AntigravityParticles } from '@/components/canvas/AntigravityParticles';
+import dynamic from 'next/dynamic';
+const AntigravityParticles = dynamic(
+  () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
+  { ssr: false }
+);
 
 const rotatingWords = ['Understands', 'Qualifies Leads', 'Closes Deals', 'Knows Your Docs'];
 
