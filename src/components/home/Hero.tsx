@@ -91,7 +91,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
         {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center mb-6"
@@ -110,9 +110,9 @@ export function Hero() {
           </AnimatedGradientText>
         </motion.div>
 
-        {/* H1 */}
+        {/* H1 — initial=false on SSR so the heading is visible immediately (LCP fix) */}
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-semibold text-white leading-[1.06] tracking-[-0.04em] mb-6"
@@ -125,7 +125,7 @@ export function Hero() {
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, filter: 'blur(8px)', y: 12 }}
+          initial={mounted ? { opacity: 0, filter: 'blur(8px)', y: 12 } : false}
           animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="text-white/55 max-w-2xl mx-auto mb-10 leading-relaxed"
@@ -137,7 +137,7 @@ export function Hero() {
 
         {/* CTA Row */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
@@ -167,7 +167,7 @@ export function Hero() {
 
         {/* Social proof */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={mounted ? { opacity: 0 } : false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col items-center gap-3"
@@ -191,7 +191,7 @@ export function Hero() {
 
       {/* Hero product mockup — opacity-only fade prevents CLS from layout shift */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 mx-auto w-full max-w-4xl px-6 lg:px-8 pb-24 animate-hero-float"
@@ -319,7 +319,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
