@@ -44,7 +44,7 @@ export function BANTSection() {
                   <div className="h-1 rounded-full bg-current/20 overflow-hidden">
                     <div className="h-full rounded-full bg-current transition-all" style={{ width: `${c.score}%` }} />
                   </div>
-                  <p className="text-[10px] opacity-70 mt-2 leading-tight">{c.desc}</p>
+                  <p className="text-[11px] opacity-70 mt-2 leading-tight">{c.desc}</p>
                 </div>
               ))}
             </div>
@@ -65,15 +65,15 @@ export function BANTSection() {
 
             {/* Timeline */}
             <div className="space-y-3">
-              <p className="text-xs font-semibold text-white/40 uppercase tracking-widest mb-4">Live conversation timeline</p>
+              <p className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-4">Live conversation timeline</p>
               {TIMELINE.map((event, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="text-[10px] text-white/30 font-mono mt-0.5 w-8 shrink-0">{event.time}</span>
+                  <span className="text-[11px] text-white/45 font-mono mt-0.5 w-8 shrink-0">{event.time}</span>
                   <div className="flex-1">
                     <p className="text-sm text-white/65">{event.event}</p>
                     {event.tier && (
                       <span className={cn(
-                        'inline-block text-[10px] font-medium mt-1 px-2 py-0.5 rounded-full border',
+                        'inline-block text-[11px] font-medium mt-1 px-2 py-0.5 rounded-full border',
                         event.tier.includes('🔥')
                           ? 'text-amber-400 bg-amber-400/10 border-amber-400/25'
                           : 'text-blue-400 bg-blue-400/10 border-blue-400/20'

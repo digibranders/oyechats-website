@@ -3,7 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
-import { CTAButton } from '@/components/shared/CTAButton';
+import { ShoppingBag, Diamond, Wallet, Landmark, Hospital, GraduationCap, Zap, Globe, Pill, Rocket, Building2, Crosshair, Package } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Customers',
@@ -19,7 +19,7 @@ const CASE_STUDIES = [
   {
     company: 'ShopNova',
     industry: 'E-commerce',
-    logo: '🛍️',
+    logo: ShoppingBag,
     metric: '+68%',
     metricLabel: 'Checkout conversion',
     summary: 'ShopNova deployed OyeChats on their checkout page. The bot proactively handled shipping anxiety questions and captured emails from abandoning visitors, boosting checkout conversion by 68% in 30 days.',
@@ -28,8 +28,8 @@ const CASE_STUDIES = [
   {
     company: 'Nexus SaaS',
     industry: 'B2B SaaS',
-    logo: '🔷',
-    metric: '3.2×',
+    logo: Diamond,
+    metric: '3.2x',
     metricLabel: 'Demo bookings',
     summary: 'Nexus integrated Calendly booking directly in their AI chat. Visitors that scored Hot on BANT were instantly offered a demo time without leaving the page, tripling their demo booking rate.',
     tags: ['Calendly', 'BANT', 'Live Chat Handoff'],
@@ -37,7 +37,7 @@ const CASE_STUDIES = [
   {
     company: 'FinCore',
     industry: 'Fintech',
-    logo: '💰',
+    logo: Wallet,
     metric: '-74%',
     metricLabel: 'Support ticket volume',
     summary: 'FinCore trained OyeChats on 400+ compliance documents. 74% of support tickets are now resolved instantly by the AI, freeing the team to focus on complex regulatory queries.',
@@ -45,7 +45,7 @@ const CASE_STUDIES = [
   },
 ];
 
-const LOGOS = ['🏦', '🛍️', '🏥', '🎓', '⚡', '🌐', '🔷', '💊', '🚀', '🏗️', '🎯', '📦'];
+const LOGOS = [Landmark, ShoppingBag, Hospital, GraduationCap, Zap, Globe, Diamond, Pill, Rocket, Building2, Crosshair, Package];
 
 export default function CustomersPage() {
   return (
@@ -71,11 +71,11 @@ export default function CustomersPage() {
         {/* Logo wall */}
         <section className="py-10 px-6 lg:px-8 border-y border-white/6">
           <div className="mx-auto max-w-5xl">
-            <p className="text-center text-xs text-white/30 mb-6 uppercase tracking-widest">Trusted by teams at</p>
+            <p className="text-center text-xs text-white/45 mb-6 uppercase tracking-widest">Trusted by teams at</p>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              {LOGOS.map((logo, i) => (
-                <div key={i} className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center text-xl">
-                  {logo}
+              {LOGOS.map((LogoIcon, i) => (
+                <div key={i} className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center">
+                  <LogoIcon className="h-5 w-5 text-white/50" />
                 </div>
               ))}
             </div>
@@ -109,10 +109,12 @@ export default function CustomersPage() {
               {CASE_STUDIES.map((cs) => (
                 <div key={cs.company} className="glass-2 rounded-2xl border border-white/10 p-6 flex flex-col group hover:border-white/15 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center text-xl">{cs.logo}</div>
+                    <div className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center">
+                      <cs.logo className="h-5 w-5 text-blue-400" />
+                    </div>
                     <div>
                       <p className="text-sm font-semibold text-white">{cs.company}</p>
-                      <p className="text-xs text-white/40">{cs.industry}</p>
+                      <p className="text-xs text-white/50">{cs.industry}</p>
                     </div>
                   </div>
 
@@ -125,7 +127,7 @@ export default function CustomersPage() {
 
                   <div className="flex flex-wrap gap-1.5">
                     {cs.tags.map((t) => (
-                      <span key={t} className="text-[9px] font-medium text-blue-400 bg-blue-400/10 border border-blue-400/20 rounded-full px-2 py-0.5 uppercase tracking-wide">
+                      <span key={t} className="text-[11px] font-medium text-blue-400 bg-blue-400/10 border border-blue-400/20 rounded-full px-2 py-0.5 uppercase tracking-wide">
                         {t}
                       </span>
                     ))}
@@ -151,14 +153,14 @@ export default function CustomersPage() {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-sm text-white/65 leading-relaxed mb-4">"{t.quote}"</p>
+                  <p className="text-sm text-white/65 leading-relaxed mb-4">&quot;{t.quote}&quot;</p>
                   <div className="flex items-center gap-2">
                     <div className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style={{ background: t.avatarColor }}>
                       {t.avatar}
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-white">{t.name}</p>
-                      <p className="text-[10px] text-white/40">{t.title}, {t.company}</p>
+                      <p className="text-[11px] text-white/50">{t.title}, {t.company}</p>
                     </div>
                   </div>
                 </div>

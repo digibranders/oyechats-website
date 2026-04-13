@@ -29,10 +29,10 @@ export function IntegrationFilter({ active, onChange }: IntegrationFilterProps) 
               key={id}
               onClick={() => onChange(id)}
               className={cn(
-                'flex-shrink-0 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200',
+                'flex-shrink-0 px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer',
                 active === id
                   ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30'
-                  : 'text-white/40 hover:text-white/70 border border-transparent'
+                  : 'text-white/50 hover:text-white/70 border border-transparent'
               )}
             >
               {label}

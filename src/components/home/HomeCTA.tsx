@@ -30,7 +30,7 @@ export function HomeCTA() {
           <span className="gradient-text-heading block">qualified pipeline</span>
         </SectionHeading>
 
-        <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="text-white/55 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
           Set up in 10 minutes. No credit card required.
           OyeChats works on any website, any framework.
         </p>
@@ -56,7 +56,7 @@ export function HomeCTA() {
           </CTAButton>
         </div>
 
-        <div className="flex items-center justify-center gap-6 mt-10 text-xs text-white/30">
+        <div className="flex items-center justify-center gap-6 mt-10 text-xs text-white/45">
           {['No credit card', 'Free forever plan', 'Setup in 10 min'].map((item) => (
             <span key={item} className="flex items-center gap-1.5">
               <svg width="12" height="12" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current" strokeWidth="3">

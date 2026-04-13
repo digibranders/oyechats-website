@@ -17,12 +17,12 @@ export default function TermsPage() {
         <section className="pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h1 className="font-display text-4xl font-bold text-white mb-2">Terms of Service</h1>
-            <p className="text-white/40 text-sm mb-10">Last updated: March 1, 2025</p>
+            <p className="text-white/50 text-sm mb-10">Last updated: March 1, 2025</p>
 
             <div className="prose prose-invert prose-sm max-w-none space-y-8 text-white/65">
               <section>
                 <h2 className="font-display text-xl font-semibold text-white mb-3">1. Acceptance of Terms</h2>
-                <p>By accessing or using OyeChats ("the Service"), you agree to be bound by these Terms of Service. If you do not agree, do not use the Service.</p>
+                <p>By accessing or using OyeChats (&quot;the Service&quot;), you agree to be bound by these Terms of Service. If you do not agree, do not use the Service.</p>
               </section>
 
               <section>
@@ -32,7 +32,7 @@ export default function TermsPage() {
                   <li>Use the Service to transmit spam, malicious code, or illegal content</li>
                   <li>Attempt to reverse-engineer, scrape, or abuse the API beyond documented rate limits</li>
                   <li>Share your account credentials with unauthorized parties</li>
-                  <li>Misrepresent your identity or your bot's identity to visitors</li>
+                  <li>Misrepresent your identity or your bot&apos;s identity to visitors</li>
                 </ul>
               </section>
 
@@ -58,7 +58,7 @@ export default function TermsPage() {
 
               <section>
                 <h2 className="font-display text-xl font-semibold text-white mb-3">7. Limitation of Liability</h2>
-                <p>OyeChats is provided "as is." To the maximum extent permitted by law, we are not liable for indirect, incidental, or consequential damages. Our total liability to you shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
+                <p>OyeChats is provided &quot;as is.&quot; To the maximum extent permitted by law, we are not liable for indirect, incidental, or consequential damages. Our total liability to you shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
               </section>
 
               <section>
@@ -68,7 +68,7 @@ export default function TermsPage() {
 
               <section>
                 <h2 className="font-display text-xl font-semibold text-white mb-3">9. Changes to Terms</h2>
-                <p>We may update these Terms. We'll notify you by email 14 days before material changes take effect. Continued use of the Service after changes constitutes acceptance.</p>
+                <p>We may update these Terms. We&apos;ll notify you by email 14 days before material changes take effect. Continued use of the Service after changes constitutes acceptance.</p>
               </section>
 
               <section>

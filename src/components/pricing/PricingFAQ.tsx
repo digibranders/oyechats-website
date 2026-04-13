@@ -32,12 +32,12 @@ export function PricingFAQ() {
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left"
+                  className="w-full flex items-start justify-between gap-4 px-5 py-4 text-left cursor-pointer"
                 >
                   <span className="text-sm font-medium text-white leading-snug">{item.q}</span>
                   <svg
                     width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                    className={cn('text-white/40 shrink-0 mt-0.5 transition-transform duration-200', isOpen ? 'rotate-45' : '')}
+                    className={cn('text-white/50 shrink-0 mt-0.5 transition-transform duration-200', isOpen ? 'rotate-45' : '')}
                   >
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -63,7 +63,7 @@ export function PricingFAQ() {
           })}
         </div>
 
-        <p className="text-center text-sm text-white/35 mt-10">
+        <p className="text-center text-sm text-white/45 mt-10">
           Still have questions?{' '}
           <a href="/contact" className="text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-4">
             Talk to us

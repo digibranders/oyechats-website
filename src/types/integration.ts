@@ -13,7 +13,7 @@ export interface Integration {
   description: string;
   category: IntegrationCategory;
   available: boolean;
-  icon: string;
+  icon: React.ReactNode;
   color?: string;
   guideUrl?: string;
 }

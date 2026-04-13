@@ -3,6 +3,7 @@
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { NumberTicker } from '@/components/magic/NumberTicker';
 import { cn } from '@/lib/utils';
+import { Lock, HardDrive, Bug, Microscope, Cloud, Mail } from 'lucide-react';
 
 const stats = [
   { value: 12, suffix: 'ms', label: 'Median latency', color: 'text-blue-400', description: 'P99 response time' },
@@ -39,7 +40,7 @@ export function LiveStats() {
               99.99<span className="text-blue-400">%</span>
             </div>
             <p className="text-xl font-semibold text-white/70 mb-2">Uptime SLA</p>
-            <p className="text-sm text-white/40 max-w-md">
+            <p className="text-sm text-white/50 max-w-md">
               Enterprise-grade infrastructure with redundancy, automatic backups, and
               real-time monitoring — so your chat widget is always online.
             </p>
@@ -47,16 +48,16 @@ export function LiveStats() {
 
           <div className="lg:w-1/2 grid grid-cols-2 gap-4">
             {[
-              { label: 'Isolated cloud infrastructure', icon: '🔒' },
-              { label: 'Auto-backups every 6 hours', icon: '💾' },
-              { label: 'Real-time error monitoring', icon: '🪲' },
-              { label: 'AI response observability', icon: '🔬' },
-              { label: 'Geo-redundant file storage', icon: '☁️' },
-              { label: 'Transactional email delivery', icon: '📧' },
+              { label: 'Isolated cloud infrastructure', icon: Lock },
+              { label: 'Auto-backups every 6 hours', icon: HardDrive },
+              { label: 'Real-time error monitoring', icon: Bug },
+              { label: 'AI response observability', icon: Microscope },
+              { label: 'Geo-redundant file storage', icon: Cloud },
+              { label: 'Transactional email delivery', icon: Mail },
             ].map((item) => (
               <div key={item.label}
                 className="flex items-center gap-2.5 glass-1 rounded-xl p-3 border border-white/6">
-                <span>{item.icon}</span>
+                <item.icon className="h-4 w-4 text-white/50 shrink-0" />
                 <span className="text-xs text-white/55">{item.label}</span>
               </div>
             ))}
@@ -74,7 +75,7 @@ export function LiveStats() {
                   <span>{stat.suffix}</span>
                 </div>
                 <p className="text-sm font-medium text-white/70 mb-0.5">{stat.label}</p>
-                <p className="text-xs text-white/30">{stat.description}</p>
+                <p className="text-xs text-white/45">{stat.description}</p>
               </div>
             </div>
           ))}
@@ -82,7 +83,7 @@ export function LiveStats() {
 
         {/* Live indicator */}
         <div className="flex justify-center mt-8">
-          <div className="inline-flex items-center gap-2 text-xs text-white/30">
+          <div className="inline-flex items-center gap-2 text-xs text-white/45">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-livepulse" />
             Stats updated in real-time
           </div>

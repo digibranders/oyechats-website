@@ -3,6 +3,7 @@ import { APP_LINKS } from '@/lib/constants';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { featureRows } from '@/lib/pricing';
+import { Star } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'usage', label: 'Pricing & Usage Limits' },
@@ -29,7 +30,7 @@ function Check() {
 }
 
 function Dash() {
-  return <span className="text-white/20">—</span>;
+  return <span className="text-white/45">—</span>;
 }
 
 function Cell({ value }: { value: string | boolean }) {
@@ -70,7 +71,7 @@ export function FeatureTable() {
             {/* Header */}
             <thead>
               <tr className="bg-white/[0.03] border-b border-white/8">
-                <th className="px-5 py-4 text-left text-sm font-medium text-white/40">Feature</th>
+                <th className="px-5 py-4 text-left text-sm font-medium text-white/50">Feature</th>
                 {TIERS.map((t) => (
                   <th
                     key={t.id}
@@ -78,7 +79,7 @@ export function FeatureTable() {
                   >
                     <span className={cn('text-sm font-semibold', t.color)}>{t.label}</span>
                     {t.highlight && (
-                      <p className="text-[10px] text-blue-400/60 mt-0.5">★ Most Popular</p>
+                      <p className="text-[11px] text-blue-400/60 mt-0.5 flex items-center justify-center gap-1"><Star className="w-3 h-3 fill-current" /> Most Popular</p>
                     )}
                   </th>
                 ))}
@@ -101,11 +102,11 @@ export function FeatureTable() {
                         <div className="flex items-center gap-2">
                           <svg
                             width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                            className={cn('text-white/40 transition-transform duration-200 shrink-0', isOpen ? 'rotate-90' : '')}
+                            className={cn('text-white/50 transition-transform duration-200 shrink-0', isOpen ? 'rotate-90' : '')}
                           >
                             <polyline points="9 18 15 12 9 6" />
                           </svg>
-                          <span className="text-xs font-semibold text-white/50 uppercase tracking-widest">{cat.label}</span>
+                          <span className="text-xs font-semibold text-white/55 uppercase tracking-widest">{cat.label}</span>
                         </div>
                       </td>
                     </tr>
@@ -159,12 +160,12 @@ export function FeatureTable() {
               <div key={tier.id} className="glass-1 rounded-2xl border border-white/8 overflow-hidden">
                 <button
                   onClick={() => toggle(`m-${tier.id}`)}
-                  className="w-full flex items-center justify-between px-5 py-4"
+                  className="w-full flex items-center justify-between px-5 py-4 cursor-pointer"
                 >
                   <span className={cn('text-sm font-semibold', tier.color)}>{tier.label}</span>
                   <svg
                     width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-                    className={cn('text-white/40 transition-transform duration-200', isOpen ? 'rotate-90' : '')}
+                    className={cn('text-white/50 transition-transform duration-200', isOpen ? 'rotate-90' : '')}
                   >
                     <polyline points="9 18 15 12 9 6" />
                   </svg>

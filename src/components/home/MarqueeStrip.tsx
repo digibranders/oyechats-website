@@ -1,5 +1,4 @@
 import { Marquee } from '@/components/magic/Marquee';
-import { cn } from '@/lib/utils';
 
 const row1Items = [
   { label: 'RAG Pipeline', icon: '🧠' },

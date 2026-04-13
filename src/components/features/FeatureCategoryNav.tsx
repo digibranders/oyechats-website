@@ -53,8 +53,8 @@ export function FeatureCategoryNav() {
               key={id}
               onClick={() => scrollTo(id)}
               className={cn(
-                'relative flex-shrink-0 px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-none',
-                active === id ? 'text-white' : 'text-white/40 hover:text-white/70'
+                'relative flex-shrink-0 px-4 py-3 text-sm font-medium transition-colors duration-200 rounded-none cursor-pointer',
+                active === id ? 'text-white' : 'text-white/50 hover:text-white/70'
               )}
             >
               {label}

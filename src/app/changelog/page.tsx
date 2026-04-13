@@ -92,7 +92,7 @@ export default function ChangelogPage() {
             <div className="text-center mb-14">
               <SectionEyebrow className="mx-auto mb-4">Changelog</SectionEyebrow>
               <SectionHeading gradient size="xl" center className="mb-4">
-                What's new in{' '}
+                What&apos;s new in{' '}
                 <span className="gradient-text-heading">OyeChats</span>
               </SectionHeading>
               <p className="text-white/50">We ship fast. New features, improvements, and fixes every two weeks.</p>
@@ -112,16 +112,16 @@ export default function ChangelogPage() {
                     <div className="glass-1 rounded-2xl border border-white/8 p-6">
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
                         <span className="font-display font-bold text-white text-lg">{entry.version}</span>
-                        <span className={cn('text-[10px] font-semibold uppercase tracking-wide rounded-full border px-2.5 py-1', entry.tagColor)}>
+                        <span className={cn('text-[11px] font-semibold uppercase tracking-wide rounded-full border px-2.5 py-1', entry.tagColor)}>
                           {entry.tag}
                         </span>
-                        <span className="text-xs text-white/30 ml-auto">{entry.date}</span>
+                        <span className="text-xs text-white/45 ml-auto">{entry.date}</span>
                       </div>
 
                       <ul className="space-y-2.5">
                         {entry.changes.map((change, i) => (
                           <li key={i} className="flex items-start gap-3">
-                            <span className={cn('text-[9px] font-bold uppercase tracking-widest rounded px-1.5 py-0.5 shrink-0 mt-0.5', TYPE_STYLES[change.type])}>
+                            <span className={cn('text-[11px] font-bold uppercase tracking-widest rounded px-1.5 py-0.5 shrink-0 mt-0.5', TYPE_STYLES[change.type])}>
                               {change.type}
                             </span>
                             <span className="text-sm text-white/65">{change.text}</span>

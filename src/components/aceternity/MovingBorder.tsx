@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
@@ -21,10 +22,11 @@ export function MovingBorder({
   ry,
   className,
   containerClassName,
-  borderClassName,
+  borderClassName: _borderClassName,
   as: Component = 'button',
 }: MovingBorderProps) {
-  const pathId = `path-${Math.random().toString(36).substr(2, 9)}`;
+  void _borderClassName;
+  const pathId = useId();
   const Wrapper = Component as React.ElementType<React.HTMLAttributes<HTMLElement> & { children?: React.ReactNode }>;
 
   return (

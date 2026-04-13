@@ -30,6 +30,7 @@ export function LiveChatSection() {
   const [visible, setVisible] = useState(0);
   const { ref: sectionRef, inView } = useInView({ threshold: 0.2, triggerOnce: false });
   const runningRef = useRef(false);
+  const isReset = visible === 0;
 
   useEffect(() => {
     if (!inView || runningRef.current) return;
@@ -49,7 +50,7 @@ export function LiveChatSection() {
       timers.forEach(clearTimeout);
       runningRef.current = false;
     };
-  }, [inView, visible === 0]);
+  }, [inView, isReset]);
 
   return (
     <section id="feature-livechat" className="py-24 px-6 lg:px-8" ref={sectionRef}>
@@ -92,7 +93,7 @@ export function LiveChatSection() {
                 </p>
               </div>
               <div className="ml-auto">
-                <span className="text-[10px] bg-amber-400/15 text-amber-400 border border-amber-400/20 rounded-full px-2 py-1 font-medium">
+                <span className="text-[11px] bg-amber-400/15 text-amber-400 border border-amber-400/20 rounded-full px-2 py-1 font-medium">
                   BANT: 84
                 </span>
               </div>
@@ -110,7 +111,7 @@ export function LiveChatSection() {
                     className={`flex ${msg.type === 'human' ? 'justify-end' : 'justify-start'}`}
                   >
                     {msg.type !== 'human' && (
-                      <div className={`h-7 w-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0 mr-2 ${
+                      <div className={`h-7 w-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white shrink-0 mr-2 ${
                         msg.type === 'operator' ? 'bg-gradient-to-br from-violet-500 to-indigo-500' : 'bg-gradient-to-br from-blue-500 to-cyan-500'
                       }`}>
                         {msg.type === 'operator' ? 'S' : 'AI'}
@@ -124,7 +125,7 @@ export function LiveChatSection() {
                         : 'bg-white/8 text-white/75'
                     }`}>
                       {msg.type === 'operator' && (
-                        <p className="text-[9px] text-violet-400 font-medium mb-1 uppercase tracking-wide">Sarah · Enterprise Sales</p>
+                        <p className="text-[11px] text-violet-400 font-medium mb-1 uppercase tracking-wide">Sarah · Enterprise Sales</p>
                       )}
                       {msg.text}
                     </div>

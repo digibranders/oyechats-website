@@ -44,7 +44,7 @@ export function PricingCards({ billing }: PricingCardsProps) {
 
               {/* Name */}
               <p className="font-display font-semibold text-lg text-white mb-1">{tier.name}</p>
-              <p className="text-xs text-white/40 mb-4 leading-relaxed">{tier.tagline}</p>
+              <p className="text-xs text-white/50 mb-4 leading-relaxed">{tier.tagline}</p>
 
               {/* Price */}
               <div className="mb-5">
@@ -81,7 +81,7 @@ export function PricingCards({ billing }: PricingCardsProps) {
                         <span className="text-3xl font-display font-bold text-white">
                           ${billing === 'annual' ? tier.annualPrice : tier.monthlyPrice}
                         </span>
-                        <span className="text-sm text-white/40">/ operator</span>
+                        <span className="text-sm text-white/50">/ operator</span>
                       </div>
                       {billing === 'annual' && tier.annualTotal !== null && tier.annualTotal !== undefined && tier.annualTotal > 0 && (
                         <p className="text-xs text-emerald-400 mt-1">
@@ -101,10 +101,10 @@ export function PricingCards({ billing }: PricingCardsProps) {
                   { label: 'Live chat', value: tier.limits.liveChat },
                 ].map((l) => (
                   <div key={l.label} className="flex items-center justify-between gap-2">
-                    <span className="text-[11px] text-white/40">{l.label}</span>
+                    <span className="text-[11px] text-white/50">{l.label}</span>
                     <span className={cn(
                       'text-[11px] font-semibold',
-                      l.value === 'Unlimited' ? 'text-emerald-400' : l.value === '—' ? 'text-white/20' : 'text-white/80'
+                      l.value === 'Unlimited' ? 'text-emerald-400' : l.value === '—' ? 'text-white/45' : 'text-white/80'
                     )}>{l.value}</span>
                   </div>
                 ))}
@@ -138,7 +138,7 @@ export function PricingCards({ billing }: PricingCardsProps) {
       </div>
     </section>
 
-    <p className="text-center text-xs text-white/30 py-5 px-6">
+    <p className="text-center text-xs text-white/45 py-5 px-6">
       All plans include a 14-day free trial · No credit card required · Cancel anytime
     </p>
     </>

@@ -49,22 +49,22 @@ export function IntegrationsGrid({ filter }: IntegrationsGridProps) {
                   gradientOpacity={0.15}
                 >
                   <div className="flex flex-col items-center gap-3 text-center">
-                    <span className="text-3xl group-hover:scale-110 transition-transform duration-200">
+                    <span className="group-hover:scale-110 transition-transform duration-200">
                       {integration.icon}
                     </span>
                     <div>
                       <p className="text-sm font-medium text-white group-hover:text-white/90">{integration.name}</p>
-                      <p className="text-[10px] text-white/35 mt-0.5">{integration.description}</p>
+                      <p className="text-[11px] text-white/45 mt-0.5">{integration.description}</p>
                     </div>
                     <div className="flex items-center gap-2 flex-wrap justify-center">
                       <span className={cn(
-                        'text-[9px] font-medium uppercase tracking-wide rounded-full border px-2 py-0.5',
+                        'text-[11px] font-medium uppercase tracking-wide rounded-full border px-2 py-0.5',
                         CATEGORY_COLORS[integration.category]
                       )}>
                         {integration.category}
                       </span>
                       {!integration.available && (
-                        <span className="text-[9px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 uppercase tracking-wide">
+                        <span className="text-[11px] font-medium text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 uppercase tracking-wide">
                           Soon
                         </span>
                       )}
@@ -77,7 +77,7 @@ export function IntegrationsGrid({ filter }: IntegrationsGridProps) {
         </motion.div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-white/40 py-16">No integrations in this category yet.</p>
+          <p className="text-center text-white/50 py-16">No integrations in this category yet.</p>
         )}
       </div>
     </section>

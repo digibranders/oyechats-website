@@ -2,16 +2,17 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { FileText, Scissors, Brain, Search, Zap, MessageCircle } from 'lucide-react';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 
 const PIPELINE_STEPS = [
-  { icon: '📄', label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl — any content you own', color: 'from-blue-600/20 to-blue-600/5' },
-  { icon: '✂️', label: 'Chunk & Clean', desc: 'Smart sentence-aware splitting, deduplication, and metadata tagging', color: 'from-indigo-600/20 to-indigo-600/5' },
-  { icon: '🧠', label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5' },
-  { icon: '🔍', label: 'Hybrid Search', desc: 'Semantic + keyword search working together — always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5' },
-  { icon: '⚡', label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5' },
-  { icon: '💬', label: 'Stream Reply', desc: 'Token-streamed response delivered in under 12ms median latency', color: 'from-amber-600/20 to-amber-600/5' },
+  { icon: FileText, label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl — any content you own', color: 'from-blue-600/20 to-blue-600/5', iconColor: 'text-blue-400' },
+  { icon: Scissors, label: 'Chunk & Clean', desc: 'Smart sentence-aware splitting, deduplication, and metadata tagging', color: 'from-indigo-600/20 to-indigo-600/5', iconColor: 'text-indigo-400' },
+  { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400' },
+  { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together — always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
+  { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400' },
+  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in under 12ms median latency', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
 ];
 
 export function RAGPipelineSection() {
@@ -30,7 +31,7 @@ export function RAGPipelineSection() {
               <span className="gradient-text-heading">understands context</span>
             </SectionHeading>
             <p className="text-white/50 leading-relaxed mb-6">
-              OyeChats doesn't just search your documents — it understands them. Hybrid AI search
+              OyeChats doesn&apos;t just search your documents — it understands them. Hybrid AI search
               combines semantic understanding with keyword precision so visitors always get accurate,
               grounded answers — never hallucinated ones.
             </p>
@@ -63,10 +64,10 @@ export function RAGPipelineSection() {
                 className={`relative flex items-center gap-4 rounded-xl bg-gradient-to-r ${step.color} border border-white/8 p-4`}
               >
                 {/* Step number */}
-                <div className="absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border border-white/15 flex items-center justify-center text-[10px] font-bold text-white/50">
+                <div className="absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border border-white/15 flex items-center justify-center text-[11px] font-bold text-white/50">
                   {i + 1}
                 </div>
-                <span className="text-2xl ml-2">{step.icon}</span>
+                <step.icon className={`h-5 w-5 ml-2 shrink-0 ${step.iconColor}`} />
                 <div>
                   <p className="text-sm font-semibold text-white">{step.label}</p>
                   <p className="text-xs text-white/45">{step.desc}</p>
@@ -75,7 +76,7 @@ export function RAGPipelineSection() {
                 {i < PIPELINE_STEPS.length - 1 && (
                   <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
                     <div className="w-px h-2 bg-white/15" />
-                    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" className="text-white/20">
+                    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" className="text-white/45">
                       <path d="M0 0L4 5L8 0" fill="currentColor" />
                     </svg>
                   </div>

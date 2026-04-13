@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useInView } from 'react-intersection-observer';
 
@@ -31,7 +31,7 @@ export function BANTScoreRing({
   showLabel = true,
   animate = true,
 }: BANTScoreRingProps) {
-  const [currentScore, setCurrentScore] = useState(0);
+  const [animatedScore, setAnimatedScore] = useState(0);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
   const strokeWidth = 8;
   const center = size / 2;
@@ -39,21 +39,20 @@ export function BANTScoreRing({
   const circumference = 2 * Math.PI * radius;
 
   useEffect(() => {
-    if (inView && animate) {
-      const duration = 1400;
-      const start = Date.now();
-      const tick = () => {
-        const elapsed = Date.now() - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3);
-        setCurrentScore(Math.round(ease * score));
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    } else if (!animate) {
-      setCurrentScore(score);
-    }
+    if (!inView || !animate) return;
+    const duration = 1400;
+    const start = Date.now();
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setAnimatedScore(Math.round(ease * score));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }, [inView, score, animate]);
+
+  const currentScore = animate ? animatedScore : score;
 
   const dashOffset = circumference - (currentScore / 100) * circumference;
   const color = scoreColor(score);
@@ -61,7 +60,8 @@ export function BANTScoreRing({
 
   return (
     <div ref={ref} className={cn('relative flex flex-col items-center', className)}>
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`BANT score: ${currentScore} out of 100, ${tier.label}`}>
+        <title>{`BANT Score: ${currentScore}`}</title>
         {/* Track */}
         <circle
           cx={center}
