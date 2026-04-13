@@ -274,12 +274,12 @@ export function AntigravityParticles({
         p.y     += p.vy;
         p.angle += p.va;
 
-        // Boundary wrapping
+        // Boundary wrapping — reset velocity to prevent rocket/fountain effect
         const pad = p.h; // use long side as padding so capsule fully exits
-        if (p.y < -pad)    p.y = H + pad * 0.5;
-        if (p.y > H + pad) p.y = -pad * 0.5;
-        if (p.x < -pad)    p.x = W + pad * 0.5;
-        if (p.x > W + pad) p.x = -pad * 0.5;
+        if (p.y < -pad)    { p.y = H + pad * 0.5; p.vy = 0; }
+        if (p.y > H + pad) { p.y = -pad * 0.5;    p.vy = 0; }
+        if (p.x < -pad)    { p.x = W + pad * 0.5; p.vx = 0; }
+        if (p.x > W + pad) { p.x = -pad * 0.5;    p.vx = 0; }
 
         // Compute alpha
         let alpha = p.opacity * scrollAlpha;
