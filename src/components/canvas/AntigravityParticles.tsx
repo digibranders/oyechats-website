@@ -9,16 +9,26 @@ interface AntigravityParticlesProps {
   scrollProgress?: number;
 }
 
-/* ── Vibrant multi-color palette (Google Antigravity-inspired) ── */
+/* ── Brand-aligned particle palette ──
+ * Derived from OyeChats design tokens to feel like luminous energy
+ * fragments native to the dark navy hero. Blue-dominant with indigo,
+ * violet, and cyan accents — plus subtle emerald and amber warmth
+ * already present in the UI (live indicators, BANT scores).
+ * Particles should glow, not clash — no fully-saturated primary blue
+ * (that's reserved for the CTA).
+ */
 const PALETTE_HEX = [
-  '#4285F4', // blue
-  '#60A5FA', // blue-light
-  '#EA4335', // red/coral
-  '#FBBC04', // yellow
-  '#34A853', // green
-  '#A855F7', // purple
-  '#EC4899', // pink/rose
-  '#06B6D4', // teal
+  '#60A5FA', // blue-300   — soft primary glow
+  '#93C5FD', // blue-200   — bright ethereal highlight
+  '#3B82F6', // blue-500   — mid-tone anchor
+  '#818CF8', // indigo-400 — brand secondary
+  '#6366F1', // indigo-500 — gradient accent
+  '#A78BFA', // violet-400 — warm purple
+  '#8B5CF6', // violet-500 — tertiary brand
+  '#22D3EE', // cyan-400   — tech/data pop
+  '#06B6D4', // cyan-500   — data accent
+  '#34D399', // emerald-400 — subtle life/growth
+  '#FBBF24', // amber-400  — warm attention dot
 ];
 
 /* ── Inner Three.js scene ── */
@@ -173,7 +183,7 @@ const AntigravityInner = () => {
 
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-      <sphereGeometry args={[0.12, 12, 12]} />
+      <capsuleGeometry args={[0.08, 0.3, 4, 8]} />
       <meshBasicMaterial color="#ffffff" toneMapped={false} />
     </instancedMesh>
   );
