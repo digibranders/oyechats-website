@@ -32,27 +32,23 @@ function seeded(i: number, salt: number): number {
   return ((Math.sin(i * 127.1 + salt * 311.7) * 43758.5453) % 1 + 1) % 1;
 }
 
-/* ── Physics constants ── */
-const ANTIGRAV       = 0.008;   // gentle upward drift
-const RETURN_FORCE   = 0.003;   // spring back to base position
-const DAMPING        = 0.96;    // velocity damping per frame
-const NOISE_SCALE    = 0.12;    // perlin noise drift
-// CURSOR_RADIUS and CURSOR_FORCE defined per-instance inside the effect
+/* ── Physics constants (near-static, Antigravity-style — particles barely move) ── */
+const ANTIGRAV       = 0.0;     // no upward drift — particles stay put
+const RETURN_FORCE   = 0.04;    // very strong snap-back to base position
+const DAMPING        = 0.92;    // heavy damping — kills velocity fast
+const NOISE_SCALE    = 0.005;   // almost imperceptible micro-drift
 const CELEBRATE_FRAMES = 40;
 
-/* ── OyeChats brand color palette ── */
+/* ── Vibrant multi-color palette (Antigravity-inspired sprinkle colors) ── */
 const COLORS: { r: number; g: number; b: number }[] = [
-  { r: 37,  g: 99,  b: 235 },  // blue-600   #2563EB  (primary CTA)
-  { r: 96,  g: 165, b: 250 },  // blue-400   #60A5FA
-  { r: 147, g: 197, b: 253 },  // blue-300   #93C5FD
-  { r: 99,  g: 102, b: 241 },  // indigo-500 #6366F1
-  { r: 129, g: 140, b: 248 },  // indigo-400 #818CF8
-  { r: 6,   g: 182, b: 212 },  // cyan-500   #06B6D4
-  { r: 34,  g: 211, b: 238 },  // cyan-400   #22D3EE
-  { r: 139, g: 92,  b: 246 },  // violet-500 #8B5CF6
-  { r: 167, g: 139, b: 250 },  // violet-400 #A78BFA
-  { r: 16,  g: 185, b: 129 },  // emerald-500 #10B981
-  { r: 251, g: 191, b: 36  },  // amber-400  #FBBF24
+  { r: 66,  g: 133, b: 244 },  // blue       #4285F4
+  { r: 96,  g: 165, b: 250 },  // blue-light #60A5FA
+  { r: 234, g: 67,  b: 53  },  // red/coral  #EA4335
+  { r: 251, g: 188, b: 4   },  // yellow     #FBBC04
+  { r: 52,  g: 168, b: 83  },  // green      #34A853
+  { r: 168, g: 85,  b: 247 },  // purple     #A855F7
+  { r: 236, g: 72,  b: 153 },  // pink/rose  #EC4899
+  { r: 6,   g: 182, b: 212 },  // teal       #06B6D4
 ];
 
 export function AntigravityParticles({
@@ -99,7 +95,7 @@ export function AntigravityParticles({
 
     /* ── Detect mobile ── */
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const PARTICLE_COUNT = isMobile ? 70 : 150;
+    const PARTICLE_COUNT = isMobile ? 45 : 100;
 
     /* ── Initialise particles (radial distribution from center) ── */
     const particles: Particle[] = [];
@@ -114,28 +110,28 @@ export function AntigravityParticles({
         const bx = seeded(i, 1) * W;
         const by = seeded(i, 2) * viewportH;
 
-        // 3-tier size distribution (large capsule / medium capsule / tiny dot)
+        // 3-tier size distribution (large / medium / small sprinkles)
         const tier = seeded(i, 8);
         let w: number;
         if (tier > 0.75) {
-          w = (2 + seeded(i, 3)) * dpr;             // tiny dot
+          w = (2.5 + seeded(i, 3)) * dpr;            // small
         } else if (tier > 0.35) {
-          w = (2.5 + seeded(i, 3) * 1.5) * dpr;    // medium
+          w = (3 + seeded(i, 3) * 1.5) * dpr;        // medium
         } else {
-          w = (3 + seeded(i, 3) * 2) * dpr;         // large
+          w = (3.5 + seeded(i, 3) * 2) * dpr;        // large
         }
-        const h = w * (2.5 + seeded(i, 9) * 2);    // length = 2.5–4.5× width
+        const h = w * (1.8 + seeded(i, 9) * 1.5);   // shorter dash: 1.8–3.3× width
 
         particles.push({
           x: bx, y: by,
           vx: 0, vy: 0,
           baseX: bx, baseY: by,
-          opacity: 0.55 + seeded(i, 4) * 0.4,
+          opacity: 0.4 + seeded(i, 4) * 0.45,
           noiseOffX: seeded(i, 5) * 100,
           noiseOffY: seeded(i, 6) * 100,
           w, h,
           angle:    seeded(i, 10) * Math.PI * 2,
-          va:       (seeded(i, 11) - 0.5) * 0.02,
+          va:       (seeded(i, 11) - 0.5) * 0.002,   // near-zero idle spin
           colorIdx: Math.floor(seeded(i, 7) * COLORS.length),
         });
       }
@@ -143,31 +139,34 @@ export function AntigravityParticles({
 
     initParticles();
 
-    /* ── DPR-aware cursor radius: 160 CSS px expressed in canvas px ── */
-    const CURSOR_RADIUS = 160 * dpr;
-    const CURSOR_FORCE  = 6.0;   // strong scatter on approach
+    /* ── DPR-aware cursor radius: 120 CSS px expressed in canvas px ── */
+    const CURSOR_RADIUS = 120 * dpr;
+    const CURSOR_FORCE  = 1.2;   // soft nudge on approach
+    const CURSOR_LERP   = 0.15;  // smooth cursor tracking (0 = frozen, 1 = instant)
 
     /* ── Cursor state ── */
     let cursorX = -9999;
     let cursorY = -9999;
+    let targetCursorX = -9999;
+    let targetCursorY = -9999;
     let hasCursor = false;
 
     const updateCursor = (clientX: number, clientY: number): void => {
       const rect = canvas.getBoundingClientRect();
-      cursorX = ((clientX - rect.left) / rect.width)  * W;
-      cursorY = ((clientY - rect.top)  / rect.height) * H;
+      targetCursorX = ((clientX - rect.left) / rect.width)  * W;
+      targetCursorY = ((clientY - rect.top)  / rect.height) * H;
       hasCursor = true;
     };
 
     // Attach to window so mouse events fire regardless of which child
     // element the cursor is over (buttons, text, etc.)
     const onMouseMove  = (e: MouseEvent): void => updateCursor(e.clientX, e.clientY);
-    const onMouseLeave = (): void => { hasCursor = false; cursorX = -9999; cursorY = -9999; };
+    const onMouseLeave = (): void => { hasCursor = false; targetCursorX = -9999; targetCursorY = -9999; };
     const onTouchMove  = (e: TouchEvent): void => {
       if (!e.touches[0]) return;
       updateCursor(e.touches[0].clientX, e.touches[0].clientY);
     };
-    const onTouchEnd = (): void => { hasCursor = false; cursorX = -9999; cursorY = -9999; };
+    const onTouchEnd = (): void => { hasCursor = false; targetCursorX = -9999; targetCursorY = -9999; };
 
     /* ── Celebration burst ── */
     let celebrateCounter = 0;
@@ -222,6 +221,15 @@ export function AntigravityParticles({
         celebrateCounter--;
       }
 
+      // Smooth cursor position (lerp toward target)
+      if (hasCursor) {
+        cursorX += (targetCursorX - cursorX) * CURSOR_LERP;
+        cursorY += (targetCursorY - cursorY) * CURSOR_LERP;
+      } else {
+        cursorX = -9999;
+        cursorY = -9999;
+      }
+
       ctx.clearRect(0, 0, W, H);
 
       for (let i = 0; i < particles.length; i++) {
@@ -249,8 +257,8 @@ export function AntigravityParticles({
             const factor = 1 - dist / CURSOR_RADIUS;
             p.vx += (dx / dist) * factor * CURSOR_FORCE;
             p.vy += (dy / dist) * factor * CURSOR_FORCE;
-            // Spin when repulsed
-            p.va += (dx / dist) * factor * 0.05;
+            // Minimal spin when repulsed
+            p.va += (dx / dist) * factor * 0.008;
           }
         }
 
@@ -267,7 +275,7 @@ export function AntigravityParticles({
         // Velocity + angular damping
         p.vx *= DAMPING;
         p.vy *= DAMPING;
-        p.va *= 0.97;
+        p.va *= 0.985;
 
         // Update position and angle
         p.x     += p.vx;
