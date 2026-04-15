@@ -79,16 +79,18 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-12 border-b border-white/[.06]">
           <div>
             <h3 className="font-display font-semibold text-lg text-white mb-1">Stay in the loop</h3>
-            <p className="text-sm text-white/45">Product updates, feature releases, and customer stories.</p>
+            <p className="text-sm text-white/50">Product updates, feature releases, and customer stories.</p>
           </div>
           <form className="flex gap-2 w-full md:w-auto" onSubmit={(e) => e.preventDefault()}>
+            <label htmlFor="newsletter-email" className="sr-only">Email address</label>
             <input
+              id="newsletter-email"
               type="email"
               placeholder="you@company.com"
-              className="glass-input rounded-full px-4 py-2.5 text-sm text-white placeholder-white/30 w-full md:w-64 focus:outline-none transition-all"
+              className="glass-input rounded-full px-4 py-2.5 text-sm text-white placeholder-white/40 w-full md:w-64 focus:outline-none transition-all"
             />
             <button type="submit"
-              className="btn-filled-style rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-all hover:scale-105">
+              className="btn-filled-style rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-all hover:scale-105 cursor-pointer">
               Subscribe
             </button>
           </form>
@@ -98,11 +100,11 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-12 footer-cols-responsive">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">{category}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">{category}</p>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="inline-block py-1 text-sm text-white/50 hover:text-white transition-colors">
+                    <Link href={link.href} className="inline-block py-1 text-sm text-white/55 hover:text-white transition-colors cursor-pointer">
                       {link.label}
                     </Link>
                   </li>
@@ -140,7 +142,7 @@ export default function Footer() {
                 <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" />
               </svg>
             </div>
-            <p className="text-xs text-white/30">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
+            <p className="text-xs text-white/40">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-4">
             <StatusBadge status="live" />
@@ -148,7 +150,7 @@ export default function Footer() {
               {socials.map((social) => (
                 <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/40 hover:text-white/80 hover:bg-white/10 transition-all">
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/45 hover:text-white/80 hover:bg-white/10 transition-all cursor-pointer">
                   {social.icon}
                 </a>
               ))}

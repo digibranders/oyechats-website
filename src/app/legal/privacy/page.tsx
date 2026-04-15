@@ -17,12 +17,12 @@ export default function PrivacyPage() {
         <section className="pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h1 className="font-display text-4xl font-bold text-white mb-2">Privacy Policy</h1>
-            <p className="text-white/40 text-sm mb-10">Last updated: March 1, 2025</p>
+            <p className="text-white/50 text-sm mb-10">Last updated: March 1, 2025</p>
 
             <div className="prose prose-invert prose-sm max-w-none space-y-8 text-white/65">
               <section>
                 <h2 className="font-display text-xl font-semibold text-white mb-3">1. Introduction</h2>
-                <p>OyeChats ("we," "us," or "our") operates the OyeChats platform and website. This Privacy Policy explains how we collect, use, store, and share information when you use our services.</p>
+                <p>OyeChats (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the OyeChats platform and website. This Privacy Policy explains how we collect, use, store, and share information when you use our services.</p>
               </section>
 
               <section>

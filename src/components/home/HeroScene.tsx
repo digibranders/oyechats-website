@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useMemo, useState, useEffect } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Stars, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -109,12 +109,17 @@ interface HeroSceneProps {
   mousePos: { x: number; y: number };
 }
 
-export function HeroScene({ mousePos }: HeroSceneProps) {
-  const [isMobile, setIsMobile] = useState(false);
+const mobileQuery = '(max-width: 768px)';
+const subscribeMedia = (cb: () => void) => {
+  const mql = window.matchMedia(mobileQuery);
+  mql.addEventListener('change', cb);
+  return () => mql.removeEventListener('change', cb);
+};
+const getIsMobile = () => window.matchMedia(mobileQuery).matches;
+const getIsMobileServer = () => false;
 
-  useEffect(() => {
-    setIsMobile(window.matchMedia('(max-width: 768px)').matches);
-  }, []);
+export function HeroScene({ mousePos }: HeroSceneProps) {
+  const isMobile = useSyncExternalStore(subscribeMedia, getIsMobile, getIsMobileServer);
 
   return (
     <Canvas

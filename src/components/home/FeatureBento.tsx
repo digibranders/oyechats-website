@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { SpotlightCard } from '@/components/aceternity/SpotlightCard';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
@@ -8,16 +7,17 @@ import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import { TerminalWidget } from '@/components/shared/TerminalWidget';
 import { cn } from '@/lib/utils';
+import { FileText, Scissors, Hash, Search, Bot, MessageCircle } from 'lucide-react';
 
 // RAG Pipeline SVG Animation
 function RAGPipelineCell() {
-  const stages = [
-    { icon: '📄', label: 'Documents', sublabel: 'PDF · DOCX · TXT', color: '#60A5FA' },
-    { icon: '✂️', label: 'Chunking', sublabel: '512 tokens', color: '#6366F1' },
-    { icon: '🔢', label: 'Embedding', sublabel: 'Semantic vectors', color: '#8B5CF6' },
-    { icon: '🔍', label: 'Hybrid Search', sublabel: 'Vector + Keyword', color: '#06B6D4' },
-    { icon: '🤖', label: 'AI Answer', sublabel: 'Grounded response', color: '#10B981' },
-    { icon: '💬', label: 'Response', sublabel: 'Streaming SSE', color: '#34D399' },
+  const stages: { icon: React.ReactNode; label: string; sublabel: string; color: string }[] = [
+    { icon: <FileText className="w-5 h-5" style={{ color: '#60A5FA' }} />, label: 'Documents', sublabel: 'PDF · DOCX · TXT', color: '#60A5FA' },
+    { icon: <Scissors className="w-5 h-5" style={{ color: '#6366F1' }} />, label: 'Chunking', sublabel: '512 tokens', color: '#6366F1' },
+    { icon: <Hash className="w-5 h-5" style={{ color: '#8B5CF6' }} />, label: 'Embedding', sublabel: 'Semantic vectors', color: '#8B5CF6' },
+    { icon: <Search className="w-5 h-5" style={{ color: '#06B6D4' }} />, label: 'Hybrid Search', sublabel: 'Vector + Keyword', color: '#06B6D4' },
+    { icon: <Bot className="w-5 h-5" style={{ color: '#10B981' }} />, label: 'AI Answer', sublabel: 'Grounded response', color: '#10B981' },
+    { icon: <MessageCircle className="w-5 h-5" style={{ color: '#34D399' }} />, label: 'Response', sublabel: 'Streaming SSE', color: '#34D399' },
   ];
 
   return (
@@ -39,11 +39,11 @@ function RAGPipelineCell() {
             <div
               className="flex flex-col items-center gap-1 rounded-xl border border-white/8 bg-white/[.03] p-2.5 min-w-[60px] text-center hover:border-white/15 transition-colors group"
             >
-              <span className="text-lg group-hover:scale-110 transition-transform duration-200">
+              <span className="group-hover:scale-110 transition-transform duration-200">
                 {stage.icon}
               </span>
-              <span className="text-[10px] font-medium text-white/70 whitespace-nowrap">{stage.label}</span>
-              <span className="text-[9px] text-white/30 whitespace-nowrap hidden sm:block">{stage.sublabel}</span>
+              <span className="text-[11px] font-medium text-white/70 whitespace-nowrap">{stage.label}</span>
+              <span className="text-[11px] text-white/45 whitespace-nowrap hidden sm:block">{stage.sublabel}</span>
             </div>
             {i < stages.length - 1 && (
               <svg width="16" height="8" viewBox="0 0 16 8" fill="none" className="text-white/20 shrink-0">
@@ -63,7 +63,7 @@ function RAGPipelineCell() {
         ].map((stat) => (
           <div key={stat.label}>
             <p className="text-sm font-semibold text-blue-400">{stat.value}</p>
-            <p className="text-[10px] text-white/35">{stat.label}</p>
+            <p className="text-[11px] text-white/45">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -94,8 +94,8 @@ function BANTCell() {
         ].map((item) => (
           <div key={item.label} className="rounded-lg bg-white/[.03] border border-white/8 p-2">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="text-[10px] text-white/50 font-medium">{item.label}</span>
-              <span className="text-[10px] font-bold text-white/80">{item.score}</span>
+              <span className="text-[11px] text-white/50 font-medium">{item.label}</span>
+              <span className="text-[11px] font-bold text-white/80">{item.score}</span>
             </div>
             <div className="h-1 rounded-full bg-white/8 overflow-hidden">
               <div
@@ -125,7 +125,7 @@ function LiveChatCell() {
         />
         <div className="flex items-center gap-2 my-2">
           <div className="h-px flex-1 bg-cyan-500/20" />
-          <span className="text-[10px] text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-2 py-0.5">
+          <span className="text-[11px] text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-2 py-0.5">
             Transferring to Sarah
           </span>
           <div className="h-px flex-1 bg-cyan-500/20" />
@@ -136,8 +136,8 @@ function LiveChatCell() {
         />
       </div>
       <div className="mt-3 pt-3 border-t border-white/8 flex items-center justify-between">
-        <span className="text-[10px] text-white/35">WebSocket real-time</span>
-        <span className="text-[10px] text-emerald-400">● Live</span>
+        <span className="text-[11px] text-white/45">WebSocket real-time</span>
+        <span className="text-[11px] text-emerald-400">● Live</span>
       </div>
     </SpotlightCard>
   );
@@ -178,7 +178,7 @@ function AnalyticsCell() {
         ].map((stat) => (
           <div key={stat.label} className="rounded-lg bg-white/[.03] border border-white/8 p-2.5">
             <p className={cn('text-base font-bold font-display', stat.color)}>{stat.value}</p>
-            <p className="text-[10px] text-white/35 mt-0.5">{stat.label}</p>
+            <p className="text-[11px] text-white/45 mt-0.5">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -203,7 +203,7 @@ function WebhooksCell() {
         Event-Driven Integrations
       </h3>
       <p className="text-xs text-white/45 mb-3">5 event types, retry logic, SSRF protection.</p>
-      <TerminalWidget events={webhookEvents} autoPlay className="text-[10px] rounded-xl" />
+      <TerminalWidget events={webhookEvents} autoPlay className="text-[11px] rounded-xl" />
     </SpotlightCard>
   );
 }
@@ -227,27 +227,27 @@ export function FeatureBento() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bento-responsive">
           {/* RAG — full width on lg */}
-          <div className="lg:col-span-2" data-gsap>
+          <div className="lg:col-span-2 cursor-pointer" data-gsap>
             <RAGPipelineCell />
           </div>
 
           {/* BANT */}
-          <div data-gsap>
+          <div className="cursor-pointer" data-gsap>
             <BANTCell />
           </div>
 
           {/* Live Chat */}
-          <div data-gsap>
+          <div className="cursor-pointer" data-gsap>
             <LiveChatCell />
           </div>
 
           {/* Analytics */}
-          <div data-gsap>
+          <div className="cursor-pointer" data-gsap>
             <AnalyticsCell />
           </div>
 
           {/* Webhooks */}
-          <div data-gsap>
+          <div className="cursor-pointer" data-gsap>
             <WebhooksCell />
           </div>
         </div>

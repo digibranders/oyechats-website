@@ -1,8 +1,7 @@
 'use client';
 
-/* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useSyncExternalStore } from 'react';
 import * as THREE from 'three';
 
 interface AntigravityParticlesProps {
@@ -31,6 +30,17 @@ const PALETTE_HEX = [
   '#FBBF24', // amber-400  — warm attention dot
 ];
 
+/** Deterministic PRNG (mulberry32) so particle layout is stable across re-renders. */
+function mulberry32(seed: number): () => number {
+  let s = seed | 0;
+  return () => {
+    s = (s + 0x6d2b79f5) | 0;
+    let t = Math.imul(s ^ (s >>> 15), 1 | s);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 /* ── Inner Three.js scene ── */
 const AntigravityInner = () => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
@@ -57,17 +67,18 @@ const AntigravityInner = () => {
   const colorsApplied = useRef(false);
 
   const particles = useMemo(() => {
+    const rand = mulberry32(42);
     const temp = [];
     const width = viewport.width || 100;
     const height = viewport.height || 100;
 
     for (let i = 0; i < count; i++) {
-      const t = Math.random() * 100;
-      const speed = 0.01 + Math.random() / 200;
-      const x = (Math.random() - 0.5) * width;
-      const y = (Math.random() - 0.5) * height;
-      const z = (Math.random() - 0.5) * 20;
-      const randomRadiusOffset = (Math.random() - 0.5) * 2;
+      const t = rand() * 100;
+      const speed = 0.01 + rand() / 200;
+      const x = (rand() - 0.5) * width;
+      const y = (rand() - 0.5) * height;
+      const z = (rand() - 0.5) * 20;
+      const randomRadiusOffset = (rand() - 0.5) * 2;
 
       temp.push({
         t, speed,
@@ -166,7 +177,7 @@ const AntigravityInner = () => {
       );
 
       const distFromRing = Math.abs(currentDistToMouse - ringRadius);
-      let scaleFactor = Math.max(0, Math.min(1, 1 - distFromRing / 10));
+      const scaleFactor = Math.max(0, Math.min(1, 1 - distFromRing / 10));
 
       const finalScale =
         scaleFactor *
@@ -190,12 +201,22 @@ const AntigravityInner = () => {
 };
 
 export function AntigravityParticles({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  scrollProgress = 0,
+  scrollProgress: _scrollProgress = 0,
 }: AntigravityParticlesProps): React.JSX.Element {
+  void _scrollProgress;
   const containerRef = useRef<HTMLDivElement>(null);
-  const [eventSource, setEventSource] = useState<HTMLElement | undefined>(
-    undefined,
+  const eventSourceRef = useRef<HTMLElement | undefined>(undefined);
+  const subscribersRef = useRef(new Set<() => void>());
+
+  const subscribe = useCallback((callback: () => void) => {
+    subscribersRef.current.add(callback);
+    return () => { subscribersRef.current.delete(callback); };
+  }, []);
+
+  const eventSource = useSyncExternalStore(
+    subscribe,
+    () => eventSourceRef.current,
+    () => undefined,
   );
 
   useEffect(() => {
@@ -203,7 +224,8 @@ export function AntigravityParticles({
     // can track mouse even though its wrapper has pointer-events: none
     const section = containerRef.current?.closest('section');
     if (section instanceof HTMLElement) {
-      setEventSource(section);
+      eventSourceRef.current = section;
+      subscribersRef.current.forEach((cb) => cb());
     }
   }, []);
 

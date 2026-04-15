@@ -1,3 +1,4 @@
+import { Globe, ShoppingBag, Layout, Zap, Component, Circle, MessageCircle, Smartphone, Users, Target, Calendar } from 'lucide-react';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
@@ -48,9 +49,6 @@ add_action('wp_footer', 'oyechats_widget');`,
 };
 
 export function IntegrationsFeaturesSection() {
-  const firstKey = Object.keys(EMBED_SAMPLES)[0];
-  const sample = EMBED_SAMPLES[firstKey];
-
   return (
     <section id="feature-integrations" className="py-24 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -71,7 +69,7 @@ export function IntegrationsFeaturesSection() {
           <div className="space-y-4">
             {Object.entries(EMBED_SAMPLES).map(([platform, { lang, code }]) => (
               <div key={platform}>
-                <p className="text-xs font-semibold text-white/40 mb-2">{platform}</p>
+                <p className="text-xs font-semibold text-white/50 mb-2">{platform}</p>
                 <CodeSnippet code={code} language={lang} />
               </div>
             ))}
@@ -81,22 +79,22 @@ export function IntegrationsFeaturesSection() {
           <div>
             <div className="grid grid-cols-3 gap-3 mb-8">
               {[
-                { icon: '🌐', name: 'WordPress' },
-                { icon: '🛍️', name: 'Shopify' },
-                { icon: '🔷', name: 'Webflow' },
-                { icon: '⚡', name: 'Next.js' },
-                { icon: '🟩', name: 'Vue' },
-                { icon: '🔴', name: 'Angular' },
-                { icon: '💬', name: 'Slack' },
-                { icon: '📱', name: 'WhatsApp' },
-                { icon: '🔵', name: 'Teams' },
-                { icon: '🟠', name: 'HubSpot' },
-                { icon: '⚡', name: 'Zapier' },
-                { icon: '📅', name: 'Calendly' },
+                { icon: Globe, name: 'WordPress', color: 'text-blue-400' },
+                { icon: ShoppingBag, name: 'Shopify', color: 'text-emerald-400' },
+                { icon: Layout, name: 'Webflow', color: 'text-indigo-400' },
+                { icon: Zap, name: 'Next.js', color: 'text-amber-400' },
+                { icon: Component, name: 'Vue', color: 'text-green-400' },
+                { icon: Circle, name: 'Angular', color: 'text-red-400' },
+                { icon: MessageCircle, name: 'Slack', color: 'text-violet-400' },
+                { icon: Smartphone, name: 'WhatsApp', color: 'text-emerald-400' },
+                { icon: Users, name: 'Teams', color: 'text-blue-400' },
+                { icon: Target, name: 'HubSpot', color: 'text-orange-400' },
+                { icon: Zap, name: 'Zapier', color: 'text-amber-400' },
+                { icon: Calendar, name: 'Calendly', color: 'text-cyan-400' },
               ].map((p) => (
-                <div key={p.name} className="glass-1 rounded-xl p-3 border border-white/6 flex flex-col items-center gap-1.5 text-center">
-                  <span className="text-xl">{p.icon}</span>
-                  <span className="text-[10px] text-white/55">{p.name}</span>
+                <div key={p.name} className="glass-1 rounded-xl p-3 border border-white/6 flex flex-col items-center gap-1.5 text-center cursor-pointer hover:border-white/15 transition-colors">
+                  <p.icon className={`h-5 w-5 ${p.color}`} />
+                  <span className="text-[11px] text-white/55">{p.name}</span>
                 </div>
               ))}
             </div>

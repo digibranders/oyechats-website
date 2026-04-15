@@ -20,7 +20,7 @@ export function Testimonials() {
   const constraintsRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="py-24 px-6 lg:px-8" aria-label="Customer testimonials">
+    <section className="py-24 px-6 lg:px-8 overflow-hidden" aria-label="Customer testimonials">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12" data-gsap>
           <SectionEyebrow className="mx-auto mb-4">Customer Stories</SectionEyebrow>
@@ -38,7 +38,7 @@ export function Testimonials() {
             dragConstraints={constraintsRef}
             dragElastic={0.1}
           >
-            {testimonials.map((t, i) => (
+            {testimonials.map((t) => (
               <motion.div
                 key={t.id}
                 className="glass-2 rounded-2xl p-6 min-w-[clamp(280px,80vw,360px)] max-w-[360px] border border-white/10 flex-shrink-0 group hover:border-white/15 transition-all"
@@ -55,7 +55,7 @@ export function Testimonials() {
 
                 {/* Quote */}
                 <blockquote className="text-sm text-white/65 leading-relaxed mb-5">
-                  "{t.quote}"
+                  &quot;{t.quote}&quot;
                 </blockquote>
 
                 {/* Metric */}
@@ -76,7 +76,7 @@ export function Testimonials() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">{t.name}</p>
-                    <p className="text-xs text-white/40">{t.title}, {t.company}</p>
+                    <p className="text-xs text-white/50">{t.title}, {t.company}</p>
                   </div>
                   <div className="ml-auto">
                     <span className={cn(

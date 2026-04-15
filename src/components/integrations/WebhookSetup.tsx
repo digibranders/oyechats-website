@@ -74,10 +74,10 @@ export function WebhookSetup() {
 
             {/* Data flow diagram */}
             <div className="glass-1 rounded-2xl border border-white/8 p-5 mt-4">
-              <p className="text-xs text-white/40 mb-4 uppercase tracking-widest font-semibold">Data flow</p>
+              <p className="text-xs text-white/50 mb-4 uppercase tracking-widest font-semibold">Data flow</p>
               <div className="flex items-center gap-2 text-xs text-white/60">
                 {['OyeChats', '→', 'HTTPS POST', '→', 'Your endpoint', '→', 'CRM / Slack / DB'].map((node, i) => (
-                  <span key={i} className={node === '→' ? 'text-white/20' : 'px-2 py-1 glass-1 rounded-lg border border-white/6'}>
+                  <span key={i} className={node === '→' ? 'text-white/45' : 'px-2 py-1 glass-1 rounded-lg border border-white/6'}>
                     {node}
                   </span>
                 ))}
@@ -87,7 +87,7 @@ export function WebhookSetup() {
 
           {/* Payload */}
           <div>
-            <p className="text-xs text-white/40 uppercase tracking-widest font-semibold mb-3">Example payload</p>
+            <p className="text-xs text-white/50 uppercase tracking-widest font-semibold mb-3">Example payload</p>
             <CodeSnippet code={WEBHOOK_PAYLOAD} language="json" />
           </div>
         </div>

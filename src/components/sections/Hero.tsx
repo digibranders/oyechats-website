@@ -60,7 +60,7 @@ export function Hero() {
         <RotatingText
           words={['Ask', 'Try', 'Meet']}
           intervalMs={2800}
-          className="bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent"
+          className="gradient-text-heading"
         />
         {' '}
         <span className="text-white/90">Oye.</span>

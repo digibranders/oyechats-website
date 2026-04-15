@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useEffect, useRef, useState } from 'react';
+import { createContext, useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,7 +12,19 @@ if (typeof window !== 'undefined') {
 export const LenisContext = createContext<Lenis | null>(null);
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+  const subscribersRef = useRef(new Set<() => void>());
+
+  const subscribe = useCallback((callback: () => void) => {
+    subscribersRef.current.add(callback);
+    return () => { subscribersRef.current.delete(callback); };
+  }, []);
+
+  const lenis = useSyncExternalStore(
+    subscribe,
+    () => lenisRef.current,
+    () => null,
+  );
 
   useEffect(() => {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -34,11 +46,15 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     gsap.ticker.add(onTick);
     gsap.ticker.lagSmoothing(0);
 
-    setLenis(lenisInstance);
+    lenisRef.current = lenisInstance;
+    const subs = subscribersRef.current;
+    subs.forEach((cb) => cb());
 
     return () => {
       lenisInstance.destroy();
-      gsap.ticker.remove(onTick); // correctly removes the stored reference
+      gsap.ticker.remove(onTick);
+      lenisRef.current = null;
+      subs.forEach((cb) => cb());
     };
   }, []);
 

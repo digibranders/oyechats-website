@@ -1,12 +1,13 @@
 'use client';
 import { APP_LINKS } from '@/lib/constants';
-import { useState, useEffect } from 'react';
+import { cn } from '@/lib/utils';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
-import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import { AnimatedGradientText } from '@/components/magic/AnimatedGradientText';
+import { MessageSquare } from 'lucide-react';
 import dynamic from 'next/dynamic';
 const AntigravityParticles = dynamic(
   () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
@@ -35,6 +36,8 @@ function RotatingWord() {
     <span
       className="inline-block"
       style={{ minWidth: 'min(14ch, 80vw)' }}
+      aria-live="polite"
+      role="status"
     >
       <span
         className={cn(
@@ -48,10 +51,6 @@ function RotatingWord() {
   );
 }
 
-function cn(...classes: (string | undefined | false)[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 // Social proof logos (placeholder text-based)
 const socialProofItems = [
   { label: 'Shopify', color: '#96BF48' },
@@ -61,12 +60,10 @@ const socialProofItems = [
   { label: 'HubSpot', color: '#FF7A59' },
 ];
 
-export function Hero() {
-  const [mounted, setMounted] = useState(false);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export function Hero() {
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
   return (
     <section
@@ -91,7 +88,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
         {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center mb-6"
@@ -110,9 +107,9 @@ export function Hero() {
           </AnimatedGradientText>
         </motion.div>
 
-        {/* H1 */}
+        {/* H1 — initial=false on SSR so the heading is visible immediately (LCP fix) */}
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-semibold text-white leading-[1.06] tracking-[-0.04em] mb-6"
@@ -125,10 +122,10 @@ export function Hero() {
 
         {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, filter: 'blur(8px)', y: 12 }}
+          initial={mounted ? { opacity: 0, filter: 'blur(8px)', y: 12 } : false}
           animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="text-white/55 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
         >
           RAG-powered chatbot with BANT sales intelligence. Hybrid vector + keyword search,
@@ -137,7 +134,7 @@ export function Hero() {
 
         {/* CTA Row */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
@@ -167,12 +164,12 @@ export function Hero() {
 
         {/* Social proof */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={mounted ? { opacity: 0 } : false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col items-center gap-3"
         >
-          <p className="text-xs text-white/30 uppercase tracking-wider font-medium">
+          <p className="text-xs text-white/45 uppercase tracking-wider font-medium">
             Trusted by teams at
           </p>
           <div className="flex items-center gap-6 flex-wrap justify-center">
@@ -191,7 +188,7 @@ export function Hero() {
 
       {/* Hero product mockup — opacity-only fade prevents CLS from layout shift */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 mx-auto w-full max-w-4xl px-6 lg:px-8 pb-24 animate-hero-float"
@@ -206,7 +203,7 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-emerald-500/60" />
             </div>
             <div className="flex-1 mx-4">
-              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/30 text-center">
+              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/45 text-center">
                 app.yourcompany.com
               </div>
             </div>
@@ -219,9 +216,7 @@ export function Hero() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-xl bg-blue-600 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-4">
-                      <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" />
-                    </svg>
+                    <MessageSquare className="w-4 h-4 text-white" />
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-white">OyeChat AI</p>
@@ -262,7 +257,7 @@ export function Hero() {
             {/* Right: BANT panel */}
             <div className="space-y-4">
               <div className="glass-1 rounded-xl p-4">
-                <p className="text-[10px] text-white/40 uppercase tracking-wider mb-3">Lead Intelligence</p>
+                <p className="text-[10px] text-white/50 uppercase tracking-wider mb-3">Lead Intelligence</p>
                 <div className="flex justify-center mb-3">
                   <BANTScoreRing score={84} size={100} animate={false} />
                 </div>
@@ -281,18 +276,18 @@ export function Hero() {
                 </div>
               </div>
               <div className="glass-1 rounded-xl p-3">
-                <p className="text-[10px] text-white/40 uppercase tracking-wider mb-2">Visitor Intel</p>
+                <p className="text-[10px] text-white/50 uppercase tracking-wider mb-2">Visitor Intel</p>
                 <div className="space-y-1">
                   <div className="flex justify-between text-[10px]">
-                    <span className="text-white/40">Sessions</span>
+                    <span className="text-white/50">Sessions</span>
                     <span className="text-white/70">4 visits</span>
                   </div>
                   <div className="flex justify-between text-[10px]">
-                    <span className="text-white/40">Time on site</span>
+                    <span className="text-white/50">Time on site</span>
                     <span className="text-white/70">12m 34s</span>
                   </div>
                   <div className="flex justify-between text-[10px]">
-                    <span className="text-white/40">UTM source</span>
+                    <span className="text-white/50">UTM source</span>
                     <span className="text-blue-400">google / cpc</span>
                   </div>
                 </div>
@@ -319,13 +314,13 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer"
         aria-hidden="true"
       >
-        <span className="text-[10px] text-white/25 uppercase tracking-widest">Scroll</span>
+        <span className="text-[11px] text-white/45 uppercase tracking-widest">Scroll</span>
         <svg
           width="14"
           height="14"
@@ -333,7 +328,7 @@ export function Hero() {
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
-          className="text-white/25 animate-scroll-chevron"
+          className="text-white/45 animate-scroll-chevron"
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>

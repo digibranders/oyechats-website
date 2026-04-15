@@ -50,7 +50,6 @@ export function AnimatedBeam({
     const updatePath = () => {
       if (!containerRef.current || !fromRef.current || !toRef.current || !svgRef.current) return;
 
-      const containerRect = containerRef.current.getBoundingClientRect();
       const fromRect = fromRef.current.getBoundingClientRect();
       const toRect = toRef.current.getBoundingClientRect();
 

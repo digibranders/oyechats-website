@@ -2,10 +2,12 @@
 import { APP_LINKS } from '@/lib/constants';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 import { CTAButton } from '@/components/shared/CTAButton';
+import { Brain, Target, MessageCircle, BarChart3, RefreshCw, Palette, Globe, ShoppingBag, Zap, Hash, Smartphone, Calendar } from 'lucide-react';
 
 const navLinks = [
   { label: 'Product', hasMega: true },
@@ -17,20 +19,20 @@ const navLinks = [
 
 const megaMenuItems = {
   features: [
-    { icon: '🧠', label: 'RAG Pipeline', desc: 'Document-aware AI with hybrid search', href: '/features#rag' },
-    { icon: '🎯', label: 'BANT Scoring', desc: 'Automated sales qualification', href: '/features#bant' },
-    { icon: '💬', label: 'Live Chat', desc: 'Seamless bot-to-human handoff', href: '/features#live-chat' },
-    { icon: '📊', label: 'Analytics', desc: 'Deep visitor insights & reports', href: '/features#analytics' },
-    { icon: '🔄', label: 'Webhooks', desc: 'Event-driven integrations', href: '/features#webhooks' },
-    { icon: '🎨', label: 'Customization', desc: 'Full widget branding control', href: '/features#customization' },
+    { icon: Brain, label: 'RAG Pipeline', desc: 'Document-aware AI with hybrid search', href: '/features#rag' },
+    { icon: Target, label: 'BANT Scoring', desc: 'Automated sales qualification', href: '/features#bant' },
+    { icon: MessageCircle, label: 'Live Chat', desc: 'Seamless bot-to-human handoff', href: '/features#live-chat' },
+    { icon: BarChart3, label: 'Analytics', desc: 'Deep visitor insights & reports', href: '/features#analytics' },
+    { icon: RefreshCw, label: 'Webhooks', desc: 'Event-driven integrations', href: '/features#webhooks' },
+    { icon: Palette, label: 'Customization', desc: 'Full widget branding control', href: '/features#customization' },
   ],
   integrations: [
-    { icon: '🌐', label: 'WordPress', href: '/integrations' },
-    { icon: '🛍️', label: 'Shopify', href: '/integrations' },
-    { icon: '⚡', label: 'Next.js', href: '/integrations' },
-    { icon: '💬', label: 'Slack', href: '/integrations' },
-    { icon: '📱', label: 'WhatsApp', href: '/integrations' },
-    { icon: '📅', label: 'Calendly', href: '/integrations' },
+    { icon: Globe, label: 'WordPress', href: '/integrations' },
+    { icon: ShoppingBag, label: 'Shopify', href: '/integrations' },
+    { icon: Zap, label: 'Next.js', href: '/integrations' },
+    { icon: Hash, label: 'Slack', href: '/integrations' },
+    { icon: Smartphone, label: 'WhatsApp', href: '/integrations' },
+    { icon: Calendar, label: 'Calendly', href: '/integrations' },
   ],
   changelog: [
     { version: 'v2.4', date: 'Apr 2025', note: 'BANT behavioral scoring' },
@@ -40,6 +42,7 @@ const megaMenuItems = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -94,8 +97,10 @@ export default function Navbar() {
                       onMouseLeave={handleMegaLeave}
                     >
                       <button
+                        aria-expanded={megaOpen}
+                        aria-haspopup="true"
                         className={cn(
-                          'flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                          'flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
                           megaOpen ? 'text-white bg-white/8' : 'text-white/70 hover:text-white hover:bg-white/6'
                         )}
                       >
@@ -108,9 +113,14 @@ export default function Navbar() {
                     </div>
                   );
                 }
+                const isActive = link.href && pathname.startsWith(link.href);
                 return (
                   <Link key={link.label} href={link.href!}
-                    className="px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/6 transition-all duration-200">
+                    aria-current={isActive ? 'page' : undefined}
+                    className={cn(
+                      'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
+                      isActive ? 'text-white bg-white/8' : 'text-white/70 hover:text-white hover:bg-white/6'
+                    )}>
                     {link.label}
                   </Link>
                 );
@@ -160,16 +170,16 @@ export default function Navbar() {
               <div className="glass-3 rounded-2xl p-6 grid grid-cols-3 gap-8">
                 {/* Features */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">Features</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Features</p>
                   <div className="grid grid-cols-2 gap-1.5">
                     {megaMenuItems.features.map((item) => (
                       <Link key={item.label} href={item.href}
-                        className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-white/6 transition-colors group"
+                        className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-white/6 transition-colors group cursor-pointer"
                         onClick={() => setMegaOpen(false)}>
-                        <span className="text-base mt-0.5">{item.icon}</span>
+                        <item.icon className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" aria-hidden="true" />
                         <div>
                           <p className="text-sm font-medium text-white/90 group-hover:text-white transition-colors">{item.label}</p>
-                          <p className="text-xs text-white/40 mt-0.5">{item.desc}</p>
+                          <p className="text-xs text-white/50 mt-0.5">{item.desc}</p>
                         </div>
                       </Link>
                     ))}
@@ -177,13 +187,13 @@ export default function Navbar() {
                 </div>
                 {/* Integrations */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">Integrations</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Integrations</p>
                   <div className="grid grid-cols-2 gap-1.5">
                     {megaMenuItems.integrations.map((item) => (
                       <Link key={item.label} href={item.href}
-                        className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-white/6 transition-colors group"
+                        className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-white/6 transition-colors group cursor-pointer"
                         onClick={() => setMegaOpen(false)}>
-                        <span>{item.icon}</span>
+                        <item.icon className="w-4 h-4 text-white/50 group-hover:text-white/80 transition-colors shrink-0" aria-hidden="true" />
                         <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">{item.label}</span>
                       </Link>
                     ))}
@@ -196,7 +206,7 @@ export default function Navbar() {
                 </div>
                 {/* Changelog */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-4">Latest Updates</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Latest Updates</p>
                   <div className="space-y-3">
                     {megaMenuItems.changelog.map((item) => (
                       <Link key={item.version} href="/changelog"
@@ -206,7 +216,7 @@ export default function Navbar() {
                         </span>
                         <div>
                           <p className="text-sm text-white/80 group-hover:text-white transition-colors leading-snug">{item.note}</p>
-                          <p className="text-xs text-white/30 mt-0.5">{item.date}</p>
+                          <p className="text-xs text-white/40 mt-0.5">{item.date}</p>
                         </div>
                       </Link>
                     ))}
@@ -243,7 +253,7 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between">
                 <span className="font-display font-semibold text-lg">Menu</span>
-                <button onClick={() => setMobileOpen(false)} className="p-2 hover:bg-white/8 rounded-lg text-white/70">
+                <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="p-2 hover:bg-white/8 rounded-lg text-white/70 cursor-pointer">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                   </svg>

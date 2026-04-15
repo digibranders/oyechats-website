@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
@@ -24,7 +23,7 @@ export function PricingPreview() {
             <div
               key={tier.id}
               className={cn(
-                'relative rounded-2xl p-6 transition-all duration-500 price-card-base',
+                'relative rounded-2xl p-6 transition-all duration-500 price-card-base cursor-pointer',
                 tier.featured
                   ? 'price-card-featured featured-shimmer'
                   : 'glass-2 border border-white/8'
@@ -60,11 +59,11 @@ export function PricingPreview() {
                     <span className="text-3xl font-display font-bold text-white">
                       ${tier.monthlyPrice}
                     </span>
-                    <span className="text-sm text-white/40">/mo</span>
+                    <span className="text-sm text-white/50">/mo</span>
                   </>
                 )}
               </div>
-              <p className="text-xs text-white/40 mb-5">{tier.tagline}</p>
+              <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
 
               {/* Key features (first 5) */}
               <ul className="space-y-2 mb-6">

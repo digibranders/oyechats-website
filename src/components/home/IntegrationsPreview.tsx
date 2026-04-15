@@ -1,23 +1,27 @@
-import Link from 'next/link';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { BackgroundBeams } from '@/components/aceternity/BackgroundBeams';
 import { MagicCard } from '@/components/magic/MagicCard';
+import {
+  Globe, ShoppingBag, Zap, MessageCircle, Smartphone,
+  Circle, Calendar, RefreshCw, BarChart3, Link as LinkIcon,
+  type LucideIcon,
+} from 'lucide-react';
 
-const previewIntegrations = [
-  { icon: '🌐', name: 'WordPress', desc: 'Plugin install' },
-  { icon: '🛍️', name: 'Shopify', desc: 'Theme injection' },
-  { icon: '🔷', name: 'Webflow', desc: 'Custom embed' },
-  { icon: '⚡', name: 'Next.js', desc: 'Script component' },
-  { icon: '💬', name: 'Slack', desc: 'Bot integration' },
-  { icon: '📱', name: 'WhatsApp', desc: 'Business API' },
-  { icon: '🔵', name: 'Teams', desc: 'Bot channel' },
-  { icon: '📅', name: 'Calendly', desc: 'Meeting booking' },
-  { icon: '⚡', name: 'Zapier', desc: '6000+ apps' },
-  { icon: '🟠', name: 'HubSpot', desc: 'CRM sync' },
-  { icon: '🔄', name: 'Webhooks', desc: '5 event types' },
-  { icon: '🛠️', name: 'REST API', desc: 'Full control' },
+const previewIntegrations: { icon: LucideIcon; name: string; desc: string }[] = [
+  { icon: Globe, name: 'WordPress', desc: 'Plugin install' },
+  { icon: ShoppingBag, name: 'Shopify', desc: 'Theme injection' },
+  { icon: Globe, name: 'Webflow', desc: 'Custom embed' },
+  { icon: Zap, name: 'Next.js', desc: 'Script component' },
+  { icon: MessageCircle, name: 'Slack', desc: 'Bot integration' },
+  { icon: Smartphone, name: 'WhatsApp', desc: 'Business API' },
+  { icon: Circle, name: 'Teams', desc: 'Bot channel' },
+  { icon: Calendar, name: 'Calendly', desc: 'Meeting booking' },
+  { icon: Zap, name: 'Zapier', desc: '6000+ apps' },
+  { icon: BarChart3, name: 'HubSpot', desc: 'CRM sync' },
+  { icon: RefreshCw, name: 'Webhooks', desc: '5 event types' },
+  { icon: LinkIcon, name: 'REST API', desc: 'Full control' },
 ];
 
 export function IntegrationsPreview() {
@@ -39,21 +43,19 @@ export function IntegrationsPreview() {
 
         {/* Integration logos grid */}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 mb-10">
-          {previewIntegrations.map((item, i) => (
+          {previewIntegrations.map((item) => (
             <MagicCard
               key={item.name}
-              className="glass-1 rounded-2xl p-4 border border-white/8 hover:border-white/15 transition-all cursor-default group"
+              className="glass-1 rounded-2xl p-4 border border-white/8 hover:border-white/15 transition-all cursor-pointer group"
               gradientColor="#2563EB"
               gradientOpacity={0.12}
             >
               <div className="flex flex-col items-center gap-2 text-center" data-gsap>
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
-                  {item.icon}
-                </span>
+                <item.icon className="h-6 w-6 text-white/60 group-hover:scale-110 transition-transform duration-200" />
                 <span className="text-xs font-medium text-white/70 group-hover:text-white transition-colors">
                   {item.name}
                 </span>
-                <span className="text-[9px] text-white/30">{item.desc}</span>
+                <span className="text-[9px] text-white/45">{item.desc}</span>
               </div>
             </MagicCard>
           ))}

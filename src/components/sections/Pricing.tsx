@@ -43,14 +43,14 @@ export function Pricing() {
                 </div>
               )}
 
-              <p className="price-plan-name-el text-[13px] font-semibold tracking-[.08em] uppercase text-white/40 mb-4 transition-colors duration-300">{plan.name}</p>
+              <p className="price-plan-name-el text-[13px] font-semibold tracking-[.08em] uppercase text-white/50 mb-4 transition-colors duration-300">{plan.name}</p>
 
               <div className="flex items-baseline gap-1 mb-[6px]">
                 {!isCustom && <span className="text-[1.2rem] font-semibold text-white/50 self-start mt-[6px]">$</span>}
                 <span className={`font-semibold tracking-[-0.04em] text-white leading-none transition-all duration-300 ${isCustom ? '' : ''}`} style={{fontSize: isCustom ? 'clamp(1.6rem,2.5vw,2rem)' : 'clamp(2.8rem, 4vw, 3.6rem)'}}>
                   {isCustom ? 'Custom' : price}
                 </span>
-                {!isCustom && <span className="text-sm text-white/30">/month</span>}
+                {!isCustom && <span className="text-sm text-white/45">/month</span>}
               </div>
 
               <p className="text-[13px] text-muted leading-[1.6] mb-7 min-h-[40px]">{plan.description}</p>

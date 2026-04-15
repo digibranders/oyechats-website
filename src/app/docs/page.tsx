@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import Link from 'next/link';
+import { Package, KeyRound, Brain, Zap, Lightbulb } from 'lucide-react';
 
 export const metadata = {
   title: 'Documentation — OyeChats',
@@ -11,28 +12,28 @@ export const metadata = {
 
 const QUICK_START = [
   {
-    icon: '📦',
+    icon: Package,
     step: '1',
     title: 'Install the widget',
     desc: 'Add a single script tag to your site and the chat widget appears instantly.',
     anchor: '#widget',
   },
   {
-    icon: '🔑',
+    icon: KeyRound,
     step: '2',
     title: 'Get your bot key',
     desc: 'Find your unique bot key in the dashboard under Settings → Widget.',
     anchor: '#widget',
   },
   {
-    icon: '🧠',
+    icon: Brain,
     step: '3',
     title: 'Upload your docs',
     desc: 'Upload PDFs, paste URLs, or connect a sitemap — the RAG pipeline handles the rest.',
     anchor: '#api',
   },
   {
-    icon: '⚡',
+    icon: Zap,
     step: '4',
     title: 'Configure webhooks',
     desc: 'Push lead events, BANT scores, and chat transcripts to your own backend.',
@@ -99,11 +100,11 @@ export default function DocsPage() {
                 <a
                   key={s.step}
                   href={s.anchor}
-                  className="glass-1 border border-white/8 rounded-2xl p-5 hover:border-blue-500/30 hover:bg-blue-500/[0.03] transition-all group"
+                  className="glass-1 border border-white/8 rounded-2xl p-5 hover:border-blue-500/30 hover:bg-blue-500/[0.03] transition-all group cursor-pointer"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-2xl">{s.icon}</span>
-                    <span className="text-xs font-semibold text-white/30 font-mono">Step {s.step}</span>
+                    <s.icon className="h-6 w-6 text-blue-400" />
+                    <span className="text-xs font-semibold text-white/45 font-mono">Step {s.step}</span>
                   </div>
                   <p className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">{s.title}</p>
                   <p className="text-xs text-white/45 leading-relaxed">{s.desc}</p>
@@ -126,8 +127,8 @@ export default function DocsPage() {
               {/* Code block */}
               <div className="rounded-2xl border border-white/8 overflow-hidden mb-8">
                 <div className="bg-white/[0.03] border-b border-white/8 px-5 py-3 flex items-center justify-between">
-                  <span className="text-xs font-mono text-white/40">HTML</span>
-                  <span className="text-xs text-white/30">Paste before &lt;/body&gt;</span>
+                  <span className="text-xs font-mono text-white/50">HTML</span>
+                  <span className="text-xs text-white/45">Paste before &lt;/body&gt;</span>
                 </div>
                 <pre className="p-5 text-sm font-mono text-white/80 overflow-x-auto leading-relaxed bg-[#010812]">
                   <span className="text-white/30">{`<!-- OyeChats Widget -->`}</span>{'\n'}
@@ -145,10 +146,10 @@ export default function DocsPage() {
                 <table className="w-full border-collapse text-sm">
                   <thead>
                     <tr className="bg-white/[0.03] border-b border-white/8">
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40">Attribute</th>
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40">Type</th>
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40">Required</th>
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40">Description</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50">Attribute</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50">Type</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50">Required</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50">Description</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -159,7 +160,7 @@ export default function DocsPage() {
                         <td className="px-5 py-3 text-xs">
                           {a.required
                             ? <span className="text-emerald-400 font-semibold">Yes</span>
-                            : <span className="text-white/30">No</span>}
+                            : <span className="text-white/45">No</span>}
                         </td>
                         <td className="px-5 py-3 text-xs text-white/50">{a.desc}</td>
                       </tr>
@@ -194,7 +195,7 @@ export default function DocsPage() {
               <h3 className="text-sm font-semibold text-white mb-4">Example payload — <span className="text-violet-300 font-mono">bant.scored</span></h3>
               <div className="rounded-2xl border border-white/8 overflow-hidden">
                 <div className="bg-white/[0.03] border-b border-white/8 px-5 py-3">
-                  <span className="text-xs font-mono text-white/40">JSON</span>
+                  <span className="text-xs font-mono text-white/50">JSON</span>
                 </div>
                 <pre className="p-5 text-xs font-mono text-white/70 overflow-x-auto leading-loose bg-[#010812]">{`{
   "event": "bant.scored",
@@ -215,7 +216,7 @@ export default function DocsPage() {
 }`}</pre>
               </div>
 
-              <p className="mt-4 text-xs text-white/35">
+              <p className="mt-4 text-xs text-white/45">
                 All webhook requests include an <code className="font-mono text-white/60">X-OyeChats-Signature</code> header (HMAC-SHA256). Verify this in your handler before processing.
               </p>
             </div>
@@ -239,9 +240,9 @@ export default function DocsPage() {
                 <table className="w-full border-collapse text-sm">
                   <thead>
                     <tr className="bg-white/[0.03] border-b border-white/8">
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40 w-20">Method</th>
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40 w-72">Endpoint</th>
-                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/40">Description</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50 w-20">Method</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50 w-72">Endpoint</th>
+                      <th className="px-5 py-3 text-left text-xs font-semibold text-white/50">Description</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -261,7 +262,7 @@ export default function DocsPage() {
               </div>
 
               <div className="mt-6 glass-1 border border-blue-500/20 rounded-xl px-5 py-4 flex items-start gap-3">
-                <span className="text-blue-400 text-lg shrink-0">💡</span>
+                <Lightbulb className="h-5 w-5 text-blue-400 shrink-0" />
                 <p className="text-sm text-white/55">
                   Need a full OpenAPI spec?{' '}
                   <Link href="/contact" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors">
@@ -285,7 +286,7 @@ export default function DocsPage() {
               <div className="flex items-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white transition-colors"
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white transition-colors cursor-pointer"
                 >
                   Contact support
                 </Link>

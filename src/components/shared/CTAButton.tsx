@@ -33,7 +33,7 @@ export function CTAButton({
   showWavebar = false,
 }: CTAButtonProps) {
   const classes = cn(
-    'relative inline-flex items-center gap-2 rounded-full font-medium btn-magnetic transition-all duration-300',
+    'relative inline-flex items-center gap-2 rounded-full font-medium btn-magnetic transition-all duration-300 cursor-pointer',
     sizeMap[size],
     variantMap[variant],
     className

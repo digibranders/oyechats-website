@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
+import { SectionHeading } from '@/components/shared/SectionHeading';
+import { CTAButton } from '@/components/shared/CTAButton';
+import { HomeCTA } from '@/components/home/HomeCTA';
+import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
+import { Crosshair, Search, Zap, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -9,10 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://oyechats.com/about' },
   openGraph: { url: 'https://oyechats.com/about' },
 };
-import { SectionHeading } from '@/components/shared/SectionHeading';
-import { CTAButton } from '@/components/shared/CTAButton';
-import { HomeCTA } from '@/components/home/HomeCTA';
-import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 
 const TEAM = [
   { name: 'Vikram Sehgal', role: 'Co-founder & CEO', initials: 'VS', color: 'from-blue-600 to-cyan-500', bio: 'Ex-Freshdesk. Built B2B SaaS products for 10+ years.' },
@@ -22,10 +23,10 @@ const TEAM = [
 ];
 
 const VALUES = [
-  { icon: '🎯', title: 'Sales-first AI', desc: 'We build AI that converts, not just answers. Every feature ties back to pipeline.' },
-  { icon: '🔍', title: 'Radical transparency', desc: 'No black-box AI. Every BANT signal is explainable. Every AI decision is auditable.' },
-  { icon: '⚡', title: 'Speed over perfection', desc: 'Ship fast. Learn from real users. Iterate weekly. Our changelog proves it.' },
-  { icon: '🤝', title: 'Customer obsession', desc: 'Our Pro customers have a direct line to our engineering team. Always.' },
+  { icon: Crosshair, title: 'Sales-first AI', desc: 'We build AI that converts, not just answers. Every feature ties back to pipeline.' },
+  { icon: Search, title: 'Radical transparency', desc: 'No black-box AI. Every BANT signal is explainable. Every AI decision is auditable.' },
+  { icon: Zap, title: 'Speed over perfection', desc: 'Ship fast. Learn from real users. Iterate weekly. Our changelog proves it.' },
+  { icon: Handshake, title: 'Customer obsession', desc: 'Our Pro customers have a direct line to our engineering team. Always.' },
 ];
 
 export default function AboutPage() {
@@ -58,8 +59,8 @@ export default function AboutPage() {
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.06), transparent 70%)' }} />
               <p className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-4">Our Mission</p>
               <p className="font-display text-2xl lg:text-3xl font-semibold text-white leading-snug max-w-2xl mx-auto relative">
-                "Make every website visitor a potential customer — through AI that understands,
-                qualifies, and connects in real time."
+                &quot;Make every website visitor a potential customer — through AI that understands,
+                qualifies, and connects in real time.&quot;
               </p>
             </div>
           </div>
@@ -72,7 +73,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {VALUES.map((v) => (
                 <div key={v.title} className="glass-1 rounded-2xl border border-white/8 p-6 flex items-start gap-4">
-                  <span className="text-2xl shrink-0">{v.icon}</span>
+                  <v.icon className="h-6 w-6 text-blue-400 shrink-0" />
                   <div>
                     <p className="text-sm font-semibold text-white mb-1">{v.title}</p>
                     <p className="text-sm text-white/50 leading-relaxed">{v.desc}</p>
@@ -96,7 +97,7 @@ export default function AboutPage() {
                   </div>
                   <p className="text-sm font-semibold text-white">{t.name}</p>
                   <p className="text-xs text-blue-400 mb-2">{t.role}</p>
-                  <p className="text-xs text-white/40 leading-relaxed">{t.bio}</p>
+                  <p className="text-xs text-white/50 leading-relaxed">{t.bio}</p>
                 </div>
               ))}
             </div>
@@ -109,7 +110,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-semibold text-white mb-4">Join the team</h2>
             <p className="text-white/50 mb-8">
-              We're hiring engineers, product designers, and growth people who care deeply about AI and sales.
+              We&apos;re hiring engineers, product designers, and growth people who care deeply about AI and sales.
               Remote-first. Equity. Ship fast.
             </p>
             <CTAButton href="/contact?intent=careers" variant="ghost" size="lg">

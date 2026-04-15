@@ -23,10 +23,10 @@ export function AnalyticsSection() {
             <div className="grid grid-cols-2 gap-3">
               {METRICS.map((m) => (
                 <div key={m.label} className="glass-1 rounded-xl p-4 border border-white/8">
-                  <p className="text-[10px] text-white/40 mb-1">{m.label}</p>
+                  <p className="text-[11px] text-white/50 mb-1">{m.label}</p>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-display font-bold text-white">{m.value}</span>
-                    <span className={`text-[10px] font-medium ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <span className={`text-[11px] font-medium ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>
                       {m.change}
                     </span>
                   </div>
@@ -36,7 +36,7 @@ export function AnalyticsSection() {
 
             {/* Bar chart */}
             <div className="glass-1 rounded-xl p-4 border border-white/8">
-              <p className="text-xs text-white/40 mb-4">Conversations this week</p>
+              <p className="text-xs text-white/50 mb-4">Conversations this week</p>
               <div className="flex items-end gap-2 h-24">
                 {BAR_DATA.map((val, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-1">
@@ -44,7 +44,7 @@ export function AnalyticsSection() {
                       className="w-full rounded-t-sm bg-gradient-to-t from-blue-600 to-cyan-500 opacity-80 transition-all"
                       style={{ height: `${(val / MAX) * 80}px` }}
                     />
-                    <span className="text-[9px] text-white/25">{DAYS[i]}</span>
+                    <span className="text-[11px] text-white/45">{DAYS[i]}</span>
                   </div>
                 ))}
               </div>
@@ -52,7 +52,7 @@ export function AnalyticsSection() {
 
             {/* BANT tier donut */}
             <div className="glass-1 rounded-xl p-4 border border-white/8">
-              <p className="text-xs text-white/40 mb-3">Lead tier distribution</p>
+              <p className="text-xs text-white/50 mb-3">Lead tier distribution</p>
               <div className="flex items-center gap-6">
                 <svg width="70" height="70" viewBox="0 0 70 70">
                   <circle cx="35" cy="35" r="25" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
@@ -70,7 +70,7 @@ export function AnalyticsSection() {
                     <div key={t.label} className="flex items-center gap-2 text-xs text-white/55">
                       <span className={`h-2 w-2 rounded-full ${t.color}`} />
                       {t.label}
-                      <span className="ml-auto text-white/30">{t.pct}</span>
+                      <span className="ml-auto text-white/45">{t.pct}</span>
                     </div>
                   ))}
                 </div>

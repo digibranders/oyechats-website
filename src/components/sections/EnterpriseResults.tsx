@@ -10,7 +10,7 @@ export function EnterpriseResults() {
           <div>
             <div className="relative">
               <div className="absolute top-1/2 left-[-20px] -translate-y-1/2 w-[320px] h-[220px] rounded-full pointer-events-none" style={{background:'radial-gradient(ellipse, rgba(37,99,235,.26) 0%, transparent 70%)', filter:'blur(48px)'}} />
-              <div className="animate-ent-num-glow relative z-1 font-semibold tracking-[-0.05em] leading-[.86]" style={{fontSize:'clamp(5rem, 11vw, 9.5rem)', background:'linear-gradient(140deg, #ffffff 18%, rgba(147,197,253,.9) 65%, rgba(96,165,250,.6) 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text'}}>
+              <div className="gradient-text-heading animate-ent-num-glow relative z-1 font-semibold tracking-[-0.05em] leading-[.86]" style={{fontSize:'clamp(5rem, 11vw, 9.5rem)'}}>
                 99.99<span className="text-[.34em] align-super tracking-normal font-semibold">%</span>
               </div>
               <div className="mt-4 relative z-1 text-[11px] font-semibold tracking-[.14em] uppercase text-white/[.28]">Uptime SLA Guaranteed</div>

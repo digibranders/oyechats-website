@@ -8,18 +8,30 @@ interface MeteorsProps {
   className?: string;
 }
 
+/** Deterministic PRNG (mulberry32) so meteor positions are stable across re-renders. */
+function mulberry32(seed: number): () => number {
+  let s = seed | 0;
+  return () => {
+    s = (s + 0x6d2b79f5) | 0;
+    let t = Math.imul(s ^ (s >>> 15), 1 | s);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function generateMeteors(count: number) {
+  const rand = mulberry32(7);
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    top: `${Math.floor(rand() * 100)}%`,
+    left: `${Math.floor(rand() * 100)}%`,
+    animationDelay: `${rand() * 0.6 + 0.2}s`,
+    animationDuration: `${Math.floor(rand() * 8 + 3)}s`,
+  }));
+}
+
 export function Meteors({ number = 20, className }: MeteorsProps) {
-  const meteors = useMemo(
-    () =>
-      Array.from({ length: number }, (_, i) => ({
-        id: i,
-        top: `${Math.floor(Math.random() * 100)}%`,
-        left: `${Math.floor(Math.random() * 100)}%`,
-        animationDelay: `${Math.random() * 0.6 + 0.2}s`,
-        animationDuration: `${Math.floor(Math.random() * 8 + 3)}s`,
-      })),
-    [number]
-  );
+  const meteors = useMemo(() => generateMeteors(number), [number]);
 
   return (
     <>

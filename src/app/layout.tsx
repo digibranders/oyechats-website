@@ -139,10 +139,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
       <head>
-        {/* Preload Cal Sans — font-display:swap in globals.css prevents render-blocking */}
-        <link rel="preload" href="/CalSans-SemiBold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdn.oyechats.com" />
+        {/* Preconnect to third-party origins used on every page */}
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://cdn.oyechats.com" />
+        {/* Preload display font — WOFF2 is ~40KB vs the old broken 295KB TTF */}
+        <link rel="preload" href="/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

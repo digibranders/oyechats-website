@@ -42,8 +42,8 @@ export function ChatBubble({ message, sender, timestamp, isTyping, className }: 
     <div className={cn('flex flex-col gap-1', config.align, className)}>
       <div className="flex items-center gap-1.5">
         <span className={cn('h-1.5 w-1.5 rounded-full', config.dot)} />
-        <span className="text-[10px] text-white/40 font-medium">{config.label}</span>
-        {timestamp && <span className="text-[10px] text-white/20">{timestamp}</span>}
+        <span className="text-[11px] text-white/50 font-medium">{config.label}</span>
+        {timestamp && <span className="text-[11px] text-white/40">{timestamp}</span>}
       </div>
       <div className={cn('max-w-[240px] px-3 py-2 text-xs text-white/80 leading-relaxed', config.bubble)}>
         {isTyping ? (

@@ -1,3 +1,4 @@
+import { RefreshCw, Lock, ClipboardList, Wrench } from 'lucide-react';
 import { TerminalWidget } from '@/components/shared/TerminalWidget';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
@@ -12,10 +13,10 @@ const EVENT_TYPES = [
 ];
 
 const FEATURES = [
-  { icon: '🔄', title: 'Exponential retry', desc: 'Auto-retried up to 5× with backoff.' },
-  { icon: '🔐', title: 'HMAC-SHA256 signing', desc: 'Every payload signed for verification.' },
-  { icon: '📋', title: 'Delivery log', desc: 'Full attempt history in your dashboard.' },
-  { icon: '🛠️', title: 'REST API + OpenAPI', desc: 'Programmatic control over everything.' },
+  { icon: RefreshCw, title: 'Exponential retry', desc: 'Auto-retried up to 5x with backoff.', color: 'text-blue-400' },
+  { icon: Lock, title: 'HMAC-SHA256 signing', desc: 'Every payload signed for verification.', color: 'text-emerald-400' },
+  { icon: ClipboardList, title: 'Delivery log', desc: 'Full attempt history in your dashboard.', color: 'text-amber-400' },
+  { icon: Wrench, title: 'REST API + OpenAPI', desc: 'Programmatic control over everything.', color: 'text-violet-400' },
 ];
 
 export function WebhooksSection() {
@@ -31,7 +32,7 @@ export function WebhooksSection() {
 
             <div className="glass-1 rounded-2xl border border-white/8 overflow-hidden">
               <div className="px-4 py-2.5 border-b border-white/6 bg-white/[0.02]">
-                <p className="text-[10px] font-semibold text-white/40 uppercase tracking-widest">5 event types</p>
+                <p className="text-[11px] font-semibold text-white/50 uppercase tracking-widest">5 event types</p>
               </div>
               <div className="divide-y divide-white/[0.04]">
                 {EVENT_TYPES.map((evt) => (
@@ -59,9 +60,9 @@ export function WebhooksSection() {
             <div className="grid grid-cols-2 gap-3">
               {FEATURES.map((f) => (
                 <div key={f.title} className="glass-1 rounded-xl p-4 border border-white/6">
-                  <div className="text-xl mb-2">{f.icon}</div>
+                  <f.icon className={`h-5 w-5 mb-2 ${f.color}`} />
                   <p className="text-xs font-semibold text-white mb-1">{f.title}</p>
-                  <p className="text-[11px] text-white/40 leading-snug">{f.desc}</p>
+                  <p className="text-[11px] text-white/50 leading-snug">{f.desc}</p>
                 </div>
               ))}
             </div>

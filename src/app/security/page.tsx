@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
+import { Lock, Shield, KeyRound, ClipboardList, ShieldCheck, Globe, Server, Zap, Bug, Eye, Cloud, Mail, type LucideIcon } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Security',
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
   openGraph: { url: 'https://oyechats.com/security' },
 };
 
-const SECURITY_SECTIONS = [
+const SECURITY_SECTIONS: { icon: LucideIcon; title: string; items: string[] }[] = [
   {
-    icon: '🔐',
+    icon: Lock,
     title: 'Encryption',
     items: [
       'All data encrypted at rest using AES-256',
@@ -23,7 +24,7 @@ const SECURITY_SECTIONS = [
     ],
   },
   {
-    icon: '🛡️',
+    icon: Shield,
     title: 'Infrastructure',
     items: [
       'Hosted on isolated cloud infrastructure',
@@ -33,7 +34,7 @@ const SECURITY_SECTIONS = [
     ],
   },
   {
-    icon: '🔑',
+    icon: KeyRound,
     title: 'Access Control',
     items: [
       'Role-based access control (RBAC) on Enterprise',
@@ -43,7 +44,7 @@ const SECURITY_SECTIONS = [
     ],
   },
   {
-    icon: '📋',
+    icon: ClipboardList,
     title: 'Compliance',
     items: [
       'GDPR-compliant data processing',
@@ -54,11 +55,11 @@ const SECURITY_SECTIONS = [
   },
 ];
 
-const CERTIFICATIONS = [
-  { badge: '🔒', name: 'SOC 2 Type II', status: 'In progress — Q3 2025', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
-  { badge: '🇪🇺', name: 'GDPR', status: 'Compliant', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
-  { badge: '🔐', name: 'HTTPS / TLS 1.3', status: 'Active', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
-  { badge: '☁️', name: 'ISO 27001 Storage', status: 'Geo-redundant', color: 'text-violet-400 border-violet-400/20 bg-violet-400/5' },
+const CERTIFICATIONS: { badge: LucideIcon; name: string; status: string; color: string }[] = [
+  { badge: ShieldCheck, name: 'SOC 2 Type II', status: 'In progress — Q3 2025', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
+  { badge: Globe, name: 'GDPR', status: 'Compliant', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
+  { badge: Lock, name: 'HTTPS / TLS 1.3', status: 'Active', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
+  { badge: Cloud, name: 'ISO 27001 Storage', status: 'Geo-redundant', color: 'text-violet-400 border-violet-400/20 bg-violet-400/5' },
 ];
 
 export default function SecurityPage() {
@@ -75,7 +76,7 @@ export default function SecurityPage() {
                 <span className="gradient-text-heading">security</span>
               </SectionHeading>
               <p className="text-white/50 max-w-xl mx-auto">
-                Your data and your customers' data is safe with us. Here's exactly how we protect it.
+                Your data and your customers&apos; data is safe with us. Here&apos;s exactly how we protect it.
               </p>
             </div>
 
@@ -83,9 +84,9 @@ export default function SecurityPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               {CERTIFICATIONS.map((cert) => (
                 <div key={cert.name} className={`rounded-2xl border p-5 text-center ${cert.color}`}>
-                  <div className="text-3xl mb-2">{cert.badge}</div>
+                  <cert.badge className="h-7 w-7 mx-auto mb-2" />
                   <p className="text-sm font-semibold">{cert.name}</p>
-                  <p className="text-[10px] opacity-70 mt-1">{cert.status}</p>
+                  <p className="text-[11px] opacity-70 mt-1">{cert.status}</p>
                 </div>
               ))}
             </div>
@@ -95,7 +96,7 @@ export default function SecurityPage() {
               {SECURITY_SECTIONS.map((section) => (
                 <div key={section.title} className="glass-1 rounded-2xl border border-white/8 p-6">
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-2xl">{section.icon}</span>
+                    <section.icon className="h-6 w-6 text-blue-400" />
                     <h3 className="font-display text-lg font-semibold text-white">{section.title}</h3>
                   </div>
                   <ul className="space-y-2.5">
@@ -117,18 +118,18 @@ export default function SecurityPage() {
               <h3 className="font-display text-xl font-semibold text-white mb-6 text-center">Infrastructure at a glance</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
-                  { icon: '🗄️', name: 'Isolated database cluster', role: 'Dedicated per-region storage' },
-                  { icon: '⚡', name: 'High-availability queuing', role: 'Zero message loss guarantee' },
-                  { icon: '🪲', name: 'Real-time error monitoring', role: 'Instant incident alerting' },
-                  { icon: '🔬', name: 'AI observability', role: 'Full trace logging (Enterprise)' },
-                  { icon: '☁️', name: 'Geo-redundant storage', role: 'Document + media files' },
-                  { icon: '📧', name: 'Transactional email', role: 'Notifications & summaries' },
+                  { icon: Server, name: 'Isolated database cluster', role: 'Dedicated per-region storage' },
+                  { icon: Zap, name: 'High-availability queuing', role: 'Zero message loss guarantee' },
+                  { icon: Bug, name: 'Real-time error monitoring', role: 'Instant incident alerting' },
+                  { icon: Eye, name: 'AI observability', role: 'Full trace logging (Enterprise)' },
+                  { icon: Cloud, name: 'Geo-redundant storage', role: 'Document + media files' },
+                  { icon: Mail, name: 'Transactional email', role: 'Notifications & summaries' },
                 ].map((item) => (
                   <div key={item.name} className="flex items-center gap-3 glass-1 rounded-xl p-3 border border-white/6">
-                    <span className="text-lg shrink-0">{item.icon}</span>
+                    <item.icon className="h-4 w-4 text-white/50 shrink-0" />
                     <div>
                       <p className="text-xs font-medium text-white">{item.name}</p>
-                      <p className="text-[10px] text-white/35">{item.role}</p>
+                      <p className="text-[11px] text-white/45">{item.role}</p>
                     </div>
                   </div>
                 ))}
@@ -140,7 +141,7 @@ export default function SecurityPage() {
               <p className="text-white/50 text-sm mb-4">
                 Found a vulnerability? We have a responsible disclosure program.
               </p>
-              <a href="mailto:security@oyechats.com" className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
+              <a href="mailto:security@oyechats.com" className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium cursor-pointer">
                 security@oyechats.com
               </a>
             </div>

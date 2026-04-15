@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: 'Cal Sans';
-  src: url('/CalSans-SemiBold.ttf') format('truetype');
+  src: url('/CalSans-SemiBold.woff2') format('woff2'),
+       url('/CalSans-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -246,6 +247,12 @@
   }
 }
 
+/* ─── Focus Visible ─── */
+:focus-visible {
+  outline: 2px solid rgba(96,165,250,.6);
+  outline-offset: 2px;
+}
+
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   .animate-rotate-text-in  { animation: none !important; opacity: 1; filter: none; transform: none; }
@@ -357,15 +364,6 @@ body {
  * display:inline-block makes padding-bottom effective on <span> elements so
  * descenders are never clipped by a tight line-height or overflow:hidden parent.
  */
-.gradient-text {
-  display: inline-block;
-  background: linear-gradient(118deg, #fff 20%, var(--color-blue-4) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  padding-bottom: 0.1em;
-}
-
 .gradient-text-heading {
   display: inline-block;
   background: linear-gradient(118deg, #fff 25%, var(--color-blue-3) 100%);
@@ -617,16 +615,6 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* ─── Animated Gradient Text ─── */
-.animated-gradient-text {
-  background: linear-gradient(to right, var(--color-blue-3), var(--color-cyan), var(--color-indigo));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-text-shift 4s ease infinite;
-}
-
 /* ─── Existing Utilities ─── */
 .section-tag-line::after {
   content: '';
@@ -687,6 +675,13 @@ body {
 .btn-filled-style:hover {
   background: var(--color-blue-2);
   box-shadow: 0 0 32px rgba(59,130,246,.5), 0 8px 24px rgba(0,0,0,.35);
+}
+
+.btn-filled-style:active,
+.btn-ghost-style:active,
+.btn-indigo-style:active {
+  transform: scale(0.98) !important;
+  transition-duration: 0.1s;
 }
 
 .btn-ghost-style {

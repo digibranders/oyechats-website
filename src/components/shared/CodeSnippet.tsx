@@ -10,7 +10,8 @@ interface CodeSnippetProps {
   className?: string;
 }
 
-export function CodeSnippet({ code, language = 'html', filename, className }: CodeSnippetProps) {
+export function CodeSnippet({ code, language: _language = 'html', filename, className }: CodeSnippetProps) {
+  void _language;
   const [copied, setCopied] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
