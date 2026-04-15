@@ -77,9 +77,9 @@ export function Hero() {
       {/* Grid pattern */}
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Particle canvas — pure canvas, no React state updates on mouse move */}
+      {/* Particle canvas — Three.js antigravity effect */}
       {mounted && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none z-[1]">
           <AntigravityParticles />
         </div>
       )}
