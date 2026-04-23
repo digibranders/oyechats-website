@@ -489,6 +489,7 @@ body {
 .price-card-featured {
   background: linear-gradient(135deg, rgba(37,99,235,.12) 0%, rgba(99,102,241,.08) 100%);
   border: 1px solid rgba(96,165,250,.2);
+  overflow: hidden;
 }
 
 /* ─── Featured Shimmer ─── */
@@ -500,7 +501,8 @@ body {
   background: linear-gradient(90deg, var(--color-blue), var(--color-indigo), var(--color-cyan), var(--color-blue));
   background-size: 200% 100%;
   animation: shimmer-bar 3s ease-in-out infinite;
-  border-radius: 999px 999px 0 0;
+  border-radius: 1rem 1rem 0 0;
+  pointer-events: none;
 }
 
 /* ─── Hero Elements ─── */
