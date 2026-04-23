@@ -75,10 +75,7 @@ export function Hero() {
       style={{ background: 'var(--color-bg-void)' }}
       aria-label="Hero section"
     >
-      {/* Background glow */}
       <div className="hero-glow absolute inset-0 pointer-events-none" />
-
-      {/* Grid pattern */}
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
       {/* Particle canvas — Three.js antigravity effect.
@@ -92,9 +89,7 @@ export function Hero() {
         </div>
       )}
 
-      {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
-        {/* Eyebrow */}
         <motion.div
           initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
@@ -128,7 +123,6 @@ export function Hero() {
           <RotatingWord />
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
           initial={mounted ? { opacity: 0, filter: 'blur(8px)', y: 12 } : false}
           animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
@@ -140,7 +134,6 @@ export function Hero() {
           live chat handoff, behavioral tracking, and webhooks — all in one platform.
         </motion.p>
 
-        {/* CTA Row */}
         <motion.div
           initial={mounted ? { opacity: 0, y: 16 } : false}
           animate={{ opacity: 1, y: 0 }}
@@ -170,7 +163,6 @@ export function Hero() {
           </CTAButton>
         </motion.div>
 
-        {/* Social proof */}
         <motion.div
           initial={mounted ? { opacity: 0 } : false}
           animate={{ opacity: 1 }}
@@ -201,9 +193,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 mx-auto w-full max-w-4xl px-6 lg:px-8 pb-24 animate-hero-float"
       >
-        {/* Browser chrome wrapper */}
         <div className="glass-2 rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,.6),0_0_0_1px_rgba(255,255,255,.1)]">
-          {/* Browser bar */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-white/8 bg-white/[.03]">
             <div className="flex gap-1.5">
               <div className="h-3 w-3 rounded-full bg-red-500/60" />

@@ -42,11 +42,9 @@ export function PricingCards({ billing }: PricingCardsProps) {
                 )}
               </div>
 
-              {/* Name */}
               <p className="font-display font-semibold text-lg text-white mb-1">{tier.name}</p>
               <p className="text-xs text-white/50 mb-4 leading-relaxed">{tier.tagline}</p>
 
-              {/* Price */}
               <div className="mb-5">
                 <AnimatePresence mode="wait">
                   {tier.monthlyPrice === null ? (
@@ -93,7 +91,6 @@ export function PricingCards({ billing }: PricingCardsProps) {
                 </AnimatePresence>
               </div>
 
-              {/* Usage limits */}
               <div className="space-y-2 mb-5 pb-5 border-b border-white/8">
                 {[
                   { label: 'URL scanning', value: typeof tier.limits.urlScanning === 'number' ? tier.limits.urlScanning.toLocaleString() : tier.limits.urlScanning },
@@ -110,7 +107,6 @@ export function PricingCards({ billing }: PricingCardsProps) {
                 ))}
               </div>
 
-              {/* Features */}
               <ul className="space-y-2 mb-6 flex-1">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-xs text-white/60">
