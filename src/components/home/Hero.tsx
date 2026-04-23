@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
-import { AnimatedGradientText } from '@/components/magic/AnimatedGradientText';
 import { MessageSquare } from 'lucide-react';
 import dynamic from 'next/dynamic';
 // Particle background is intentionally disabled on the homepage but kept for
@@ -90,26 +89,6 @@ export function Hero() {
       )}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
-        <motion.div
-          initial={mounted ? { opacity: 0, y: 16 } : false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center mb-6"
-        >
-          <AnimatedGradientText>
-            <span className="flex items-center gap-2 text-sm font-medium">
-              <span
-                className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-livepulse"
-                aria-hidden="true"
-              />
-              <span>RAG-First AI Sales Platform</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </span>
-          </AnimatedGradientText>
-        </motion.div>
-
         {/* H1 — initial=false on SSR so the heading is visible immediately (LCP fix) */}
         <motion.h1
           initial={mounted ? { opacity: 0, y: 24 } : false}
