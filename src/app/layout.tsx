@@ -124,7 +124,8 @@ const jsonLd = {
         'RAG-powered AI chatbot platform with BANT sales qualification, live chat handoff, behavioral tracking, and analytics.',
       offers: [
         { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-        { '@type': 'Offer', name: 'Pro', price: '79', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD' },
+        { '@type': 'Offer', name: 'Standard', price: '57', priceCurrency: 'USD' },
         { '@type': 'Offer', name: 'Enterprise', price: 'Custom', priceCurrency: 'USD' },
       ],
     },
