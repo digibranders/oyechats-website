@@ -9,10 +9,14 @@ import { ChatBubble } from '@/components/shared/ChatBubble';
 import { AnimatedGradientText } from '@/components/magic/AnimatedGradientText';
 import { MessageSquare } from 'lucide-react';
 import dynamic from 'next/dynamic';
+// Particle background is intentionally disabled on the homepage but kept for
+// future reuse. DO NOT DELETE — this import and the render block below are
+// preserved on purpose. Toggle `SHOW_HERO_PARTICLES` to re-enable.
 const AntigravityParticles = dynamic(
   () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
   { ssr: false }
 );
+const SHOW_HERO_PARTICLES = false;
 
 const rotatingWords = ['Understands', 'Qualifies Leads', 'Closes Deals', 'Knows Your Docs'];
 
@@ -77,8 +81,12 @@ export function Hero() {
       {/* Grid pattern */}
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Particle canvas — Three.js antigravity effect */}
-      {mounted && (
+      {/* Particle canvas — Three.js antigravity effect.
+          Currently hidden from the homepage but kept for future reuse.
+          DO NOT DELETE as dead code: the AntigravityParticles component and
+          this render block are intentionally preserved. Flip
+          `SHOW_HERO_PARTICLES` above to re-enable. */}
+      {SHOW_HERO_PARTICLES && mounted && (
         <div className="absolute inset-0 pointer-events-none z-[1]">
           <AntigravityParticles />
         </div>
