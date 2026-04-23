@@ -34,8 +34,8 @@ export function LiveStats() {
           <div className="lg:w-1/2">
             <SectionEyebrow className="mb-4">Enterprise-Grade Infrastructure</SectionEyebrow>
             <div
-              className="font-display font-semibold gradient-text-heading leading-none mb-4"
-              style={{ fontSize: 'clamp(4rem, 10vw, 8rem)', letterSpacing: '-0.04em' }}
+              className="font-display font-semibold gradient-text-heading mb-4"
+              style={{ fontSize: 'clamp(4rem, 10vw, 8rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}
             >
               99.99<span className="text-blue-400">%</span>
             </div>
@@ -69,8 +69,8 @@ export function LiveStats() {
           {stats.map((stat) => (
             <div key={stat.label} className="group" data-gsap>
               <div className="glass-1 rounded-2xl p-6 border border-white/6 hover:border-white/12 transition-colors">
-                <div className={cn('font-display font-semibold leading-none mb-1', stat.color)}
-                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.03em' }}>
+                <div className={cn('font-display font-semibold mb-1', stat.color)}
+                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
                   <NumberTicker value={stat.value} className={stat.color} />
                   <span>{stat.suffix}</span>
                 </div>

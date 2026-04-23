@@ -25,8 +25,8 @@ export default function NotFound() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <div
-              className="font-display font-bold gradient-text-heading leading-none mb-6 select-none"
-              style={{ fontSize: 'clamp(6rem, 20vw, 14rem)', letterSpacing: '-0.05em' }}
+              className="font-display font-bold gradient-text-heading mb-6 select-none"
+              style={{ fontSize: 'clamp(6rem, 20vw, 14rem)', letterSpacing: '-0.02em', lineHeight: 1 }}
             >
               404
             </div>

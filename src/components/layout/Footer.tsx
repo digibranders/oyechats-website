@@ -70,9 +70,7 @@ const socials: Array<{ label: string; icon: React.ReactNode }> = [
 export default function Footer() {
   return (
     <footer className="relative border-t border-white/[.05] overflow-hidden" style={{ background: 'var(--color-bg-footer)' }}>
-      {/* Top section */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-12">
-        {/* Newsletter row */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-12 border-b border-white/[.06]">
           <div>
             <h3 className="font-display font-semibold text-lg text-white mb-1">Stay in the loop</h3>
@@ -93,7 +91,6 @@ export default function Footer() {
           </form>
         </div>
 
-        {/* Links grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-12 footer-cols-responsive">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
@@ -112,10 +109,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Giant brand text */}
       <div className="foot-brand-fade relative overflow-hidden">
         <span
-          className="animate-brand-float block text-center select-none font-display font-semibold tracking-[-0.04em] leading-[.88]"
+          className="animate-brand-float block text-center select-none font-display font-semibold tracking-[-0.02em] leading-[.95]"
           style={{
             fontSize: 'clamp(3rem, 16vw, 21rem)',
             background: 'linear-gradient(172deg, rgba(255,255,255,.98) 0%, rgba(155,190,255,.72) 24%, rgba(50,100,210,.28) 58%, rgba(10,45,150,.03) 100%)',
@@ -130,7 +126,6 @@ export default function Footer() {
         </span>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-white/[.04]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
