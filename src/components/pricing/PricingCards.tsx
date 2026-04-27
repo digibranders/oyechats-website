@@ -77,13 +77,13 @@ export function PricingCards({ billing }: PricingCardsProps) {
                     >
                       <div className="flex items-baseline gap-1">
                         <span className="text-3xl font-display font-bold text-white">
-                          ${billing === 'annual' ? tier.annualPrice : tier.monthlyPrice}
+                          ₹{(billing === 'annual' ? tier.annualPrice : tier.monthlyPrice)?.toLocaleString('en-IN')}
                         </span>
-                        <span className="text-sm text-white/50">/ operator</span>
+                        <span className="text-sm text-white/50">/ month</span>
                       </div>
                       {billing === 'annual' && tier.annualTotal !== null && tier.annualTotal !== undefined && tier.annualTotal > 0 && (
                         <p className="text-xs text-emerald-400 mt-1">
-                          ${tier.annualPrice}/mo · billed ${tier.annualTotal}/yr
+                          ₹{tier.annualPrice?.toLocaleString('en-IN')}/mo · billed ₹{tier.annualTotal?.toLocaleString('en-IN')}/yr
                         </p>
                       )}
                     </motion.div>
@@ -93,9 +93,18 @@ export function PricingCards({ billing }: PricingCardsProps) {
 
               <div className="space-y-2 mb-5 pb-5 border-b border-white/8">
                 {[
-                  { label: 'URL scanning', value: typeof tier.limits.urlScanning === 'number' ? tier.limits.urlScanning.toLocaleString() : tier.limits.urlScanning },
-                  { label: 'AI queries', value: typeof tier.limits.aiQueries === 'number' ? tier.limits.aiQueries.toLocaleString() : tier.limits.aiQueries },
-                  { label: 'Live chat', value: tier.limits.liveChat },
+                  {
+                    label: 'Monthly credits',
+                    value: tier.credits === null ? 'Custom' : tier.credits.toLocaleString(),
+                  },
+                  {
+                    label: 'Operator seats',
+                    value:
+                      tier.includedSeats === null
+                        ? 'Unlimited'
+                        : `${tier.includedSeats} included`,
+                  },
+                  { label: 'Live chat', value: tier.liveChat ? 'Yes' : '—' },
                 ].map((l) => (
                   <div key={l.label} className="flex items-center justify-between gap-2">
                     <span className="text-[11px] text-white/50">{l.label}</span>
