@@ -17,12 +17,30 @@ export interface PricingTier {
   badge?: string;
   accent: string;
   features: string[];
-  limits: {
-    urlScanning: number | string;
-    aiQueries: number | string;
-    liveChat: string;
-  };
+  /**
+   * Credit-based plan attributes. ``null`` for Enterprise (custom). Numeric
+   * fields use the ``Monthly credits`` and ``Operator seats included``
+   * concepts wired up across api / admin / widget.
+   */
+  credits: number | null;
+  includedSeats: number | null;
+  extraSeatPriceUsd: number; // per additional seat / month
+  liveChat: boolean;
   cta: string;
   ctaHref: string;
   featured: boolean;
+}
+
+export interface CreditCost {
+  action: string;
+  credits: number;
+}
+
+export interface TopupPack {
+  usd: number;
+  credits: number;
+  bonusPct: number;
+  badge?: string;
+  /** Effective price per 1,000 credits, computed for display. */
+  perThousandUsd: number;
 }
