@@ -9,9 +9,8 @@ import { APP_LINKS } from '@/lib/constants';
  * monthly allowance.
  *
  * Source of truth on the server is ``pricing_config`` (super-admin tunable);
- * these constants must stay in sync with the seed values in the
- * ``d2e3f4a5b6c7_inr_pricing`` Alembic migration. Prices are in INR rupees
- * (the major currency unit) since OyeChats ships India-first via Razorpay.
+ * these constants must stay in sync with the seed values in the pricing
+ * Alembic migration. Prices are in USD (the major currency unit).
  */
 export const pricingTiers: PricingTier[] = [
   {
@@ -24,15 +23,13 @@ export const pricingTiers: PricingTier[] = [
     accent: 'blue',
     credits: 500,
     includedSeats: 1,
-    extraSeatPriceUsd: 1199,
+    extraSeatPriceUsd: 15,
     liveChat: false,
     features: [
       '500 credits / month',
       '1 chatbot',
-      '1 operator seat',
       'Basic widget customization',
       'Lead capture forms',
-      'Community support',
     ],
     cta: 'Get started',
     ctaHref: APP_LINKS.register,
@@ -42,18 +39,18 @@ export const pricingTiers: PricingTier[] = [
     id: 'starter',
     name: 'Starter',
     tagline: 'For growing teams with live chat needs',
-    monthlyPrice: 1499,
-    annualPrice: 1259,
-    annualTotal: 12590,
+    monthlyPrice: 19,
+    annualPrice: 13,
+    annualTotal: 159,
     accent: 'blue',
     credits: 2000,
     includedSeats: 1,
-    extraSeatPriceUsd: 1199,
+    extraSeatPriceUsd: 15,
     liveChat: true,
     features: [
       '2,000 credits / month',
       'Up to 3 chatbots',
-      '1 operator seat (+₹1,199/mo each extra)',
+      '1 operator seat (+$15/mo each extra)',
       'Live chat enabled',
       '14-day free trial',
       'Priority email support',
@@ -66,24 +63,23 @@ export const pricingTiers: PricingTier[] = [
     id: 'standard',
     name: 'Standard',
     tagline: 'Full AI + BANT sales intelligence',
-    monthlyPrice: 4499,
-    annualPrice: 3779,
-    annualTotal: 37790,
+    monthlyPrice: 57,
+    annualPrice: 40,
+    annualTotal: 480,
     badge: 'Most Popular',
     accent: 'blue-gradient',
     credits: 10000,
     includedSeats: 2,
-    extraSeatPriceUsd: 1199,
+    extraSeatPriceUsd: 15,
     liveChat: true,
     features: [
       '10,000 credits / month',
       'Unlimited chatbots',
-      '2 operator seats included (+₹1,199/mo each extra)',
+      '2 operator seats included (+$15/mo each extra)',
       'Live chat enabled',
       'BANT lead qualification scoring',
       'Behavioral tracking & UTM capture',
       'Webhooks (5 event types)',
-      'Advanced analytics dashboard',
     ],
     cta: 'Start free trial',
     ctaHref: APP_LINKS.registerStandard,
@@ -99,7 +95,7 @@ export const pricingTiers: PricingTier[] = [
     accent: 'indigo',
     credits: null,
     includedSeats: null,
-    extraSeatPriceUsd: 1199,
+    extraSeatPriceUsd: 15,
     liveChat: true,
     features: [
       'Custom credit allocation',
@@ -107,7 +103,6 @@ export const pricingTiers: PricingTier[] = [
       'BANT lead qualification scoring',
       'Dedicated account manager',
       'Custom SLA & uptime guarantee',
-      'SSO & advanced security',
     ],
     cta: 'Contact sales',
     ctaHref: '/contact?intent=enterprise',
@@ -116,8 +111,8 @@ export const pricingTiers: PricingTier[] = [
 ];
 
 /** Currency symbol shown alongside numeric prices on the pricing page. */
-export const PRICING_CURRENCY = 'INR';
-export const PRICING_CURRENCY_SYMBOL = '₹';
+export const PRICING_CURRENCY = 'USD';
+export const PRICING_CURRENCY_SYMBOL = '$';
 
 /**
  * What every kind of work costs in credits. Mirrors the ``credit_cost.*``
@@ -132,21 +127,21 @@ export const creditCosts: CreditCost[] = [
 ];
 
 /**
- * Top-up packs in INR. Mirrors ``pricing_config.topup_packs`` server-side.
- * Bonus credits are applied on top of the base credits-per-rupee ratio so
+ * Top-up packs in USD. Mirrors ``pricing_config.topup_packs`` server-side.
+ * Bonus credits are applied on top of the base credits-per-dollar ratio so
  * larger packs are cheaper per credit.
  */
 export const topupPacks: TopupPack[] = [
-  { usd: 1599, credits: 2_000, bonusPct: 0, perThousandUsd: 800 },
-  { usd: 3999, credits: 5_500, bonusPct: 10, perThousandUsd: 727 },
+  { usd: 19, credits: 2_000, bonusPct: 0, perThousandUsd: 9.5 },
+  { usd: 49, credits: 5_500, bonusPct: 10, perThousandUsd: 8.91 },
   {
-    usd: 7999,
+    usd: 99,
     credits: 12_000,
     bonusPct: 20,
     badge: 'Best value',
-    perThousandUsd: 667,
+    perThousandUsd: 8.25,
   },
-  { usd: 19999, credits: 32_500, bonusPct: 30, perThousandUsd: 615 },
+  { usd: 239, credits: 32_500, bonusPct: 30, perThousandUsd: 7.35 },
 ];
 
 export const featureRows: PricingFeature[] = [
@@ -154,16 +149,16 @@ export const featureRows: PricingFeature[] = [
   {
     label: 'Monthly price',
     free: 'Free',
-    starter: '₹1,499 / month',
-    standard: '₹4,499 / month',
+    starter: '$19 / month',
+    standard: '$57 / month',
     enterprise: 'Custom',
     category: 'usage',
   },
   {
     label: 'Annual price (save ~30%)',
     free: '—',
-    starter: '₹1,259/mo (₹12,590/yr)',
-    standard: '₹3,779/mo (₹37,790/yr)',
+    starter: '$13/mo ($159/yr)',
+    standard: '$40/mo ($480/yr)',
     enterprise: 'Contact us',
     category: 'usage',
   },
@@ -186,8 +181,8 @@ export const featureRows: PricingFeature[] = [
   {
     label: 'Extra operator seats',
     free: '—',
-    starter: '₹1,199/mo each',
-    standard: '₹1,199/mo each',
+    starter: '$15/mo each',
+    standard: '$15/mo each',
     enterprise: 'Custom',
     category: 'usage',
   },
@@ -241,14 +236,6 @@ export const featureRows: PricingFeature[] = [
     enterprise: true,
     category: 'security',
   },
-  {
-    label: 'SSO & advanced security',
-    free: false,
-    starter: false,
-    standard: false,
-    enterprise: true,
-    category: 'security',
-  },
 ];
 
 export const pricingFAQ = [
@@ -274,7 +261,7 @@ export const pricingFAQ = [
   },
   {
     q: 'Can I add more operator seats?',
-    a: 'Yes — extra seats are ₹1,199 / month each, and you can add or remove them with one click from the Billing page in your dashboard.',
+    a: 'Yes — extra seats are $15 / month each, and you can add or remove them with one click from the Billing page in your dashboard.',
   },
   {
     q: 'Can I change plans at any time?',
