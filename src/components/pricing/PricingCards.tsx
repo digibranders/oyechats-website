@@ -77,13 +77,13 @@ export function PricingCards({ billing }: PricingCardsProps) {
                     >
                       <div className="flex items-baseline gap-1">
                         <span className="text-3xl font-display font-bold text-white">
-                          ₹{(billing === 'annual' ? tier.annualPrice : tier.monthlyPrice)?.toLocaleString('en-IN')}
+                          ${(billing === 'annual' ? tier.annualPrice : tier.monthlyPrice)?.toLocaleString('en-US')}
                         </span>
                         <span className="text-sm text-white/50">/ month</span>
                       </div>
                       {billing === 'annual' && tier.annualTotal !== null && tier.annualTotal !== undefined && tier.annualTotal > 0 && (
                         <p className="text-xs text-emerald-400 mt-1">
-                          ₹{tier.annualPrice?.toLocaleString('en-IN')}/mo · billed ₹{tier.annualTotal?.toLocaleString('en-IN')}/yr
+                          ${tier.annualPrice?.toLocaleString('en-US')}/mo · billed ${tier.annualTotal?.toLocaleString('en-US')}/yr
                         </p>
                       )}
                     </motion.div>
