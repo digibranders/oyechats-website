@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { StatusBadge } from '@/components/shared/StatusBadge';
+// import { StatusBadge } from '@/components/shared/StatusBadge';
 
 const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
   Product: [
@@ -137,7 +137,7 @@ export default function Footer() {
             <p className="text-xs text-white/40">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-4">
-            <StatusBadge status="live" />
+            {/* <StatusBadge status="live" /> */}
             <div className="flex items-center gap-2.5">
               {socials.map((social) => (
                 <span key={social.label}

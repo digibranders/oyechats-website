@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { StatusBadge } from '@/components/shared/StatusBadge';
+// import { StatusBadge } from '@/components/shared/StatusBadge';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { Brain, Target, MessageCircle, BarChart3, RefreshCw, Palette, Globe, ShoppingBag, Zap, Hash, Smartphone, Calendar } from 'lucide-react';
 
@@ -129,7 +129,7 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="hidden lg:flex items-center gap-3">
-              <StatusBadge status="live" />
+             {/* <StatusBadge status="live" /> */}
               <Link href={APP_LINKS.login}
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors">
                 Sign in
