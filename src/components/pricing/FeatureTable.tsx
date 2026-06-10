@@ -1,6 +1,6 @@
 'use client';
 import { APP_LINKS } from '@/lib/constants';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { featureRows } from '@/lib/pricing';
 import { Star } from 'lucide-react';
@@ -91,10 +91,12 @@ export function FeatureTable() {
                 const rows = featureRows.filter((r) => r.category === cat.id);
                 const isOpen = !collapsed.has(cat.id);
                 return (
-                  <>
+                  // React.Fragment (not <>) so the outer element can carry the
+                  // key React needs to track each category sibling group across
+                  // collapse/expand state changes.
+                  <Fragment key={`cat-${cat.id}`}>
                     {/* Category header row */}
                     <tr
-                      key={`cat-${cat.id}`}
                       onClick={() => toggle(cat.id)}
                       className="bg-white/[0.02] border-b border-white/6 hover:bg-white/[0.04] transition-colors cursor-pointer"
                     >
@@ -127,7 +129,7 @@ export function FeatureTable() {
                         <td className="px-5 py-3 text-center"><Cell value={row.enterprise} /></td>
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 );
               })}
 
