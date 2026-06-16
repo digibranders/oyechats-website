@@ -55,10 +55,17 @@ export function PricingHero({ billing, onToggle }: PricingHeroProps) {
               Annual
             </span>
             <span className="relative z-10 text-[11px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full px-2 py-0.5">
-              Save 30%
+              Save 20%
             </span>
           </button>
         </div>
+
+        {/* Currency disclosure — keep on a single line on desktop, wrap on mobile.
+            Razorpay charges in INR at the gateway; the USD figure here is the
+            reference price for international visitors. */}
+        <p className="mt-4 text-[12px] text-white/40 leading-relaxed">
+          Prices in USD. Indian customers are billed in <span className="font-medium text-white/60">₹ INR</span> at checkout — pay with card or UPI.
+        </p>
       </div>
     </section>
   );

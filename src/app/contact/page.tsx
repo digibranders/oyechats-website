@@ -50,7 +50,7 @@ export default function ContactPage() {
                 {[
                   { icon: Mail, label: 'Email', value: 'hello@oyechats.com' },
                   { icon: MessageCircle, label: 'Live chat', value: 'Available on this page' },
-                  { icon: MapPin, label: 'Location', value: 'Remote-first · Bengaluru, India' },
+                  { icon: MapPin, label: 'Location', value: 'Remote-first · Mumbai, India' },
                   { icon: Clock, label: 'Response time', value: '< 2 business hours' },
                 ].map((c) => (
                   <div key={c.label} className="flex items-start gap-3 glass-1 rounded-xl p-4 border border-white/8">
