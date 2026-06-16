@@ -23,7 +23,7 @@ export function PricingPreview() {
             <div
               key={tier.id}
               className={cn(
-                'relative rounded-2xl p-6 transition-all duration-500 price-card-base cursor-pointer',
+                'relative flex flex-col h-full rounded-2xl p-6 transition-all duration-500 price-card-base cursor-pointer',
                 tier.featured
                   ? 'price-card-featured featured-shimmer'
                   : 'glass-2 border border-white/8'
@@ -65,8 +65,10 @@ export function PricingPreview() {
               </div>
               <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
 
-              {/* Key features (first 5) */}
-              <ul className="space-y-2 mb-6">
+              {/* Key features (first 5) — flex-grow pins the CTA to the bottom
+                  so all four cards align their buttons on the same baseline,
+                  regardless of how many features each plan lists. */}
+              <ul className="space-y-2 mb-6 flex-grow">
                 {tier.features.slice(0, 5).map((f) => (
                   <li key={f} className="flex items-start gap-2 text-xs text-white/55">
                     <svg width="12" height="12" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">
@@ -82,7 +84,7 @@ export function PricingPreview() {
                 variant={tier.featured ? 'filled' : 'ghost'}
                 size="sm"
                 external={tier.ctaHref.startsWith('http')}
-                className="w-full justify-center"
+                className="w-full justify-center mt-auto"
               >
                 {tier.cta}
               </CTAButton>
