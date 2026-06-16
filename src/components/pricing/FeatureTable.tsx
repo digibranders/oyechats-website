@@ -19,7 +19,7 @@ const TIERS = [
 ];
 
 const CTA_LINKS = [APP_LINKS.register, APP_LINKS.registerStarter, APP_LINKS.registerStandard, '/contact?intent=enterprise'];
-const CTA_LABELS = ['Get started', 'Get started', 'Start free trial', 'Contact sales'];
+const CTA_LABELS = ['Get started', 'Start free trial', 'Get started', 'Contact sales'];
 
 function Check() {
   return (
