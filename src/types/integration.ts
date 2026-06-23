@@ -1,11 +1,15 @@
 export type IntegrationCategory =
   | 'cms'
+  | 'website'
   | 'messaging'
   | 'crm'
   | 'meetings'
   | 'analytics'
   | 'automation'
   | 'developer';
+
+/** Filter chip ids include category ids plus virtual groupings ('sites' = cms + website). */
+export type IntegrationFilterId = IntegrationCategory | 'all' | 'sites';
 
 export interface Integration {
   id: string;

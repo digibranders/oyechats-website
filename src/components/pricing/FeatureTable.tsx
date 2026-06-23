@@ -30,12 +30,12 @@ function Check() {
 }
 
 function Dash() {
-  return <span className="text-white/45">—</span>;
+  return <span className="text-white/45">-</span>;
 }
 
 function Cell({ value }: { value: string | boolean }) {
   if (value === true)  return <Check />;
-  if (value === false || value === '—') return <Dash />;
+  if (value === false || value === '-') return <Dash />;
   return <span className="text-xs text-white/70 whitespace-nowrap">{value}</span>;
 }
 
@@ -79,7 +79,7 @@ export function FeatureTable() {
                   >
                     <span className={cn('text-sm font-semibold', t.color)}>{t.label}</span>
                     {t.highlight && (
-                      <p className="text-[11px] text-blue-400/60 mt-0.5 flex items-center justify-center gap-1"><Star className="w-3 h-3 fill-current" /> Most Popular</p>
+                      <p className="text-[11px] text-blue-400/60 mt-0.5 flex items-center justify-center gap-1"><Star className="w-3 h-3 fill-amber-400 text-amber-400 drop-shadow-[0_0_4px_rgba(251,191,36,0.5)]" /> Most Popular</p>
                     )}
                   </th>
                 ))}

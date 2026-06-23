@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'OyeChats — RAG-Powered AI Chatbot',
+    name: 'OyeChats, RAG-Powered AI Chatbot',
     short_name: 'OyeChats',
     description:
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',

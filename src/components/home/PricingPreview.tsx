@@ -65,7 +65,7 @@ export function PricingPreview() {
               </div>
               <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
 
-              {/* Key features (first 5) — flex-grow pins the CTA to the bottom
+              {/* Key features (first 5) - flex-grow pins the CTA to the bottom
                   so all four cards align their buttons on the same baseline,
                   regardless of how many features each plan lists. */}
               <ul className="space-y-2 mb-6 flex-grow">

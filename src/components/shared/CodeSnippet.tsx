@@ -22,7 +22,7 @@ export function CodeSnippet({ code, language: _language = 'html', filename, clas
     timerRef.current = setTimeout(() => setCopied(false), 2000);
   };
 
-  // Basic syntax highlighting via CSS classes - keep it simple
+  // Basic syntax highlighting via CSS classes, keep it simple
   const highlighted = code
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')

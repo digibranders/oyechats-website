@@ -30,27 +30,36 @@ export function Testimonials() {
           </SectionHeading>
         </div>
 
-        {/* Testimonial cards — responsive grid on mobile, drag carousel on desktop */}
+        {/* Testimonial cards, responsive grid on mobile, drag carousel on desktop */}
         <div ref={constraintsRef} className="overflow-hidden">
           <motion.div
-            className="flex gap-5 cursor-grab active:cursor-grabbing"
+            className="inline-flex items-stretch gap-5 cursor-grab active:cursor-grabbing select-none"
             drag="x"
             dragConstraints={constraintsRef}
-            dragElastic={0.1}
+            dragElastic={0.18}
+            dragTransition={{ bounceStiffness: 320, bounceDamping: 32 }}
           >
             {testimonials.map((t) => (
               <motion.div
                 key={t.id}
-                className="glass-2 rounded-2xl p-6 min-w-[clamp(280px,80vw,360px)] max-w-[360px] border border-white/10 flex-shrink-0 group hover:border-white/15 transition-all"
+                className="glass-2 rounded-2xl p-6 min-w-[clamp(280px,80vw,360px)] max-w-[360px] border border-white/10 flex-shrink-0 group hover:border-white/15 transition-all flex flex-col self-stretch"
                 data-gsap
               >
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-4">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <svg key={j} width="14" height="14" viewBox="0 0 24 24" className="text-amber-400 fill-current">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                  ))}
+                {/* Stars + industry badge */}
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <svg key={j} width="14" height="14" viewBox="0 0 24 24" className="text-amber-400 fill-current">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className={cn(
+                    'text-[10px] font-medium rounded-full border px-2.5 py-1 uppercase tracking-wide whitespace-nowrap shrink-0',
+                    industryColors[t.industry]
+                  )}>
+                    {t.industry}
+                  </span>
                 </div>
 
                 {/* Quote */}
@@ -67,24 +76,16 @@ export function Testimonials() {
                 )}
 
                 {/* Author */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-auto pt-2">
                   <div
                     className="h-9 w-9 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0"
                     style={{ background: t.avatarColor }}
                   >
                     {t.avatar}
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">{t.name}</p>
-                    <p className="text-xs text-white/50">{t.title}, {t.company}</p>
-                  </div>
-                  <div className="ml-auto">
-                    <span className={cn(
-                      'text-[10px] font-medium rounded-full border px-2.5 py-1 uppercase tracking-wide',
-                      industryColors[t.industry]
-                    )}>
-                      {t.industry}
-                    </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-white truncate">{t.name}</p>
+                    <p className="text-xs text-white/50 truncate">{t.title}, {t.company}</p>
                   </div>
                 </div>
               </motion.div>

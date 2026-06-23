@@ -49,14 +49,14 @@ const SECURITY_SECTIONS: { icon: LucideIcon; title: string; items: string[] }[] 
     items: [
       'GDPR-compliant data processing',
       'Data residency options for Enterprise',
-      'Right to erasure — delete visitor data on request',
+      'Right to erasure, delete visitor data on request',
       'Cookie-free tracking option available',
     ],
   },
 ];
 
 const CERTIFICATIONS: { badge: LucideIcon; name: string; status: string; color: string }[] = [
-  { badge: ShieldCheck, name: 'SOC 2 Type II', status: 'In progress — Q3 2025', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
+  { badge: ShieldCheck, name: 'SOC 2 Type II', status: 'In progress, Q3 2025', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
   { badge: Globe, name: 'GDPR', status: 'Compliant', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
   { badge: Lock, name: 'HTTPS / TLS 1.3', status: 'Active', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
   { badge: Cloud, name: 'ISO 27001 Storage', status: 'Geo-redundant', color: 'text-violet-400 border-violet-400/20 bg-violet-400/5' },
@@ -141,8 +141,8 @@ export default function SecurityPage() {
               <p className="text-white/50 text-sm mb-4">
                 Found a vulnerability? We have a responsible disclosure program.
               </p>
-              <a href="mailto:security@oyechats.com" className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium cursor-pointer">
-                security@oyechats.com
+              <a href="mailto:support@oyechats.com" className="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium cursor-pointer">
+                support@oyechats.com
               </a>
             </div>
           </div>

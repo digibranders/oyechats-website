@@ -53,7 +53,7 @@ export function WebhooksSection() {
             </SectionHeading>
             <p className="text-white/50 text-sm leading-relaxed mb-7">
               Every meaningful event in OyeChats fires a signed webhook to your endpoint.
-              Connect to HubSpot, Zapier, Make, or your own backend — with exponential retries
+              Connect to HubSpot, Zapier, Make, or your own backend, with exponential retries
               and a full delivery log.
             </p>
 

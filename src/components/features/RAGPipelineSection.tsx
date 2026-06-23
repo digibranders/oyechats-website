@@ -7,10 +7,10 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 
 const PIPELINE_STEPS = [
-  { icon: FileText, label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl — any content you own', color: 'from-blue-600/20 to-blue-600/5', iconColor: 'text-blue-400' },
+  { icon: FileText, label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl, any content you own', color: 'from-blue-600/20 to-blue-600/5', iconColor: 'text-blue-400' },
   { icon: Scissors, label: 'Chunk & Clean', desc: 'Smart sentence-aware splitting, deduplication, and metadata tagging', color: 'from-indigo-600/20 to-indigo-600/5', iconColor: 'text-indigo-400' },
   { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400' },
-  { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together — always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
+  { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together, always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
   { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400' },
   { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in under 12ms median latency', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
 ];
@@ -31,9 +31,9 @@ export function RAGPipelineSection() {
               <span className="gradient-text-heading">understands context</span>
             </SectionHeading>
             <p className="text-white/50 leading-relaxed mb-6">
-              OyeChats doesn&apos;t just search your documents — it understands them. Hybrid AI search
+              OyeChats doesn&apos;t just search your documents, it understands them. Hybrid AI search
               combines semantic understanding with keyword precision so visitors always get accurate,
-              grounded answers — never hallucinated ones.
+              grounded answers, never hallucinated ones.
             </p>
             <ul className="space-y-3">
               {[

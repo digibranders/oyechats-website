@@ -60,11 +60,11 @@ export function PricingHero({ billing, onToggle }: PricingHeroProps) {
           </button>
         </div>
 
-        {/* Currency disclosure — keep on a single line on desktop, wrap on mobile.
+        {/* Currency disclosure, keep on a single line on desktop, wrap on mobile.
             Razorpay charges in INR at the gateway; the USD figure here is the
             reference price for international visitors. */}
         <p className="mt-4 text-[12px] text-white/40 leading-relaxed">
-          Prices in USD. Indian customers are billed in <span className="font-medium text-white/60">₹ INR</span> at checkout — pay with card or UPI.
+          Prices in USD. Indian customers are billed in <span className="font-medium text-white/60">₹ INR</span> at checkout, pay with card or UPI.
         </p>
       </div>
     </section>

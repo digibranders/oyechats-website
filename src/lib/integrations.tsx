@@ -1,60 +1,75 @@
 import { Integration } from '@/types/integration';
 import {
-  Globe,
-  ShoppingBag,
-  Hexagon,
-  Zap,
-  Earth,
-  SquareCode,
-  TriangleAlert,
-  MessageSquare,
-  Smartphone,
-  CircleDot,
-  Circle,
-  Cloud,
-  Mail,
-  Dog,
-  CalendarDays,
+  siWordpress,
+  siShopify,
+  siWebflow,
+  siNextdotjs,
+  siHtml5,
+  siVuedotjs,
+  siReact,
+  siFramer,
+  siBrevo,
+  siCalendly,
+  siSentry,
+  siZapier,
+  siMake,
+  type SimpleIcon,
+} from 'simple-icons';
+import {
   Microscope,
-  Bug,
-  RefreshCw,
-  Link,
+  Link as LinkIcon,
   Wrench,
 } from 'lucide-react';
 
+type BrandIconProps = {
+  icon: SimpleIcon;
+  size?: number;
+  overrideColor?: string;
+};
+
+function BrandIcon({ icon, size = 28, overrideColor }: BrandIconProps) {
+  return (
+    <svg
+      role="img"
+      aria-label={icon.title}
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill={overrideColor ?? `#${icon.hex}`}
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+}
+
 export const integrations: Integration[] = [
-  // CMS & Websites
-  { id: 'wordpress', name: 'WordPress', description: 'Plugin install — one click', category: 'cms', available: true, icon: <Globe className="w-7 h-7 text-blue-400" /> },
-  { id: 'shopify', name: 'Shopify', description: 'Theme injection for stores', category: 'cms', available: true, icon: <ShoppingBag className="w-7 h-7 text-green-400" /> },
-  { id: 'webflow', name: 'Webflow', description: 'Custom embed code', category: 'cms', available: true, icon: <Hexagon className="w-7 h-7 text-blue-500" /> },
-  { id: 'nextjs', name: 'Next.js', description: 'Script component', category: 'cms', available: true, icon: <Zap className="w-7 h-7 text-yellow-400" /> },
-  { id: 'html', name: 'HTML / Vanilla', description: 'Single script tag', category: 'cms', available: true, icon: <Earth className="w-7 h-7 text-cyan-400" /> },
-  { id: 'vue', name: 'Vue.js', description: 'Plugin or script', category: 'cms', available: true, icon: <SquareCode className="w-7 h-7 text-emerald-400" /> },
-  { id: 'angular', name: 'Angular', description: 'Script component', category: 'cms', available: false, icon: <TriangleAlert className="w-7 h-7 text-red-400" /> },
+  // CMS - true content management systems
+  { id: 'wordpress', name: 'WordPress', description: 'Plugin install, one click', category: 'cms', available: true, icon: <BrandIcon icon={siWordpress} /> },
+  { id: 'shopify',   name: 'Shopify',   description: 'Theme injection for stores', category: 'cms', available: true, icon: <BrandIcon icon={siShopify} /> },
+  { id: 'webflow',   name: 'Webflow',   description: 'Custom embed code', category: 'cms', available: true, icon: <BrandIcon icon={siWebflow} /> },
 
-  // Messaging
-  { id: 'slack', name: 'Slack', description: 'Bot notifications', category: 'messaging', available: true, icon: <MessageSquare className="w-7 h-7 text-cyan-400" /> },
-  { id: 'whatsapp', name: 'WhatsApp', description: 'Business API', category: 'messaging', available: true, icon: <Smartphone className="w-7 h-7 text-green-400" /> },
-  { id: 'teams', name: 'MS Teams', description: 'Bot channel', category: 'messaging', available: true, icon: <CircleDot className="w-7 h-7 text-blue-500" /> },
+  // Website - frontend frameworks and custom sites
+  { id: 'nextjs',  name: 'Next.js',        description: 'Script component', category: 'website', available: true, icon: <BrandIcon icon={siNextdotjs} overrideColor="#FFFFFF" /> },
+  { id: 'html',    name: 'HTML / Vanilla', description: 'Single script tag', category: 'website', available: true, icon: <BrandIcon icon={siHtml5} /> },
+  { id: 'vue',     name: 'Vue.js',         description: 'Plugin or script', category: 'website', available: true, icon: <BrandIcon icon={siVuedotjs} /> },
+  { id: 'react',   name: 'React',          description: 'Drop-in component', category: 'website', available: true, icon: <BrandIcon icon={siReact} /> },
+  { id: 'framer',  name: 'Framer',         description: 'Code component embed', category: 'website', available: true, icon: <BrandIcon icon={siFramer} overrideColor="#FFFFFF" /> },
 
-  // CRM & Email
-  { id: 'hubspot', name: 'HubSpot', description: 'CRM sync + lead creation', category: 'crm', available: true, icon: <Circle className="w-7 h-7 text-orange-400" /> },
-  { id: 'salesforce', name: 'Salesforce', description: 'Lead push via API', category: 'crm', available: false, icon: <Cloud className="w-7 h-7 text-blue-400" /> },
-  { id: 'brevo', name: 'Brevo', description: 'Email delivery', category: 'crm', available: true, icon: <Mail className="w-7 h-7 text-blue-300" /> },
-  { id: 'mailchimp', name: 'Mailchimp', description: 'List sync', category: 'crm', available: false, icon: <Dog className="w-7 h-7 text-yellow-400" /> },
+  // Email - real (transactional)
+  { id: 'brevo', name: 'Brevo', description: 'Transactional email', category: 'crm', available: true, icon: <BrandIcon icon={siBrevo} /> },
 
-  // Meetings
-  { id: 'calendly', name: 'Calendly', description: 'In-chat booking', category: 'meetings', available: true, icon: <CalendarDays className="w-7 h-7 text-blue-400" /> },
+  // Meetings - real (calendly_url field on bots)
+  { id: 'calendly', name: 'Calendly', description: 'In-chat booking', category: 'meetings', available: true, icon: <BrandIcon icon={siCalendly} /> },
 
-  // Analytics
+  // Analytics & Observability - real (infra-level)
   { id: 'langfuse', name: 'AI Observability', description: 'Response quality tracing', category: 'analytics', available: true, icon: <Microscope className="w-7 h-7 text-violet-400" /> },
-  { id: 'sentry', name: 'Error Monitoring', description: 'Incident alerting', category: 'analytics', available: true, icon: <Bug className="w-7 h-7 text-red-400" /> },
+  { id: 'sentry',   name: 'Error Monitoring', description: 'Incident alerting',        category: 'analytics', available: true, icon: <BrandIcon icon={siSentry} overrideColor="#A99CFF" /> },
 
-  // Automation
-  { id: 'zapier', name: 'Zapier', description: '6000+ apps', category: 'automation', available: true, icon: <Zap className="w-7 h-7 text-amber-400" /> },
-  { id: 'make', name: 'Make', description: 'Visual automation', category: 'automation', available: true, icon: <RefreshCw className="w-7 h-7 text-violet-400" /> },
+  // Automation - reachable via webhooks
+  { id: 'zapier', name: 'Zapier', description: 'Via webhooks', category: 'automation', available: true, icon: <BrandIcon icon={siZapier} /> },
+  { id: 'make',   name: 'Make',   description: 'Via webhooks', category: 'automation', available: true, icon: <BrandIcon icon={siMake} /> },
 
-  // Developer
-  { id: 'webhooks', name: 'Webhooks', description: '5 event types', category: 'developer', available: true, icon: <Link className="w-7 h-7 text-indigo-400" /> },
-  { id: 'rest-api', name: 'REST API', description: 'Full OpenAPI spec', category: 'developer', available: true, icon: <Wrench className="w-7 h-7 text-indigo-300" /> },
+  // Developer - real first-class building blocks
+  { id: 'webhooks', name: 'Webhooks', description: '5 event types',    category: 'developer', available: true, icon: <LinkIcon className="w-7 h-7 text-indigo-400" /> },
+  { id: 'rest-api', name: 'REST API', description: 'Full OpenAPI spec', category: 'developer', available: true, icon: <Wrench  className="w-7 h-7 text-indigo-300" /> },
 ];

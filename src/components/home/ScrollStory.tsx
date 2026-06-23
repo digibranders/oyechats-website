@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { CodeSnippet } from '@/components/shared/CodeSnippet';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
@@ -29,7 +29,7 @@ const steps = [
     label: 'Customize',
     heading: 'Brand it as your own',
     description:
-      'Set your bot name, logo, colors, and system prompt. Every user-facing string is customizable — or remove OyeChats branding entirely on Pro.',
+      'Set your bot name, logo, colors, and system prompt. Every user-facing string is customizable, or remove OyeChats branding entirely on Pro.',
     color: 'indigo',
   },
   {
@@ -37,7 +37,7 @@ const steps = [
     label: 'Deploy',
     heading: 'One script tag, any platform',
     description:
-      'Copy the embed snippet and drop it into WordPress, Shopify, Webflow, or any HTML page. Zero setup, zero style conflicts — live in under 10 minutes.',
+      'Copy the embed snippet and drop it into WordPress, Shopify, Webflow, or any HTML page. Zero setup, zero style conflicts, live in under 10 minutes.',
     color: 'cyan',
   },
   {
@@ -212,20 +212,6 @@ export function ScrollStory() {
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Simple scroll-based step switching using IntersectionObserver on scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (-rect.top) / (rect.height - window.innerHeight)));
-      const stepIndex = Math.min(steps.length - 1, Math.floor(progress * steps.length));
-      setActiveStep(stepIndex);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section
       ref={sectionRef}
@@ -259,6 +245,8 @@ export function ScrollStory() {
                 <button
                   key={step.id}
                   onClick={() => setActiveStep(i)}
+                  onMouseEnter={() => setActiveStep(i)}
+                  onFocus={() => setActiveStep(i)}
                   className={cn(
                     'w-full text-left rounded-2xl border p-5 transition-all duration-400 cursor-pointer',
                     isActive

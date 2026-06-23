@@ -7,7 +7,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 // import { StatusBadge } from '@/components/shared/StatusBadge';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Brain, Target, MessageCircle, BarChart3, RefreshCw, Palette, Globe, ShoppingBag, Zap, Hash, Smartphone, Calendar } from 'lucide-react';
+import { Brain, Target, MessageCircle, BarChart3, RefreshCw, Palette } from 'lucide-react';
+import { siWordpress, siShopify, siWebflow, siNextdotjs, siCalendly, siZapier, type SimpleIcon } from 'simple-icons';
+
+function MegaBrandSvg({ icon, overrideColor }: { icon: SimpleIcon; overrideColor?: string }) {
+  return (
+    <svg
+      role="img"
+      aria-label={icon.title}
+      viewBox="0 0 24 24"
+      width={16}
+      height={16}
+      fill={overrideColor ?? `#${icon.hex}`}
+      className="shrink-0"
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+}
 
 const navLinks = [
   { label: 'Product', hasMega: true },
@@ -15,6 +32,7 @@ const navLinks = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'Integrations', href: '/integrations' },
   { label: 'Customers', href: '/customers' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const megaMenuItems = {
@@ -27,12 +45,12 @@ const megaMenuItems = {
     { icon: Palette, label: 'Customization', desc: 'Full widget branding control', href: '/features#customization' },
   ],
   integrations: [
-    { icon: Globe, label: 'WordPress', href: '/integrations' },
-    { icon: ShoppingBag, label: 'Shopify', href: '/integrations' },
-    { icon: Zap, label: 'Next.js', href: '/integrations' },
-    { icon: Hash, label: 'Slack', href: '/integrations' },
-    { icon: Smartphone, label: 'WhatsApp', href: '/integrations' },
-    { icon: Calendar, label: 'Calendly', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siWordpress} />, label: 'WordPress', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siShopify} />, label: 'Shopify', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siWebflow} />, label: 'Webflow', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siNextdotjs} overrideColor="#FFFFFF" />, label: 'Next.js', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siCalendly} />, label: 'Calendly', href: '/integrations' },
+    { node: <MegaBrandSvg icon={siZapier} />, label: 'Zapier', href: '/integrations' },
   ],
   changelog: [
     { version: 'v2.4', date: 'Apr 2025', note: 'BANT behavioral scoring' },
@@ -74,7 +92,16 @@ export default function Navbar() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="flex items-center gap-2 group"
+            >
               <div className="relative h-8 w-8 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-[0_0_16px_rgba(37,99,235,.4)]">
                 <svg viewBox="0 0 24 24" fill="none" className="w-4">
                   <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" />
@@ -86,7 +113,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => {
                 if (link.hasMega) {
                   return (
@@ -100,7 +127,7 @@ export default function Navbar() {
                         aria-expanded={megaOpen}
                         aria-haspopup="true"
                         className={cn(
-                          'flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
+                          'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
                           megaOpen ? 'text-white bg-white/8' : 'text-white/70 hover:text-white hover:bg-white/6'
                         )}
                       >
@@ -113,12 +140,18 @@ export default function Navbar() {
                     </div>
                   );
                 }
-                const isActive = link.href && pathname.startsWith(link.href);
+                const isActive = link.href && pathname === link.href;
                 return (
                   <Link key={link.label} href={link.href!}
                     aria-current={isActive ? 'page' : undefined}
+                    onClick={(e) => {
+                      if (isActive) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className={cn(
-                      'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
+                      'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
                       isActive ? 'text-white bg-white/8' : 'text-white/70 hover:text-white hover:bg-white/6'
                     )}>
                     {link.label}
@@ -128,7 +161,7 @@ export default function Navbar() {
             </nav>
 
             {/* Right side */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-5">
              {/* <StatusBadge status="live" /> */}
               <Link href={APP_LINKS.login}
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors">
@@ -139,7 +172,7 @@ export default function Navbar() {
               </CTAButton>
             </div>
 
-            {/* Mobile hamburger — p-3 ensures 44px+ touch target */}
+            {/* Mobile hamburger, p-3 ensures 44px+ touch target */}
             <button className="lg:hidden p-3 rounded-lg hover:bg-white/8 transition-colors text-white/70"
               onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -193,14 +226,14 @@ export default function Navbar() {
                       <Link key={item.label} href={item.href}
                         className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-white/6 transition-colors group cursor-pointer"
                         onClick={() => setMegaOpen(false)}>
-                        <item.icon className="w-4 h-4 text-white/50 group-hover:text-white/80 transition-colors shrink-0" aria-hidden="true" />
+                        {item.node}
                         <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">{item.label}</span>
                       </Link>
                     ))}
                   </div>
                   <Link href="/integrations" className="inline-flex items-center gap-1 mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors"
                     onClick={() => setMegaOpen(false)}>
-                    View all 20+ integrations
+                    View all integrations
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6" /></svg>
                   </Link>
                 </div>
@@ -272,7 +305,13 @@ export default function Navbar() {
                 ].map((link) => (
                   <Link key={link.label} href={link.href}
                     className="px-4 py-3 rounded-xl text-sm font-medium text-white/75 hover:text-white hover:bg-white/6 transition-all"
-                    onClick={() => setMobileOpen(false)}>
+                    onClick={(e) => {
+                      if (pathname === link.href) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                      setMobileOpen(false);
+                    }}>
                     {link.label}
                   </Link>
                 ))}

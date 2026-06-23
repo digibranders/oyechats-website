@@ -764,7 +764,7 @@ body {
 }
 
 .feature-row-check-no::before {
-  content: '—';
+  content: '-';
   color: rgba(255,255,255,.2);
   margin-right: 6px;
 }

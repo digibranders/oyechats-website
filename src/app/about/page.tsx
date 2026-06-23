@@ -10,7 +10,7 @@ import { Crosshair, Search, Zap, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Meet the team behind OyeChats — the RAG-powered AI chatbot and sales intelligence platform built to convert visitors into qualified pipeline.',
+  description: 'Meet the team behind OyeChats, the RAG-powered AI chatbot and sales intelligence platform built to convert visitors into qualified pipeline.',
   alternates: { canonical: 'https://oyechats.com/about' },
   openGraph: { url: 'https://oyechats.com/about' },
 };
@@ -45,7 +45,7 @@ export default function AboutPage() {
             </SectionHeading>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl mx-auto">
               OyeChats was born from frustration. After watching millions of website visitors bounce
-              without converting, we built the AI chat platform we always wanted — one that qualifies
+              without converting, we built the AI chat platform we always wanted, one that qualifies
               leads, hands off to humans at the right moment, and integrates with the tools you already use.
             </p>
           </div>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.06), transparent 70%)' }} />
               <p className="text-xs font-semibold text-blue-400 uppercase tracking-widest mb-4">Our Mission</p>
               <p className="font-display text-2xl lg:text-3xl font-semibold text-white leading-snug max-w-2xl mx-auto relative">
-                &quot;Make every website visitor a potential customer — through AI that understands,
+                &quot;Make every website visitor a potential customer, through AI that understands,
                 qualifies, and connects in real time.&quot;
               </p>
             </div>

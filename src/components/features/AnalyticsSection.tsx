@@ -63,9 +63,9 @@ export function AnalyticsSection() {
                 </svg>
                 <div className="space-y-2">
                   {[
-                    { label: 'Hot (70–100)', color: 'bg-emerald-400', pct: '30%' },
-                    { label: 'Warm (40–69)', color: 'bg-amber-400', pct: '22%' },
-                    { label: 'Cold (0–39)', color: 'bg-red-400', pct: '48%' },
+                    { label: 'Hot (70-100)', color: 'bg-emerald-400', pct: '30%' },
+                    { label: 'Warm (40-69)', color: 'bg-amber-400', pct: '22%' },
+                    { label: 'Cold (0-39)', color: 'bg-red-400', pct: '48%' },
                   ].map((t) => (
                     <div key={t.label} className="flex items-center gap-2 text-xs text-white/55">
                       <span className={`h-2 w-2 rounded-full ${t.color}`} />
@@ -87,14 +87,14 @@ export function AnalyticsSection() {
             </SectionHeading>
             <p className="text-white/50 leading-relaxed mb-8">
               Every conversation generates signal. OyeChats turns that signal into
-              actionable analytics — from visitor geo and device breakdowns to
+              actionable analytics, from visitor geo and device breakdowns to
               top-asked questions, BANT tier distributions, and UTM attribution reports.
             </p>
             <ul className="space-y-3">
               {[
                 'Real-time conversation and lead metrics dashboard',
                 'BANT tier distribution (Hot / Warm / Cold)',
-                'Top questions report — know what your visitors ask most',
+                'Top questions report, know what your visitors ask most',
                 'Visitor geo, device, and referral source breakdown',
                 'UTM parameter capture for campaign attribution',
                 'AI response observability dashboard (Enterprise)',

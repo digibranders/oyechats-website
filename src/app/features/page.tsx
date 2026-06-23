@@ -5,7 +5,7 @@ import { FeaturesHero } from '@/components/features/FeaturesHero';
 
 export const metadata: Metadata = {
   title: 'Features',
-  description: 'Explore OyeChats features: RAG pipeline, BANT sales qualification, live chat handoff, behavioral tracking, webhooks, and deep analytics — all in one platform.',
+  description: 'Explore OyeChats features: RAG pipeline, BANT sales qualification, live chat handoff, behavioral tracking, webhooks, and deep analytics, all in one platform.',
   alternates: { canonical: 'https://oyechats.com/features' },
   openGraph: { url: 'https://oyechats.com/features' },
 };
@@ -14,7 +14,7 @@ import { RAGPipelineSection } from '@/components/features/RAGPipelineSection';
 import { BANTSection } from '@/components/features/BANTSection';
 import { LiveChatSection } from '@/components/features/LiveChatSection';
 import { AnalyticsSection } from '@/components/features/AnalyticsSection';
-import { BehavioralSection } from '@/components/features/BehavioralSection';
+// import { BehavioralSection } from '@/components/features/BehavioralSection';
 import { WebhooksSection } from '@/components/features/WebhooksSection';
 import { IntegrationsFeaturesSection } from '@/components/features/IntegrationsFeaturesSection';
 import { HomeCTA } from '@/components/home/HomeCTA';
@@ -35,7 +35,7 @@ export default function FeaturesPage() {
         <AnimatedSeparator />
         <AnalyticsSection />
         <AnimatedSeparator />
-        <BehavioralSection />
+        {/* <BehavioralSection /> */}
         <AnimatedSeparator />
         <WebhooksSection />
         <AnimatedSeparator />

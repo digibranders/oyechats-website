@@ -1,8 +1,29 @@
-import { Globe, ShoppingBag, Layout, Zap, Component, Circle, MessageCircle, Smartphone, Users, Target, Calendar } from 'lucide-react';
+import {
+  siWordpress, siShopify, siWebflow, siNextdotjs, siHtml5, siVuedotjs, siReact, siFramer,
+  siCalendly,
+  type SimpleIcon,
+} from 'simple-icons';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CodeSnippet } from '@/components/shared/CodeSnippet';
+
+type BrandSvgProps = { icon: SimpleIcon; overrideColor?: string };
+
+function BrandSvg({ icon, overrideColor }: BrandSvgProps) {
+  return (
+    <svg
+      role="img"
+      aria-label={icon.title}
+      viewBox="0 0 24 24"
+      width={20}
+      height={20}
+      fill={overrideColor ?? `#${icon.hex}`}
+    >
+      <path d={icon.path} />
+    </svg>
+  );
+}
 
 const EMBED_SAMPLES: Record<string, { lang: string; code: string }> = {
   'Next.js': {
@@ -60,7 +81,7 @@ export function IntegrationsFeaturesSection() {
           </SectionHeading>
           <p className="text-white/50 max-w-xl mx-auto">
             Add OyeChats to your site with a single script tag.
-            Supports Next.js, WordPress, Shopify, Webflow, HTML, React, Vue, and more.
+            Works on Next.js, WordPress, Shopify, Webflow, plain HTML, Vue, and more.
           </p>
         </div>
 
@@ -79,32 +100,33 @@ export function IntegrationsFeaturesSection() {
           <div>
             <div className="grid grid-cols-3 gap-3 mb-8">
               {[
-                { icon: Globe, name: 'WordPress', color: 'text-blue-400' },
-                { icon: ShoppingBag, name: 'Shopify', color: 'text-emerald-400' },
-                { icon: Layout, name: 'Webflow', color: 'text-indigo-400' },
-                { icon: Zap, name: 'Next.js', color: 'text-amber-400' },
-                { icon: Component, name: 'Vue', color: 'text-green-400' },
-                { icon: Circle, name: 'Angular', color: 'text-red-400' },
-                { icon: MessageCircle, name: 'Slack', color: 'text-violet-400' },
-                { icon: Smartphone, name: 'WhatsApp', color: 'text-emerald-400' },
-                { icon: Users, name: 'Teams', color: 'text-blue-400' },
-                { icon: Target, name: 'HubSpot', color: 'text-orange-400' },
-                { icon: Zap, name: 'Zapier', color: 'text-amber-400' },
-                { icon: Calendar, name: 'Calendly', color: 'text-cyan-400' },
+                { name: 'WordPress', node: <BrandSvg icon={siWordpress} /> },
+                { name: 'Shopify',   node: <BrandSvg icon={siShopify} /> },
+                { name: 'Webflow',   node: <BrandSvg icon={siWebflow} /> },
+                { name: 'Next.js',   node: <BrandSvg icon={siNextdotjs} overrideColor="#FFFFFF" /> },
+                { name: 'HTML',      node: <BrandSvg icon={siHtml5} /> },
+                { name: 'Vue.js',    node: <BrandSvg icon={siVuedotjs} /> },
+                { name: 'React',     node: <BrandSvg icon={siReact} /> },
+                { name: 'Framer',    node: <BrandSvg icon={siFramer} overrideColor="#FFFFFF" /> },
+                { name: 'Calendly',  node: <BrandSvg icon={siCalendly} /> },
               ].map((p) => (
                 <div key={p.name} className="glass-1 rounded-xl p-3 border border-white/6 flex flex-col items-center gap-1.5 text-center cursor-pointer hover:border-white/15 transition-colors">
-                  <p.icon className={`h-5 w-5 ${p.color}`} />
+                  {p.node}
                   <span className="text-[11px] text-white/55">{p.name}</span>
                 </div>
               ))}
             </div>
 
-            <CTAButton href="/integrations" variant="ghost" size="md" className="w-full justify-center">
-              View all 20+ integrations
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </CTAButton>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="col-start-2">
+                <CTAButton href="/integrations" variant="ghost" size="md" className="w-full justify-center">
+                  View all integrations
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </CTAButton>
+              </div>
+            </div>
           </div>
         </div>
       </div>

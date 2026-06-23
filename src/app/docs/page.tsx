@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Package, KeyRound, Brain, Zap, Lightbulb } from 'lucide-react';
 
 export const metadata = {
-  title: 'Documentation — OyeChats',
+  title: 'Documentation, OyeChats',
   description: 'Everything you need to integrate and configure OyeChats on your website.',
 };
 
@@ -29,7 +29,7 @@ const QUICK_START = [
     icon: Brain,
     step: '3',
     title: 'Upload your docs',
-    desc: 'Upload PDFs, paste URLs, or connect a sitemap — the RAG pipeline handles the rest.',
+    desc: 'Upload PDFs, paste URLs, or connect a sitemap, the RAG pipeline handles the rest.',
     anchor: '#api',
   },
   {
@@ -86,7 +86,7 @@ export default function DocsPage() {
               Everything you need to ship
             </SectionHeading>
             <p className="text-white/50 text-lg leading-relaxed">
-              From a one-line embed to full webhook pipelines — integrate OyeChats in minutes, not days.
+              From a one-line embed to full webhook pipelines, integrate OyeChats in minutes, not days.
             </p>
           </div>
         </section>
@@ -192,7 +192,7 @@ export default function DocsPage() {
               </div>
 
               {/* Payload example */}
-              <h3 className="text-sm font-semibold text-white mb-4">Example payload — <span className="text-violet-300 font-mono">bant.scored</span></h3>
+              <h3 className="text-sm font-semibold text-white mb-4">Example payload for <span className="text-violet-300 font-mono">bant.scored</span></h3>
               <div className="rounded-2xl border border-white/8 overflow-hidden">
                 <div className="bg-white/[0.03] border-b border-white/8 px-5 py-3">
                   <span className="text-xs font-mono text-white/50">JSON</span>
@@ -268,7 +268,7 @@ export default function DocsPage() {
                   <Link href="/contact" className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors">
                     Contact us
                   </Link>{' '}
-                  — we&apos;ll send the YAML directly to your inbox.
+                  and we&apos;ll send the YAML directly to your inbox.
                 </p>
               </div>
             </div>

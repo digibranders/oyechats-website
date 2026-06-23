@@ -35,7 +35,7 @@ const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
   Legal: [
     { label: 'Privacy Policy', href: '/legal/privacy' },
     { label: 'Terms of Service', href: '/legal/terms' },
-    { label: 'Cookie Policy', href: '/legal/privacy#cookies' },
+    { label: 'Cookie Policy', href: '/legal/cookies' },
     { label: 'GDPR', href: '/security#gdpr' },
   ],
 };

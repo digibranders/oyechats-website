@@ -9,7 +9,7 @@ import { ChatBubble } from '@/components/shared/ChatBubble';
 import { MessageSquare } from 'lucide-react';
 import dynamic from 'next/dynamic';
 // Particle background is intentionally disabled on the homepage but kept for
-// future reuse. DO NOT DELETE — this import and the render block below are
+// future reuse. DO NOT DELETE, this import and the render block below are
 // preserved on purpose. Toggle `SHOW_HERO_PARTICLES` to re-enable.
 const AntigravityParticles = dynamic(
   () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
@@ -77,7 +77,7 @@ export function Hero() {
       <div className="hero-glow absolute inset-0 pointer-events-none" />
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Particle canvas — Three.js antigravity effect.
+      {/* Particle canvas, Three.js antigravity effect.
           Currently hidden from the homepage but kept for future reuse.
           DO NOT DELETE as dead code: the AntigravityParticles component and
           this render block are intentionally preserved. Flip
@@ -89,7 +89,7 @@ export function Hero() {
       )}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
-        {/* H1 — initial=false on SSR so the heading is visible immediately (LCP fix) */}
+        {/* H1, initial=false on SSR so the heading is visible immediately (LCP fix) */}
         <motion.h1
           initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export function Hero() {
           style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
         >
           RAG-powered chatbot with BANT sales intelligence. Hybrid vector + keyword search,
-          live chat handoff, behavioral tracking, and webhooks — all in one platform.
+          live chat handoff, behavioral tracking, and webhooks. All in one platform.
         </motion.p>
 
         <motion.div
@@ -165,7 +165,7 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Hero product mockup — opacity-only fade prevents CLS from layout shift */}
+      {/* Hero product mockup, opacity-only fade prevents CLS from layout shift */}
       <motion.div
         initial={mounted ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
@@ -220,7 +220,7 @@ export function Hero() {
               />
               <ChatBubble
                 sender="bot"
-                message="Perfect — with 50 agents and that volume, OyeChats Enterprise would save you roughly $24k/year vs your current stack. Want to schedule a demo this week?"
+                message="Perfect. With 50 agents and that volume, OyeChats Enterprise would save you roughly $24k/year vs your current stack. Want to schedule a demo this week?"
                 timestamp="2:32 PM"
               />
               <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/6">

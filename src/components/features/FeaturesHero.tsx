@@ -22,7 +22,7 @@ export function FeaturesHero() {
         </SectionHeading>
         <p className="text-white/50 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
           From RAG-powered AI knowledge bases to BANT sales qualification, live chat handoff,
-          behavioral tracking, and enterprise-grade webhooks — OyeChats is built for conversion.
+          behavioral tracking, and enterprise-grade webhooks, OyeChats is built for conversion.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <CTAButton
