@@ -11,7 +11,7 @@ const TIMELINE_EVENTS: { icon: LucideIcon; label: string; desc: string; time: st
   { icon: MousePointerClick, label: 'Rage click detected', desc: 'User clicked pricing button 4x in 2 seconds', time: '0:12', type: 'signal' },
   { icon: Clock, label: 'Long dwell on pricing', desc: 'Visitor spent 45s on the Pro plan card', time: '0:45', type: 'signal' },
   { icon: Brain, label: 'Frustration pattern recognized', desc: 'Behavioral model confidence: 87%', time: '1:02', type: 'ai' },
-  { icon: MessageCircle, label: 'Proactive message triggered', desc: '"Looks like you\'re comparing plans — can I help?"', time: '1:03', type: 'bot' },
+  { icon: MessageCircle, label: 'Proactive message triggered', desc: '"Looks like you\'re comparing plans, can I help?"', time: '1:03', type: 'bot' },
   { icon: Check, label: 'Lead captured', desc: 'Email collected, BANT score +12 pts', time: '1:18', type: 'success' },
 ];
 
@@ -50,7 +50,7 @@ export function BehavioralSection() {
             <p className="text-white/50 leading-relaxed mb-8">
               OyeChats monitors mouse behavior, scroll depth, dwell time, and interaction
               patterns in real-time. When the AI detects frustration, hesitation, or high
-              intent — it proactively triggers the chat to convert at exactly the right moment.
+              intent, it proactively triggers the chat to convert at exactly the right moment.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {[

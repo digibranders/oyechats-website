@@ -30,11 +30,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://oyechats.com'),
   title: {
-    default: 'OyeChats — RAG-Powered AI Chatbot & Sales Intelligence Platform',
+    default: 'OyeChats, RAG-Powered AI Chatbot & Sales Intelligence Platform',
     template: '%s | OyeChats',
   },
   description:
-    'OyeChats combines RAG-powered AI chat with BANT sales qualification to convert visitors into pipeline. Hybrid search, live chat handoff, behavioral tracking, webhooks, and analytics — all in one platform.',
+    'OyeChats combines RAG-powered AI chat with BANT sales qualification to convert visitors into pipeline. Hybrid search, live chat handoff, behavioral tracking, webhooks, and analytics, all in one platform.',
   keywords: [
     'AI chatbot',
     'RAG chatbot',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://oyechats.com',
     siteName: 'OyeChats',
-    title: 'OyeChats — RAG-Powered AI Chatbot & Sales Intelligence Platform',
+    title: 'OyeChats, RAG-Powered AI Chatbot & Sales Intelligence Platform',
     description:
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: [
@@ -76,13 +76,13 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'OyeChats - RAG-Powered AI Chatbot Platform',
+        alt: 'OyeChats, RAG-Powered AI Chatbot Platform',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OyeChats — RAG-Powered AI Chatbot',
+    title: 'OyeChats, RAG-Powered AI Chatbot',
     description:
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: ['/og-image.png'],
@@ -140,7 +140,7 @@ export default function RootLayout({
         {/* Preconnect to third-party origins used on every page */}
         <link rel="preconnect" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://cdn.oyechats.com" />
-        {/* Preload display font — WOFF2 is ~40KB vs the old broken 295KB TTF */}
+        {/* Preload display font, WOFF2 is ~40KB vs the old broken 295KB TTF */}
         <link rel="preload" href="/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
@@ -154,7 +154,7 @@ export default function RootLayout({
         </SmoothScrollProvider>
         <NoiseOverlay />
         <Analytics />
-        {/* Widget — only load if a bot key is configured, never auto-open */}
+        {/* Widget, only load if a bot key is configured, never auto-open */}
         {process.env.NEXT_PUBLIC_BOT_KEY && (
           <Script
             src="https://cdn.oyechats.com/oyechats-widget.js"

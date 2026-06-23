@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Mail, MessageCircle, MapPin, Clock, CheckCircle } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Clock, CheckCircle, Phone , FileText } from 'lucide-react';
 
 const INTENT_OPTIONS = [
   { value: 'demo', label: 'Book a product demo' },
@@ -39,7 +39,7 @@ export default function ContactPage() {
                 <span className="gradient-text-heading">pipeline</span>
               </SectionHeading>
               <p className="text-white/50 max-w-xl mx-auto">
-                Whether you want a demo, have an enterprise question, or just want to say hi —
+                Whether you want a demo, have an enterprise question, or just want to say hi -
                 we respond within 2 business hours.
               </p>
             </div>
@@ -48,9 +48,23 @@ export default function ContactPage() {
               {/* Contact info */}
               <div className="space-y-5">
                 {[
-                  { icon: Mail, label: 'Email', value: 'hello@oyechats.com' },
+                  { icon: Mail, label: 'Email', value: 'support@oyechats.com' },
+                  { icon: Phone, label: 'Phone', value: '+91 789 789 6607' },
+                  {
+                    icon: MapPin,
+                    label: 'Office',
+                    value: (
+                      <>
+                        Office No. 2617, 26th Floor, Solus Building,
+                        <br />
+                        Hiranandani Estate, Ghodbunder Road,
+                        <br />
+                        Thane West, Maharashtra 400607
+                      </>
+                    ),
+                  },
+                  { icon: FileText, label: 'GST No.', value: '27AAICD9268J1Z0' },
                   { icon: MessageCircle, label: 'Live chat', value: 'Available on this page' },
-                  { icon: MapPin, label: 'Location', value: 'Remote-first · Mumbai, India' },
                   { icon: Clock, label: 'Response time', value: '< 2 business hours' },
                 ].map((c) => (
                   <div key={c.label} className="flex items-start gap-3 glass-1 rounded-xl p-4 border border-white/8">

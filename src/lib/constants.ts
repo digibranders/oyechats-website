@@ -13,7 +13,7 @@ export const FEATURE_CARDS = [
   {
     icon: 'clock',
     title: 'Real-Time Responses',
-    description: 'Sub-second AI replies keep every conversation flowing naturally — 24/7, without any wait time.',
+    description: 'Sub-second AI replies keep every conversation flowing naturally, 24/7, without any wait time.',
   },
   {
     icon: 'globe',

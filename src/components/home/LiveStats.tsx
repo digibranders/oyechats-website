@@ -6,12 +6,12 @@ import { cn } from '@/lib/utils';
 import { Lock, HardDrive, Bug, Microscope, Cloud, Mail } from 'lucide-react';
 
 const stats = [
-  { value: 12, suffix: 'ms', label: 'Median latency', color: 'text-blue-400', description: 'P99 response time' },
-  { value: 500, suffix: '+', label: 'Active businesses', color: 'text-indigo-400', description: 'Using OyeChats today' },
-  { value: 5, suffix: 'M+', label: 'Monthly conversations', color: 'text-cyan-400', description: 'Handled by AI' },
-  { value: 42, suffix: '%', label: 'Avg conversion lift', color: 'text-emerald-400', description: 'vs. old chat tools' },
-  { value: 50, suffix: '+', label: 'Languages supported', color: 'text-violet-400', description: 'Global-ready out of the box' },
-  { value: 10, suffix: 'min', label: 'Average setup time', color: 'text-amber-400', description: 'From signup to live' },
+  { value: 12, suffix: 'ms', label: 'Median latency', color: 'text-blue-400', glow: 'rgba(96,165,250,0.22)', description: 'P99 API response time' },
+  { value: 24, suffix: '/7', label: 'AI coverage', color: 'text-indigo-400', glow: 'rgba(129,140,248,0.22)', description: 'Visitors helped around the clock' },
+  { value: 100, suffix: '%', label: 'Your data stays yours', color: 'text-cyan-400', glow: 'rgba(34,211,238,0.22)', description: 'Never used to train any AI model' },
+  { value: 42, suffix: '%', label: 'Avg conversion lift', color: 'text-emerald-400', glow: 'rgba(52,211,153,0.22)', description: 'vs. old chat tools' },
+  { value: 5, suffix: '+', label: 'Source formats', color: 'text-violet-400', glow: 'rgba(167,139,250,0.22)', description: 'PDFs, docs, and URLs all supported' },
+  { value: 10, suffix: 'min', label: 'Average setup time', color: 'text-amber-400', glow: 'rgba(251,191,36,0.22)', description: 'From signup to live' },
 ];
 
 export function LiveStats() {
@@ -29,7 +29,7 @@ export function LiveStats() {
       />
 
       <div className="mx-auto max-w-7xl relative">
-        {/* Top stat — large */}
+        {/* Top stat, large */}
         <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 mb-16 pb-16 border-b border-white/8">
           <div className="lg:w-1/2">
             <SectionEyebrow className="mb-4">Enterprise-Grade Infrastructure</SectionEyebrow>
@@ -42,7 +42,7 @@ export function LiveStats() {
             <p className="text-xl font-semibold text-white/70 mb-2">Uptime SLA</p>
             <p className="text-sm text-white/50 max-w-md">
               Enterprise-grade infrastructure with redundancy, automatic backups, and
-              real-time monitoring — so your chat widget is always online.
+              real-time monitoring, so your chat widget is always online.
             </p>
           </div>
 
@@ -68,7 +68,10 @@ export function LiveStats() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {stats.map((stat) => (
             <div key={stat.label} className="group" data-gsap>
-              <div className="glass-1 rounded-2xl p-6 border border-white/6 hover:border-white/12 transition-colors">
+              <div
+                className="glass-1 rounded-2xl p-6 border border-white/6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_0_36px_var(--stat-glow)]"
+                style={{ ['--stat-glow' as string]: stat.glow }}
+              >
                 <div className={cn('font-display font-semibold mb-1', stat.color)}
                   style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', letterSpacing: '-0.02em', lineHeight: 1.05 }}>
                   <NumberTicker value={stat.value} className={stat.color} />

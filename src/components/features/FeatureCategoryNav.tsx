@@ -8,7 +8,6 @@ const CATEGORIES = [
   { id: 'bant', label: 'BANT Scoring' },
   { id: 'livechat', label: 'Live Chat' },
   { id: 'analytics', label: 'Analytics' },
-  { id: 'behavioral', label: 'Behavioral Tracking' },
   { id: 'webhooks', label: 'Webhooks' },
   { id: 'integrations', label: 'Integrations' },
 ];
@@ -47,7 +46,7 @@ export function FeatureCategoryNav() {
   return (
     <div className="sticky top-[64px] z-30 bg-[#030D1F]/90 backdrop-blur-xl border-b border-white/8 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div ref={scrollRef} className="flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
+        <div ref={scrollRef} className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar py-1">
           {CATEGORIES.map(({ id, label }) => (
             <button
               key={id}

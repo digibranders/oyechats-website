@@ -70,7 +70,7 @@ export function TerminalWidget({ events = DEFAULT_EVENTS, autoPlay = true, class
         <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
         <div className="h-2.5 w-2.5 rounded-full bg-amber-500/60" />
         <div className="h-2.5 w-2.5 rounded-full bg-emerald-500/60" />
-        <span className="ml-2 text-white/30 text-[10px]">oyechats — webhook stream</span>
+        <span className="ml-2 text-white/30 text-[10px]">oyechats, webhook stream</span>
       </div>
 
       <div className="space-y-1.5">

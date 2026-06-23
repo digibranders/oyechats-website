@@ -28,7 +28,7 @@ function RAGPipelineCell() {
           Document-Aware AI
         </h3>
         <p className="text-sm text-white/50">
-          Hybrid AI search combines semantic understanding with keyword matching — so the right answer surfaces every time.
+          Hybrid AI search combines semantic understanding with keyword matching, so the right answer surfaces every time.
         </p>
       </div>
 
@@ -132,7 +132,7 @@ function LiveChatCell() {
         </div>
         <ChatBubble
           sender="operator"
-          message="Hi! I'm Sarah, your Account Executive. I can see your BANT score — let's talk about the Enterprise plan."
+          message="Hi! I'm Sarah, your Account Executive. I can see your BANT score. Let's talk about the Enterprise plan."
         />
       </div>
       <div className="mt-3 pt-3 border-t border-white/8 flex items-center justify-between">
@@ -220,13 +220,13 @@ export function FeatureBento() {
             <span className="gradient-text-heading">convert pipeline</span>
           </SectionHeading>
           <p className="mt-4 text-white/50 max-w-2xl mx-auto">
-            From RAG-powered document understanding to automated BANT scoring — OyeChats handles the full journey from visitor to closed deal.
+            From RAG-powered document understanding to automated BANT scoring, OyeChats handles the full journey from visitor to closed deal.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bento-responsive">
-          {/* RAG — full width on lg */}
+          {/* RAG, full width on lg */}
           <div className="lg:col-span-2 cursor-pointer" data-gsap>
             <RAGPipelineCell />
           </div>

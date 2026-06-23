@@ -3,7 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
-import { ShoppingBag, Diamond, Wallet, Landmark, Hospital, GraduationCap, Zap, Globe, Pill, Rocket, Building2, Crosshair, Package } from 'lucide-react';
+import { ShoppingBag, Diamond, Wallet } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Customers',
@@ -45,8 +45,6 @@ const CASE_STUDIES = [
   },
 ];
 
-const LOGOS = [Landmark, ShoppingBag, Hospital, GraduationCap, Zap, Globe, Diamond, Pill, Rocket, Building2, Crosshair, Package];
-
 export default function CustomersPage() {
   return (
     <>
@@ -58,46 +56,13 @@ export default function CustomersPage() {
           <div className="mx-auto max-w-3xl relative">
             <SectionEyebrow className="mx-auto mb-4">Customer Stories</SectionEyebrow>
             <SectionHeading gradient size="xl" center className="mb-5">
-              Loved by 500+{' '}
-              <span className="gradient-text-heading block">businesses</span>
+              Built for teams that turn chat into{' '}
+              <span className="gradient-text-heading block">pipeline</span>
             </SectionHeading>
             <p className="text-white/50 text-lg leading-relaxed">
-              From Shopify stores to enterprise SaaS — OyeChats powers AI chat for businesses
-              that take conversion seriously.
+              OyeChats is the chat layer behind teams that treat every visitor as a potential customer.
+              See how they qualify leads, hand off to humans, and close from a single conversation.
             </p>
-          </div>
-        </section>
-
-        {/* Logo wall */}
-        <section className="py-10 px-6 lg:px-8 border-y border-white/6">
-          <div className="mx-auto max-w-5xl">
-            <p className="text-center text-xs text-white/45 mb-6 uppercase tracking-widest">Trusted by teams at</p>
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              {LOGOS.map((LogoIcon, i) => (
-                <div key={i} className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center">
-                  <LogoIcon className="h-5 w-5 text-white/50" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Metrics strip */}
-        <section className="py-16 px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {[
-                { value: '500+', label: 'Active businesses' },
-                { value: '+42%', label: 'Avg conversion lift' },
-                { value: '5M+', label: 'Monthly conversations' },
-                { value: '98%', label: 'Customer satisfaction' },
-              ].map((m) => (
-                <div key={m.label} className="glass-1 rounded-2xl border border-white/8 p-5 text-center">
-                  <p className="font-display font-bold text-3xl text-blue-400 mb-1">{m.value}</p>
-                  <p className="text-xs text-white/50">{m.label}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

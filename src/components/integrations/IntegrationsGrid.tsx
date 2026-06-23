@@ -5,14 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MagicCard } from '@/components/magic/MagicCard';
 import { cn } from '@/lib/utils';
 import { integrations } from '@/lib/integrations';
-import { IntegrationCategory } from '@/types/integration';
+import { IntegrationFilterId } from '@/types/integration';
 
 interface IntegrationsGridProps {
-  filter: IntegrationCategory | 'all';
+  filter: IntegrationFilterId;
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
   cms: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
+  website: 'text-sky-400 bg-sky-400/10 border-sky-400/20',
   messaging: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20',
   crm: 'text-orange-400 bg-orange-400/10 border-orange-400/20',
   meetings: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
@@ -22,9 +23,11 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function IntegrationsGrid({ filter }: IntegrationsGridProps) {
-  const filtered = useMemo(() => (
-    filter === 'all' ? integrations : integrations.filter((i) => i.category === filter)
-  ), [filter]);
+  const filtered = useMemo(() => {
+    if (filter === 'all') return integrations;
+    if (filter === 'sites') return integrations.filter((i) => i.category === 'cms' || i.category === 'website');
+    return integrations.filter((i) => i.category === filter);
+  }, [filter]);
 
   return (
     <section className="px-6 lg:px-8 py-12">

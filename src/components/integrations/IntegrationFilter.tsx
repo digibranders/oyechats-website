@@ -1,12 +1,11 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { IntegrationCategory } from '@/types/integration';
+import { IntegrationFilterId } from '@/types/integration';
 
-const CATEGORIES: { id: IntegrationCategory | 'all'; label: string }[] = [
+const CATEGORIES: { id: IntegrationFilterId; label: string }[] = [
   { id: 'all', label: 'All' },
-  { id: 'cms', label: 'CMS & Websites' },
-  { id: 'messaging', label: 'Messaging' },
+  { id: 'sites', label: 'CMS & Websites' },
   { id: 'crm', label: 'CRM & Email' },
   { id: 'meetings', label: 'Meetings' },
   { id: 'analytics', label: 'Analytics' },
@@ -15,15 +14,15 @@ const CATEGORIES: { id: IntegrationCategory | 'all'; label: string }[] = [
 ];
 
 interface IntegrationFilterProps {
-  active: IntegrationCategory | 'all';
-  onChange: (v: IntegrationCategory | 'all') => void;
+  active: IntegrationFilterId;
+  onChange: (v: IntegrationFilterId) => void;
 }
 
 export function IntegrationFilter({ active, onChange }: IntegrationFilterProps) {
   return (
     <div className="sticky top-[64px] z-30 bg-[#030D1F]/90 backdrop-blur-xl border-b border-white/8 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center gap-1 overflow-x-auto no-scrollbar py-1">
+        <div className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar py-1">
           {CATEGORIES.map(({ id, label }) => (
             <button
               key={id}

@@ -65,7 +65,7 @@ export function LiveChatSection() {
             </SectionHeading>
             <p className="text-white/50 leading-relaxed mb-8">
               The best AI chat tools know their limits. When a visitor needs a human touch,
-              OyeChats seamlessly transfers the conversation to your team — with full context,
+              OyeChats seamlessly transfers the conversation to your team, with full context,
               the entire history, and the BANT qualification score pre-loaded.
             </p>
             <ul className="space-y-3">

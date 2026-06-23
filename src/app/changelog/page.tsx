@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Changelog',
-  description: 'OyeChats product updates and release notes — new features, improvements, and fixes across every version.',
+  description: 'OyeChats product updates and release notes, new features, improvements, and fixes across every version.',
   alternates: { canonical: 'https://oyechats.com/changelog' },
   openGraph: { url: 'https://oyechats.com/changelog' },
 };
@@ -56,7 +56,7 @@ const CHANGELOG = [
     tagColor: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
     changes: [
       { type: 'new', text: 'Zapier and Make (Integromat) native integrations' },
-      { type: 'new', text: 'HubSpot CRM sync — leads auto-created on tier change' },
+      { type: 'new', text: 'HubSpot CRM sync, leads auto-created on tier change' },
       { type: 'new', text: 'Canned responses with variable substitution' },
       { type: 'improved', text: 'Analytics dashboard redesigned with BANT tier donut chart' },
     ],
@@ -67,10 +67,10 @@ const CHANGELOG = [
     tag: 'Feature',
     tagColor: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
     changes: [
-      { type: 'new', text: 'Multi-model support — 50+ AI providers now available on Enterprise' },
+      { type: 'new', text: 'Multi-model support with 50+ AI providers now available on Enterprise' },
       { type: 'new', text: 'AI observability dashboard for Enterprise tier' },
       { type: 'new', text: 'Web crawling for automatic knowledge base updates' },
-      { type: 'improved', text: 'Vector search engine upgraded — 2× faster similarity retrieval' },
+      { type: 'improved', text: 'Vector search engine upgraded for 2× faster similarity retrieval' },
     ],
   },
 ];

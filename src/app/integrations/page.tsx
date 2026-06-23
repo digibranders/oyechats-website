@@ -8,11 +8,11 @@ import { IntegrationFilter } from '@/components/integrations/IntegrationFilter';
 import { IntegrationsGrid } from '@/components/integrations/IntegrationsGrid';
 import { WebhookSetup } from '@/components/integrations/WebhookSetup';
 import { HomeCTA } from '@/components/home/HomeCTA';
-import { IntegrationCategory } from '@/types/integration';
+import { IntegrationFilterId } from '@/types/integration';
 import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 
 export default function IntegrationsPage() {
-  const [filter, setFilter] = useState<IntegrationCategory | 'all'>('all');
+  const [filter, setFilter] = useState<IntegrationFilterId>('all');
 
   return (
     <>

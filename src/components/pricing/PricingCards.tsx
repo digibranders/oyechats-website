@@ -33,7 +33,7 @@ export function PricingCards({ billing }: PricingCardsProps) {
                 <BorderBeam size={280} duration={10} colorFrom="#2563EB" colorTo="#06B6D4" />
               )}
 
-              {/* Badge — always reserve this height so all cards align */}
+              {/* Badge, always reserve this height so all cards align */}
               <div className="mb-4 h-6 flex items-center">
                 {tier.badge && (
                   <span className="text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-full px-3 py-1 animate-badge-glow">
@@ -102,15 +102,17 @@ export function PricingCards({ billing }: PricingCardsProps) {
                     value:
                       tier.includedSeats === null
                         ? 'Unlimited'
-                        : `${tier.includedSeats} included`,
+                        : tier.includedSeats === 0
+                          ? '-'
+                          : `${tier.includedSeats} included`,
                   },
-                  { label: 'Live chat', value: tier.liveChat ? 'Yes' : '—' },
+                  { label: 'Live chat', value: tier.liveChat ? 'Yes' : '-' },
                 ].map((l) => (
                   <div key={l.label} className="flex items-center justify-between gap-2">
                     <span className="text-[11px] text-white/50">{l.label}</span>
                     <span className={cn(
                       'text-[11px] font-semibold',
-                      l.value === 'Unlimited' ? 'text-emerald-400' : l.value === '—' ? 'text-white/45' : 'text-white/80'
+                      l.value === 'Unlimited' ? 'text-emerald-400' : l.value === '-' ? 'text-white/45' : 'text-white/80'
                     )}>{l.value}</span>
                   </div>
                 ))}

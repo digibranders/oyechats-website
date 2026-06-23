@@ -21,12 +21,12 @@ export const pricingTiers: PricingTier[] = [
     annualPrice: 0,
     annualTotal: 0,
     accent: 'blue',
-    credits: 500,
-    includedSeats: 1,
-    extraSeatPriceUsd: 5,
+    credits: 250,
+    includedSeats: 0,
+    extraSeatPriceUsd: 0,
     liveChat: false,
     features: [
-      '500 credits / month',
+      '250 credits / month',
       '1 chatbot',
       'Basic widget customization',
       'Lead capture forms',
@@ -43,13 +43,14 @@ export const pricingTiers: PricingTier[] = [
     annualPrice: 15,
     annualTotal: 180,
     accent: 'blue',
-    credits: 2000,
+    credits: 3000,
     includedSeats: 1,
     extraSeatPriceUsd: 5,
     liveChat: true,
     features: [
-      '2,000 credits / month',
-      '1 operator seat (+$5/mo each extra)',
+      '3,000 credits / month',
+      'Up to 3 chatbots (+$5/mo each extra)',
+      '1 operator seat (+$5/mo each extra, up to 5 total)',
       'Live chat enabled',
       '14-day free trial',
       'Priority email support',
@@ -73,7 +74,8 @@ export const pricingTiers: PricingTier[] = [
     liveChat: true,
     features: [
       '10,000 credits / month',
-      '2 operator seats included (+$5/mo each extra)',
+      'Up to 5 chatbots (+$5/mo each extra)',
+      '2 operator seats included (+$5/mo each extra, up to 10 total)',
       'Live chat enabled',
       'BANT lead qualification scoring',
       'Behavioral tracking & UTM capture',
@@ -97,6 +99,7 @@ export const pricingTiers: PricingTier[] = [
     liveChat: true,
     features: [
       'Custom credit allocation',
+      'Unlimited chatbots',
       'Unlimited operator seats',
       'BANT lead qualification scoring',
       'Dedicated account manager',
@@ -115,7 +118,7 @@ export const PRICING_CURRENCY_SYMBOL = '$';
 /**
  * What every kind of work costs in credits. Mirrors the ``credit_cost.*``
  * keys in ``pricing_config`` on the server. System emails (auth, operator
- * notifications) and live-chat operator messages are always free — visitors
+ * notifications) and live-chat operator messages are always free, visitors
  * never see "credits".
  */
 export const creditCosts: CreditCost[] = [
@@ -154,7 +157,7 @@ export const featureRows: PricingFeature[] = [
   },
   {
     label: 'Annual price (save ~20%)',
-    free: '—',
+    free: '-',
     starter: '$15/mo ($180/yr)',
     standard: '$39/mo ($468/yr)',
     enterprise: 'Contact us',
@@ -162,15 +165,31 @@ export const featureRows: PricingFeature[] = [
   },
   {
     label: 'Monthly credits',
-    free: '500',
-    starter: '2,000',
+    free: '250',
+    starter: '3,000',
     standard: '10,000',
     enterprise: 'Custom',
     category: 'usage',
   },
   {
-    label: 'Operator seats included',
+    label: 'Chatbots included',
     free: '1',
+    starter: 'Up to 3',
+    standard: 'Up to 5',
+    enterprise: 'Unlimited',
+    category: 'usage',
+  },
+  {
+    label: 'Extra chatbots',
+    free: '-',
+    starter: '$5/mo each',
+    standard: '$5/mo each',
+    enterprise: 'Custom',
+    category: 'usage',
+  },
+  {
+    label: 'Operator seats included',
+    free: '-',
     starter: '1',
     standard: '2',
     enterprise: 'Unlimited',
@@ -178,9 +197,9 @@ export const featureRows: PricingFeature[] = [
   },
   {
     label: 'Extra operator seats',
-    free: '—',
-    starter: '$5/mo each',
-    standard: '$5/mo each',
+    free: '-',
+    starter: '$5/mo each (up to 5 total)',
+    standard: '$5/mo each (up to 10 total)',
     enterprise: 'Custom',
     category: 'usage',
   },
@@ -204,7 +223,7 @@ export const featureRows: PricingFeature[] = [
   {
     label: 'BANT lead qualification',
     free: false,
-    starter: false,
+    starter: true,
     standard: true,
     enterprise: true,
     category: 'features',
@@ -212,7 +231,7 @@ export const featureRows: PricingFeature[] = [
   {
     label: 'Webhooks',
     free: false,
-    starter: '5 event types',
+    starter: false,
     standard: '5 event types',
     enterprise: 'All events',
     category: 'features',
@@ -243,23 +262,23 @@ export const pricingFAQ = [
   },
   {
     q: 'How do I pay?',
-    a: 'We use Razorpay for Indian customers — UPI, cards, NetBanking, and wallets are all supported. Stripe is available for international payments. You can switch payment methods any time from the Billing page.',
+    a: 'We use Razorpay for Indian customers, UPI, cards, NetBanking, and wallets are all supported. Stripe is available for international payments. You can switch payment methods any time from the Billing page.',
   },
   {
     q: 'Is there a free trial?',
-    a: 'Yes — Starter and Standard plans include a 14-day free trial with full access to all features. No credit card required.',
+    a: 'Yes, Starter and Standard plans include a 14-day free trial with full access to all features. No credit card required.',
   },
   {
     q: 'What happens when I run out of credits?',
-    a: 'Your bot pauses new conversations until your monthly credits reset, or you can buy a top-up pack any time from the Billing page. We never let costs run away — we hard-cap at zero, with a friendly message to visitors.',
+    a: 'Your bot pauses new conversations until your monthly credits reset, or you can buy a top-up pack any time from the Billing page. We never let costs run away, we hard-cap at zero, with a friendly message to visitors.',
   },
   {
     q: 'Do unused credits roll over?',
-    a: 'Plan credits reset at the start of each billing cycle (use-it-or-lose-it). Top-up credits roll over for 12 months from purchase, oldest first — so larger packs always pay off if you keep using the product.',
+    a: 'Plan credits reset at the start of each billing cycle (use-it-or-lose-it). Top-up credits roll over for 12 months from purchase, oldest first, so larger packs always pay off if you keep using the product.',
   },
   {
     q: 'Can I add more operator seats?',
-    a: 'Yes — extra seats are $5 / month each, and you can add or remove them with one click from the Billing page in your dashboard.',
+    a: 'Yes, extra seats are $5 / month each, and you can add or remove them with one click from the Billing page in your dashboard.',
   },
   {
     q: 'Can I change plans at any time?',
@@ -267,14 +286,14 @@ export const pricingFAQ = [
   },
   {
     q: 'How does BANT scoring work?',
-    a: 'OyeChats analyzes every conversation across Budget, Authority, Need, and Timeline — scoring each 0–100. The composite score drives webhook notifications and lead-tier assignments.',
+    a: 'OyeChats analyzes every conversation across Budget, Authority, Need, and Timeline, scoring each 0-100. The composite score drives webhook notifications and lead-tier assignments.',
   },
   {
     q: 'Is annual billing charged upfront?',
-    a: 'Yes — annual billing is charged as a single payment at the start of the year, giving you approximately 20% savings versus monthly.',
+    a: 'Yes, annual billing is charged as a single payment at the start of the year, giving you approximately 20% savings versus monthly.',
   },
   {
     q: 'Do you offer discounts for startups or non-profits?',
-    a: `Yes — contact us at ${process.env.NEXT_PUBLIC_SALES_EMAIL ?? 'sales@oyechats.com'} and we'll work out the right pricing.`,
+    a: `Yes, contact us at ${process.env.NEXT_PUBLIC_SALES_EMAIL ?? 'support@oyechats.com'} and we'll work out the right pricing.`,
   },
 ];
