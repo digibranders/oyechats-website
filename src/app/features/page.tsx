@@ -14,7 +14,6 @@ import { RAGPipelineSection } from '@/components/features/RAGPipelineSection';
 import { BANTSection } from '@/components/features/BANTSection';
 import { LiveChatSection } from '@/components/features/LiveChatSection';
 import { AnalyticsSection } from '@/components/features/AnalyticsSection';
-// import { BehavioralSection } from '@/components/features/BehavioralSection';
 import { WebhooksSection } from '@/components/features/WebhooksSection';
 import { IntegrationsFeaturesSection } from '@/components/features/IntegrationsFeaturesSection';
 import { HomeCTA } from '@/components/home/HomeCTA';
@@ -25,23 +24,14 @@ export default function FeaturesPage() {
     <>
       <Navbar />
       <main>
-        <FeaturesHero />
-        <FeatureCategoryNav />
-        <RAGPipelineSection />
-        <AnimatedSeparator />
-        <BANTSection />
-        <AnimatedSeparator />
-        <LiveChatSection />
-        <AnimatedSeparator />
-        <AnalyticsSection />
-        <AnimatedSeparator />
-        {/* <BehavioralSection /> */}
-        <AnimatedSeparator />
-        <WebhooksSection />
-        <AnimatedSeparator />
-        <IntegrationsFeaturesSection />
-        <AnimatedSeparator />
-        <HomeCTA />
+        <div className="bg-section-a"><FeaturesHero /><FeatureCategoryNav /></div>
+        <div className="bg-section-b"><RAGPipelineSection /><AnimatedSeparator /></div>
+        <div className="bg-section-a"><BANTSection /><AnimatedSeparator /></div>
+        <div className="bg-section-b"><LiveChatSection /><AnimatedSeparator /></div>
+        <div className="bg-section-a"><AnalyticsSection /><AnimatedSeparator /></div>
+        <div className="bg-section-b"><WebhooksSection /><AnimatedSeparator /></div>
+        <div className="bg-section-a"><IntegrationsFeaturesSection /><AnimatedSeparator /></div>
+        <div className="bg-section-b"><HomeCTA /></div>
       </main>
       <Footer />
     </>

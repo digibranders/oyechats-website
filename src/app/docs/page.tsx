@@ -77,9 +77,9 @@ export default function DocsPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[var(--color-bg-base)] pt-24 pb-32">
+      <main className="min-h-screen pt-24 pb-32">
         {/* Hero */}
-        <section className="px-6 lg:px-8 pt-12 pb-16 text-center">
+        <section className="bg-section-a px-6 lg:px-8 pt-12 pb-16 text-center">
           <div className="mx-auto max-w-3xl">
             <SectionEyebrow className="mx-auto mb-4">Documentation</SectionEyebrow>
             <SectionHeading className="mt-4 mb-4">
@@ -92,7 +92,7 @@ export default function DocsPage() {
         </section>
 
         {/* Quick Start */}
-        <section className="px-6 lg:px-8 pb-20">
+        <section className="bg-section-b px-6 lg:px-8 pb-20">
           <div className="mx-auto max-w-7xl">
             <h2 className="font-display font-semibold text-lg text-white mb-6">Quick start</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -115,7 +115,7 @@ export default function DocsPage() {
         </section>
 
         {/* Widget Setup */}
-        <section id="widget" className="px-6 lg:px-8 pb-20 scroll-mt-24">
+        <section id="widget" className="bg-section-b px-6 lg:px-8 pb-20 scroll-mt-24">
           <div className="mx-auto max-w-7xl">
             <div className="border-t border-white/[0.06] pt-12">
               <SectionEyebrow>Widget Setup</SectionEyebrow>
@@ -173,7 +173,7 @@ export default function DocsPage() {
         </section>
 
         {/* Webhooks */}
-        <section id="webhooks" className="px-6 lg:px-8 pb-20 scroll-mt-24">
+        <section id="webhooks" className="bg-section-a px-6 lg:px-8 pb-20 scroll-mt-24">
           <div className="mx-auto max-w-7xl">
             <div className="border-t border-white/[0.06] pt-12">
               <SectionEyebrow>Webhooks</SectionEyebrow>
@@ -224,7 +224,7 @@ export default function DocsPage() {
         </section>
 
         {/* API Reference */}
-        <section id="api" className="px-6 lg:px-8 pb-20 scroll-mt-24">
+        <section id="api" className="bg-section-a px-6 lg:px-8 pb-20 scroll-mt-24">
           <div className="mx-auto max-w-7xl">
             <div className="border-t border-white/[0.06] pt-12">
               <SectionEyebrow>API Reference</SectionEyebrow>
@@ -276,7 +276,7 @@ export default function DocsPage() {
         </section>
 
         {/* Help CTA */}
-        <section className="px-6 lg:px-8">
+        <section className="bg-section-b px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="glass-2 border border-white/8 rounded-2xl px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>

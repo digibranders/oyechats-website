@@ -2,6 +2,7 @@ import { APP_LINKS } from '@/lib/constants';
 import { Meteors } from '@/components/magic/Meteors';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
+import { RotatingWord } from '@/components/shared/RotatingWord';
 
 export function HomeCTA() {
   return (
@@ -25,9 +26,12 @@ export function HomeCTA() {
       />
 
       <div className="mx-auto max-w-3xl text-center relative">
+        {/* Headline echoes the hero's brand promise so the bottom CTA
+            feels like a natural close on the same hook. Uses the shared
+            RotatingWord so both surfaces stay in sync if the word list
+            is ever tuned. */}
         <SectionHeading gradient size="xl" center className="mb-6">
-          Turn every visitor into{' '}
-          <span className="gradient-text-heading block">qualified pipeline</span>
+          The AI That Actually <RotatingWord />
         </SectionHeading>
 
         <p className="text-white/55 text-lg mb-10 max-w-xl mx-auto leading-relaxed">

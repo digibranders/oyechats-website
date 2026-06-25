@@ -49,7 +49,7 @@ export const pricingTiers: PricingTier[] = [
     liveChat: true,
     features: [
       '3,000 credits / month',
-      'Up to 3 chatbots (+$5/mo each extra)',
+      '1 chatbot included (subscribe again to add more)',
       '1 operator seat (+$5/mo each extra, up to 5 total)',
       'Live chat enabled',
       '14-day free trial',
@@ -74,7 +74,7 @@ export const pricingTiers: PricingTier[] = [
     liveChat: true,
     features: [
       '10,000 credits / month',
-      'Up to 5 chatbots (+$5/mo each extra)',
+      '1 chatbot included (subscribe again to add more)',
       '2 operator seats included (+$5/mo each extra, up to 10 total)',
       'Live chat enabled',
       'BANT lead qualification scoring',
@@ -174,17 +174,9 @@ export const featureRows: PricingFeature[] = [
   {
     label: 'Chatbots included',
     free: '1',
-    starter: 'Up to 3',
-    standard: 'Up to 5',
-    enterprise: 'Unlimited',
-    category: 'usage',
-  },
-  {
-    label: 'Extra chatbots',
-    free: '-',
-    starter: '$5/mo each',
-    standard: '$5/mo each',
-    enterprise: 'Custom',
+    starter: '1 (subscribe again to add more)',
+    standard: '1 (subscribe again to add more)',
+    enterprise: 'Unlimited under one subscription',
     category: 'usage',
   },
   {
@@ -279,6 +271,10 @@ export const pricingFAQ = [
   {
     q: 'Can I add more operator seats?',
     a: 'Yes, extra seats are $5 / month each, and you can add or remove them with one click from the Billing page in your dashboard.',
+  },
+  {
+    q: 'How do I run multiple chatbots on one account?',
+    a: 'Each chatbot is its own subscription. From the dashboard, click "Add Bot" and pick a plan for that bot — credits, billing, and usage stay isolated per bot so a busy chatbot can never drain a quieter one. Enterprise accounts can run unlimited bots under a single master subscription.',
   },
   {
     q: 'Can I change plans at any time?',

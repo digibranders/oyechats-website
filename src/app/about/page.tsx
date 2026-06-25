@@ -35,7 +35,7 @@ export default function AboutPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-24 px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="bg-section-a pt-32 pb-24 px-6 lg:px-8 text-center relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 40% at 50% 0%, rgba(37,99,235,.08), transparent 70%)' }} />
           <div className="mx-auto max-w-3xl relative">
             <SectionEyebrow className="mx-auto mb-4">Our Story</SectionEyebrow>
@@ -53,7 +53,7 @@ export default function AboutPage() {
 
         {/* Mission */}
         <AnimatedSeparator />
-        <section className="py-20 px-6 lg:px-8">
+        <section className="bg-section-b py-20 px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="glass-2 rounded-3xl border border-white/10 p-10 text-center relative overflow-hidden">
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(37,99,235,.06), transparent 70%)' }} />
@@ -67,7 +67,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="py-20 px-6 lg:px-8">
+        <section className="bg-section-a py-20 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">What we believe</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -86,7 +86,7 @@ export default function AboutPage() {
 
         {/* Team */}
         <AnimatedSeparator />
-        <section className="py-20 px-6 lg:px-8">
+        <section className="bg-section-b py-20 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">The team</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -106,7 +106,7 @@ export default function AboutPage() {
 
         {/* Careers */}
         <AnimatedSeparator />
-        <section className="py-16 px-6 lg:px-8">
+        <section className="bg-section-a py-16 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-semibold text-white mb-4">Join the team</h2>
             <p className="text-white/50 mb-8">
@@ -122,7 +122,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <HomeCTA />
+        <div className="bg-section-b"><HomeCTA /></div>
       </main>
       <Footer />
     </>

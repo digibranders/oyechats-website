@@ -30,7 +30,7 @@ export default function ContactPage() {
     <>
       <Navbar />
       <main>
-        <section className="pt-32 pb-24 px-6 lg:px-8">
+        <section className="bg-section-a pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-14">
               <SectionEyebrow className="mx-auto mb-4">Contact Us</SectionEyebrow>
@@ -90,15 +90,15 @@ export default function ContactPage() {
               </div>
 
               {/* Form */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-2 flex">
                 {submitted ? (
-                  <div className="glass-2 rounded-3xl border border-emerald-500/20 p-12 text-center">
-                    <CheckCircle className="h-12 w-12 text-emerald-400 mx-auto mb-4" />
+                  <div className="flex-1 glass-2 rounded-3xl border border-emerald-500/20 p-12 flex flex-col items-center justify-center text-center">
+                    <CheckCircle className="h-12 w-12 text-emerald-400 mb-4" />
                     <h3 className="font-display text-xl font-semibold text-white mb-2">Message sent!</h3>
                     <p className="text-white/50">We&apos;ll get back to you within 2 business hours.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="glass-2 rounded-3xl border border-white/10 p-8 space-y-5">
+                  <form onSubmit={handleSubmit} className="flex-1 glass-2 rounded-3xl border border-white/10 p-8 flex flex-col gap-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs text-white/50 mb-1.5">Name *</label>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                       </select>
                     </div>
 
-                    <div>
+                    <div className="flex-1 flex flex-col min-h-[140px]">
                       <label className="block text-xs text-white/50 mb-1.5">Message *</label>
                       <textarea
                         required
@@ -154,7 +154,7 @@ export default function ContactPage() {
                         value={form.message}
                         onChange={(e) => setForm({ ...form, message: e.target.value })}
                         placeholder="Tell us what you're looking to achieve..."
-                        className="w-full glass-1 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/45 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
+                        className="w-full flex-1 glass-1 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/45 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
                       />
                     </div>
 

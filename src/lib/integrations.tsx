@@ -16,7 +16,6 @@ import {
   type SimpleIcon,
 } from 'simple-icons';
 import {
-  Microscope,
   Link as LinkIcon,
   Wrench,
 } from 'lucide-react';
@@ -42,6 +41,30 @@ function BrandIcon({ icon, size = 28, overrideColor }: BrandIconProps) {
   );
 }
 
+function LangfuseIcon({ size = 28 }: { size?: number }) {
+  return (
+    <svg
+      role="img"
+      aria-label="Langfuse"
+      viewBox="0 0 32 32"
+      width={size}
+      height={size}
+      fill="none"
+    >
+      <rect width="32" height="32" rx="7" fill="#0F1010" />
+      <path
+        d="M9 8h3.5v12.5H21V24H9V8Z"
+        fill="#E11AAF"
+      />
+      <path
+        d="M15.5 8h3.5v9.5h3.5V21H15.5V8Z"
+        fill="#F2C94C"
+        opacity="0.95"
+      />
+    </svg>
+  );
+}
+
 export const integrations: Integration[] = [
   // CMS - true content management systems
   { id: 'wordpress', name: 'WordPress', description: 'Plugin install, one click', category: 'cms', available: true, icon: <BrandIcon icon={siWordpress} /> },
@@ -62,7 +85,7 @@ export const integrations: Integration[] = [
   { id: 'calendly', name: 'Calendly', description: 'In-chat booking', category: 'meetings', available: true, icon: <BrandIcon icon={siCalendly} /> },
 
   // Analytics & Observability - real (infra-level)
-  { id: 'langfuse', name: 'AI Observability', description: 'Response quality tracing', category: 'analytics', available: true, icon: <Microscope className="w-7 h-7 text-violet-400" /> },
+  { id: 'langfuse', name: 'Langfuse', description: 'AI observability & tracing', category: 'analytics', available: true, icon: <LangfuseIcon /> },
   { id: 'sentry',   name: 'Error Monitoring', description: 'Incident alerting',        category: 'analytics', available: true, icon: <BrandIcon icon={siSentry} overrideColor="#A99CFF" /> },
 
   // Automation - reachable via webhooks

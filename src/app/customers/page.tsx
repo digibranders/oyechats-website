@@ -51,7 +51,7 @@ export default function CustomersPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-16 px-6 lg:px-8 text-center relative overflow-hidden">
+        <section className="bg-section-a pt-32 pb-16 px-6 lg:px-8 text-center relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 40% at 50% 0%, rgba(37,99,235,.08), transparent 70%)' }} />
           <div className="mx-auto max-w-3xl relative">
             <SectionEyebrow className="mx-auto mb-4">Customer Stories</SectionEyebrow>
@@ -67,7 +67,7 @@ export default function CustomersPage() {
         </section>
 
         {/* Case studies */}
-        <section className="pb-16 px-6 lg:px-8">
+        <section className="bg-section-b pb-16 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">Featured case studies</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -105,7 +105,7 @@ export default function CustomersPage() {
 
         {/* Testimonial highlights */}
         <AnimatedSeparator />
-        <section className="py-16 px-6 lg:px-8">
+        <section className="bg-section-a py-16 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">What customers say</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -134,7 +134,7 @@ export default function CustomersPage() {
           </div>
         </section>
 
-        <HomeCTA />
+        <div className="bg-section-b"><HomeCTA /></div>
       </main>
       <Footer />
     </>

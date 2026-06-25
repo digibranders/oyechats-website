@@ -87,6 +87,10 @@ export const metadata: Metadata = {
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: ['/og-image.png'],
   },
+  icons: {
+    icon: '/oye_favicon.png',
+    apple: '/oye_favicon.png',
+  },
   alternates: {
     canonical: 'https://oyechats.com',
   },
