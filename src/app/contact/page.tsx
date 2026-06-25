@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Mail, MessageCircle, MapPin, Clock, CheckCircle, Phone , FileText } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Clock, CheckCircle, Phone, FileText, ChevronDown } from 'lucide-react';
 
 const INTENT_OPTIONS = [
   { value: 'demo', label: 'Book a product demo' },
@@ -19,11 +19,42 @@ const INTENT_OPTIONS = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '', intent: 'demo' });
+  const [intentOpen, setIntentOpen] = useState(false);
+  const intentRef = useRef<HTMLDivElement>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (intentRef.current && !intentRef.current.contains(e.target as Node)) {
+        setIntentOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error ?? 'Something went wrong. Please try again.');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -133,17 +164,46 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <div>
+                    <div ref={intentRef} className="relative">
                       <label className="block text-xs text-white/50 mb-1.5">I&apos;m reaching out about</label>
-                      <select
-                        value={form.intent}
-                        onChange={(e) => setForm({ ...form, intent: e.target.value })}
-                        className="w-full glass-1 border border-white/10 rounded-xl px-4 py-3 text-sm text-white bg-[#030D1F] focus:outline-none focus:border-blue-500/50 transition-colors"
+                      <button
+                        type="button"
+                        onClick={() => setIntentOpen((v) => !v)}
+                        className="w-full glass-1 border border-white/10 rounded-xl px-4 py-3 text-sm text-white text-left flex items-center justify-between focus:outline-none focus:border-blue-500/50 transition-colors cursor-pointer"
+                        aria-haspopup="listbox"
+                        aria-expanded={intentOpen}
                       >
-                        {INTENT_OPTIONS.map((o) => (
-                          <option key={o.value} value={o.value}>{o.label}</option>
-                        ))}
-                      </select>
+                        <span>{INTENT_OPTIONS.find((o) => o.value === form.intent)?.label}</span>
+                        <ChevronDown
+                          className="h-4 w-4 text-white/40 shrink-0 transition-transform duration-200"
+                          style={{ transform: intentOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                        />
+                      </button>
+                      {intentOpen && (
+                        <ul
+                          role="listbox"
+                          className="absolute z-50 mt-1.5 w-full glass-3 border border-white/10 rounded-xl overflow-hidden shadow-xl"
+                        >
+                          {INTENT_OPTIONS.map((o) => (
+                            <li
+                              key={o.value}
+                              role="option"
+                              aria-selected={form.intent === o.value}
+                              onClick={() => { setForm({ ...form, intent: o.value }); setIntentOpen(false); }}
+                              className={`px-4 py-2.5 text-sm cursor-pointer flex items-center gap-2 transition-colors ${
+                                form.intent === o.value
+                                  ? 'text-white bg-blue-600/20'
+                                  : 'text-white/70 hover:text-white hover:bg-white/6'
+                              }`}
+                            >
+                              {form.intent === o.value && (
+                                <span className="h-1.5 w-1.5 rounded-full bg-blue-400 shrink-0" />
+                              )}
+                              <span className={form.intent === o.value ? '' : 'ml-3.5'}>{o.label}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
 
                     <div className="flex-1 flex flex-col min-h-[140px]">
@@ -158,11 +218,18 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {error && (
+                      <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                        {error}
+                      </p>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full btn-filled-style px-8 py-4 text-base rounded-xl font-semibold text-white transition-all cursor-pointer"
+                      disabled={loading}
+                      className="w-full btn-filled-style px-8 py-4 text-base rounded-xl font-semibold text-white transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      Send message
+                      {loading ? 'Sending…' : 'Send message'}
                     </button>
                   </form>
                 )}
