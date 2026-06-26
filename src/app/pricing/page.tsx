@@ -16,13 +16,21 @@ export default function PricingPage() {
     <>
       <Navbar />
       <main>
-        <PricingHero billing={billing} onToggle={setBilling} />
-        <AnimatedSeparator />
-        <PricingCards billing={billing} />
-        <AnimatedSeparator />
-        <FeatureTable />
-        <AnimatedSeparator />
-        <PricingFAQ />
+        <div className="bg-section-a">
+          <PricingHero billing={billing} onToggle={setBilling} />
+          <AnimatedSeparator />
+        </div>
+        <div className="bg-section-b">
+          <PricingCards billing={billing} />
+          <AnimatedSeparator />
+        </div>
+        <div className="bg-section-a">
+          <FeatureTable />
+          <AnimatedSeparator />
+        </div>
+        <div className="bg-section-b">
+          <PricingFAQ />
+        </div>
       </main>
       <Footer />
     </>

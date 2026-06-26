@@ -35,7 +35,7 @@ export default function PrivacyPage() {
     <>
       <Navbar />
       <main>
-        <section className="pt-32 pb-24 px-6 lg:px-8">
+        <section className="bg-section-a pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-[260px_1fr] lg:gap-14">
             <aside className="hidden lg:block">
               <div className="sticky top-24">

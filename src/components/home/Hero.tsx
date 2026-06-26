@@ -1,12 +1,11 @@
 'use client';
 import { APP_LINKS } from '@/lib/constants';
-import { cn } from '@/lib/utils';
-import { useState, useEffect, useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
-import { MessageSquare } from 'lucide-react';
+import OyeChatsMark from '@/components/shared/OyeChatsMark';
 import dynamic from 'next/dynamic';
 // Particle background is intentionally disabled on the homepage but kept for
 // future reuse. DO NOT DELETE, this import and the render block below are
@@ -16,43 +15,6 @@ const AntigravityParticles = dynamic(
   { ssr: false }
 );
 const SHOW_HERO_PARTICLES = false;
-
-const rotatingWords = ['Understands', 'Qualifies Leads', 'Closes Deals', 'Knows Your Docs'];
-
-function RotatingWord() {
-  const [current, setCurrent] = useState(0);
-  const [animState, setAnimState] = useState<'in' | 'out'>('in');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimState('out');
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % rotatingWords.length);
-        setAnimState('in');
-      }, 320);
-    }, 2800);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    // Fixed width prevents heading reflow on every word change (CLS fix)
-    <span
-      className="inline-block"
-      style={{ minWidth: 'min(14ch, 80vw)' }}
-      aria-live="polite"
-      role="status"
-    >
-      <span
-        className={cn(
-          'inline-block gradient-text-animated',
-          animState === 'in' ? 'animate-rotate-text-in' : 'animate-rotate-text-out'
-        )}
-      >
-        {rotatingWords[current]}
-      </span>
-    </span>
-  );
-}
 
 // Social proof logos (placeholder text-based)
 const socialProofItems = [
@@ -89,7 +51,9 @@ export function Hero() {
       )}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
-        {/* H1, initial=false on SSR so the heading is visible immediately (LCP fix) */}
+        {/* H1, initial=false on SSR so the heading is visible immediately (LCP fix).
+            "qualified pipeline" reuses the same .gradient-text-animated class as
+            the rotating word below — same blue-shift palette for visual cohesion. */}
         <motion.h1
           initial={mounted ? { opacity: 0, y: 24 } : false}
           animate={{ opacity: 1, y: 0 }}
@@ -97,9 +61,9 @@ export function Hero() {
           className="font-display font-semibold text-white leading-[1.1] tracking-[-0.02em] mb-6"
           style={{ fontSize: 'clamp(1.75rem, 8.5vw, 5.5rem)' }}
         >
-          The AI That Actually
-          <br />
-          <RotatingWord />
+          {/* Turn every visitor into
+          <br /> */}
+          <span className="inline-block gradient-text-heading">You Only Talk to Buyers</span>
         </motion.h1>
 
         <motion.p
@@ -109,8 +73,7 @@ export function Hero() {
           className="text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
         >
-          RAG-powered chatbot with BANT sales intelligence. Hybrid vector + keyword search,
-          live chat handoff, behavioral tracking, and webhooks. All in one platform.
+          OyeChats qualifies your leads automatically so your sales team only talks to people ready to buy.
         </motion.p>
 
         <motion.div
@@ -192,9 +155,7 @@ export function Hero() {
             <div className="md:col-span-2 space-y-3">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-xl bg-blue-600 flex items-center justify-center">
-                    <MessageSquare className="w-4 h-4 text-white" />
-                  </div>
+                  <OyeChatsMark size={32} className="rounded-xl" />
                   <div>
                     <p className="text-xs font-semibold text-white">OyeChat AI</p>
                     <p className="text-[10px] text-emerald-400 flex items-center gap-1">

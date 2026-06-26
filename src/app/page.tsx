@@ -19,20 +19,15 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <Hero />
-        <FeatureBento />
+        <div className="bg-section-a"><Hero /></div>
+        <div className="bg-section-b"><FeatureBento /></div>
         <Suspense fallback={<div className="h-48" />}>
-          <AnimatedSeparator />
-          <ScrollStory />
-          <AnimatedSeparator />
-          <LiveStats />
-          <AnimatedSeparator />
-          <IntegrationsPreview />
-          <AnimatedSeparator />
-          <Testimonials />
-          <AnimatedSeparator />
-          <PricingPreview />
-          <HomeCTA />
+          <div className="bg-section-a"><AnimatedSeparator /><ScrollStory /></div>
+          <div className="bg-section-b"><AnimatedSeparator /><LiveStats /></div>
+          <div className="bg-section-a"><AnimatedSeparator /><IntegrationsPreview /></div>
+          <div className="bg-section-b"><AnimatedSeparator /><Testimonials /></div>
+          <div className="bg-section-a"><AnimatedSeparator /><PricingPreview /></div>
+          <div className="bg-section-b"><HomeCTA /></div>
         </Suspense>
       </main>
       <Footer />

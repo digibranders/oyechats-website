@@ -2,6 +2,7 @@
 import { APP_LINKS } from '@/lib/constants';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import OyeChatsMark from '@/components/shared/OyeChatsMark';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -102,11 +103,7 @@ export default function Navbar() {
               }}
               className="flex items-center gap-2 group"
             >
-              <div className="relative h-8 w-8 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-[0_0_16px_rgba(37,99,235,.4)]">
-                <svg viewBox="0 0 24 24" fill="none" className="w-4">
-                  <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" />
-                </svg>
-              </div>
+              <OyeChatsMark size={32} className="rounded-xl shadow-[0_0_16px_rgba(37,99,235,.4)]" />
               <span className="font-display font-semibold text-white text-base tracking-tight">
                 OyeChats
               </span>
@@ -333,3 +330,4 @@ export default function Navbar() {
     </>
   );
 }
+

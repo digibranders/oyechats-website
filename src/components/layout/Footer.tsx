@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import OyeChatsMark from '@/components/shared/OyeChatsMark';
 // import { StatusBadge } from '@/components/shared/StatusBadge';
 
 const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
@@ -129,11 +130,7 @@ export default function Footer() {
       <div className="border-t border-white/[.04]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="h-6 w-6 rounded-lg bg-blue-600 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-3.5">
-                <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" fill="white" />
-              </svg>
-            </div>
+            <OyeChatsMark size={24} className="rounded-lg" />
             <p className="text-xs text-white/40">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-4">
@@ -154,3 +151,4 @@ export default function Footer() {
     </footer>
   );
 }
+

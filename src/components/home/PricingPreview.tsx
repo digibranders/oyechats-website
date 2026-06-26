@@ -1,7 +1,6 @@
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { BorderBeam } from '@/components/magic/BorderBeam';
 import { cn } from '@/lib/utils';
 import { pricingTiers } from '@/lib/pricing';
 
@@ -20,74 +19,86 @@ export function PricingPreview() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {pricingTiers.map((tier) => (
-            <div
-              key={tier.id}
-              className={cn(
-                'relative flex flex-col h-full rounded-2xl p-6 transition-all duration-500 price-card-base cursor-pointer',
-                tier.featured
-                  ? 'price-card-featured featured-shimmer'
-                  : 'glass-2 border border-white/8'
-              )}
-              data-gsap
-            >
-              {/* BorderBeam for featured */}
-              {tier.featured && (
-                <BorderBeam
-                  size={200}
-                  duration={10}
-                  colorFrom="#2563EB"
-                  colorTo="#06B6D4"
-                />
-              )}
-
-              {/* Badge */}
-              {tier.badge && (
-                <div className="mb-3">
-                  <span className="text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-full px-3 py-1 animate-badge-glow">
-                    {tier.badge}
-                  </span>
-                </div>
-              )}
-
-              {/* Tier name + price */}
-              <p className="font-display font-semibold text-lg text-white mb-1">{tier.name}</p>
-              <div className="flex items-baseline gap-1 mb-2">
-                {tier.monthlyPrice === null ? (
-                  <span className="text-3xl font-display font-bold text-white">Custom</span>
-                ) : (
-                  <>
-                    <span className="text-3xl font-display font-bold text-white">
-                      ${tier.monthlyPrice}
-                    </span>
-                    <span className="text-sm text-white/50">/mo</span>
-                  </>
+            <div key={tier.id} className="relative pt-4 h-full" data-gsap>
+              {/* fc-border-wrapper provides the 1px gradient border + glow for featured.
+                  The badge is nested INSIDE this wrapper (not as a sibling
+                  of it) so it inherits the ``translateY(-12px) scale(1.03)``
+                  hover lift from ``.fc-border-wrapper:hover``. When it was
+                  a sibling, the card lifted but the badge stayed pinned —
+                  looked broken on hover. */}
+              <div className={cn('relative h-full', tier.featured && 'fc-border-wrapper rounded-2xl')}>
+                {tier.badge && (
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+                    <div
+                      className="rounded-full p-px shadow-lg shadow-black/60"
+                      style={{ background: 'linear-gradient(90deg, rgba(139,92,246,0.75) 0%, rgba(167,139,250,0.55) 40%, rgba(99,102,241,0.45) 60%, rgba(139,92,246,0.75) 100%)' }}
+                    >
+                      <span className="flex items-center rounded-full bg-[#0d0d14] px-4 py-1.5 text-[11px] font-semibold tracking-wide text-white/90">
+                        {tier.badge}
+                      </span>
+                    </div>
+                  </div>
                 )}
+                <div
+                  className={cn(
+                    'relative flex flex-col h-full p-6 cursor-pointer',
+                    tier.featured
+                      ? 'price-card-featured featured-shimmer'
+                      : 'price-card-base glass-2 border border-white/8 rounded-2xl'
+                  )}
+                >
+                  {tier.featured && (
+                    <>
+                      <div className="fc-mesh" aria-hidden="true">
+                        <div className="fc-orb fc-orb-1" />
+                        <div className="fc-orb fc-orb-2" />
+                        <div className="fc-orb fc-orb-3" />
+                        <div className="fc-orb fc-orb-4" />
+                      </div>
+                      <div className="fc-overlay" aria-hidden="true" />
+                    </>
+                  )}
+
+                  <div className="relative z-10 flex flex-col flex-1">
+                    {/* Tier name + price */}
+                    <p className="font-display font-semibold text-lg text-white mb-1">{tier.name}</p>
+                    <div className="flex items-baseline gap-1 mb-2">
+                      {tier.monthlyPrice === null ? (
+                        <span className="text-3xl font-display font-bold text-white">Custom</span>
+                      ) : (
+                        <>
+                          <span className="text-3xl font-display font-bold text-white">
+                            ${tier.monthlyPrice}
+                          </span>
+                          <span className="text-sm text-white/50">/mo</span>
+                        </>
+                      )}
+                    </div>
+                    <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
+
+                    <ul className="space-y-2 mb-6 flex-1">
+                      {tier.features.slice(0, 5).map((f) => (
+                        <li key={f} className="flex items-start gap-2 text-xs text-white/55">
+                          <svg width="12" height="12" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <CTAButton
+                      href={tier.ctaHref}
+                      variant={tier.featured ? 'filled' : 'ghost'}
+                      size="sm"
+                      external={tier.ctaHref.startsWith('http')}
+                      className="w-full justify-center mt-auto"
+                    >
+                      {tier.cta}
+                    </CTAButton>
+                  </div>
+                </div>
               </div>
-              <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
-
-              {/* Key features (first 5) - flex-grow pins the CTA to the bottom
-                  so all four cards align their buttons on the same baseline,
-                  regardless of how many features each plan lists. */}
-              <ul className="space-y-2 mb-6 flex-grow">
-                {tier.features.slice(0, 5).map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-xs text-white/55">
-                    <svg width="12" height="12" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <CTAButton
-                href={tier.ctaHref}
-                variant={tier.featured ? 'filled' : 'ghost'}
-                size="sm"
-                external={tier.ctaHref.startsWith('http')}
-                className="w-full justify-center mt-auto"
-              >
-                {tier.cta}
-              </CTAButton>
             </div>
           ))}
         </div>

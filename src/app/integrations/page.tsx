@@ -18,13 +18,14 @@ export default function IntegrationsPage() {
     <>
       <Navbar />
       <main>
-        <IntegrationsHero />
-        <IntegrationFilter active={filter} onChange={setFilter} />
-        <IntegrationsGrid filter={filter} />
-        <AnimatedSeparator />
-        <WebhookSetup />
-        <AnimatedSeparator />
-        <HomeCTA />
+        <div className="bg-section-a"><IntegrationsHero /></div>
+        <div className="bg-section-b">
+          <IntegrationFilter active={filter} onChange={setFilter} />
+          <IntegrationsGrid filter={filter} />
+          <AnimatedSeparator />
+        </div>
+        <div className="bg-section-a"><WebhookSetup /><AnimatedSeparator /></div>
+        <div className="bg-section-b"><HomeCTA /></div>
       </main>
       <Footer />
     </>

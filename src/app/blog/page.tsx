@@ -77,7 +77,7 @@ export default function BlogPage() {
     <>
       <Navbar />
       <main>
-        <section className="pt-32 pb-24 px-6 lg:px-8">
+        <section className="bg-section-a pt-32 pb-24 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-14">
               <SectionEyebrow className="mx-auto mb-4">Blog</SectionEyebrow>

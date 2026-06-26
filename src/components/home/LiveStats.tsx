@@ -3,7 +3,7 @@
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { NumberTicker } from '@/components/magic/NumberTicker';
 import { cn } from '@/lib/utils';
-import { Lock, HardDrive, Bug, Microscope, Cloud, Mail } from 'lucide-react';
+import { Lock, HardDrive, Bug, LineChart, Cloud, Mail } from 'lucide-react';
 
 const stats = [
   { value: 12, suffix: 'ms', label: 'Median latency', color: 'text-blue-400', glow: 'rgba(96,165,250,0.22)', description: 'P99 API response time' },
@@ -51,7 +51,7 @@ export function LiveStats() {
               { label: 'Isolated cloud infrastructure', icon: Lock },
               { label: 'Auto-backups every 6 hours', icon: HardDrive },
               { label: 'Real-time error monitoring', icon: Bug },
-              { label: 'AI response observability', icon: Microscope },
+              { label: 'AI observability via Langfuse', icon: LineChart },
               { label: 'Geo-redundant file storage', icon: Cloud },
               { label: 'Transactional email delivery', icon: Mail },
             ].map((item) => (

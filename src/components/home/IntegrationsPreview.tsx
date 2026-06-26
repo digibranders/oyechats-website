@@ -8,7 +8,7 @@ import {
   siBrevo, siCalendly, siSentry, siZapier, siMake,
   type SimpleIcon,
 } from 'simple-icons';
-import { Microscope, Link as LinkIcon, Wrench } from 'lucide-react';
+import { Link as LinkIcon, Wrench } from 'lucide-react';
 
 type BrandSvgProps = { icon: SimpleIcon; size?: number; overrideColor?: string };
 
@@ -28,6 +28,24 @@ function BrandSvg({ icon, size = 24, overrideColor }: BrandSvgProps) {
   );
 }
 
+function LangfuseSvg({ size = 24 }: { size?: number }) {
+  return (
+    <svg
+      role="img"
+      aria-label="Langfuse"
+      viewBox="0 0 32 32"
+      width={size}
+      height={size}
+      fill="none"
+      className="group-hover:scale-110 transition-transform duration-200"
+    >
+      <rect width="32" height="32" rx="7" fill="#0F1010" />
+      <path d="M9 8h3.5v12.5H21V24H9V8Z" fill="#E11AAF" />
+      <path d="M15.5 8h3.5v9.5h3.5V21H15.5V8Z" fill="#F2C94C" opacity="0.95" />
+    </svg>
+  );
+}
+
 const previewIntegrations: { name: string; desc: string; node: React.ReactNode }[] = [
   { name: 'WordPress', desc: 'Plugin install',  node: <BrandSvg icon={siWordpress} /> },
   { name: 'Shopify',   desc: 'Theme injection', node: <BrandSvg icon={siShopify} /> },
@@ -42,7 +60,7 @@ const previewIntegrations: { name: string; desc: string; node: React.ReactNode }
   { name: 'Zapier',    desc: 'Via webhooks',    node: <BrandSvg icon={siZapier} /> },
   { name: 'Make',      desc: 'Via webhooks',    node: <BrandSvg icon={siMake} /> },
   { name: 'Sentry',    desc: 'Error monitoring', node: <BrandSvg icon={siSentry} overrideColor="#A99CFF" /> },
-  { name: 'Langfuse',  desc: 'AI observability', node: <Microscope className="w-6 h-6 text-violet-400 group-hover:scale-110 transition-transform duration-200" /> },
+  { name: 'Langfuse',  desc: 'AI observability', node: <LangfuseSvg /> },
   { name: 'Webhooks',  desc: '5 event types',    node: <LinkIcon className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform duration-200" /> },
   { name: 'REST API',  desc: 'Full OpenAPI spec', node: <Wrench className="w-6 h-6 text-indigo-300 group-hover:scale-110 transition-transform duration-200" /> },
 ];

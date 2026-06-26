@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ── Section alternating backgrounds ── */
+.bg-section-a { background: #060a14; }
+.bg-section-b { background: #0b1120; }
+
 @font-face {
   font-family: 'Cal Sans';
   src: url('/CalSans-SemiBold.woff2') format('woff2'),
@@ -486,23 +490,126 @@ body {
   background: rgba(255,255,255,.065);
 }
 
-.price-card-featured {
-  background: linear-gradient(135deg, rgba(37,99,235,.12) 0%, rgba(99,102,241,.08) 100%);
-  border: 1px solid rgba(96,165,250,.2);
-  overflow: hidden;
+/* ═══════════════════════════════════════════════════════════════
+   STANDARD CARD — PREMIUM SILK-WAVE BACKGROUND
+   Architecture: rotating gradient wheel → glow blobs → veil → content
+   Palette: Cyan #06b6d4 · Sky #0ea5e9 · Indigo #4f46e5
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1. Card shell ── */
+/* ════════════════════════════════════════════════════════════════
+   STANDARD CARD — REACT BITS-STYLE MESH GRADIENT SYSTEM
+   Layer stack (bottom to top):
+     1. fc-border-wrapper  — 1px gradient border + animated drop-shadow glow
+     2. price-card-featured — dark base, overflow:hidden, no border of its own
+     3. fc-mesh            — isolation:isolate container for blend-mode orbs
+        orb-1..4           — blurred circles, mix-blend-mode:screen, animated
+     4. fc-overlay         — rgba dark wash, mix-blend-mode:multiply
+     5. .relative.z-10     — foreground content
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Gradient border wrapper ── */
+.fc-border-wrapper {
+  padding: 1px;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(6,182,212,0.95)  0%,
+    rgba(14,165,233,0.65) 25%,
+    rgba(99,102,241,0.80) 55%,
+    rgba(79,70,229,0.65)  75%,
+    rgba(6,182,212,0.90)  100%
+  );
+  filter:
+    drop-shadow(0 0 12px rgba(6,182,212,0.40))
+    drop-shadow(0 0 40px rgba(6,182,212,0.14));
+  transition: transform 0.5s ease;
+}
+.fc-border-wrapper:hover {
+  transform: translateY(-12px) scale(1.03);
 }
 
-/* ─── Featured Shimmer ─── */
+/* ── 2. Card shell ── */
+.price-card-featured {
+  background: #060a14;
+  overflow: hidden;
+  border-radius: calc(1rem - 1px);
+}
+
+/* ── 3. Orb container (no isolation — direct blend on dark base) ── */
+.fc-mesh {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.fc-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Orb 1: Dominant cyan — bottom-right hero */
+.fc-orb-1 {
+  width: 135%; height: 135%;
+  bottom: -42%; right: -32%;
+  background: radial-gradient(circle, rgba(6,182,212,0.78) 0%, rgba(6,182,212,0.44) 24%, rgba(6,182,212,0.14) 50%, transparent 68%);
+  filter: blur(30px);
+}
+
+/* Orb 2: Indigo — top-left shadow */
+.fc-orb-2 {
+  width: 88%; height: 88%;
+  top: -28%; left: -18%;
+  background: radial-gradient(circle, rgba(79,70,229,0.52) 0%, rgba(99,102,241,0.24) 35%, transparent 65%);
+  filter: blur(50px);
+}
+
+/* Orb 3: Sky/aqua — mid-left accent */
+.fc-orb-3 {
+  width: 68%; height: 68%;
+  bottom: 12%; left: -8%;
+  background: radial-gradient(circle, rgba(56,189,248,0.46) 0%, rgba(14,165,233,0.16) 44%, transparent 68%);
+  filter: blur(42px);
+}
+
+/* Orb 4: Cyan highlight — top-right */
+.fc-orb-4 {
+  width: 48%; height: 48%;
+  top: -10%; right: 6%;
+  background: radial-gradient(circle, rgba(6,182,212,0.40) 0%, rgba(14,165,233,0.14) 50%, transparent 70%);
+  filter: blur(36px);
+}
+
+/* ── 4. Minimal readability veil — preserves vibrancy ── */
+.fc-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6,10,20,0.20);
+  pointer-events: none;
+}
+
+/* ── 5. Top shimmer bar — static, no animation ── */
 .featured-shimmer::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-blue), var(--color-indigo), var(--color-cyan), var(--color-blue));
-  background-size: 200% 100%;
-  animation: shimmer-bar 3s ease-in-out infinite;
-  border-radius: 1rem 1rem 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(6,182,212,0.55),
+    rgba(14,165,233,0.9),
+    rgba(56,189,248,0.9),
+    rgba(99,102,241,0.7),
+    rgba(14,165,233,0.5),
+    transparent
+  );
+  border-radius: inherit;
   pointer-events: none;
+  z-index: 20;
 }
 
 /* ─── Hero Elements ─── */
