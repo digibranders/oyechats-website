@@ -21,7 +21,7 @@ export const pricingTiers: PricingTier[] = [
     annualPrice: 0,
     annualTotal: 0,
     accent: 'blue',
-    credits: 250,
+    credits: 200,
     includedSeats: 0,
     extraSeatPriceUsd: 0,
     liveChat: false,
@@ -165,7 +165,7 @@ export const featureRows: PricingFeature[] = [
   },
   {
     label: 'Monthly credits',
-    free: '250',
+    free: '200',
     starter: '3,000',
     standard: '10,000',
     enterprise: 'Custom',

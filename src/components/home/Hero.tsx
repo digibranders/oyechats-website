@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
-import { MessageSquare } from 'lucide-react';
+import OyeChatsMark from '@/components/shared/OyeChatsMark';
 import dynamic from 'next/dynamic';
 // Particle background is intentionally disabled on the homepage but kept for
 // future reuse. DO NOT DELETE, this import and the render block below are
@@ -61,9 +61,9 @@ export function Hero() {
           className="font-display font-semibold text-white leading-[1.1] tracking-[-0.02em] mb-6"
           style={{ fontSize: 'clamp(1.75rem, 8.5vw, 5.5rem)' }}
         >
-          Turn every visitor into
-          <br />
-          <span className="inline-block gradient-text-heading">qualified pipeline</span>
+          {/* Turn every visitor into
+          <br /> */}
+          <span className="inline-block gradient-text-heading">You Only Talk to Buyers</span>
         </motion.h1>
 
         <motion.p
@@ -73,7 +73,7 @@ export function Hero() {
           className="text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}
         >
-          Turn website visitors into qualified opportunities with AI that understands your docs, asks the right questions, and identifies buying intent.
+          OyeChats qualifies your leads automatically so your sales team only talks to people ready to buy.
         </motion.p>
 
         <motion.div
@@ -155,9 +155,7 @@ export function Hero() {
             <div className="md:col-span-2 space-y-3">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-xl bg-blue-600 flex items-center justify-center">
-                    <MessageSquare className="w-4 h-4 text-white" />
-                  </div>
+                  <OyeChatsMark size={32} className="rounded-xl" />
                   <div>
                     <p className="text-xs font-semibold text-white">OyeChat AI</p>
                     <p className="text-[10px] text-emerald-400 flex items-center gap-1">

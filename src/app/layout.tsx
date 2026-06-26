@@ -88,8 +88,8 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   icons: {
-    icon: '/oye_favicon.png',
-    apple: '/oye_favicon.png',
+    icon: '/oye_favicon_cropped.png?v=8',
+    apple: '/oye_favicon_cropped.png?v=8',
   },
   alternates: {
     canonical: 'https://oyechats.com',
