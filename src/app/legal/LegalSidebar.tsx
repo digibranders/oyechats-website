@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export type LegalDocId = 'terms' | 'privacy' | 'cookies' | 'subprocessors';
+export type LegalDocId = 'terms' | 'privacy' | 'cookies' | 'subprocessors' | 'refund' | 'cancellation';
 
 type Section = { id: string; label: string };
 
@@ -18,6 +18,8 @@ const DOCS: Doc[] = [
   { id: 'privacy', label: 'Privacy Policy', href: '/legal/privacy' },
   { id: 'cookies', label: 'Cookie Policy', href: '/legal/cookies' },
   { id: 'subprocessors', label: 'Subprocessors List', href: '/legal/subprocessors' },
+  { id: 'refund', label: 'Refund Policy', href: '/legal/refund' },
+  { id: 'cancellation', label: 'Cancellation Policy', href: '/legal/cancellation' },
 ];
 
 type Props = {
