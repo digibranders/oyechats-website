@@ -8,7 +8,7 @@ export interface PricingFeature {
 }
 
 export interface PricingTier {
-  id: 'free' | 'starter' | 'standard' | 'enterprise';
+  id: string; // plan slug
   name: string;
   tagline: string;
   monthlyPrice: number | null; // null = custom
