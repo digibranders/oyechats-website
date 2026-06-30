@@ -2,8 +2,21 @@
 import { APP_LINKS } from '@/lib/constants';
 import { Fragment, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { featureRows } from '@/lib/pricing';
+import type { PricingFeature } from '@/types/pricing';
 import { Star } from 'lucide-react';
+
+interface FeatureTableProps {
+  rows: PricingFeature[];
+}
+
+/**
+ * Reads a tier cell from a feature row, tolerating both shapes:
+ *  - dynamic catalog rows expose slug-keyed `values` (`row.values.standard`)
+ *  - static fallback rows expose flat per-tier keys (`row.standard`)
+ */
+const cellValue = (row: PricingFeature, slug: string): boolean | string | undefined =>
+  (row as { values?: Record<string, boolean | string> }).values?.[slug]
+  ?? (row as unknown as Record<string, boolean | string>)[slug];
 
 const CATEGORIES = [
   { id: 'usage', label: 'Pricing & Usage Limits' },
@@ -33,13 +46,13 @@ function Dash() {
   return <span className="text-white/45">-</span>;
 }
 
-function Cell({ value }: { value: string | boolean }) {
+function Cell({ value }: { value: string | boolean | undefined }) {
   if (value === true)  return <Check />;
-  if (value === false || value === '-') return <Dash />;
+  if (value === false || value === '-' || value === undefined) return <Dash />;
   return <span className="text-xs text-white/70 whitespace-nowrap">{value}</span>;
 }
 
-export function FeatureTable() {
+export function FeatureTable({ rows: featureRows }: FeatureTableProps) {
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
 
   function toggle(id: string) {
@@ -123,10 +136,10 @@ export function FeatureTable() {
                         )}
                       >
                         <td className="px-5 py-3 text-sm text-white/60">{row.label}</td>
-                        <td className="px-5 py-3 text-center"><Cell value={row.free} /></td>
-                        <td className="px-5 py-3 text-center"><Cell value={row.starter} /></td>
-                        <td className="px-5 py-3 text-center bg-blue-500/[0.02]"><Cell value={row.standard} /></td>
-                        <td className="px-5 py-3 text-center"><Cell value={row.enterprise} /></td>
+                        <td className="px-5 py-3 text-center"><Cell value={cellValue(row, 'free')} /></td>
+                        <td className="px-5 py-3 text-center"><Cell value={cellValue(row, 'starter')} /></td>
+                        <td className="px-5 py-3 text-center bg-blue-500/[0.02]"><Cell value={cellValue(row, 'standard')} /></td>
+                        <td className="px-5 py-3 text-center"><Cell value={cellValue(row, 'enterprise')} /></td>
                       </tr>
                     ))}
                   </Fragment>
@@ -178,7 +191,7 @@ export function FeatureTable() {
                     {featureRows.map((row) => (
                       <div key={row.label} className="flex items-center justify-between px-5 py-2.5 border-t border-white/[0.04]">
                         <span className="text-xs text-white/55 pr-3">{row.label}</span>
-                        <Cell value={row[tier.id as keyof typeof row] as string | boolean} />
+                        <Cell value={cellValue(row, tier.id)} />
                       </div>
                     ))}
                   </div>
