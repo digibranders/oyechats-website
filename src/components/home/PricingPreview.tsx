@@ -3,6 +3,7 @@ import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
 import { pricingTiers } from '@/lib/pricing';
+import { Aurora } from '@/components/shared/Aurora';
 
 export function PricingPreview() {
   return (
@@ -49,12 +50,14 @@ export function PricingPreview() {
                 >
                   {tier.featured && (
                     <>
-                      <div className="fc-mesh" aria-hidden="true">
-                        <div className="fc-orb fc-orb-1" />
-                        <div className="fc-orb fc-orb-2" />
-                        <div className="fc-orb fc-orb-3" />
-                        <div className="fc-orb fc-orb-4" />
+                      {/* Layer 1: Animated Aurora Background (Silky moving layer) */}
+                      <div className="absolute inset-0 z-0 opacity-60 pointer-events-none" aria-hidden="true">
+                        <Aurora
+                          colors={["#060a14", "#0a1329", "#112247", "#1c356b", "#2a4c93", "#4f46e5", "#0ea5e9", "#06b6d4"]}
+                          speed={1.2}
+                        />
                       </div>
+                      {/* Layer 2: dark readability overlay (multiply blend) */}
                       <div className="fc-overlay" aria-hidden="true" />
                     </>
                   )}
