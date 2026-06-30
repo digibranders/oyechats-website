@@ -59,11 +59,15 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display font-semibold text-white leading-[1.1] tracking-[-0.02em] mb-6"
-          style={{ fontSize: 'clamp(1.75rem, 8.5vw, 5.5rem)' }}
+          style={{ fontSize: 'clamp(3rem, 8.5vw, 5.5rem)' }}
         >
           {/* Turn every visitor into
           <br /> */}
-          <span className="inline-block gradient-text-heading">You Only Talk to Buyers</span>
+          <span className="inline-block gradient-text-heading">
+            You Only Talk{' '}
+            <br className="sm:hidden" />
+            to Buyers
+          </span>
         </motion.h1>
 
         <motion.p
