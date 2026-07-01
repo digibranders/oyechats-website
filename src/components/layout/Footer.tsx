@@ -95,7 +95,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 pt-12 footer-cols-responsive">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">{category}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/65 mb-4">{category}</p>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -131,7 +131,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <OyeChatsMark size={24} className="rounded-lg" />
-            <p className="text-xs text-white/40">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
+            <p className="text-xs text-white/65">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
           </div>
           <div className="flex items-center gap-4">
             {/* <StatusBadge status="live" /> */}

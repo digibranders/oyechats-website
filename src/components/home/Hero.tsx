@@ -96,15 +96,14 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col items-center gap-3"
         >
-          <p className="text-xs text-white/45 uppercase tracking-wider font-medium">
+          <p className="text-xs text-white/60 uppercase tracking-wider font-medium">
             Trusted by teams at
           </p>
           <div className="flex items-center gap-6 flex-wrap justify-center">
             {socialProofItems.map((item) => (
               <span
                 key={item.label}
-                className="text-sm font-semibold tracking-tight"
-                style={{ color: `${item.color}88` }}
+                className="text-sm font-semibold tracking-tight text-white/75"
               >
                 {item.label}
               </span>
