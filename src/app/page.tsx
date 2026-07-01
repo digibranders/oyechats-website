@@ -19,15 +19,15 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <div className="bg-section-a"><Hero /></div>
-        <div className="bg-section-b"><FeatureBento /></div>
+        <section data-surface="ink"><Hero /></section>
+        <section data-surface="canvas"><FeatureBento /></section>
         <Suspense fallback={<div className="h-48" />}>
-          <div className="bg-section-a"><AnimatedSeparator /><ScrollStory /></div>
-          <div className="bg-section-b"><AnimatedSeparator /><LiveStats /></div>
-          <div className="bg-section-a"><AnimatedSeparator /><IntegrationsPreview /></div>
-          <div className="bg-section-b"><AnimatedSeparator /><Testimonials /></div>
-          <div className="bg-section-a"><AnimatedSeparator /><PricingPreview /></div>
-          <div className="bg-section-b"><HomeCTA /></div>
+          <section data-surface="slate"><AnimatedSeparator /><ScrollStory /></section>
+          <section data-surface="mist"><AnimatedSeparator /><LiveStats /></section>
+          <section data-surface="canvas"><AnimatedSeparator /><IntegrationsPreview /></section>
+          <section data-surface="ink"><AnimatedSeparator /><Testimonials /></section>
+          <section data-surface="canvas"><AnimatedSeparator /><PricingPreview /></section>
+          <section data-surface="ink"><HomeCTA /></section>
         </Suspense>
       </main>
       <Footer />
