@@ -16,7 +16,7 @@ const socialProofItems = [
   { label: 'HubSpot', color: '#FF7A59' },
 ];
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 export function Hero() {
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
@@ -128,8 +128,8 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-emerald-500/60" />
             </div>
             <div className="flex-1 mx-4">
-              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/45 text-center">
-                app.yourcompany.com
+              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/45 text-center" suppressHydrationWarning>
+                app.oyechats.com
               </div>
             </div>
           </div>
