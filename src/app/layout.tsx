@@ -5,7 +5,6 @@ import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { Analytics } from '@vercel/analytics/react';
-import { MouseTrail } from '@/components/ui/MouseTrail';
 import { Inter, Geist_Mono, Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
 
 const inter = Inter({
@@ -165,7 +164,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ScrollProgressBar />
-        <MouseTrail />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

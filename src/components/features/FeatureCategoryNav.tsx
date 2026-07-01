@@ -44,9 +44,9 @@ export function FeatureCategoryNav() {
   }
 
   return (
-    <div className="sticky top-[64px] z-30 bg-[#030D1F]/90 backdrop-blur-xl border-b border-white/8 px-6 lg:px-8">
+    <div className="sticky top-[64px] z-30 bg-[#0A1122]/85 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,.28)] px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div ref={scrollRef} className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar py-1">
+        <div ref={scrollRef} className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar py-1.5">
           {CATEGORIES.map(({ id, label }) => (
             <button
               key={id}

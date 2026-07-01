@@ -24,7 +24,8 @@ export default function FeaturesPage() {
     <>
       <Navbar />
       <main>
-        <div className="bg-section-a"><FeaturesHero /><FeatureCategoryNav /></div>
+        <div className="bg-section-a"><FeaturesHero /></div>
+        <FeatureCategoryNav />
         <div className="bg-section-b"><RAGPipelineSection /><AnimatedSeparator /></div>
         <div className="bg-section-a"><BANTSection /><AnimatedSeparator /></div>
         <div className="bg-section-b"><LiveChatSection /><AnimatedSeparator /></div>

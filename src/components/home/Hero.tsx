@@ -229,12 +229,6 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Bottom fade: blends Hero's dark ink color into the following light canvas section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-20"
-        style={{ background: 'linear-gradient(to bottom, transparent, #FAFBFD)' }}
-      />
-
       {/* Scroll indicator */}
       <motion.div
         initial={mounted ? { opacity: 0 } : false}
