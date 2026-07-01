@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
-import { Aurora } from '@/components/shared/Aurora';
 import type { PricingTier } from '@/types/pricing';
+import { Aurora } from '@/components/shared/Aurora';
 
 interface PricingCardsProps {
   billing: 'monthly' | 'annual';

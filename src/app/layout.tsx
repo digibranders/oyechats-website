@@ -1,13 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { Analytics } from '@vercel/analytics/react';
-import { MouseTrail } from '@/components/ui/MouseTrail';
-
+import { Inter, Geist_Mono, Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,6 +19,21 @@ const geistMono = Geist_Mono({
   weight: ['400', '500', '600'],
   display: 'swap',
   variable: '--font-geist-mono',
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-jakarta',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  style: ['normal'],
+  display: 'swap',
+  variable: '--font-fraunces',
 });
 
 export const viewport: Viewport = {
@@ -137,7 +150,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${geistMono.variable} ${jakarta.variable} ${fraunces.variable}`}>
       <head>
         {/* Preconnect to third-party origins used on every page */}
         <link rel="preconnect" href="https://va.vercel-scripts.com" />
@@ -151,7 +164,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ScrollProgressBar />
-        <MouseTrail />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
