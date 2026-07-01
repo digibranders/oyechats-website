@@ -29,7 +29,7 @@ export function PricingCards({ billing, tiers }: PricingCardsProps) {
                 was a sibling it stayed pinned while the card flew up
                 on hover, which looked broken.
               */}
-              <div className={cn('relative h-full', tier.featured && 'fc-border-wrapper rounded-2xl')}>
+              <div className={cn('relative h-full', tier.featured && 'fc-border-wrapper rounded-2xl keep-dark')}>
                 {tier.badge && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
                     <div
