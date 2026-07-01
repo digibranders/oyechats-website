@@ -7,7 +7,7 @@ import { Lock, Shield, KeyRound, ClipboardList, ShieldCheck, Globe, Server, Zap,
 
 export const metadata: Metadata = {
   title: 'Security',
-  description: 'OyeChats security practices: end-to-end encryption, SOC 2 alignment, GDPR compliance, access controls, and infrastructure details.',
+  description: 'OyeChats security practices: encryption in transit and at rest, GDPR-aligned data handling, access controls, signed webhooks, and infrastructure details.',
   alternates: { canonical: 'https://oyechats.com/security' },
   openGraph: { url: 'https://oyechats.com/security' },
 };
@@ -17,49 +17,49 @@ const SECURITY_SECTIONS: { icon: LucideIcon; title: string; items: string[] }[] 
     icon: Lock,
     title: 'Encryption',
     items: [
-      'All data encrypted at rest using AES-256',
-      'TLS 1.3 for all data in transit',
-      'Database-level encryption at rest and in transit',
+      'TLS for all data in transit (HTTPS / WSS)',
+      'Data encrypted at rest by our managed cloud storage (AES-256)',
       'Webhook payloads signed with HMAC-SHA256',
+      'Passwords hashed with bcrypt, never stored in plain text',
     ],
   },
   {
     icon: Shield,
     title: 'Infrastructure',
     items: [
-      'Hosted on isolated cloud infrastructure',
-      'Automatic backups every 6 hours with 30-day retention',
-      'Rate limiting on all API endpoints',
-      '99.99% uptime SLA with real-time incident monitoring',
+      'Hosted on managed cloud infrastructure',
+      'Automated backups managed by our cloud provider',
+      'Rate limiting on API endpoints',
+      'Error and uptime monitoring via Sentry',
     ],
   },
   {
     icon: KeyRound,
     title: 'Access Control',
     items: [
-      'Role-based access control (RBAC) on Enterprise',
-      'SSO / SAML 2.0 support on Enterprise',
-      'JWT-based session tokens with short expiry',
-      'API keys scoped to minimum required permissions',
+      'Role-based access control for operators and admins',
+      'Password and Google OAuth sign-in',
+      'Signed session tokens with expiry',
+      'API keys scoped to the minimum required permissions',
     ],
   },
   {
     icon: ClipboardList,
-    title: 'Compliance',
+    title: 'Data & Privacy',
     items: [
-      'GDPR-compliant data processing',
-      'Data residency options for Enterprise',
+      'GDPR-aligned data processing',
+      'Email addresses redacted in application logs',
       'Right to erasure, delete visitor data on request',
-      'Cookie-free tracking option available',
+      'Prompt-injection guards on every AI message',
     ],
   },
 ];
 
 const CERTIFICATIONS: { badge: LucideIcon; name: string; status: string; color: string }[] = [
-  { badge: ShieldCheck, name: 'SOC 2 Type II', status: 'In progress, Q3 2025', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
-  { badge: Globe, name: 'GDPR', status: 'Compliant', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
-  { badge: Lock, name: 'HTTPS / TLS 1.3', status: 'Active', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
-  { badge: Cloud, name: 'ISO 27001 Storage', status: 'Geo-redundant', color: 'text-violet-400 border-violet-400/20 bg-violet-400/5' },
+  { badge: Globe, name: 'GDPR', status: 'Aligned', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
+  { badge: Lock, name: 'HTTPS / TLS', status: 'Active', color: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/5' },
+  { badge: Cloud, name: 'Encrypted at Rest', status: 'Managed cloud', color: 'text-violet-400 border-violet-400/20 bg-violet-400/5' },
+  { badge: ShieldCheck, name: 'Signed Webhooks', status: 'HMAC-SHA256', color: 'text-blue-400 border-blue-400/20 bg-blue-400/5' },
 ];
 
 export default function SecurityPage() {
@@ -118,12 +118,12 @@ export default function SecurityPage() {
               <h3 className="font-display text-xl font-semibold text-white mb-6 text-center">Infrastructure at a glance</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {[
-                  { icon: Server, name: 'Isolated database cluster', role: 'Dedicated per-region storage' },
-                  { icon: Zap, name: 'High-availability queuing', role: 'Zero message loss guarantee' },
-                  { icon: Bug, name: 'Real-time error monitoring', role: 'Instant incident alerting' },
-                  { icon: Eye, name: 'AI observability', role: 'Full trace logging (Enterprise)' },
-                  { icon: Cloud, name: 'Geo-redundant storage', role: 'Document + media files' },
-                  { icon: Mail, name: 'Transactional email', role: 'Notifications & summaries' },
+                  { icon: Server, name: 'Managed Postgres', role: 'Primary application datastore' },
+                  { icon: Zap, name: 'Background job queue', role: 'Async tasks via ARQ + Redis' },
+                  { icon: Bug, name: 'Error monitoring', role: 'Incident alerting via Sentry' },
+                  { icon: Eye, name: 'AI observability', role: 'Trace logging via Langfuse (Enterprise)' },
+                  { icon: Cloud, name: 'Cloud object storage', role: 'Documents & media via Cloudflare R2' },
+                  { icon: Mail, name: 'Transactional email', role: 'Notifications & summaries via Brevo' },
                 ].map((item) => (
                   <div key={item.name} className="flex items-center gap-3 glass-1 rounded-xl p-3 border border-white/6">
                     <item.icon className="h-4 w-4 text-white/50 shrink-0" />

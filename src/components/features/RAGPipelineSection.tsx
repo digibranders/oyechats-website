@@ -12,7 +12,7 @@ const PIPELINE_STEPS = [
   { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400' },
   { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together, always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
   { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400' },
-  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in under 12ms median latency', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
+  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in real time as the answer is generated', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
 ];
 
 export function RAGPipelineSection() {

@@ -14,18 +14,11 @@ export const metadata: Metadata = {
   openGraph: { url: 'https://oyechats.com/about' },
 };
 
-const TEAM = [
-  { name: 'Vikram Sehgal', role: 'Co-founder & CEO', initials: 'VS', color: 'from-blue-600 to-cyan-500', bio: 'Ex-Freshdesk. Built B2B SaaS products for 10+ years.' },
-  { name: 'Aisha Mehta', role: 'Co-founder & CTO', initials: 'AM', color: 'from-violet-600 to-indigo-500', bio: 'Prev. ML engineer at Google. Expert in AI search and conversational systems.' },
-  { name: 'Rohan Kapoor', role: 'Head of Product', initials: 'RK', color: 'from-emerald-600 to-teal-500', bio: 'Former PM at Intercom. Obsessed with sales conversion.' },
-  { name: 'Priya Nair', role: 'Head of Growth', initials: 'PN', color: 'from-amber-600 to-orange-500', bio: 'Scaled 3 SaaS companies from 0 to $5M ARR.' },
-];
-
 const VALUES = [
   { icon: Crosshair, title: 'Sales-first AI', desc: 'We build AI that converts, not just answers. Every feature ties back to pipeline.' },
   { icon: Search, title: 'Radical transparency', desc: 'No black-box AI. Every BANT signal is explainable. Every AI decision is auditable.' },
   { icon: Zap, title: 'Speed over perfection', desc: 'Ship fast. Learn from real users. Iterate weekly. Our changelog proves it.' },
-  { icon: Handshake, title: 'Customer obsession', desc: 'Our Pro customers have a direct line to our engineering team. Always.' },
+  { icon: Handshake, title: 'Customer obsession', desc: 'Our paying customers have a direct line to our team. Always.' },
 ];
 
 export default function AboutPage() {
@@ -82,32 +75,13 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team */}
-        <section className="bg-section-b py-20 px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">The team</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {TEAM.map((t) => (
-                <div key={t.name} className="glass-1 rounded-2xl border border-white/8 p-6 text-center group hover:border-white/15 transition-colors">
-                  <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${t.color} flex items-center justify-center font-display font-bold text-xl text-white mx-auto mb-4 group-hover:scale-105 transition-transform`}>
-                    {t.initials}
-                  </div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-blue-400 mb-2">{t.role}</p>
-                  <p className="text-xs text-white/50 leading-relaxed">{t.bio}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Careers */}
         <section className="bg-section-a py-16 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-semibold text-white mb-4">Join the team</h2>
             <p className="text-white/50 mb-8">
-              We&apos;re hiring engineers, product designers, and growth people who care deeply about AI and sales.
-              Remote-first. Equity. Ship fast.
+              We&apos;re a small, remote-first team building AI for sales. If that sounds like your kind of
+              problem, we&apos;d love to hear from you.
             </p>
             <CTAButton href="/contact?intent=careers" variant="ghost" size="lg">
               View open roles

@@ -3,44 +3,40 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
-import { ShoppingBag, Diamond, Wallet } from 'lucide-react';
+import { HomeCTA } from '@/components/home/HomeCTA';
+import { ShoppingBag, Diamond, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Customers',
-  description: 'See how e-commerce, SaaS, and agency teams use OyeChats to qualify leads automatically and reduce support ticket volume.',
+  title: 'Use Cases',
+  description: 'See how e-commerce, SaaS, and agency teams use OyeChats to answer questions from their own docs, qualify leads with BANT scoring, and hand off to a human at the right moment.',
   alternates: { canonical: 'https://oyechats.com/customers' },
   openGraph: { url: 'https://oyechats.com/customers' },
 };
-import { HomeCTA } from '@/components/home/HomeCTA';
-import { testimonials } from '@/lib/testimonials';
 
-const CASE_STUDIES = [
+const USE_CASES = [
   {
-    company: 'ShopNova',
-    industry: 'E-commerce',
+    audience: 'E-commerce',
+    industry: 'Online stores',
     logo: ShoppingBag,
-    metric: '+68%',
-    metricLabel: 'Checkout conversion',
-    summary: 'ShopNova deployed OyeChats on their checkout page. The bot proactively handled shipping anxiety questions and captured emails from abandoning visitors, boosting checkout conversion by 68% in 30 days.',
-    tags: ['BANT Scoring', 'Behavioral Tracking', 'Shopify'],
+    summary:
+      'Answer product, shipping, and returns questions instantly from your own docs and site content. Capture leads from visitors who are about to leave, and hand the conversation to a human the moment a sale is on the line.',
+    tags: ['RAG Q&A', 'Lead Capture', 'Live Handoff'],
   },
   {
-    company: 'Nexus SaaS',
-    industry: 'B2B SaaS',
+    audience: 'B2B SaaS',
+    industry: 'Software teams',
     logo: Diamond,
-    metric: '3.2x',
-    metricLabel: 'Demo bookings',
-    summary: 'Nexus integrated Calendly booking directly in their AI chat. Visitors that scored Hot on BANT were instantly offered a demo time without leaving the page, tripling their demo booking rate.',
-    tags: ['Calendly', 'BANT', 'Live Chat Handoff'],
+    summary:
+      'Qualify every visitor with BANT scoring, push hot leads to your team in real time via webhooks, and let prospects book a demo through Calendly without ever leaving the chat.',
+    tags: ['BANT Scoring', 'Webhooks', 'Calendly'],
   },
   {
-    company: 'FinCore',
-    industry: 'Fintech',
-    logo: Wallet,
-    metric: '-74%',
-    metricLabel: 'Support ticket volume',
-    summary: 'FinCore trained OyeChats on 400+ compliance documents. 74% of support tickets are now resolved instantly by the AI, freeing the team to focus on complex regulatory queries.',
-    tags: ['RAG Pipeline', 'Document Q&A', 'HubSpot CRM'],
+    audience: 'Agencies',
+    industry: 'Multi-client teams',
+    logo: Users,
+    summary:
+      'Run a separate bot per client, each with its own knowledge base, billing, and analytics. Remove OyeChats branding on paid plans and connect each client’s stack through webhooks and the REST API.',
+    tags: ['Multi-Bot', 'Custom Branding', 'REST API'],
   },
 ];
 
@@ -53,78 +49,43 @@ export default function CustomersPage() {
         <section className="bg-section-a pt-32 pb-16 px-6 lg:px-8 text-center relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 40% at 50% 0%, rgba(37,99,235,.08), transparent 70%)' }} />
           <div className="mx-auto max-w-3xl relative">
-            <SectionEyebrow className="mx-auto mb-4">Customer Stories</SectionEyebrow>
+            <SectionEyebrow className="mx-auto mb-4">Use Cases</SectionEyebrow>
             <SectionHeading gradient size="xl" center className="mb-5">
               Built for teams that turn chat into{' '}
               <span className="gradient-text-heading block">pipeline</span>
             </SectionHeading>
             <p className="text-white/50 text-lg leading-relaxed">
-              OyeChats is the chat layer behind teams that treat every visitor as a potential customer.
-              See how they qualify leads, hand off to humans, and close from a single conversation.
+              OyeChats is the chat layer for teams that treat every visitor as a potential customer.
+              Here’s how different teams put it to work, from answering questions to qualifying and handing off leads.
             </p>
           </div>
         </section>
 
-        {/* Case studies */}
-        <section className="bg-section-b pb-16 px-6 lg:px-8">
+        {/* Use cases */}
+        <section className="bg-section-b pb-20 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">Featured case studies</h2>
+            <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">Who it’s for</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {CASE_STUDIES.map((cs) => (
-                <div key={cs.company} className="glass-2 rounded-2xl border border-white/10 p-6 flex flex-col group hover:border-white/15 transition-colors">
+              {USE_CASES.map((uc) => (
+                <div key={uc.audience} className="glass-2 rounded-2xl border border-white/10 p-6 flex flex-col group hover:border-white/15 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-10 w-10 rounded-xl glass-1 border border-white/8 flex items-center justify-center">
-                      <cs.logo className="h-5 w-5 text-blue-400" />
+                      <uc.logo className="h-5 w-5 text-blue-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-white">{cs.company}</p>
-                      <p className="text-xs text-white/50">{cs.industry}</p>
+                      <p className="text-sm font-semibold text-white">{uc.audience}</p>
+                      <p className="text-xs text-white/50">{uc.industry}</p>
                     </div>
                   </div>
 
-                  <div className="glass-1 rounded-xl p-3 mb-4 text-center border border-white/8">
-                    <p className="font-display font-bold text-3xl text-emerald-400">{cs.metric}</p>
-                    <p className="text-xs text-white/45">{cs.metricLabel}</p>
-                  </div>
-
-                  <p className="text-sm text-white/60 leading-relaxed mb-4 flex-1">{cs.summary}</p>
+                  <p className="text-sm text-white/60 leading-relaxed mb-4 flex-1">{uc.summary}</p>
 
                   <div className="flex flex-wrap gap-1.5">
-                    {cs.tags.map((t) => (
+                    {uc.tags.map((t) => (
                       <span key={t} className="text-[11px] font-medium text-blue-400 bg-blue-400/10 border border-blue-400/20 rounded-full px-2 py-0.5 uppercase tracking-wide">
                         {t}
                       </span>
                     ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonial highlights */}
-        <section className="bg-section-a py-16 px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">What customers say</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {testimonials.slice(0, 3).map((t) => (
-                <div key={t.id} className="glass-1 rounded-2xl border border-white/8 p-6">
-                  <div className="flex gap-0.5 mb-3">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <svg key={j} width="12" height="12" viewBox="0 0 24 24" className="text-amber-400 fill-current">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-sm text-white/65 leading-relaxed mb-4">&quot;{t.quote}&quot;</p>
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style={{ background: t.avatarColor }}>
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-white">{t.name}</p>
-                      <p className="text-[11px] text-white/50">{t.title}, {t.company}</p>
-                    </div>
                   </div>
                 </div>
               ))}

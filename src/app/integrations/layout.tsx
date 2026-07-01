@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Integrations',
-  description: 'OyeChats integrates with WordPress, Shopify, Webflow, Slack, WhatsApp, HubSpot, Calendly, and 20+ more platforms.',
+  description: 'Embed OyeChats on WordPress, Shopify, Webflow, React, or any site, and connect Calendly, Brevo, webhooks, and the REST API.',
   alternates: { canonical: 'https://oyechats.com/integrations' },
   openGraph: { url: 'https://oyechats.com/integrations' },
 };

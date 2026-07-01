@@ -11,7 +11,7 @@ const CHAT_SEQUENCE = [
   { type: 'human' as const, text: 'I need to speak with someone about enterprise pricing', delay: 1200 },
   { type: 'bot' as const, text: 'Of course! I\'m connecting you with a sales specialist now.', delay: 2400 },
   { type: 'operator' as const, text: 'Hey! I\'m Sarah from the enterprise team. I\'d love to walk you through our options.', delay: 3800 },
-  { type: 'human' as const, text: 'Perfect, we have 50 agents and need SSO + custom SLA', delay: 5200 },
+  { type: 'human' as const, text: 'Perfect, we have 50 agents and need custom onboarding + an SLA', delay: 5200 },
   { type: 'operator' as const, text: 'Great fit for Enterprise! Let me pull up a custom quote for you.', delay: 6400 },
 ];
 
@@ -23,7 +23,7 @@ const FEATURES_LIST = [
   'Real-time typing indicators for visitors',
   'BANT score visible in operator dashboard',
   'Meeting booking via Calendly integration',
-  'Email & Slack notifications for new chats',
+  'Email notifications for new chats',
 ];
 
 export function LiveChatSection() {

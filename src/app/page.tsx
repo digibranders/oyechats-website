@@ -9,7 +9,6 @@ import { FeatureBento } from '@/components/home/FeatureBento';
 const ScrollStory = dynamic(() => import('@/components/home/ScrollStory').then(m => ({ default: m.ScrollStory })));
 const LiveStats = dynamic(() => import('@/components/home/LiveStats').then(m => ({ default: m.LiveStats })));
 const IntegrationsPreview = dynamic(() => import('@/components/home/IntegrationsPreview').then(m => ({ default: m.IntegrationsPreview })));
-const Testimonials = dynamic(() => import('@/components/home/Testimonials').then(m => ({ default: m.Testimonials })));
 const PricingPreview = dynamic(() => import('@/components/home/PricingPreview').then(m => ({ default: m.PricingPreview })));
 const HomeCTA = dynamic(() => import('@/components/home/HomeCTA').then(m => ({ default: m.HomeCTA })));
 
@@ -24,7 +23,6 @@ export default function Home() {
           <section data-surface="slate"><ScrollStory /></section>
           <section data-surface="mist"><LiveStats /></section>
           <section data-surface="canvas"><IntegrationsPreview /></section>
-          <section data-surface="ink"><Testimonials /></section>
           <section data-surface="canvas"><PricingPreview /></section>
           <section data-surface="ink"><HomeCTA /></section>
         </Suspense>

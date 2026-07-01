@@ -7,13 +7,14 @@ import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import OyeChatsMark from '@/components/shared/OyeChatsMark';
 
-// Social proof logos (placeholder text-based)
+// Platforms the widget embeds into (text-based). These are supported embed
+// targets — a single script tag drops OyeChats into any of them.
 const socialProofItems = [
+  { label: 'WordPress', color: '#21759B' },
   { label: 'Shopify', color: '#96BF48' },
   { label: 'Webflow', color: '#4353FF' },
-  { label: 'WordPress', color: '#21759B' },
   { label: 'Next.js', color: '#ffffff' },
-  { label: 'HubSpot', color: '#FF7A59' },
+  { label: 'React', color: '#61DAFB' },
 ];
 
 const emptySubscribe = () => () => { };
@@ -97,7 +98,7 @@ export function Hero() {
           className="flex flex-col items-center gap-3"
         >
           <p className="text-xs text-white/60 uppercase tracking-wider font-medium">
-            Trusted by teams at
+            Embeds anywhere you already build
           </p>
           <div className="flex items-center gap-6 flex-wrap justify-center">
             {socialProofItems.map((item) => (
@@ -165,7 +166,7 @@ export function Hero() {
               />
               <ChatBubble
                 sender="bot"
-                message="Perfect. With 50 agents and that volume, OyeChats Enterprise would save you roughly $24k/year vs your current stack. Want to schedule a demo this week?"
+                message="Perfect. At that volume, our Enterprise plan can consolidate qualification and live chat into one tool. Want to schedule a demo this week?"
                 timestamp="2:32 PM"
               />
               <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/6">
