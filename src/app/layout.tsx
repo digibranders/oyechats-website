@@ -6,6 +6,8 @@ import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { Analytics } from '@vercel/analytics/react';
+import { MouseTrail } from '@/components/ui/MouseTrail';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -149,6 +151,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ScrollProgressBar />
+        <MouseTrail />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

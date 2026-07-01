@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
 import type { PricingTier } from '@/types/pricing';
+import { Aurora } from '@/components/shared/Aurora';
 
 interface PricingCardsProps {
   billing: 'monthly' | 'annual';
@@ -54,12 +55,12 @@ export function PricingCards({ billing, tiers }: PricingCardsProps) {
             >
               {tier.featured && (
                 <>
-                  {/* Layer 1: mesh gradient (4 screen-blend orbs) */}
-                  <div className="fc-mesh" aria-hidden="true">
-                    <div className="fc-orb fc-orb-1" />
-                    <div className="fc-orb fc-orb-2" />
-                    <div className="fc-orb fc-orb-3" />
-                    <div className="fc-orb fc-orb-4" />
+                  {/* Layer 1: Animated Aurora Background (Silky moving layer) */}
+                  <div className="absolute inset-0 z-0 opacity-60 pointer-events-none" aria-hidden="true">
+                    <Aurora
+                      colors={["#060a14", "#0a1329", "#112247", "#1c356b", "#2a4c93", "#4f46e5", "#0ea5e9", "#06b6d4"]}
+                      speed={1.2}
+                    />
                   </div>
                   {/* Layer 2: dark readability overlay (multiply blend) */}
                   <div className="fc-overlay" aria-hidden="true" />
