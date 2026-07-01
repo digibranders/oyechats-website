@@ -9,7 +9,6 @@ import { IntegrationsGrid } from '@/components/integrations/IntegrationsGrid';
 import { WebhookSetup } from '@/components/integrations/WebhookSetup';
 import { HomeCTA } from '@/components/home/HomeCTA';
 import { IntegrationFilterId } from '@/types/integration';
-import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 
 export default function IntegrationsPage() {
   const [filter, setFilter] = useState<IntegrationFilterId>('all');
@@ -22,9 +21,8 @@ export default function IntegrationsPage() {
         <div className="bg-section-b">
           <IntegrationFilter active={filter} onChange={setFilter} />
           <IntegrationsGrid filter={filter} />
-          <AnimatedSeparator />
         </div>
-        <div className="bg-section-a"><WebhookSetup /><AnimatedSeparator /></div>
+        <div className="bg-section-a"><WebhookSetup /></div>
         <div className="bg-section-b"><HomeCTA /></div>
       </main>
       <Footer />

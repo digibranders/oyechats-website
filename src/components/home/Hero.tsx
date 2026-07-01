@@ -6,15 +6,6 @@ import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import OyeChatsMark from '@/components/shared/OyeChatsMark';
-import dynamic from 'next/dynamic';
-// Particle background is intentionally disabled on the homepage but kept for
-// future reuse. DO NOT DELETE, this import and the render block below are
-// preserved on purpose. Toggle `SHOW_HERO_PARTICLES` to re-enable.
-const AntigravityParticles = dynamic(
-  () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
-  { ssr: false }
-);
-const SHOW_HERO_PARTICLES = false;
 
 // Social proof logos (placeholder text-based)
 const socialProofItems = [
@@ -25,7 +16,7 @@ const socialProofItems = [
   { label: 'HubSpot', color: '#FF7A59' },
 ];
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 export function Hero() {
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
@@ -33,22 +24,14 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: 'var(--color-bg-void)' }}
+      style={{ background: 'var(--bg)' }}
       aria-label="Hero section"
     >
       <div className="hero-glow absolute inset-0 pointer-events-none" />
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Particle canvas, Three.js antigravity effect.
-          Currently hidden from the homepage but kept for future reuse.
-          DO NOT DELETE as dead code: the AntigravityParticles component and
-          this render block are intentionally preserved. Flip
-          `SHOW_HERO_PARTICLES` above to re-enable. */}
-      {SHOW_HERO_PARTICLES && mounted && (
-        <div className="absolute inset-0 pointer-events-none z-[1]">
-          <AntigravityParticles />
-        </div>
-      )}
+      {/* readability veil */}
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 30%, transparent, rgba(10,17,34,.55))' }} aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
         {/* H1, initial=false on SSR so the heading is visible immediately (LCP fix).
@@ -63,11 +46,9 @@ export function Hero() {
         >
           {/* Turn every visitor into
           <br /> */}
-          <span className="inline-block gradient-text-heading">
-            You Only Talk{' '}
-            <br className="sm:hidden" />
-            to Buyers
-          </span>
+          <span className="text-white">You Only Talk </span>
+          <br className="sm:hidden" />
+          <span className="gradient-text-heading">to Buyers</span>
         </motion.h1>
 
         <motion.p
@@ -115,15 +96,14 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col items-center gap-3"
         >
-          <p className="text-xs text-white/45 uppercase tracking-wider font-medium">
+          <p className="text-xs text-white/60 uppercase tracking-wider font-medium">
             Trusted by teams at
           </p>
           <div className="flex items-center gap-6 flex-wrap justify-center">
             {socialProofItems.map((item) => (
               <span
                 key={item.label}
-                className="text-sm font-semibold tracking-tight"
-                style={{ color: `${item.color}88` }}
+                className="text-sm font-semibold tracking-tight text-white/75"
               >
                 {item.label}
               </span>
@@ -147,8 +127,8 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-emerald-500/60" />
             </div>
             <div className="flex-1 mx-4">
-              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/45 text-center">
-                app.yourcompany.com
+              <div className="bg-white/6 rounded-lg px-3 py-1 text-xs text-white/45 text-center" suppressHydrationWarning>
+                app.oyechats.com
               </div>
             </div>
           </div>
@@ -248,33 +228,6 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Bottom fade: blends Hero's void color into the main bg */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-20"
-        style={{ background: 'linear-gradient(to bottom, transparent, #030D1F)' }}
-      />
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={mounted ? { opacity: 0 } : false}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer"
-        aria-hidden="true"
-      >
-        <span className="text-[11px] text-white/45 uppercase tracking-widest">Scroll</span>
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-white/45 animate-scroll-chevron"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </motion.div>
     </section>
   );
 }

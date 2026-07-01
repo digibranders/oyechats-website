@@ -5,7 +5,6 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { HomeCTA } from '@/components/home/HomeCTA';
-import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 import { Crosshair, Search, Zap, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -52,7 +51,6 @@ export default function AboutPage() {
         </section>
 
         {/* Mission */}
-        <AnimatedSeparator />
         <section className="bg-section-b py-20 px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="glass-2 rounded-3xl border border-white/10 p-10 text-center relative overflow-hidden">
@@ -85,7 +83,6 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <AnimatedSeparator />
         <section className="bg-section-b py-20 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">The team</h2>
@@ -105,7 +102,6 @@ export default function AboutPage() {
         </section>
 
         {/* Careers */}
-        <AnimatedSeparator />
         <section className="bg-section-a py-16 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl font-semibold text-white mb-4">Join the team</h2>

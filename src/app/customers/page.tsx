@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 };
 import { HomeCTA } from '@/components/home/HomeCTA';
 import { testimonials } from '@/lib/testimonials';
-import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 
 const CASE_STUDIES = [
   {
@@ -104,7 +103,6 @@ export default function CustomersPage() {
         </section>
 
         {/* Testimonial highlights */}
-        <AnimatedSeparator />
         <section className="bg-section-a py-16 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">What customers say</h2>

@@ -13,11 +13,11 @@ export async function PricingPreview() {
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-12" data-gsap>
           <SectionEyebrow className="mx-auto mb-4">Simple Pricing</SectionEyebrow>
-          <SectionHeading gradient size="lg" center>
+          <SectionHeading size="lg" center>
             Start free.{' '}
             <span className="gradient-text-heading">Scale as you grow.</span>
           </SectionHeading>
-          <p className="mt-4 text-white/50">No hidden fees. Cancel anytime.</p>
+          <p className="mt-4 text-[var(--muted)]">No hidden fees. Cancel anytime.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
@@ -29,7 +29,7 @@ export async function PricingPreview() {
                   hover lift from ``.fc-border-wrapper:hover``. When it was
                   a sibling, the card lifted but the badge stayed pinned —
                   looked broken on hover. */}
-              <div className={cn('relative h-full', tier.featured && 'fc-border-wrapper rounded-2xl')}>
+              <div className={cn('relative h-full', tier.featured && 'fc-border-wrapper rounded-2xl keep-dark')}>
                 {tier.badge && (
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
                     <div
@@ -47,7 +47,7 @@ export async function PricingPreview() {
                     'relative flex flex-col h-full p-6 cursor-pointer',
                     tier.featured
                       ? 'price-card-featured featured-shimmer'
-                      : 'price-card-base glass-2 border border-white/8 rounded-2xl'
+                      : 'price-card-base bg-[var(--card)] border border-[var(--line)] rounded-2xl card-hover'
                   )}
                 >
                   {tier.featured && (
@@ -66,25 +66,25 @@ export async function PricingPreview() {
 
                   <div className="relative z-10 flex flex-col flex-1">
                     {/* Tier name + price */}
-                    <p className="font-display font-semibold text-lg text-white mb-1">{tier.name}</p>
+                    <p className={cn('font-display font-semibold text-lg mb-1', tier.featured ? 'text-white' : 'text-[var(--fg)]')}>{tier.name}</p>
                     <div className="flex items-baseline gap-1 mb-2">
                       {tier.monthlyPrice === null ? (
-                        <span className="text-3xl font-display font-bold text-white">Custom</span>
+                        <span className={cn('text-3xl font-display font-bold', tier.featured ? 'text-white' : 'text-[var(--fg)]')}>Custom</span>
                       ) : (
                         <>
-                          <span className="text-3xl font-display font-bold text-white">
+                          <span className={cn('text-3xl font-display font-bold', tier.featured ? 'text-white' : 'text-[var(--fg)]')}>
                             ${tier.monthlyPrice}
                           </span>
-                          <span className="text-sm text-white/50">/mo</span>
+                          <span className={cn('text-sm', tier.featured ? 'text-white/50' : 'text-[var(--muted)]')}>/mo</span>
                         </>
                       )}
                     </div>
-                    <p className="text-xs text-white/50 mb-5">{tier.tagline}</p>
+                    <p className={cn('text-xs mb-5', tier.featured ? 'text-white/50' : 'text-[var(--muted)]')}>{tier.tagline}</p>
 
                     <ul className="space-y-2 mb-6 flex-1">
                       {tier.features.slice(0, 5).map((f) => (
-                        <li key={f} className="flex items-start gap-2 text-xs text-white/55">
-                          <svg width="12" height="12" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">
+                        <li key={f} className={cn('flex items-start gap-2 text-xs', tier.featured ? 'text-white/55' : 'text-[var(--muted)]')}>
+                          <svg width="12" height="12" viewBox="0 0 24 24" className={cn('fill-none stroke-current shrink-0 mt-0.5', tier.featured ? 'text-emerald-400' : 'text-emerald-600')} strokeWidth="3">
                             <polyline points="20 6 9 17 4 12" />
                           </svg>
                           {f}

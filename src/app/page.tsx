@@ -12,22 +12,21 @@ const IntegrationsPreview = dynamic(() => import('@/components/home/Integrations
 const Testimonials = dynamic(() => import('@/components/home/Testimonials').then(m => ({ default: m.Testimonials })));
 const PricingPreview = dynamic(() => import('@/components/home/PricingPreview').then(m => ({ default: m.PricingPreview })));
 const HomeCTA = dynamic(() => import('@/components/home/HomeCTA').then(m => ({ default: m.HomeCTA })));
-const AnimatedSeparator = dynamic(() => import('@/components/shared/AnimatedSeparator').then(m => ({ default: m.AnimatedSeparator })));
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
-        <div className="bg-section-a"><Hero /></div>
-        <div className="bg-section-b"><FeatureBento /></div>
+        <section data-surface="ink"><Hero /></section>
+        <section data-surface="canvas"><FeatureBento /></section>
         <Suspense fallback={<div className="h-48" />}>
-          <div className="bg-section-a"><AnimatedSeparator /><ScrollStory /></div>
-          <div className="bg-section-b"><AnimatedSeparator /><LiveStats /></div>
-          <div className="bg-section-a"><AnimatedSeparator /><IntegrationsPreview /></div>
-          <div className="bg-section-b"><AnimatedSeparator /><Testimonials /></div>
-          <div className="bg-section-a"><AnimatedSeparator /><PricingPreview /></div>
-          <div className="bg-section-b"><HomeCTA /></div>
+          <section data-surface="slate"><ScrollStory /></section>
+          <section data-surface="mist"><LiveStats /></section>
+          <section data-surface="canvas"><IntegrationsPreview /></section>
+          <section data-surface="ink"><Testimonials /></section>
+          <section data-surface="canvas"><PricingPreview /></section>
+          <section data-surface="ink"><HomeCTA /></section>
         </Suspense>
       </main>
       <Footer />

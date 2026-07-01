@@ -2,7 +2,6 @@ import { RefreshCw, Lock, ClipboardList, Wrench } from 'lucide-react';
 import { TerminalWidget } from '@/components/shared/TerminalWidget';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
-import { Meteors } from '@/components/magic/Meteors';
 
 const EVENT_TYPES = [
   { name: 'lead.captured', color: 'text-blue-400' },
@@ -22,8 +21,6 @@ const FEATURES = [
 export function WebhooksSection() {
   return (
     <section id="feature-webhooks" className="relative py-20 px-6 lg:px-8 overflow-hidden">
-      <Meteors number={6} />
-
       <div className="mx-auto max-w-7xl relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left: terminal + event types in a compact stack */}

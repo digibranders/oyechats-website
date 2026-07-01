@@ -63,7 +63,7 @@ export function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-sm text-white/65 leading-relaxed mb-5">
+                <blockquote className="text-sm text-white/80 leading-relaxed mb-5">
                   &quot;{t.quote}&quot;
                 </blockquote>
 
@@ -71,7 +71,7 @@ export function Testimonials() {
                 {t.metric && (
                   <div className="glass-1 rounded-xl p-3 mb-5 flex items-center gap-3 border border-white/8">
                     <span className="text-2xl font-display font-bold text-emerald-400">{t.metric.value}</span>
-                    <span className="text-xs text-white/45">{t.metric.label}</span>
+                    <span className="text-xs text-white/70">{t.metric.label}</span>
                   </div>
                 )}
 
@@ -85,7 +85,7 @@ export function Testimonials() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-sm font-semibold text-white truncate">{t.name}</p>
-                    <p className="text-xs text-white/50 truncate">{t.title}, {t.company}</p>
+                    <p className="text-xs text-white/70 truncate">{t.title}, {t.company}</p>
                   </div>
                 </div>
               </motion.div>
@@ -94,7 +94,7 @@ export function Testimonials() {
         </div>
 
         {/* Drag hint */}
-        <p className="text-center text-xs text-white/25 mt-4">← Drag to explore →</p>
+        <p className="text-center text-xs text-white/50 mt-4">← Drag to explore →</p>
       </div>
     </section>
   );
