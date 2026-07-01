@@ -21,13 +21,13 @@ function RAGPipelineCell() {
   ];
 
   return (
-    <SpotlightCard className="glass-2 rounded-2xl p-6 h-full" spotlightColor="rgba(37,99,235,0.1)">
+    <SpotlightCard className="rounded-2xl p-6 h-full bg-[var(--card)] border border-[var(--line)] card-hover" spotlightColor="rgba(37,99,235,0.04)">
       <div className="mb-4">
         <SectionEyebrow color="blue">RAG Pipeline</SectionEyebrow>
-        <h3 className="font-display font-semibold text-white text-xl mt-3 mb-1">
+        <h3 className="font-display font-semibold text-[var(--fg)] text-xl mt-3 mb-1">
           Document-Aware AI
         </h3>
-        <p className="text-sm text-white/50">
+        <p className="text-sm text-[var(--muted)]">
           Hybrid AI search combines semantic understanding with keyword matching, so the right answer surfaces every time.
         </p>
       </div>
@@ -37,16 +37,16 @@ function RAGPipelineCell() {
         {stages.map((stage, i) => (
           <div key={stage.label} className="flex items-center gap-1">
             <div
-              className="flex flex-col items-center gap-1 rounded-xl border border-white/8 bg-white/[.03] p-2.5 min-w-[60px] text-center hover:border-white/15 transition-colors group"
+              className="flex flex-col items-center gap-1 rounded-xl border border-[var(--line)] bg-[var(--tint)] p-2.5 min-w-[60px] text-center hover:border-[var(--accent)]/30 transition-colors group"
             >
               <span className="group-hover:scale-110 transition-transform duration-200">
                 {stage.icon}
               </span>
-              <span className="text-[11px] font-medium text-white/70 whitespace-nowrap">{stage.label}</span>
-              <span className="text-[11px] text-white/45 whitespace-nowrap hidden sm:block">{stage.sublabel}</span>
+              <span className="text-[11px] font-medium text-[var(--fg)] whitespace-nowrap">{stage.label}</span>
+              <span className="text-[11px] text-[var(--muted)] whitespace-nowrap hidden sm:block">{stage.sublabel}</span>
             </div>
             {i < stages.length - 1 && (
-              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" className="text-white/20 shrink-0">
+              <svg width="16" height="8" viewBox="0 0 16 8" fill="none" className="text-[var(--muted)]/30 shrink-0">
                 <path d="M0 4H12M12 4L8 1M12 4L8 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )}
@@ -55,15 +55,15 @@ function RAGPipelineCell() {
       </div>
 
       {/* Stats row */}
-      <div className="flex gap-4 mt-4 pt-4 border-t border-white/8">
+      <div className="flex gap-4 mt-4 pt-4 border-t border-[var(--line)]">
         {[
           { value: '12ms', label: 'P99 latency' },
           { value: '99%', label: 'Accuracy' },
           { value: 'Hybrid', label: 'Search mode' },
         ].map((stat) => (
           <div key={stat.label}>
-            <p className="text-sm font-semibold text-blue-400">{stat.value}</p>
-            <p className="text-[11px] text-white/45">{stat.label}</p>
+            <p className="text-sm font-semibold text-[var(--accent)]">{stat.value}</p>
+            <p className="text-[11px] text-[var(--muted)]">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -74,12 +74,12 @@ function RAGPipelineCell() {
 // BANT Score Cell
 function BANTCell() {
   return (
-    <SpotlightCard className="glass-2 rounded-2xl p-5 h-full" spotlightColor="rgba(139,92,246,0.12)">
+    <SpotlightCard className="rounded-2xl p-5 h-full bg-[var(--card)] border border-[var(--line)] card-hover" spotlightColor="rgba(139,92,246,0.04)">
       <SectionEyebrow color="indigo">BANT Intelligence</SectionEyebrow>
-      <h3 className="font-display font-semibold text-white text-lg mt-3 mb-1">
+      <h3 className="font-display font-semibold text-[var(--fg)] text-lg mt-3 mb-1">
         Automated Qualification
       </h3>
-      <p className="text-xs text-white/45 mb-4">
+      <p className="text-xs text-[var(--muted)] mb-4">
         Real-time scoring across Budget, Authority, Need, Timeline.
       </p>
       <div className="flex justify-center mb-4">
@@ -87,17 +87,17 @@ function BANTCell() {
       </div>
       <div className="grid grid-cols-2 gap-1.5">
         {[
-          { label: 'Budget', score: 92, color: 'bg-emerald-500' },
-          { label: 'Authority', score: 88, color: 'bg-emerald-500' },
-          { label: 'Need', score: 95, color: 'bg-emerald-500' },
-          { label: 'Timeline', score: 62, color: 'bg-amber-500' },
+          { label: 'Budget', score: 92, color: 'bg-emerald-600' },
+          { label: 'Authority', score: 88, color: 'bg-emerald-600' },
+          { label: 'Need', score: 95, color: 'bg-emerald-600' },
+          { label: 'Timeline', score: 62, color: 'bg-amber-600' },
         ].map((item) => (
-          <div key={item.label} className="rounded-lg bg-white/[.03] border border-white/8 p-2">
+          <div key={item.label} className="rounded-lg bg-[var(--tint)] border border-[var(--line)] p-2">
             <div className="flex justify-between items-center mb-1.5">
-              <span className="text-[11px] text-white/50 font-medium">{item.label}</span>
-              <span className="text-[11px] font-bold text-white/80">{item.score}</span>
+              <span className="text-[11px] text-[var(--muted)] font-medium">{item.label}</span>
+              <span className="text-[11px] font-bold text-[var(--fg)]">{item.score}</span>
             </div>
-            <div className="h-1 rounded-full bg-white/8 overflow-hidden">
+            <div className="h-1 rounded-full bg-[var(--line)] overflow-hidden">
               <div
                 className={cn('h-full rounded-full transition-all duration-1000', item.color)}
                 style={{ width: `${item.score}%` }}
@@ -113,9 +113,9 @@ function BANTCell() {
 // Live Chat Cell
 function LiveChatCell() {
   return (
-    <SpotlightCard className="glass-2 rounded-2xl p-5 h-full" spotlightColor="rgba(6,182,212,0.1)">
+    <SpotlightCard className="rounded-2xl p-5 h-full bg-[var(--card)] border border-[var(--line)] card-hover" spotlightColor="rgba(6,182,212,0.04)">
       <SectionEyebrow color="cyan">Live Chat</SectionEyebrow>
-      <h3 className="font-display font-semibold text-white text-lg mt-3 mb-3">
+      <h3 className="font-display font-semibold text-[var(--fg)] text-lg mt-3 mb-3">
         Bot → Human Handoff
       </h3>
       <div className="space-y-2.5">
@@ -124,20 +124,20 @@ function LiveChatCell() {
           message="Great question! Let me connect you with a specialist."
         />
         <div className="flex items-center gap-2 my-2">
-          <div className="h-px flex-1 bg-cyan-500/20" />
-          <span className="text-[11px] text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-2 py-0.5">
+          <div className="h-px flex-1 bg-[var(--accent)]/10" />
+          <span className="text-[11px] text-[var(--accent)] bg-[var(--tint)] border border-[var(--line)] rounded-full px-2 py-0.5">
             Transferring to Sarah
           </span>
-          <div className="h-px flex-1 bg-cyan-500/20" />
+          <div className="h-px flex-1 bg-[var(--accent)]/10" />
         </div>
         <ChatBubble
           sender="operator"
           message="Hi! I'm Sarah, your Account Executive. I can see your BANT score. Let's talk about the Enterprise plan."
         />
       </div>
-      <div className="mt-3 pt-3 border-t border-white/8 flex items-center justify-between">
-        <span className="text-[11px] text-white/45">WebSocket real-time</span>
-        <span className="text-[11px] text-emerald-400">● Live</span>
+      <div className="mt-3 pt-3 border-t border-[var(--line)] flex items-center justify-between">
+        <span className="text-[11px] text-[var(--muted)]">WebSocket real-time</span>
+        <span className="text-[11px] text-emerald-600">● Live</span>
       </div>
     </SpotlightCard>
   );
@@ -148,12 +148,12 @@ function AnalyticsCell() {
   const bars = [42, 68, 55, 80, 63, 91, 74, 88, 70, 95, 82, 100];
 
   return (
-    <SpotlightCard className="glass-2 rounded-2xl p-5 h-full" spotlightColor="rgba(16,185,129,0.08)">
+    <SpotlightCard className="rounded-2xl p-5 h-full bg-[var(--card)] border border-[var(--line)] card-hover" spotlightColor="rgba(16,185,129,0.04)">
       <SectionEyebrow color="emerald">Analytics</SectionEyebrow>
-      <h3 className="font-display font-semibold text-white text-lg mt-3 mb-1">
+      <h3 className="font-display font-semibold text-[var(--fg)] text-lg mt-3 mb-1">
         Deep Visitor Insights
       </h3>
-      <p className="text-xs text-white/45 mb-4">Behavioral scoring, UTM tracking, session heatmaps.</p>
+      <p className="text-xs text-[var(--muted)] mb-4">Behavioral scoring, UTM tracking, session heatmaps.</p>
 
       {/* Mini bar chart */}
       <div className="flex items-end gap-1 h-16 mb-3">
@@ -173,12 +173,12 @@ function AnalyticsCell() {
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2">
         {[
-          { value: '2,847', label: 'Sessions today', color: 'text-blue-400' },
-          { value: '18.4%', label: 'Lead conversion', color: 'text-emerald-400' },
+          { value: '2,847', label: 'Sessions today', color: 'text-[var(--accent)]' },
+          { value: '18.4%', label: 'Lead conversion', color: 'text-emerald-600' },
         ].map((stat) => (
-          <div key={stat.label} className="rounded-lg bg-white/[.03] border border-white/8 p-2.5">
+          <div key={stat.label} className="rounded-lg bg-[var(--tint)] border border-[var(--line)] p-2.5">
             <p className={cn('text-base font-bold font-display', stat.color)}>{stat.value}</p>
-            <p className="text-[11px] text-white/45 mt-0.5">{stat.label}</p>
+            <p className="text-[11px] text-[var(--muted)] mt-0.5">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -197,13 +197,15 @@ const webhookEvents = [
 
 function WebhooksCell() {
   return (
-    <SpotlightCard className="glass-2 rounded-2xl p-5 h-full" spotlightColor="rgba(99,102,241,0.1)">
+    <SpotlightCard className="rounded-2xl p-5 h-full bg-[var(--card)] border border-[var(--line)] card-hover" spotlightColor="rgba(99,102,241,0.04)">
       <SectionEyebrow color="indigo">Webhooks</SectionEyebrow>
-      <h3 className="font-display font-semibold text-white text-lg mt-3 mb-1">
+      <h3 className="font-display font-semibold text-[var(--fg)] text-lg mt-3 mb-1">
         Event-Driven Integrations
       </h3>
-      <p className="text-xs text-white/45 mb-3">5 event types, retry logic, SSRF protection.</p>
-      <TerminalWidget events={webhookEvents} autoPlay className="text-[11px] rounded-xl" />
+      <p className="text-xs text-[var(--muted)] mb-3">5 event types, retry logic, SSRF protection.</p>
+      <div className="keep-dark">
+        <TerminalWidget events={webhookEvents} autoPlay className="text-[11px] rounded-xl" />
+      </div>
     </SpotlightCard>
   );
 }
@@ -215,11 +217,11 @@ export function FeatureBento() {
         {/* Header */}
         <div className="text-center mb-12" data-gsap>
           <SectionEyebrow className="mx-auto mb-4">Platform Features</SectionEyebrow>
-          <SectionHeading gradient size="lg" center>
+          <SectionHeading size="lg" center>
             Everything you need to{' '}
             <span className="gradient-text-heading">convert pipeline</span>
           </SectionHeading>
-          <p className="mt-4 text-white/50 max-w-2xl mx-auto">
+          <p className="mt-4 text-[var(--muted)] max-w-2xl mx-auto">
             From RAG-powered document understanding to automated BANT scoring, OyeChats handles the full journey from visitor to closed deal.
           </p>
         </div>
