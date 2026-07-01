@@ -60,6 +60,16 @@
 [data-surface="canvas"] .text-white\/45,[data-surface="mist"] .text-white\/45,.bg-section-b .text-white\/45{ color:rgba(15,23,42,.62); }
 [data-surface="canvas"] .text-white\/40,[data-surface="mist"] .text-white\/40,.bg-section-b .text-white\/40{ color:rgba(15,23,42,.56); }
 
+/* hover / group-hover text variants → stay legible on light (base compat above only covers the resting color) */
+[data-surface="canvas"] .hover\:text-white:hover,[data-surface="mist"] .hover\:text-white:hover,.bg-section-b .hover\:text-white:hover{ color:#0B1528; }
+[data-surface="canvas"] .hover\:text-white\/90:hover,[data-surface="mist"] .hover\:text-white\/90:hover,.bg-section-b .hover\:text-white\/90:hover{ color:rgba(15,23,42,.92); }
+[data-surface="canvas"] .hover\:text-white\/80:hover,[data-surface="mist"] .hover\:text-white\/80:hover,.bg-section-b .hover\:text-white\/80:hover{ color:rgba(15,23,42,.86); }
+[data-surface="canvas"] .hover\:text-white\/70:hover,[data-surface="mist"] .hover\:text-white\/70:hover,.bg-section-b .hover\:text-white\/70:hover{ color:rgba(15,23,42,.78); }
+[data-surface="canvas"] .hover\:text-white\/60:hover,[data-surface="mist"] .hover\:text-white\/60:hover,.bg-section-b .hover\:text-white\/60:hover{ color:rgba(15,23,42,.70); }
+[data-surface="canvas"] .group:hover .group-hover\:text-white,[data-surface="mist"] .group:hover .group-hover\:text-white,.bg-section-b .group:hover .group-hover\:text-white{ color:#0B1528; }
+[data-surface="canvas"] .group:hover .group-hover\:text-white\/90,[data-surface="mist"] .group:hover .group-hover\:text-white\/90,.bg-section-b .group:hover .group-hover\:text-white\/90{ color:rgba(15,23,42,.92); }
+[data-surface="canvas"] .group:hover .group-hover\:text-white\/80,[data-surface="mist"] .group:hover .group-hover\:text-white\/80,.bg-section-b .group:hover .group-hover\:text-white\/80{ color:rgba(15,23,42,.86); }
+
 /* Accent text utilities → darker, legible-on-light equivalents */
 [data-surface="canvas"] .text-blue-400,   [data-surface="mist"] .text-blue-400,   .bg-section-b .text-blue-400   { color:#1D4ED8; }
 [data-surface="canvas"] .text-indigo-400, [data-surface="mist"] .text-indigo-400, .bg-section-b .text-indigo-400 { color:#4338CA; }
@@ -105,7 +115,7 @@
   border:1px solid #E6EBF3; color:#0E1729; background:#fff;
 }
 [data-surface="canvas"] .btn-ghost-style:hover,[data-surface="mist"] .btn-ghost-style:hover,.bg-section-b .btn-ghost-style:hover{
-  background:#FAFBFE; border-color:#C4D0E6;
+  background:#F1F5FB; border-color:#C4D0E6; color:#0B1528;
 }
 
 /* Chat bubbles on light */
