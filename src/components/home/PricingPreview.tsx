@@ -2,10 +2,12 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
-import { pricingTiers } from '@/lib/pricing';
 import { Aurora } from '@/components/shared/Aurora';
+import { getPricingData } from '@/lib/pricingApi';
 
-export function PricingPreview() {
+export async function PricingPreview() {
+  const { tiers } = await getPricingData();
+
   return (
     <section className="py-24 px-6 lg:px-8" aria-label="Pricing preview">
       <div className="mx-auto max-w-5xl">
@@ -19,7 +21,7 @@ export function PricingPreview() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-          {pricingTiers.map((tier) => (
+          {tiers.map((tier) => (
             <div key={tier.id} className="relative pt-4 h-full" data-gsap>
               {/* fc-border-wrapper provides the 1px gradient border + glow for featured.
                   The badge is nested INSIDE this wrapper (not as a sibling

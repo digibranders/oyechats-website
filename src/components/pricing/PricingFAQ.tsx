@@ -3,10 +3,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
-import { pricingFAQ } from '@/lib/pricing';
 import { cn } from '@/lib/utils';
 
-export function PricingFAQ() {
+interface PricingFAQProps {
+  faq: { q: string; a: string }[];
+}
+
+export function PricingFAQ({ faq }: PricingFAQProps) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
@@ -20,7 +23,7 @@ export function PricingFAQ() {
         </div>
 
         <div className="space-y-2">
-          {pricingFAQ.map((item, i) => {
+          {faq.map((item, i) => {
             const isOpen = open === i;
             return (
               <div

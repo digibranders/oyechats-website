@@ -3,20 +3,21 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
-import { pricingTiers } from '@/lib/pricing';
 import { Aurora } from '@/components/shared/Aurora';
+import type { PricingTier } from '@/types/pricing';
 
 interface PricingCardsProps {
   billing: 'monthly' | 'annual';
+  tiers: PricingTier[];
 }
 
-export function PricingCards({ billing }: PricingCardsProps) {
+export function PricingCards({ billing, tiers }: PricingCardsProps) {
   return (
     <>
     <section className="px-6 lg:px-8 pb-4">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pricingTiers.map((tier, i) => (
+          {tiers.map((tier, i) => (
             <div key={tier.id} className="relative pt-4 h-full">
               {/*
                 Featured: fc-border-wrapper provides the 1px gradient border + animated glow.
