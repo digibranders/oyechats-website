@@ -7,7 +7,6 @@ import { PricingHero } from '@/components/pricing/PricingHero';
 import { PricingCards } from '@/components/pricing/PricingCards';
 import { FeatureTable } from '@/components/pricing/FeatureTable';
 import { PricingFAQ } from '@/components/pricing/PricingFAQ';
-import { AnimatedSeparator } from '@/components/shared/AnimatedSeparator';
 import type { PricingTier, PricingFeature } from '@/types/pricing';
 
 interface PricingPageClientProps {
@@ -25,15 +24,12 @@ export function PricingPageClient({ tiers, featureRows, faq }: PricingPageClient
       <main>
         <div className="bg-section-a">
           <PricingHero billing={billing} onToggle={setBilling} />
-          <AnimatedSeparator />
         </div>
         <div className="bg-section-b">
           <PricingCards billing={billing} tiers={tiers} />
-          <AnimatedSeparator />
         </div>
         <div className="bg-section-a">
           <FeatureTable rows={featureRows} />
-          <AnimatedSeparator />
         </div>
         <div className="bg-section-b">
           <PricingFAQ faq={faq} />

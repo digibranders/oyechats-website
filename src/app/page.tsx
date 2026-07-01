@@ -12,7 +12,6 @@ const IntegrationsPreview = dynamic(() => import('@/components/home/Integrations
 const Testimonials = dynamic(() => import('@/components/home/Testimonials').then(m => ({ default: m.Testimonials })));
 const PricingPreview = dynamic(() => import('@/components/home/PricingPreview').then(m => ({ default: m.PricingPreview })));
 const HomeCTA = dynamic(() => import('@/components/home/HomeCTA').then(m => ({ default: m.HomeCTA })));
-const AnimatedSeparator = dynamic(() => import('@/components/shared/AnimatedSeparator').then(m => ({ default: m.AnimatedSeparator })));
 
 export default function Home() {
   return (
@@ -22,11 +21,11 @@ export default function Home() {
         <section data-surface="ink"><Hero /></section>
         <section data-surface="canvas"><FeatureBento /></section>
         <Suspense fallback={<div className="h-48" />}>
-          <section data-surface="slate"><AnimatedSeparator /><ScrollStory /></section>
-          <section data-surface="mist"><AnimatedSeparator /><LiveStats /></section>
-          <section data-surface="canvas"><AnimatedSeparator /><IntegrationsPreview /></section>
-          <section data-surface="ink"><AnimatedSeparator /><Testimonials /></section>
-          <section data-surface="canvas"><AnimatedSeparator /><PricingPreview /></section>
+          <section data-surface="slate"><ScrollStory /></section>
+          <section data-surface="mist"><LiveStats /></section>
+          <section data-surface="canvas"><IntegrationsPreview /></section>
+          <section data-surface="ink"><Testimonials /></section>
+          <section data-surface="canvas"><PricingPreview /></section>
           <section data-surface="ink"><HomeCTA /></section>
         </Suspense>
       </main>
