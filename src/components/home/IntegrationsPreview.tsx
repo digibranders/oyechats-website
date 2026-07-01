@@ -50,19 +50,19 @@ const previewIntegrations: { name: string; desc: string; node: React.ReactNode }
   { name: 'WordPress', desc: 'Plugin install',  node: <BrandSvg icon={siWordpress} /> },
   { name: 'Shopify',   desc: 'Theme injection', node: <BrandSvg icon={siShopify} /> },
   { name: 'Webflow',   desc: 'Custom embed',    node: <BrandSvg icon={siWebflow} /> },
-  { name: 'Next.js',   desc: 'Script component',node: <BrandSvg icon={siNextdotjs} overrideColor="#FFFFFF" /> },
+  { name: 'Next.js',   desc: 'Script component',node: <BrandSvg icon={siNextdotjs} overrideColor="var(--fg)" /> },
   { name: 'HTML',      desc: 'Single tag embed',node: <BrandSvg icon={siHtml5} /> },
   { name: 'Vue.js',    desc: 'Plugin or script',node: <BrandSvg icon={siVuedotjs} /> },
   { name: 'React',     desc: 'Drop-in component', node: <BrandSvg icon={siReact} /> },
-  { name: 'Framer',    desc: 'Code component embed', node: <BrandSvg icon={siFramer} overrideColor="#FFFFFF" /> },
+  { name: 'Framer',    desc: 'Code component embed', node: <BrandSvg icon={siFramer} overrideColor="var(--fg)" /> },
   { name: 'Calendly',  desc: 'In-chat booking', node: <BrandSvg icon={siCalendly} /> },
   { name: 'Brevo',     desc: 'Transactional email', node: <BrandSvg icon={siBrevo} /> },
   { name: 'Zapier',    desc: 'Via webhooks',    node: <BrandSvg icon={siZapier} /> },
   { name: 'Make',      desc: 'Via webhooks',    node: <BrandSvg icon={siMake} /> },
   { name: 'Sentry',    desc: 'Error monitoring', node: <BrandSvg icon={siSentry} overrideColor="#A99CFF" /> },
   { name: 'Langfuse',  desc: 'AI observability', node: <LangfuseSvg /> },
-  { name: 'Webhooks',  desc: '5 event types',    node: <LinkIcon className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform duration-200" /> },
-  { name: 'REST API',  desc: 'Full OpenAPI spec', node: <Wrench className="w-6 h-6 text-indigo-300 group-hover:scale-110 transition-transform duration-200" /> },
+  { name: 'Webhooks',  desc: '5 event types',    node: <LinkIcon className="w-6 h-6 text-[var(--accent)] group-hover:scale-110 transition-transform duration-200" /> },
+  { name: 'REST API',  desc: 'Full OpenAPI spec', node: <Wrench className="w-6 h-6 text-[var(--accent)] group-hover:scale-110 transition-transform duration-200" /> },
 ];
 
 export function IntegrationsPreview() {
@@ -73,11 +73,11 @@ export function IntegrationsPreview() {
       <div className="mx-auto max-w-7xl relative">
         <div className="text-center mb-12" data-gsap>
           <SectionEyebrow className="mx-auto mb-4">Integrations</SectionEyebrow>
-          <SectionHeading gradient size="lg" center>
+          <SectionHeading size="lg" center>
             Drop the widget in,{' '}
             <span className="gradient-text-heading">anywhere</span>
           </SectionHeading>
-          <p className="mt-4 text-white/50 max-w-xl mx-auto">
+          <p className="mt-4 text-[var(--muted)] max-w-xl mx-auto">
             Works on any site that can host a script tag, plus webhooks, REST API, and meeting bookings out of the box.
           </p>
         </div>
@@ -87,16 +87,16 @@ export function IntegrationsPreview() {
           {previewIntegrations.map((item) => (
             <MagicCard
               key={item.name}
-              className="glass-1 rounded-2xl p-4 border border-white/8 hover:border-white/15 transition-all cursor-pointer group"
+              className="bg-[var(--card)] border border-[var(--line)] rounded-2xl p-4 card-hover cursor-pointer group"
               gradientColor="#2563EB"
-              gradientOpacity={0.12}
+              gradientOpacity={0.06}
             >
               <div className="flex flex-col items-center gap-2 text-center" data-gsap>
                 {item.node}
-                <span className="text-xs font-medium text-white/70 group-hover:text-white transition-colors">
+                <span className="text-xs font-medium text-[var(--fg)]/70 group-hover:text-[var(--fg)] transition-colors">
                   {item.name}
                 </span>
-                <span className="text-[9px] text-white/45">{item.desc}</span>
+                <span className="text-[9px] text-[var(--muted)]">{item.desc}</span>
               </div>
             </MagicCard>
           ))}
