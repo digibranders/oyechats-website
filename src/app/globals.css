@@ -2,7 +2,33 @@
 
 /* ── Section alternating backgrounds ── */
 .bg-section-a { background: #060a14; }
-.bg-section-b { background: #0b1120; }
+.bg-section-b {
+  position: relative;
+  background: #0b1120;
+  overflow: hidden;
+  isolation: isolate;
+}
+.bg-section-b::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(96, 165, 250, 0.06) 35%,
+    rgba(37, 99, 235, 0.015) 65%,
+    transparent 100%
+  );
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -1;
+}
 
 @font-face {
   font-family: 'Cal Sans';
