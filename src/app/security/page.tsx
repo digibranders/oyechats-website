@@ -129,7 +129,7 @@ export default function SecurityPage() {
                     <item.icon className="h-4 w-4 text-white/50 shrink-0" />
                     <div>
                       <p className="text-xs font-medium text-white">{item.name}</p>
-                      <p className="text-[11px] text-white/45">{item.role}</p>
+                      <p className="text-[11px] text-white/60">{item.role}</p>
                     </div>
                   </div>
                 ))}
