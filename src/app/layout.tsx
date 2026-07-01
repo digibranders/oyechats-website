@@ -6,6 +6,8 @@ import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { Analytics } from '@vercel/analytics/react';
+import { MouseTrail } from '@/components/ui/MouseTrail';
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -87,10 +89,6 @@ export const metadata: Metadata = {
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: ['/og-image.png'],
   },
-  icons: {
-    icon: '/oye_favicon_cropped.png?v=8',
-    apple: '/oye_favicon_cropped.png?v=8',
-  },
   alternates: {
     canonical: 'https://oyechats.com',
   },
@@ -153,6 +151,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ScrollProgressBar />
+        <MouseTrail />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

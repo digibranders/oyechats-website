@@ -26,7 +26,7 @@ export const pricingTiers: PricingTier[] = [
     extraSeatPriceUsd: 0,
     liveChat: false,
     features: [
-      '250 credits / month',
+      '200 credits / month',
       '1 chatbot',
       'Basic widget customization',
       'Lead capture forms',
