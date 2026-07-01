@@ -152,12 +152,6 @@ export default function CookiesPage() {
                     <code>oyechats_session_id</code>. The identifier carries no personal data and is cleared
                     when the visitor clears their browser storage for the host site.
                   </p>
-                  <p>
-                    On Pro and Enterprise plans, the customer operating the widget can enable a fully
-                    cookie-free and storage-free mode, which is suitable for sites that operate without
-                    persistent visitor identifiers (for example, regulated industries or strict-consent
-                    jurisdictions).
-                  </p>
                 </section>
 
                 <section id="third-party" className="scroll-mt-24">

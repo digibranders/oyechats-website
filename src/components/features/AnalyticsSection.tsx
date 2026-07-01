@@ -92,13 +92,13 @@ export function AnalyticsSection() {
             </p>
             <ul className="space-y-3">
               {[
-                'Real-time conversation and lead metrics dashboard',
+                'Conversation and lead metrics dashboard',
                 'BANT tier distribution (Hot / Warm / Cold)',
                 'Top questions report, know what your visitors ask most',
                 'Visitor geo, device, and referral source breakdown',
                 'UTM parameter capture for campaign attribution',
                 'AI response observability dashboard (Enterprise)',
-                'Chat history retention up to 90 days (Pro) or unlimited (Enterprise)',
+                'Chat history retention up to 90 days (Standard) or unlimited (Enterprise)',
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-white/80">
                   <svg width="14" height="14" viewBox="0 0 24 24" className="text-emerald-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">

@@ -19,11 +19,11 @@ const CHANGELOG = [
     tag: 'Major Release',
     tagColor: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
     changes: [
-      { type: 'new', text: 'BANT scoring engine with 4-criteria real-time analysis' },
-      { type: 'new', text: 'Behavioral tracking: rage clicks, scroll depth, exit intent' },
-      { type: 'new', text: 'Operator departments with smart routing rules' },
-      { type: 'improved', text: 'Hybrid search (RRF) now 40% more accurate on domain-specific queries' },
-      { type: 'improved', text: 'Widget load time reduced to under 100ms via edge CDN' },
+      { type: 'new', text: 'BANT scoring engine with four-dimension conversation analysis' },
+      { type: 'new', text: 'Visitor context: pages viewed, return visits, time on site, UTM & device capture' },
+      { type: 'new', text: 'Operator departments with routing rules (least-busy, round-robin)' },
+      { type: 'improved', text: 'Hybrid search (RRF) blends semantic + keyword retrieval for grounded answers' },
+      { type: 'improved', text: 'Widget loader trimmed to ~1.3 KB gzipped with Shadow DOM isolation' },
     ],
   },
   {
@@ -32,10 +32,10 @@ const CHANGELOG = [
     tag: 'Feature',
     tagColor: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
     changes: [
-      { type: 'new', text: 'Calendly integration for in-chat meeting booking' },
-      { type: 'new', text: 'WhatsApp Business API integration' },
-      { type: 'new', text: 'Webhook delivery log with retry visualization' },
-      { type: 'fixed', text: 'Multi-turn context window not respecting token budget on GPT-4o' },
+      { type: 'new', text: 'Calendly and Zcal booking for in-chat meeting scheduling' },
+      { type: 'new', text: 'Outbound webhooks with 5 event types and HMAC-SHA256 signing' },
+      { type: 'new', text: 'Webhook delivery log with retry history in the dashboard' },
+      { type: 'fixed', text: 'Multi-turn context window not respecting the token budget' },
     ],
   },
   {
@@ -55,10 +55,10 @@ const CHANGELOG = [
     tag: 'Feature',
     tagColor: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
     changes: [
-      { type: 'new', text: 'Zapier and Make (Integromat) native integrations' },
-      { type: 'new', text: 'HubSpot CRM sync, leads auto-created on tier change' },
-      { type: 'new', text: 'Canned responses with variable substitution' },
-      { type: 'improved', text: 'Analytics dashboard redesigned with BANT tier donut chart' },
+      { type: 'new', text: 'Outbound webhooks to connect Zapier, Make, and your own stack' },
+      { type: 'new', text: 'Email lead alerts and conversation summaries on tier change' },
+      { type: 'new', text: 'Canned responses for operators' },
+      { type: 'improved', text: 'Analytics dashboard with BANT tier distribution and qualification funnel' },
     ],
   },
   {
@@ -67,10 +67,10 @@ const CHANGELOG = [
     tag: 'Feature',
     tagColor: 'text-violet-400 bg-violet-400/10 border-violet-400/20',
     changes: [
-      { type: 'new', text: 'Multi-model support with 50+ AI providers now available on Enterprise' },
-      { type: 'new', text: 'AI observability dashboard for Enterprise tier' },
-      { type: 'new', text: 'Web crawling for automatic knowledge base updates' },
-      { type: 'improved', text: 'Vector search engine upgraded for 2× faster similarity retrieval' },
+      { type: 'new', text: 'Automatic model fallback (primary + fallback provider) via LiteLLM' },
+      { type: 'new', text: 'AI observability dashboard for the Enterprise tier' },
+      { type: 'new', text: 'Website crawling for automatic knowledge base updates' },
+      { type: 'improved', text: 'pgvector-backed similarity search with hybrid keyword fusion' },
     ],
   },
 ];

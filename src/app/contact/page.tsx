@@ -71,7 +71,7 @@ export default function ContactPage() {
               </SectionHeading>
               <p className="text-white/50 max-w-xl mx-auto">
                 Whether you want a demo, have an enterprise question, or just want to say hi -
-                we respond within 2 business hours.
+                we usually respond within one business day.
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   },
                   { icon: FileText, label: 'GST No.', value: '27AAICD9268J1Z0' },
                   { icon: MessageCircle, label: 'Live chat', value: 'Available on this page' },
-                  { icon: Clock, label: 'Response time', value: '< 2 business hours' },
+                  { icon: Clock, label: 'Response time', value: 'Within 1 business day' },
                 ].map((c) => (
                   <div key={c.label} className="flex items-start gap-3 glass-1 rounded-xl p-4 border border-white/8">
                     <c.icon className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
@@ -126,7 +126,7 @@ export default function ContactPage() {
                   <div className="flex-1 glass-2 rounded-3xl border border-emerald-500/20 p-12 flex flex-col items-center justify-center text-center">
                     <CheckCircle className="h-12 w-12 text-emerald-400 mb-4" />
                     <h3 className="font-display text-xl font-semibold text-white mb-2">Message sent!</h3>
-                    <p className="text-white/50">We&apos;ll get back to you within 2 business hours.</p>
+                    <p className="text-white/50">We&apos;ll get back to you within one business day.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="flex-1 glass-2 rounded-3xl border border-white/10 p-8 flex flex-col gap-5">

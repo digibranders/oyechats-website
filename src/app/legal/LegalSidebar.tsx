@@ -71,7 +71,7 @@ export default function LegalSidebar({ currentDoc, sections }: Props) {
 
   return (
     <nav aria-label="Legal documents" className="text-sm">
-      <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/40 mb-5">Legal</p>
+      <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/65 mb-5">Legal</p>
       <ul className="space-y-1">
         {DOCS.map((doc) => {
           const isCurrent = doc.id === currentDoc;

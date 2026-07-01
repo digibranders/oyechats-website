@@ -42,29 +42,24 @@ const QUICK_START = [
 ];
 
 const WIDGET_ATTRS = [
-  { attr: 'data-bot-key', type: 'string', required: true, desc: 'Your unique bot key from the dashboard.' },
-  { attr: 'data-position', type: '"bottom-right" | "bottom-left"', required: false, desc: 'Widget corner position. Default: bottom-right.' },
-  { attr: 'data-primary-color', type: 'hex string', required: false, desc: 'Override the primary brand color (e.g. #2563EB).' },
-  { attr: 'data-launcher-label', type: 'string', required: false, desc: 'Text shown next to the launcher button.' },
-  { attr: 'data-auto-open', type: '"true" | "false"', required: false, desc: 'Open the widget automatically on page load.' },
-  { attr: 'data-hide-branding', type: '"true" | "false"', required: false, desc: 'Remove "Powered by OyeChats" label (Standard+ plans).' },
+  { attr: 'data-bot-key', type: 'string', required: true, desc: 'Your unique bot key from the dashboard (Settings → Widget).' },
 ];
 
 const WEBHOOK_EVENTS = [
-  { event: 'conversation.started', desc: 'Fires when a visitor opens and sends their first message.' },
-  { event: 'lead.captured', desc: 'Fires when a visitor submits name/email via the lead form.' },
-  { event: 'bant.scored', desc: 'Fires after a conversation is scored for Budget, Authority, Need, Timeline.' },
-  { event: 'operator.requested', desc: 'Fires when the visitor asks to speak with a human.' },
-  { event: 'conversation.ended', desc: 'Fires when a chat session is closed by any party.' },
+  { event: 'tier_transition', desc: 'Fires when a visitor crosses a qualification tier (e.g. becomes a hot lead).' },
+  { event: 'lead_captured', desc: 'Fires when a visitor submits name/email via the lead form.' },
+  { event: 'handoff_requested', desc: 'Fires when the visitor asks to speak with a human operator.' },
+  { event: 'meeting_booked', desc: 'Fires when a visitor books a meeting via Calendly or Zcal.' },
+  { event: 'chat_closed', desc: 'Fires when a chat session is closed.' },
 ];
 
 const API_ENDPOINTS = [
-  { method: 'GET', path: '/v1/conversations', desc: 'List all conversations with pagination.' },
-  { method: 'GET', path: '/v1/conversations/:id', desc: 'Get a single conversation with messages.' },
-  { method: 'GET', path: '/v1/leads', desc: 'List captured leads with BANT scores.' },
-  { method: 'POST', path: '/v1/documents', desc: 'Upload a document to the RAG knowledge base.' },
-  { method: 'DELETE', path: '/v1/documents/:id', desc: 'Remove a document from the knowledge base.' },
-  { method: 'GET', path: '/v1/analytics/summary', desc: 'Get conversation and lead analytics for a date range.' },
+  { method: 'GET', path: '/bots', desc: 'List all bots for your account.' },
+  { method: 'GET', path: '/leads', desc: 'List captured leads with BANT scores.' },
+  { method: 'GET', path: '/leads/export', desc: 'Export captured leads as CSV.' },
+  { method: 'POST', path: '/ingest', desc: 'Upload a document (PDF, DOCX, TXT) to the knowledge base.' },
+  { method: 'DELETE', path: '/documents/{name}', desc: 'Remove a document and its embeddings.' },
+  { method: 'GET', path: '/analytics/dashboard', desc: 'Get conversation and lead metrics for a date range.' },
 ];
 
 const METHOD_COLORS: Record<string, string> = {
@@ -106,7 +101,7 @@ export default function DocsPage() {
                     <s.icon className="h-6 w-6 text-blue-400" />
                     <span className="text-xs font-semibold text-white/45 font-mono">Step {s.step}</span>
                   </div>
-                  <p className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">{s.title}</p>
+                  <p className="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">{s.title}</p>
                   <p className="text-xs text-white/45 leading-relaxed">{s.desc}</p>
                 </a>
               ))}
@@ -121,7 +116,7 @@ export default function DocsPage() {
               <SectionEyebrow>Widget Setup</SectionEyebrow>
               <h2 className="font-display font-semibold text-2xl text-white mt-3 mb-2">Add the chat widget</h2>
               <p className="text-white/45 mb-8 max-w-2xl">
-                Paste the script tag before the closing <code className="font-mono text-blue-300 text-xs bg-blue-400/10 px-1.5 py-0.5 rounded">&lt;/body&gt;</code> tag on any HTML page.
+                Paste the script tag before the closing <code className="font-mono text-blue-400 text-xs bg-blue-400/10 px-1.5 py-0.5 rounded">&lt;/body&gt;</code> tag on any HTML page.
               </p>
 
               {/* Code block */}
@@ -130,10 +125,10 @@ export default function DocsPage() {
                   <span className="text-xs font-mono text-white/50">HTML</span>
                   <span className="text-xs text-white/45">Paste before &lt;/body&gt;</span>
                 </div>
-                <pre className="p-5 text-sm font-mono text-white/80 overflow-x-auto leading-relaxed bg-[#010812]">
+                <pre className="keep-dark p-5 text-sm font-mono text-white/80 overflow-x-auto leading-relaxed bg-[#010812]">
                   <span className="text-white/30">{`<!-- OyeChats Widget -->`}</span>{'\n'}
                   <span className="text-blue-300">{`<script`}</span>{'\n'}
-                  {'  '}<span className="text-emerald-300">src</span><span className="text-white/60">=</span><span className="text-amber-300">{`"https://widget.oyechats.com/loader.js"`}</span>{'\n'}
+                  {'  '}<span className="text-emerald-300">src</span><span className="text-white/60">=</span><span className="text-amber-300">{`"https://cdn.oyechats.com/oyechats-widget.js"`}</span>{'\n'}
                   {'  '}<span className="text-emerald-300">data-bot-key</span><span className="text-white/60">=</span><span className="text-amber-300">{`"YOUR_BOT_KEY"`}</span>{'\n'}
                   {'  '}<span className="text-emerald-300">defer</span>{'\n'}
                   <span className="text-blue-300">{`></script>`}</span>
@@ -141,7 +136,12 @@ export default function DocsPage() {
               </div>
 
               {/* Attributes table */}
-              <h3 className="text-sm font-semibold text-white mb-4">Configuration attributes</h3>
+              <h3 className="text-sm font-semibold text-white mb-2">Configuration attributes</h3>
+              <p className="text-xs text-white/45 mb-4 max-w-2xl">
+                The script tag only needs <code className="font-mono text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded">data-bot-key</code>.
+                Appearance and behavior, launcher position, colors, auto-open, and branding removal (Standard and above),
+                are configured per bot in your dashboard under Settings → Widget.
+              </p>
               <div className="rounded-2xl border border-white/8 overflow-hidden">
                 <table className="w-full border-collapse text-sm">
                   <thead>
@@ -155,8 +155,8 @@ export default function DocsPage() {
                   <tbody>
                     {WIDGET_ATTRS.map((a, i) => (
                       <tr key={a.attr} className={i < WIDGET_ATTRS.length - 1 ? 'border-b border-white/[0.04]' : ''}>
-                        <td className="px-5 py-3 font-mono text-xs text-blue-300">{a.attr}</td>
-                        <td className="px-5 py-3 font-mono text-xs text-amber-300/70">{a.type}</td>
+                        <td className="px-5 py-3 font-mono text-xs text-blue-400">{a.attr}</td>
+                        <td className="px-5 py-3 font-mono text-xs text-amber-400">{a.type}</td>
                         <td className="px-5 py-3 text-xs">
                           {a.required
                             ? <span className="text-emerald-400 font-semibold">Yes</span>
@@ -192,26 +192,29 @@ export default function DocsPage() {
               </div>
 
               {/* Payload example */}
-              <h3 className="text-sm font-semibold text-white mb-4">Example payload for <span className="text-violet-300 font-mono">bant.scored</span></h3>
+              <h3 className="text-sm font-semibold text-white mb-4">Example payload for <span className="text-violet-300 font-mono">tier_transition</span></h3>
               <div className="rounded-2xl border border-white/8 overflow-hidden">
                 <div className="bg-white/[0.03] border-b border-white/8 px-5 py-3">
                   <span className="text-xs font-mono text-white/50">JSON</span>
                 </div>
                 <pre className="p-5 text-xs font-mono text-white/70 overflow-x-auto leading-loose bg-[#010812]">{`{
-  "event": "bant.scored",
+  "event": "tier_transition",
+  "bot_id": 42,
   "timestamp": "2025-04-11T14:23:05Z",
-  "conversation_id": "conv_8f3a2b1c",
-  "lead": {
-    "name": "Sarah Chen",
-    "email": "sarah@acme.com"
-  },
-  "bant": {
-    "budget": 82,
-    "authority": 91,
-    "need": 74,
-    "timeline": 68,
-    "composite": 79,
-    "tier": "hot"
+  "data": {
+    "session_id": "conv_8f3a2b1c",
+    "lead": {
+      "name": "Sarah Chen",
+      "email": "sarah@acme.com"
+    },
+    "bant": {
+      "budget": 82,
+      "authority": 91,
+      "need": 74,
+      "timeline": 68,
+      "composite": 79,
+      "tier": "hot"
+    }
   }
 }`}</pre>
               </div>
@@ -233,7 +236,7 @@ export default function DocsPage() {
                 Base URL: <code className="font-mono text-blue-300 text-xs bg-blue-400/10 px-1.5 py-0.5 rounded">https://api.oyechats.com</code>
               </p>
               <p className="text-white/45 mb-8 max-w-2xl text-sm">
-                Authenticate with your API key in the <code className="font-mono text-white/60 text-xs">Authorization: Bearer &lt;key&gt;</code> header.
+                Authenticate with your API key in the <code className="font-mono text-white/60 text-xs">X-API-Key: &lt;key&gt;</code> header.
               </p>
 
               <div className="rounded-2xl border border-white/8 overflow-hidden">
@@ -281,12 +284,12 @@ export default function DocsPage() {
             <div className="glass-2 border border-white/8 rounded-2xl px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <p className="font-display font-semibold text-lg text-white mb-1">Need help integrating?</p>
-                <p className="text-sm text-white/45">Our team responds within 2 hours on business days.</p>
+                <p className="text-sm text-white/45">Our team typically responds within one business day.</p>
               </div>
               <div className="flex items-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white transition-colors cursor-pointer"
+                  className="btn-filled-style px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
                 >
                   Contact support
                 </Link>

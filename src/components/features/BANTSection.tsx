@@ -59,8 +59,8 @@ export function BANTSection() {
             </SectionHeading>
             <p className="text-white/50 leading-relaxed mb-8">
               BANT (Budget, Authority, Need, Timeline) is the gold standard in B2B sales qualification.
-              OyeChats analyzes every conversation in real-time and scores each dimension 0-100,
-              triggering webhooks and CRM updates the moment a visitor becomes a hot lead.
+              OyeChats analyzes every conversation and scores all four dimensions into a composite
+              0-100 lead score, firing webhooks the moment a visitor becomes a hot lead.
             </p>
 
             {/* Timeline */}

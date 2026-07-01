@@ -46,7 +46,7 @@ export function CodeSnippet({ code, language: _language = 'html', filename, clas
         </div>
         <button
           onClick={handleCopy}
-          className="text-[11px] text-white/40 hover:text-white/70 transition-colors flex items-center gap-1.5"
+          className="text-[11px] text-white/60 hover:text-white/85 transition-colors flex items-center gap-1.5"
         >
           {copied ? (
             <>

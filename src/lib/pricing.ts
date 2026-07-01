@@ -123,7 +123,7 @@ export const PRICING_CURRENCY_SYMBOL = '$';
  */
 export const creditCosts: CreditCost[] = [
   { action: '1 AI chat reply', credits: 1 },
-  { action: '1 URL page crawl + ingest', credits: 3 },
+  { action: '1 URL page crawl + ingest', credits: 5 },
   { action: '1 customer-facing email (lead alert / summary)', credits: 1 },
 ];
 
@@ -250,7 +250,7 @@ export const featureRows: PricingFeature[] = [
 export const pricingFAQ = [
   {
     q: "What's a credit?",
-    a: 'Credits are how OyeChats meters work. Each AI chat reply uses 1 credit, each URL page we crawl + ingest uses 3 credits, and each customer-facing email (lead alerts, conversation summaries) uses 1 credit. System emails like password resets and operator notifications are always free.',
+    a: 'Credits are how OyeChats meters work. Each AI chat reply uses 1 credit, each URL page we crawl + ingest uses 5 credits, and each customer-facing email (lead alerts, conversation summaries) uses 1 credit. System emails like password resets and operator notifications are always free.',
   },
   {
     q: 'How do I pay?',
@@ -282,7 +282,7 @@ export const pricingFAQ = [
   },
   {
     q: 'How does BANT scoring work?',
-    a: 'OyeChats analyzes every conversation across Budget, Authority, Need, and Timeline, scoring each 0-100. The composite score drives webhook notifications and lead-tier assignments.',
+    a: 'OyeChats analyzes every conversation across Budget, Authority, Need, and Timeline, scoring each dimension and combining them into a composite 0-100 lead score. That score drives webhook notifications and lead-tier assignments.',
   },
   {
     q: 'Is annual billing charged upfront?',
