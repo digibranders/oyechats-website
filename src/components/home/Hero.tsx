@@ -229,27 +229,6 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={mounted ? { opacity: 0 } : false}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer"
-        aria-hidden="true"
-      >
-        <span className="text-[11px] text-white/45 uppercase tracking-widest">Scroll</span>
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-white/45 animate-scroll-chevron"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </motion.div>
     </section>
   );
 }
