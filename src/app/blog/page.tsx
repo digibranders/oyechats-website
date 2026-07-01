@@ -113,8 +113,8 @@ export default function BlogPage() {
                 <span className={cn('text-[11px] font-semibold uppercase tracking-wide rounded-full border px-2.5 py-1', POSTS[0].tag)}>
                   {POSTS[0].category}
                 </span>
-                <span className="text-xs text-white/45">{POSTS[0].readTime}</span>
-                <span className="text-xs text-white/45">{POSTS[0].date}</span>
+                <span className="text-xs text-white/60">{POSTS[0].readTime}</span>
+                <span className="text-xs text-white/60">{POSTS[0].date}</span>
               </div>
               <h2 className="font-display text-2xl font-semibold text-white mb-3 group-hover:text-white/90 transition-colors">
                 {POSTS[0].title}
@@ -136,13 +136,13 @@ export default function BlogPage() {
                     <span className={cn('text-[11px] font-semibold uppercase tracking-wide rounded-full border px-2 py-0.5', post.tag)}>
                       {post.category}
                     </span>
-                    <span className="text-[11px] text-white/45 ml-auto">{post.readTime}</span>
+                    <span className="text-[11px] text-white/60 ml-auto">{post.readTime}</span>
                   </div>
                   <h3 className="text-sm font-semibold text-white group-hover:text-white/90 transition-colors mb-2 leading-snug flex-1">
                     {post.title}
                   </h3>
-                  <p className="text-xs text-white/45 leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
-                  <p className="text-[11px] text-white/45">{post.date}</p>
+                  <p className="text-xs text-white/55 leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>
+                  <p className="text-[11px] text-white/60">{post.date}</p>
                 </Link>
               ))}
             </div>

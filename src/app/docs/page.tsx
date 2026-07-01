@@ -106,7 +106,7 @@ export default function DocsPage() {
                     <s.icon className="h-6 w-6 text-blue-400" />
                     <span className="text-xs font-semibold text-white/45 font-mono">Step {s.step}</span>
                   </div>
-                  <p className="text-sm font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">{s.title}</p>
+                  <p className="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">{s.title}</p>
                   <p className="text-xs text-white/45 leading-relaxed">{s.desc}</p>
                 </a>
               ))}
@@ -121,7 +121,7 @@ export default function DocsPage() {
               <SectionEyebrow>Widget Setup</SectionEyebrow>
               <h2 className="font-display font-semibold text-2xl text-white mt-3 mb-2">Add the chat widget</h2>
               <p className="text-white/45 mb-8 max-w-2xl">
-                Paste the script tag before the closing <code className="font-mono text-blue-300 text-xs bg-blue-400/10 px-1.5 py-0.5 rounded">&lt;/body&gt;</code> tag on any HTML page.
+                Paste the script tag before the closing <code className="font-mono text-blue-400 text-xs bg-blue-400/10 px-1.5 py-0.5 rounded">&lt;/body&gt;</code> tag on any HTML page.
               </p>
 
               {/* Code block */}
@@ -130,7 +130,7 @@ export default function DocsPage() {
                   <span className="text-xs font-mono text-white/50">HTML</span>
                   <span className="text-xs text-white/45">Paste before &lt;/body&gt;</span>
                 </div>
-                <pre className="p-5 text-sm font-mono text-white/80 overflow-x-auto leading-relaxed bg-[#010812]">
+                <pre className="keep-dark p-5 text-sm font-mono text-white/80 overflow-x-auto leading-relaxed bg-[#010812]">
                   <span className="text-white/30">{`<!-- OyeChats Widget -->`}</span>{'\n'}
                   <span className="text-blue-300">{`<script`}</span>{'\n'}
                   {'  '}<span className="text-emerald-300">src</span><span className="text-white/60">=</span><span className="text-amber-300">{`"https://widget.oyechats.com/loader.js"`}</span>{'\n'}
@@ -155,8 +155,8 @@ export default function DocsPage() {
                   <tbody>
                     {WIDGET_ATTRS.map((a, i) => (
                       <tr key={a.attr} className={i < WIDGET_ATTRS.length - 1 ? 'border-b border-white/[0.04]' : ''}>
-                        <td className="px-5 py-3 font-mono text-xs text-blue-300">{a.attr}</td>
-                        <td className="px-5 py-3 font-mono text-xs text-amber-300/70">{a.type}</td>
+                        <td className="px-5 py-3 font-mono text-xs text-blue-400">{a.attr}</td>
+                        <td className="px-5 py-3 font-mono text-xs text-amber-400">{a.type}</td>
                         <td className="px-5 py-3 text-xs">
                           {a.required
                             ? <span className="text-emerald-400 font-semibold">Yes</span>
@@ -286,7 +286,7 @@ export default function DocsPage() {
               <div className="flex items-center gap-3">
                 <Link
                   href="/contact"
-                  className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white transition-colors cursor-pointer"
+                  className="btn-filled-style px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
                 >
                   Contact support
                 </Link>

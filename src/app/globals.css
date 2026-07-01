@@ -69,6 +69,10 @@
 [data-surface="canvas"] .group:hover .group-hover\:text-white,[data-surface="mist"] .group:hover .group-hover\:text-white,.bg-section-b .group:hover .group-hover\:text-white{ color:#0B1528; }
 [data-surface="canvas"] .group:hover .group-hover\:text-white\/90,[data-surface="mist"] .group:hover .group-hover\:text-white\/90,.bg-section-b .group:hover .group-hover\:text-white\/90{ color:rgba(15,23,42,.92); }
 [data-surface="canvas"] .group:hover .group-hover\:text-white\/80,[data-surface="mist"] .group:hover .group-hover\:text-white\/80,.bg-section-b .group:hover .group-hover\:text-white\/80{ color:rgba(15,23,42,.86); }
+[data-surface="canvas"] .group:hover .group-hover\:text-blue-400,[data-surface="mist"] .group:hover .group-hover\:text-blue-400,.bg-section-b .group:hover .group-hover\:text-blue-400{ color:#1D4ED8; }
+[data-surface="canvas"] .group:hover .group-hover\:text-indigo-400,[data-surface="mist"] .group:hover .group-hover\:text-indigo-400,.bg-section-b .group:hover .group-hover\:text-indigo-400{ color:#4338CA; }
+[data-surface="canvas"] .group:hover .group-hover\:text-cyan-400,[data-surface="mist"] .group:hover .group-hover\:text-cyan-400,.bg-section-b .group:hover .group-hover\:text-cyan-400{ color:#0369A1; }
+[data-surface="canvas"] .group:hover .group-hover\:text-amber-400,[data-surface="mist"] .group:hover .group-hover\:text-amber-400,.bg-section-b .group:hover .group-hover\:text-amber-400{ color:#B45309; }
 
 /* Accent text utilities → darker, legible-on-light equivalents */
 [data-surface="canvas"] .text-blue-400,   [data-surface="mist"] .text-blue-400,   .bg-section-b .text-blue-400   { color:#1D4ED8; }
@@ -134,26 +138,39 @@
    Any component with class .keep-dark (e.g. Code Previews, Tooltips,
    and featured card wrappers) keeps dark-mode text and color styling.
    ═══════════════════════════════════════════════════════════════ */
-[data-surface] .keep-dark, [data-surface] .keep-dark * {
+[data-surface] .keep-dark, [data-surface] .keep-dark *,
+.bg-section-b .keep-dark, .bg-section-b .keep-dark * {
   color: revert-layer;
 }
-[data-surface] .keep-dark .text-white { color: #FFFFFF; }
-[data-surface] .keep-dark .text-white\/90 { color: rgba(255,255,255,.9); }
-[data-surface] .keep-dark .text-white\/80 { color: rgba(255,255,255,.8); }
-[data-surface] .keep-dark .text-white\/75 { color: rgba(255,255,255,.75); }
-[data-surface] .keep-dark .text-white\/70 { color: rgba(255,255,255,.7); }
-[data-surface] .keep-dark .text-white\/65 { color: rgba(255,255,255,.65); }
-[data-surface] .keep-dark .text-white\/60 { color: rgba(255,255,255,.6); }
-[data-surface] .keep-dark .text-white\/55 { color: rgba(255,255,255,.55); }
-[data-surface] .keep-dark .text-white\/50 { color: rgba(255,255,255,.5); }
-[data-surface] .keep-dark .text-white\/45 { color: rgba(255,255,255,.45); }
-[data-surface] .keep-dark .text-white\/40 { color: rgba(255,255,255,.4); }
-[data-surface] .keep-dark .text-blue-400 { color: #60A5FA; }
-[data-surface] .keep-dark .text-indigo-400 { color: #818CF8; }
-[data-surface] .keep-dark .text-cyan-400 { color: #22D3EE; }
-[data-surface] .keep-dark .text-emerald-400 { color: #34D399; }
-[data-surface] .keep-dark .text-violet-400 { color: #A78BFA; }
-[data-surface] .keep-dark .text-amber-400 { color: #FBBF24; }
+[data-surface] .keep-dark .text-white, .bg-section-b .keep-dark .text-white { color: #FFFFFF; }
+[data-surface] .keep-dark .text-white\/90, .bg-section-b .keep-dark .text-white\/90 { color: rgba(255,255,255,.9); }
+[data-surface] .keep-dark .text-white\/80, .bg-section-b .keep-dark .text-white\/80 { color: rgba(255,255,255,.8); }
+[data-surface] .keep-dark .text-white\/75, .bg-section-b .keep-dark .text-white\/75 { color: rgba(255,255,255,.75); }
+[data-surface] .keep-dark .text-white\/70, .bg-section-b .keep-dark .text-white\/70 { color: rgba(255,255,255,.7); }
+[data-surface] .keep-dark .text-white\/65, .bg-section-b .keep-dark .text-white\/65 { color: rgba(255,255,255,.65); }
+[data-surface] .keep-dark .text-white\/60, .bg-section-b .keep-dark .text-white\/60 { color: rgba(255,255,255,.6); }
+[data-surface] .keep-dark .text-white\/55, .bg-section-b .keep-dark .text-white\/55 { color: rgba(255,255,255,.55); }
+[data-surface] .keep-dark .text-white\/50, .bg-section-b .keep-dark .text-white\/50 { color: rgba(255,255,255,.5); }
+[data-surface] .keep-dark .text-white\/45, .bg-section-b .keep-dark .text-white\/45 { color: rgba(255,255,255,.45); }
+[data-surface] .keep-dark .text-white\/40, .bg-section-b .keep-dark .text-white\/40 { color: rgba(255,255,255,.4); }
+[data-surface] .keep-dark .text-white\/30, .bg-section-b .keep-dark .text-white\/30 { color: rgba(255,255,255,.3); }
+[data-surface] .keep-dark .text-white\/25, .bg-section-b .keep-dark .text-white\/25 { color: rgba(255,255,255,.25); }
+[data-surface] .keep-dark .text-white\/20, .bg-section-b .keep-dark .text-white\/20 { color: rgba(255,255,255,.2); }
+[data-surface] .keep-dark .text-white\/15, .bg-section-b .keep-dark .text-white\/15 { color: rgba(255,255,255,.15); }
+[data-surface] .keep-dark .text-white\/10, .bg-section-b .keep-dark .text-white\/10 { color: rgba(255,255,255,.1); }
+[data-surface] .keep-dark .text-blue-400, .bg-section-b .keep-dark .text-blue-400 { color: #60A5FA; }
+[data-surface] .keep-dark .text-indigo-400, .bg-section-b .keep-dark .text-indigo-400 { color: #818CF8; }
+[data-surface] .keep-dark .text-cyan-400, .bg-section-b .keep-dark .text-cyan-400 { color: #22D3EE; }
+[data-surface] .keep-dark .text-emerald-400, .bg-section-b .keep-dark .text-emerald-400 { color: #34D399; }
+[data-surface] .keep-dark .text-violet-400, .bg-section-b .keep-dark .text-violet-400 { color: #A78BFA; }
+[data-surface] .keep-dark .text-amber-400, .bg-section-b .keep-dark .text-amber-400 { color: #FBBF24; }
+[data-surface] .keep-dark .text-blue-300, .bg-section-b .keep-dark .text-blue-300 { color: #93C5FD; }
+[data-surface] .keep-dark .text-indigo-300, .bg-section-b .keep-dark .text-indigo-300 { color: #A5B4FC; }
+[data-surface] .keep-dark .text-cyan-300, .bg-section-b .keep-dark .text-cyan-300 { color: #67E8F9; }
+[data-surface] .keep-dark .text-emerald-300, .bg-section-b .keep-dark .text-emerald-300 { color: #6EE7B7; }
+[data-surface] .keep-dark .text-violet-300, .bg-section-b .keep-dark .text-violet-300 { color: #C4B5FD; }
+[data-surface] .keep-dark .text-amber-300, .bg-section-b .keep-dark .text-amber-300 { color: #FCD34D; }
+[data-surface] .keep-dark .text-amber-300\/70, .bg-section-b .keep-dark .text-amber-300\/70 { color: rgba(252,211,77,.7); }
 
 @font-face {
   font-family: 'Cal Sans';
