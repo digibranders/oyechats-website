@@ -6,7 +6,6 @@ import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import OyeChatsMark from '@/components/shared/OyeChatsMark';
-import { Aurora } from '@/components/shared/Aurora';
 
 // Social proof logos (placeholder text-based)
 const socialProofItems = [
@@ -31,14 +30,6 @@ export function Hero() {
       <div className="hero-glow absolute inset-0 pointer-events-none" />
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Aurora WebGL silk-wave background — brand blues, behind all content */}
-      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-        <Aurora
-          colors={["#060a14", "#0a1329", "#112247", "#1c356b", "#2a4c93", "#4f46e5", "#0ea5e9", "#06b6d4"]}
-          speed={1.0}
-          opacity={0.85}
-        />
-      </div>
       {/* readability veil */}
       <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 30%, transparent, rgba(10,17,34,.55))' }} aria-hidden="true" />
 
