@@ -191,12 +191,15 @@ export function Aurora({
     scene.add(mesh);
 
     const startTime = performance.now();
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const animate = () => {
       const elapsedTime = (performance.now() - startTime) / 1000;
       material.uniforms.uTime.value = elapsedTime;
       renderer.render(scene, camera);
-      animationFrameRef.current = requestAnimationFrame(animate);
+      if (!prefersReduced) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
     };
 
     animate();

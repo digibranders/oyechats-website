@@ -6,15 +6,7 @@ import { CTAButton } from '@/components/shared/CTAButton';
 import { BANTScoreRing } from '@/components/shared/BANTScoreRing';
 import { ChatBubble } from '@/components/shared/ChatBubble';
 import OyeChatsMark from '@/components/shared/OyeChatsMark';
-import dynamic from 'next/dynamic';
-// Particle background is intentionally disabled on the homepage but kept for
-// future reuse. DO NOT DELETE, this import and the render block below are
-// preserved on purpose. Toggle `SHOW_HERO_PARTICLES` to re-enable.
-const AntigravityParticles = dynamic(
-  () => import('@/components/canvas/AntigravityParticles').then(m => ({ default: m.AntigravityParticles })),
-  { ssr: false }
-);
-const SHOW_HERO_PARTICLES = false;
+import { Aurora } from '@/components/shared/Aurora';
 
 // Social proof logos (placeholder text-based)
 const socialProofItems = [
@@ -33,22 +25,22 @@ export function Hero() {
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: 'var(--color-bg-void)' }}
+      style={{ background: 'var(--bg)' }}
       aria-label="Hero section"
     >
       <div className="hero-glow absolute inset-0 pointer-events-none" />
       <div className="grid-bg absolute inset-0 opacity-40 pointer-events-none" />
 
-      {/* Particle canvas, Three.js antigravity effect.
-          Currently hidden from the homepage but kept for future reuse.
-          DO NOT DELETE as dead code: the AntigravityParticles component and
-          this render block are intentionally preserved. Flip
-          `SHOW_HERO_PARTICLES` above to re-enable. */}
-      {SHOW_HERO_PARTICLES && mounted && (
-        <div className="absolute inset-0 pointer-events-none z-[1]">
-          <AntigravityParticles />
-        </div>
-      )}
+      {/* Aurora WebGL silk-wave background — brand blues, behind all content */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <Aurora
+          colors={["#060a14", "#0a1329", "#112247", "#1c356b", "#2a4c93", "#4f46e5", "#0ea5e9", "#06b6d4"]}
+          speed={1.0}
+          opacity={0.85}
+        />
+      </div>
+      {/* readability veil */}
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 30%, transparent, rgba(10,17,34,.55))' }} aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 pt-32 pb-20 text-center">
         {/* H1, initial=false on SSR so the heading is visible immediately (LCP fix).
@@ -63,11 +55,9 @@ export function Hero() {
         >
           {/* Turn every visitor into
           <br /> */}
-          <span className="inline-block gradient-text-heading">
-            You Only Talk{' '}
-            <br className="sm:hidden" />
-            to Buyers
-          </span>
+          <span className="text-white">You Only Talk </span>
+          <br className="sm:hidden" />
+          <span className="gradient-text-heading">to Buyers</span>
         </motion.h1>
 
         <motion.p
@@ -248,10 +238,10 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Bottom fade: blends Hero's void color into the main bg */}
+      {/* Bottom fade: blends Hero's dark ink color into the following light canvas section */}
       <div
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-20"
-        style={{ background: 'linear-gradient(to bottom, transparent, #030D1F)' }}
+        style={{ background: 'linear-gradient(to bottom, transparent, #FAFBFD)' }}
       />
 
       {/* Scroll indicator */}
