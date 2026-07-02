@@ -23,7 +23,7 @@ export const FEATURE_CARDS = [
   {
     icon: 'code',
     title: 'Easy Integration',
-    description: 'Drop Oye Chat into any website, CRM, or app in minutes with our lightweight embed snippet.',
+    description: 'Drop Oye Chat into any website or app in minutes with our lightweight embed snippet.',
   },
   {
     icon: 'pen',
@@ -32,42 +32,42 @@ export const FEATURE_CARDS = [
   },
   {
     icon: 'lock',
-    title: 'Enterprise Security',
-    description: 'SOC 2 compliant, end-to-end encrypted, with RBAC and SSO support built in from day one.',
+    title: 'Built-In Security',
+    description: 'Encrypted in transit, role-based access control, HMAC-signed webhooks, and prompt-injection guards on every conversation.',
   },
   {
     icon: 'chart',
     title: 'Deep Analytics',
-    description: 'Real-time dashboards, conversation heatmaps, and CSAT tracking to measure what matters.',
+    description: 'Live dashboards, a lead-qualification funnel, top-questions reports, and post-chat CSAT ratings to measure what matters.',
   },
 ] as const;
 
 export const STATS = [
-  { icon: '😊', target: 95, suffix: '%', label: 'Customer satisfaction rate' },
-  { icon: '⚡', target: 3, suffix: 's', label: 'Average response time' },
-  { icon: '📉', target: 78, suffix: '%', label: 'Reduction in support tickets' },
   { icon: '🌍', target: 50, suffix: '+', label: 'Languages supported' },
+  { icon: '📄', target: 5, suffix: '+', label: 'Source formats (PDF, DOCX, URLs)' },
+  { icon: '⚡', target: 10, suffix: 'min', label: 'Average setup time' },
+  { icon: '🔌', target: 5, suffix: '', label: 'Webhook event types' },
 ] as const;
 
 export const MARQUEE_ITEMS = [
-  '99.99% Uptime',
-  '12ms Median Latency',
-  'SOC 2 Type II',
+  'Hybrid RAG Search',
   '50+ Languages',
-  '+42% Conversion Lift',
-  '5M+ Monthly Conversations',
-  'GDPR Compliant',
-  'White-Glove Onboarding',
-  '24/7 Enterprise Support',
-  'End-to-End Encrypted',
+  'BANT Lead Scoring',
+  'Live Human Handoff',
+  'Multi-Bot Ready',
+  'Webhooks & REST API',
+  'GDPR-Ready',
+  'Encrypted in Transit',
+  'Streaming Responses',
+  'Prompt-Injection Guarded',
 ] as const;
 
 export const CERTIFICATIONS = [
-  'SOC 2 Type II',
-  'GDPR Compliant',
-  'ISO 27001',
-  'End-to-End Encrypted',
-  '99.99% SLA',
+  'GDPR-Ready',
+  'TLS in Transit',
+  'HMAC-Signed Webhooks',
+  'Role-Based Access Control',
+  'Encrypted at Rest',
 ] as const;
 
 export const HOW_IT_WORKS_STEPS = [
@@ -148,7 +148,7 @@ export const FOOTER_COLUMNS = [
 ] as const;
 
 export const ENTERPRISE_SECONDARY_STATS = [
-  { value: '12', unit: 'ms', label: 'Median latency' },
-  { value: '+42', unit: '%', label: 'Avg. conversion lift' },
-  { value: '5M', unit: '+', label: 'Monthly conversations' },
+  { value: '50', unit: '+', label: 'Languages supported' },
+  { value: '5', unit: '', label: 'Webhook event types' },
+  { value: '10', unit: 'min', label: 'Average setup time' },
 ] as const;

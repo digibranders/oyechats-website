@@ -57,8 +57,8 @@ function RAGPipelineCell() {
       {/* Stats row */}
       <div className="flex gap-4 mt-4 pt-4 border-t border-[var(--line)]">
         {[
-          { value: '12ms', label: 'P99 latency' },
-          { value: '99%', label: 'Accuracy' },
+          { value: 'Streamed', label: 'Responses' },
+          { value: 'Grounded', label: 'Citations' },
           { value: 'Hybrid', label: 'Search mode' },
         ].map((stat) => (
           <div key={stat.label}>
@@ -153,7 +153,7 @@ function AnalyticsCell() {
       <h3 className="font-display font-semibold text-[var(--fg)] text-lg mt-3 mb-1">
         Deep Visitor Insights
       </h3>
-      <p className="text-xs text-[var(--muted)] mb-4">Behavioral scoring, UTM tracking, session heatmaps.</p>
+      <p className="text-xs text-[var(--muted)] mb-4">Behavioral events, UTM tracking, qualification funnel.</p>
 
       {/* Mini bar chart */}
       <div className="flex items-end gap-1 h-16 mb-3">

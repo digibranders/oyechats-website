@@ -12,7 +12,7 @@ const PIPELINE_STEPS = [
   { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400' },
   { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together, always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
   { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400' },
-  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in under 12ms median latency', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
+  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in real time as the answer is generated', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
 ];
 
 export function RAGPipelineSection() {
@@ -64,8 +64,8 @@ export function RAGPipelineSection() {
                 className={`relative flex items-center gap-4 rounded-xl bg-gradient-to-r ${step.color} border border-white/8 p-4`}
               >
                 {/* Step number */}
-                <div className="absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border border-white/15 flex items-center justify-center text-[11px] font-bold text-white/50">
-                  {i + 1}
+                <div className="keep-dark absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border border-white/15 flex items-center justify-center text-[11px] font-bold">
+                  <span className="text-white/50">{i + 1}</span>
                 </div>
                 <step.icon className={`h-5 w-5 ml-2 shrink-0 ${step.iconColor}`} />
                 <div>

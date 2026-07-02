@@ -62,13 +62,13 @@ export function BANTScoreRing({
     <div ref={ref} className={cn('relative flex flex-col items-center', className)}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`BANT score: ${currentScore} out of 100, ${tier.label}`}>
         <title>{`BANT Score: ${currentScore}`}</title>
-        {/* Track */}
+        {/* Track — uses the surface --line token so it stays visible on both light and dark cards */}
         <circle
           cx={center}
           cy={center}
           r={radius}
           fill="none"
-          stroke="rgba(255,255,255,0.06)"
+          stroke="var(--line, rgba(120,130,150,0.2))"
           strokeWidth={strokeWidth}
         />
         {/* Fill */}
@@ -88,13 +88,14 @@ export function BANTScoreRing({
             filter: `drop-shadow(0 0 8px ${color}60)`,
           }}
         />
-        {/* Score text */}
+        {/* Score text — currentColor + .text-white so the surface theme can remap it (dark text on light cards) */}
         <text
           x={center}
           y={center - 6}
           textAnchor="middle"
           dominantBaseline="middle"
-          fill="white"
+          className="text-white"
+          fill="currentColor"
           fontSize={Math.round(size * 0.2)}
           fontWeight="700"
           fontFamily="var(--font-inter)"
@@ -106,7 +107,8 @@ export function BANTScoreRing({
           y={center + size * 0.12}
           textAnchor="middle"
           dominantBaseline="middle"
-          fill="rgba(255,255,255,0.4)"
+          className="text-white/40"
+          fill="currentColor"
           fontSize={Math.round(size * 0.073)}
           fontFamily="var(--font-inter)"
         >

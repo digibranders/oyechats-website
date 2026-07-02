@@ -21,7 +21,7 @@ const steps = [
     label: 'Connect',
     heading: 'Upload your knowledge base',
     description:
-      'Drop in PDFs, Word docs, or paste a URL. OyeChats crawls up to 750 pages, chunks intelligently, and has your bot answering questions in minutes.',
+      'Drop in PDFs, Word docs, or paste a URL. OyeChats crawls your site, chunks it intelligently, and has your bot answering questions in minutes.',
     color: 'blue',
   },
   {
@@ -29,7 +29,7 @@ const steps = [
     label: 'Customize',
     heading: 'Brand it as your own',
     description:
-      'Set your bot name, logo, colors, and system prompt. Every user-facing string is customizable, or remove OyeChats branding entirely on Pro.',
+      'Set your bot name, logo, colors, and system prompt. Every user-facing string is customizable, or remove OyeChats branding entirely on Standard and above.',
     color: 'indigo',
   },
   {
@@ -159,7 +159,7 @@ function StepVisual({ step }: { step: typeof steps[0] }) {
           filename="index.html"
         />
         <div className="flex flex-wrap gap-2">
-          {['WordPress', 'Shopify', 'Webflow', 'Next.js', 'Slack', 'Teams'].map((platform) => (
+          {['WordPress', 'Shopify', 'Webflow', 'Next.js', 'React', 'Framer'].map((platform) => (
             <span key={platform}
               className="text-xs bg-white/5 border border-white/10 rounded-full px-3 py-1 text-white/60 hover:text-white hover:bg-white/8 transition-colors">
               {platform}
@@ -184,8 +184,8 @@ function StepVisual({ step }: { step: typeof steps[0] }) {
         <div className="flex items-center gap-4">
           <BANTScoreRing score={84} size={80} animate />
           <div className="space-y-1.5">
-            <p className="text-sm font-semibold text-white">Marcus Chen</p>
-            <p className="text-xs text-white/45">Finvault · VP Engineering</p>
+            <p className="text-sm font-semibold text-white">Alex Morgan</p>
+            <p className="text-xs text-white/45">Northstar · VP Engineering</p>
             <div className="flex gap-1.5">
               <span className="text-[11px] bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 rounded-full px-2 py-0.5">Sales Ready</span>
             </div>
@@ -196,10 +196,10 @@ function StepVisual({ step }: { step: typeof steps[0] }) {
           <p className="text-[11px] text-emerald-400 font-medium mb-1">✓ Webhook fired</p>
           <p className="text-[11px] font-mono text-white/50">POST /tier_transition → 200 OK 43ms</p>
         </div>
-        {/* CRM notification */}
+        {/* Email notification */}
         <div className="glass-1 rounded-xl p-3 border border-blue-500/20">
           <p className="text-[11px] text-blue-400 font-medium mb-1 flex items-center gap-1"><Mail className="w-3.5 h-3.5" /> Email sent to team</p>
-          <p className="text-[11px] text-white/50">New Sales-Ready lead: Marcus Chen (Finvault)</p>
+          <p className="text-[11px] text-white/50">New Sales-Ready lead: Alex Morgan (Northstar)</p>
         </div>
       </div>
     );

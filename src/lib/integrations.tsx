@@ -67,8 +67,8 @@ function LangfuseIcon({ size = 28 }: { size?: number }) {
 
 export const integrations: Integration[] = [
   // CMS - true content management systems
-  { id: 'wordpress', name: 'WordPress', description: 'Plugin install, one click', category: 'cms', available: true, icon: <BrandIcon icon={siWordpress} /> },
-  { id: 'shopify',   name: 'Shopify',   description: 'Theme injection for stores', category: 'cms', available: true, icon: <BrandIcon icon={siShopify} /> },
+  { id: 'wordpress', name: 'WordPress', description: 'Paste one script tag', category: 'cms', available: true, icon: <BrandIcon icon={siWordpress} /> },
+  { id: 'shopify',   name: 'Shopify',   description: 'Add the script to your theme', category: 'cms', available: true, icon: <BrandIcon icon={siShopify} /> },
   { id: 'webflow',   name: 'Webflow',   description: 'Custom embed code', category: 'cms', available: true, icon: <BrandIcon icon={siWebflow} /> },
 
   // Website - frontend frameworks and custom sites

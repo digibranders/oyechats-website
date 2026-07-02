@@ -121,7 +121,7 @@ export default function PrivacyPage() {
                 <p className="mb-3">We retain personal information only as long as needed for the purposes described in this policy:</p>
                 <ul className="space-y-2 list-disc list-inside">
                   <li><strong className="text-white/80">Account data:</strong> Retained for the life of the account and deleted (or anonymized) within 30 days of account closure, except where longer retention is required by law.</li>
-                  <li><strong className="text-white/80">Conversation history:</strong> Retained according to your plan - 7 days on Free, 90 days on Pro, and indefinitely on Enterprise, unless a shorter custom retention period is configured in your dashboard settings.</li>
+                  <li><strong className="text-white/80">Conversation history:</strong> Retained according to your plan - 7 days on Free, 30 days on Starter, 90 days on Standard, and unlimited on Enterprise, unless a shorter custom retention period is configured in your dashboard settings.</li>
                   <li><strong className="text-white/80">Knowledge base content:</strong> Retained until you delete it or close your account.</li>
                   <li><strong className="text-white/80">Diagnostic and error logs:</strong> Retained for up to 90 days.</li>
                   <li><strong className="text-white/80">Audit logs of administrative actions:</strong> Retained for up to 12 months.</li>

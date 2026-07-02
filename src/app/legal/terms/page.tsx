@@ -136,7 +136,7 @@ export default function TermsPage() {
 
                 <section id="availability" className="scroll-mt-24">
                   <h2 className="font-display text-xl font-semibold text-white mb-3">10. Availability</h2>
-                  <p>We target 99.9% monthly uptime for paid plans and 99.99% for Enterprise plans. Scheduled maintenance, force majeure events, and the unavailability of upstream Third Party Apps (including language model providers) are excluded from availability calculations. Service Level Agreement credits, where available, are described in your Enterprise Order and are your sole remedy for any failure to meet the targets.</p>
+                  <p>We aim to keep the Service available and reliable, but do not commit to a specific public uptime percentage on standard plans. Scheduled maintenance, force majeure events, and the unavailability of upstream Third Party Apps (including language model providers) are excluded from availability calculations. Any specific uptime commitment or Service Level Agreement credits, where offered, are described in your Enterprise Order and are your sole remedy for any failure to meet the agreed targets.</p>
                 </section>
 
                 <section id="support" className="scroll-mt-24">

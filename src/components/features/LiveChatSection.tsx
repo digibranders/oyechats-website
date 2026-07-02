@@ -11,7 +11,7 @@ const CHAT_SEQUENCE = [
   { type: 'human' as const, text: 'I need to speak with someone about enterprise pricing', delay: 1200 },
   { type: 'bot' as const, text: 'Of course! I\'m connecting you with a sales specialist now.', delay: 2400 },
   { type: 'operator' as const, text: 'Hey! I\'m Sarah from the enterprise team. I\'d love to walk you through our options.', delay: 3800 },
-  { type: 'human' as const, text: 'Perfect, we have 50 agents and need SSO + custom SLA', delay: 5200 },
+  { type: 'human' as const, text: 'Perfect, we have 50 agents and need custom onboarding + an SLA', delay: 5200 },
   { type: 'operator' as const, text: 'Great fit for Enterprise! Let me pull up a custom quote for you.', delay: 6400 },
 ];
 
@@ -23,7 +23,7 @@ const FEATURES_LIST = [
   'Real-time typing indicators for visitors',
   'BANT score visible in operator dashboard',
   'Meeting booking via Calendly integration',
-  'Email & Slack notifications for new chats',
+  'Email notifications for new chats',
 ];
 
 export function LiveChatSection() {
@@ -84,7 +84,7 @@ export function LiveChatSection() {
           <div className="glass-2 rounded-3xl border border-white/10 overflow-hidden">
             {/* Chat header */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-white/8 bg-white/[0.02]">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-xs font-bold text-white">O</div>
+              <div className="keep-dark h-8 w-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-xs font-bold"><span className="text-white">O</span></div>
               <div>
                 <p className="text-sm font-semibold text-white">OyeChats Support</p>
                 <p className="text-xs text-emerald-400 flex items-center gap-1">
@@ -111,15 +111,15 @@ export function LiveChatSection() {
                     className={`flex ${msg.type === 'human' ? 'justify-end' : 'justify-start'}`}
                   >
                     {msg.type !== 'human' && (
-                      <div className={`h-7 w-7 rounded-full flex items-center justify-center text-[11px] font-bold text-white shrink-0 mr-2 ${
+                      <div className={`keep-dark h-7 w-7 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0 mr-2 ${
                         msg.type === 'operator' ? 'bg-gradient-to-br from-violet-500 to-indigo-500' : 'bg-gradient-to-br from-blue-500 to-cyan-500'
                       }`}>
-                        {msg.type === 'operator' ? 'S' : 'AI'}
+                        <span className="text-white">{msg.type === 'operator' ? 'S' : 'AI'}</span>
                       </div>
                     )}
                     <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed ${
                       msg.type === 'human'
-                        ? 'bg-blue-600 text-white'
+                        ? 'keep-dark bg-blue-600'
                         : msg.type === 'operator'
                         ? 'bg-violet-600/20 border border-violet-500/20 text-white/80'
                         : 'bg-white/8 text-white/75'
@@ -127,7 +127,7 @@ export function LiveChatSection() {
                       {msg.type === 'operator' && (
                         <p className="text-[11px] text-violet-400 font-medium mb-1 uppercase tracking-wide">Sarah · Enterprise Sales</p>
                       )}
-                      {msg.text}
+                      <span className={msg.type === 'human' ? 'text-white' : ''}>{msg.text}</span>
                     </div>
                   </motion.div>
                 ))}
