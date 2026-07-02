@@ -6,12 +6,12 @@ import { cn } from '@/lib/utils';
 import { Lock, HardDrive, Bug, LineChart, Cloud, Mail } from 'lucide-react';
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Languages', color: 'text-blue-400', glow: 'rgba(96,165,250,0.22)', description: 'Replies in each visitor’s language' },
+  { value: 100, suffix: '', label: 'BANT lead score', color: 'text-blue-400', glow: 'rgba(96,165,250,0.22)', description: 'Every conversation scored 0–100' },
   { value: 24, suffix: '/7', label: 'AI coverage', color: 'text-indigo-400', glow: 'rgba(129,140,248,0.22)', description: 'Visitors helped around the clock' },
   { value: 100, suffix: '%', label: 'Your data stays yours', color: 'text-cyan-400', glow: 'rgba(34,211,238,0.22)', description: 'Never used to train any AI model' },
   { value: 5, suffix: '', label: 'Webhook events', color: 'text-emerald-400', glow: 'rgba(52,211,153,0.22)', description: 'Fire the moment a lead qualifies' },
   { value: 5, suffix: '+', label: 'Source formats', color: 'text-violet-400', glow: 'rgba(167,139,250,0.22)', description: 'PDFs, docs, and URLs all supported' },
-  { value: 10, suffix: 'min', label: 'Average setup time', color: 'text-amber-400', glow: 'rgba(251,191,36,0.22)', description: 'From signup to live' },
+  { value: 10, suffix: 'min', label: 'Setup time', color: 'text-amber-400', glow: 'rgba(251,191,36,0.22)', description: 'Embed a script tag and go live' },
 ];
 
 export function LiveStats() {
