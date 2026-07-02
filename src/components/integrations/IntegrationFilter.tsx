@@ -20,7 +20,7 @@ interface IntegrationFilterProps {
 
 export function IntegrationFilter({ active, onChange }: IntegrationFilterProps) {
   return (
-    <div className="keep-dark sticky top-[64px] z-30 bg-[#030D1F]/90 backdrop-blur-xl border-b border-white/8 px-6 lg:px-8">
+    <div className="keep-dark sticky top-[px] z-30 bg-[#030D1F]/90 backdrop-blur-xl border-b border-white/8 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-center gap-1 overflow-x-auto no-scrollbar py-1">
           {CATEGORIES.map(({ id, label }) => (

@@ -29,6 +29,10 @@ interface CatalogPlan {
     highlight_features?: string[];
     featured?: boolean;
   };
+  features?: {
+    live_chat?: boolean;
+    [key: string]: unknown;
+  };
   sort_order: number;
 }
 
@@ -74,7 +78,7 @@ function mapPlan(p: CatalogPlan): PricingTier {
     credits: p.credits_per_month || (isCustom ? null : 0),
     includedSeats: isCustom ? null : p.included_operator_seats,
     extraSeatPriceUsd: centsToUsd(p.extra_seat_price_usd_cents) ?? 0,
-    liveChat: false,
+    liveChat: !!p.features?.live_chat,
     features: p.marketing.highlight_features ?? [],
     cta: p.marketing.cta_label ?? (isCustom ? "Contact sales" : "Get started"),
     ctaHref: p.marketing.cta_href ?? "/register",

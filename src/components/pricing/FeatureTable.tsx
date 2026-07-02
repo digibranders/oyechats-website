@@ -64,7 +64,7 @@ export function FeatureTable({ rows: featureRows }: FeatureTableProps) {
   }
 
   return (
-    <section className="px-6 lg:px-8 pb-24">
+    <section className="px-6 lg:px-8 py-14">
       <div className="mx-auto max-w-7xl">
         <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">
           Full feature comparison

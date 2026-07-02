@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { CTAButton } from '@/components/shared/CTAButton';
 import { cn } from '@/lib/utils';
-import type { PricingTier } from '@/types/pricing';
 import { Aurora } from '@/components/shared/Aurora';
+import type { PricingTier } from '@/types/pricing';
 
 interface PricingCardsProps {
   billing: 'monthly' | 'annual';
@@ -14,7 +14,7 @@ interface PricingCardsProps {
 export function PricingCards({ billing, tiers }: PricingCardsProps) {
   return (
     <>
-    <section className="px-6 lg:px-8 pb-4">
+    <section className="px-6 lg:px-8 pt-12 pb-4">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {tiers.map((tier, i) => (
@@ -133,7 +133,7 @@ export function PricingCards({ billing, tiers }: PricingCardsProps) {
                             ? '-'
                             : `${tier.includedSeats} included`,
                     },
-                    { label: 'Live chat', value: tier.liveChat ? 'Yes' : '-' },
+                    { label: 'Live chat', value: tier.liveChat ? 'Included' : '-' },
                   ].map((l) => (
                     <div key={l.label} className="flex items-center justify-between gap-2">
                       <span className="text-[11px] text-white/50">{l.label}</span>
@@ -175,7 +175,7 @@ export function PricingCards({ billing, tiers }: PricingCardsProps) {
       </div>
     </section>
 
-    <p className="text-center text-xs text-white/45 py-5 px-6">
+    <p className="text-center text-xs text-white/45 pt-6 pb-16 px-6">
       Starter Plan include a 14-day free trial · No credit card required · Cancel anytime
     </p>
     </>

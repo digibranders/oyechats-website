@@ -7,12 +7,12 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 
 const PIPELINE_STEPS = [
-  { icon: FileText, label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl, any content you own', color: 'from-blue-600/20 to-blue-600/5', iconColor: 'text-blue-400' },
-  { icon: Scissors, label: 'Chunk & Clean', desc: 'Smart sentence-aware splitting, deduplication, and metadata tagging', color: 'from-indigo-600/20 to-indigo-600/5', iconColor: 'text-indigo-400' },
-  { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400' },
-  { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together, always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400' },
-  { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400' },
-  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in real time as the answer is generated', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400' },
+  { icon: FileText, label: 'Upload Docs', desc: 'PDFs, Word files, URLs, or web crawl, any content you own', color: 'from-blue-600/20 to-blue-600/5', iconColor: 'text-blue-400', badgeBorder: 'border-blue-500/25 group-hover:border-blue-400 group-hover:shadow-[0_0_10px_rgba(96,165,250,0.35)]', badgeText: 'text-blue-400 group-hover:text-blue-300' },
+  { icon: Scissors, label: 'Chunk & Clean', desc: 'Smart sentence-aware splitting, deduplication, and metadata tagging', color: 'from-indigo-600/20 to-indigo-600/5', iconColor: 'text-indigo-400', badgeBorder: 'border-indigo-500/25 group-hover:border-indigo-400 group-hover:shadow-[0_0_10px_rgba(129,140,248,0.35)]', badgeText: 'text-indigo-400 group-hover:text-indigo-300' },
+  { icon: Brain, label: 'Embed', desc: 'Converts your content into semantic meaning the AI can reason over', color: 'from-violet-600/20 to-violet-600/5', iconColor: 'text-violet-400', badgeBorder: 'border-violet-500/25 group-hover:border-violet-400 group-hover:shadow-[0_0_10px_rgba(167,139,250,0.35)]', badgeText: 'text-violet-400 group-hover:text-violet-300' },
+  { icon: Search, label: 'Hybrid Search', desc: 'Semantic + keyword search working together, always finds the right answer', color: 'from-cyan-600/20 to-cyan-600/5', iconColor: 'text-cyan-400', badgeBorder: 'border-cyan-500/25 group-hover:border-cyan-400 group-hover:shadow-[0_0_10px_rgba(34,211,238,0.35)]', badgeText: 'text-cyan-400 group-hover:text-cyan-300' },
+  { icon: Zap, label: 'AI Generate', desc: 'Context-aware response generation with citation grounding', color: 'from-emerald-600/20 to-emerald-600/5', iconColor: 'text-emerald-400', badgeBorder: 'border-emerald-500/25 group-hover:border-emerald-400 group-hover:shadow-[0_0_10px_rgba(52,211,153,0.35)]', badgeText: 'text-emerald-400 group-hover:text-emerald-300' },
+  { icon: MessageCircle, label: 'Stream Reply', desc: 'Token-streamed response delivered in real time as the answer is generated', color: 'from-amber-600/20 to-amber-600/5', iconColor: 'text-amber-400', badgeBorder: 'border-amber-500/25 group-hover:border-amber-400 group-hover:shadow-[0_0_10px_rgba(251,191,36,0.35)]', badgeText: 'text-amber-400 group-hover:text-amber-300' },
 ];
 
 export function RAGPipelineSection() {
@@ -61,13 +61,13 @@ export function RAGPipelineSection() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
-                className={`relative flex items-center gap-4 rounded-xl bg-gradient-to-r ${step.color} border border-white/8 p-4`}
+                className={`relative flex items-center gap-4 rounded-xl bg-gradient-to-r ${step.color} border border-white/8 p-4 group transition-all duration-300 hover:scale-[1.01] hover:border-white/12`}
               >
                 {/* Step number */}
-                <div className="keep-dark absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border border-white/15 flex items-center justify-center text-[11px] font-bold">
-                  <span className="text-white/50">{i + 1}</span>
+                <div className={`keep-dark absolute -left-3 h-6 w-6 rounded-full bg-[#030D1F] border flex items-center justify-center text-[11px] font-bold shadow-md transition-all duration-300 ${step.badgeBorder}`}>
+                  <span className={`transition-colors duration-300 ${step.badgeText}`}>{i + 1}</span>
                 </div>
-                <step.icon className={`h-5 w-5 ml-2 shrink-0 ${step.iconColor}`} />
+                <step.icon className={`h-5 w-5 ml-2 shrink-0 transition-transform duration-300 group-hover:scale-110 ${step.iconColor}`} />
                 <div>
                   <p className="text-sm font-semibold text-white">{step.label}</p>
                   <p className="text-xs text-white/45">{step.desc}</p>
