@@ -48,7 +48,7 @@ export const pricingTiers: PricingTier[] = [
     extraSeatPriceUsd: 5,
     liveChat: true,
     features: [
-      '3,000 credits / month',
+      '2,000 credits / month',
       '1 chatbot included (subscribe again to add more)',
       '1 operator seat (+$5/mo each extra, up to 5 total)',
       'Live chat enabled',
