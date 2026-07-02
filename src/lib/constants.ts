@@ -17,8 +17,8 @@ export const FEATURE_CARDS = [
   },
   {
     icon: 'globe',
-    title: 'Multi-Language',
-    description: 'Communicate fluently in 50+ languages. Break barriers and reach every customer globally.',
+    title: 'Grounded Answers',
+    description: 'Hybrid semantic + keyword search answers from your own docs with citations, never hallucinated.',
   },
   {
     icon: 'code',
@@ -43,7 +43,7 @@ export const FEATURE_CARDS = [
 ] as const;
 
 export const STATS = [
-  { icon: '🌍', target: 50, suffix: '+', label: 'Languages supported' },
+  { icon: '🎯', target: 100, suffix: '', label: 'BANT lead score (0–100)' },
   { icon: '📄', target: 5, suffix: '+', label: 'Source formats (PDF, DOCX, URLs)' },
   { icon: '⚡', target: 10, suffix: 'min', label: 'Average setup time' },
   { icon: '🔌', target: 5, suffix: '', label: 'Webhook event types' },
@@ -51,7 +51,7 @@ export const STATS = [
 
 export const MARQUEE_ITEMS = [
   'Hybrid RAG Search',
-  '50+ Languages',
+  'Citation-Grounded Answers',
   'BANT Lead Scoring',
   'Live Human Handoff',
   'Multi-Bot Ready',
@@ -148,7 +148,7 @@ export const FOOTER_COLUMNS = [
 ] as const;
 
 export const ENTERPRISE_SECONDARY_STATS = [
-  { value: '50', unit: '+', label: 'Languages supported' },
+  { value: 'Hybrid', unit: '', label: 'RAG search' },
   { value: '5', unit: '', label: 'Webhook event types' },
   { value: '10', unit: 'min', label: 'Average setup time' },
 ] as const;

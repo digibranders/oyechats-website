@@ -41,7 +41,7 @@ export function RAGPipelineSection() {
                 'Production-grade vector storage built for scale',
                 'Custom AI instructions per bot with citation grounding',
                 'Instant re-indexing when documents are updated',
-                '50+ languages supported out of the box',
+                'Optional reranking and relevance filtering for precise answers',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-white/65">
                   <svg width="14" height="14" viewBox="0 0 24 24" className="text-blue-400 fill-none stroke-current shrink-0 mt-0.5" strokeWidth="3">
