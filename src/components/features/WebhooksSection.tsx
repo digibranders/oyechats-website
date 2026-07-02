@@ -4,11 +4,11 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 
 const EVENT_TYPES = [
-  { name: 'lead.captured', color: 'text-blue-400' },
-  { name: 'bant.tier_changed', color: 'text-amber-400' },
-  { name: 'chat.operator_joined', color: 'text-violet-400' },
-  { name: 'conversation.ended', color: 'text-cyan-400' },
-  { name: 'bot.escalated', color: 'text-emerald-400' },
+  { name: 'tier_transition', color: 'text-amber-400' },
+  { name: 'lead_captured', color: 'text-blue-400' },
+  { name: 'handoff_requested', color: 'text-violet-400' },
+  { name: 'meeting_booked', color: 'text-emerald-400' },
+  { name: 'chat_closed', color: 'text-cyan-400' },
 ];
 
 const FEATURES = [

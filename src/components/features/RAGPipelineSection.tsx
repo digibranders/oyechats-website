@@ -40,7 +40,7 @@ export function RAGPipelineSection() {
                 'Supports PDFs, Word docs, plain text, URLs, and full website crawls',
                 'Production-grade vector storage built for scale',
                 'Custom AI instructions per bot with citation grounding',
-                'Instant re-indexing when documents are updated',
+                'Automatic re-indexing when you add or remove documents',
                 'Optional reranking and relevance filtering for precise answers',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-white/65">
