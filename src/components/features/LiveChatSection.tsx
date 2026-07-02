@@ -16,14 +16,14 @@ const CHAT_SEQUENCE = [
 ];
 
 const FEATURES_LIST = [
-  'Instant bot-to-human handoff with full context transfer',
+  'Instant bot-to-human handoff with full conversation history',
   'Operator departments & routing rules',
-  'Canned responses and internal notes',
+  'Canned responses for operators',
   'Business hours config with auto-away',
   'Real-time typing indicators for visitors',
-  'BANT score visible in operator dashboard',
-  'Meeting booking via Calendly integration',
-  'Email notifications for new chats',
+  'BANT signals visible in your dashboard',
+  'Meeting booking via Calendly or Zcal',
+  'Real-time notifications for new chats',
 ];
 
 export function LiveChatSection() {

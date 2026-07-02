@@ -21,24 +21,22 @@ const STEPS = [
 ];
 
 const WEBHOOK_PAYLOAD = `{
-  "event": "bant.tier_changed",
+  "event": "tier_transition",
+  "bot_id": 42,
   "timestamp": "2025-03-15T14:22:01Z",
   "data": {
-    "conversation_id": "conv_9k2p1mxn",
-    "visitor_id": "vis_8j3a7fqr",
-    "bot_id": "bot_x4t2z9",
-    "bant_score": 84,
+    "session_id": "conv_9k2p1mxn",
     "previous_tier": "warm",
     "new_tier": "hot",
-    "criteria": {
+    "bant": {
       "budget": 85,
       "authority": 72,
       "need": 91,
-      "timeline": 68
+      "timeline": 68,
+      "composite": 84
     },
-    "visitor_email": "john@acme.com",
-    "utm_source": "google",
-    "utm_campaign": "enterprise-q1"
+    "lead": { "email": "john@acme.com" },
+    "utm": { "source": "google", "campaign": "enterprise-q1" }
   }
 }`;
 
