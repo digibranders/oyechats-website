@@ -3,7 +3,7 @@ import { SectionHeading } from '@/components/shared/SectionHeading';
 
 export function IntegrationsHero() {
   return (
-    <section className="relative pt-32 pb-16 px-6 lg:px-8 text-center overflow-hidden">
+    <section className="relative pt-32 pb-12 px-6 lg:px-8 text-center overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(37,99,235,.09) 0%, transparent 70%)' }}
