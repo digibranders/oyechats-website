@@ -46,11 +46,14 @@
   --accent: #2563EB;
 }
 
-/* ── Soft Gradient background glow in bottom-right corner of white sections ── */
+/* ── Soft Gradient background glow in bottom-right corner of white sections ──
+   Use `overflow: clip` (not `hidden`) to contain the glow: `clip` is not a
+   scroll container, so it does NOT break `position: sticky` descendants
+   (e.g. the integrations filter bar). `hidden` here silently broke sticky. */
 [data-surface="canvas"],
 .bg-section-b {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 
 [data-surface="canvas"]::before,
