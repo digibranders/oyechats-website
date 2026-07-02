@@ -72,11 +72,11 @@ export const integrations: Integration[] = [
   { id: 'webflow',   name: 'Webflow',   description: 'Custom embed code', category: 'cms', available: true, icon: <BrandIcon icon={siWebflow} /> },
 
   // Website - frontend frameworks and custom sites
-  { id: 'nextjs',  name: 'Next.js',        description: 'Script component', category: 'website', available: true, icon: <BrandIcon icon={siNextdotjs} overrideColor="#FFFFFF" /> },
+  { id: 'nextjs',  name: 'Next.js',        description: 'Script component', category: 'website', available: true, icon: <BrandIcon icon={siNextdotjs} /> },
   { id: 'html',    name: 'HTML / Vanilla', description: 'Single script tag', category: 'website', available: true, icon: <BrandIcon icon={siHtml5} /> },
   { id: 'vue',     name: 'Vue.js',         description: 'Plugin or script', category: 'website', available: true, icon: <BrandIcon icon={siVuedotjs} /> },
   { id: 'react',   name: 'React',          description: 'Drop-in component', category: 'website', available: true, icon: <BrandIcon icon={siReact} /> },
-  { id: 'framer',  name: 'Framer',         description: 'Code component embed', category: 'website', available: true, icon: <BrandIcon icon={siFramer} overrideColor="#FFFFFF" /> },
+  { id: 'framer',  name: 'Framer',         description: 'Code component embed', category: 'website', available: true, icon: <BrandIcon icon={siFramer} /> },
 
   // Email - real (transactional)
   { id: 'brevo', name: 'Brevo', description: 'Transactional email', category: 'crm', available: true, icon: <BrandIcon icon={siBrevo} /> },

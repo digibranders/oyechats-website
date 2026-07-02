@@ -62,7 +62,7 @@ export default function CustomersPage() {
         </section>
 
         {/* Use cases */}
-        <section className="bg-section-b pb-20 px-6 lg:px-8">
+        <section className="bg-section-b pt-12 pb-20 px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-2xl font-semibold text-white text-center mb-10">Who it’s for</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
