@@ -90,7 +90,7 @@ export default function TermsPage() {
                     <li>Configuring data retention, redaction, and access controls available in the dashboard in a manner appropriate to your use case.</li>
                     <li>Maintaining the confidentiality of API keys, bot keys, and operator credentials, and notifying us promptly of any unauthorized use.</li>
                   </ul>
-                  <p className="mt-3">Where you process personal data of Visitors through the Services, you act as the controller and OyeChats acts as a processor on your behalf. The Data Processing Addendum (&quot;DPA&quot;) available at oyechats.com/legal/dpa is incorporated by reference and governs that processing.</p>
+                  <p className="mt-3">Where you process personal data of Visitors through the Services, you act as the controller and OyeChats acts as a processor on your behalf. The Data Processing Addendum (&quot;DPA&quot;) available at <a href="/legal/dpa" className="text-blue-400 hover:text-blue-300">oyechats.com/legal/dpa</a> is incorporated by reference and governs that processing.</p>
                 </section>
 
                 <section id="security" className="scroll-mt-24">
