@@ -144,8 +144,8 @@ export default function SubprocessorsPage() {
                     A &quot;sub-processor&quot; is a third party we engage to process Customer Data on our behalf in order
                     to deliver the OyeChats Services. We use sub-processors selectively, and each one is engaged under a
                     written agreement that requires data protection terms at least as protective as those in our{' '}
-                    <a href="/legal/privacy" className="text-blue-400 hover:text-blue-300">Privacy Policy</a> and Data
-                    Processing Addendum.
+                    <a href="/legal/privacy" className="text-blue-400 hover:text-blue-300">Privacy Policy</a> and{' '}
+                    <a href="/legal/dpa" className="text-blue-400 hover:text-blue-300">Data Processing Addendum</a>.
                   </p>
                   <p>
                     This page reflects the current list of sub-processors. We do not sell personal information. Customers

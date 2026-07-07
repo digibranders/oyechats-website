@@ -6,6 +6,7 @@ import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter, Geist_Mono, Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
+import { pricingTiers, PRICING_CURRENCY } from '@/lib/pricing';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -134,12 +135,16 @@ const jsonLd = {
       operatingSystem: 'Web',
       description:
         'RAG-powered AI chatbot platform with BANT sales qualification, live chat handoff, behavioral tracking, and analytics.',
-      offers: [
-        { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-        { '@type': 'Offer', name: 'Starter', price: '19', priceCurrency: 'USD' },
-        { '@type': 'Offer', name: 'Standard', price: '57', priceCurrency: 'USD' },
-        { '@type': 'Offer', name: 'Enterprise', price: 'Custom', priceCurrency: 'USD' },
-      ],
+      // Derived from the same pricing data the pricing page renders
+      // (src/lib/pricing.ts) so the structured data cannot drift from it.
+      offers: pricingTiers
+        .filter((tier) => tier.monthlyPrice !== null)
+        .map((tier) => ({
+          '@type': 'Offer',
+          name: tier.name,
+          price: String(tier.monthlyPrice),
+          priceCurrency: PRICING_CURRENCY,
+        })),
     },
   ],
 };

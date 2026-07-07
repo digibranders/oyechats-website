@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/contact`, lastModified: new Date('2026-03-01'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/legal/privacy`, lastModified: new Date('2026-01-01'), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${BASE_URL}/legal/terms`, lastModified: new Date('2026-01-01'), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE_URL}/legal/dpa`, lastModified: new Date('2026-07-07'), changeFrequency: 'yearly', priority: 0.3 },
     // Blog posts
     { url: `${BASE_URL}/blog/bant-scoring-ai-chatbot`, lastModified: new Date('2025-03-12'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/blog/rag-vs-fine-tuning`, lastModified: new Date('2025-03-05'), changeFrequency: 'monthly', priority: 0.7 },

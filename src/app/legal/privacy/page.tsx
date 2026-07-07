@@ -58,7 +58,7 @@ export default function PrivacyPage() {
                 <p className="mb-3">Privacy law distinguishes between data &quot;controllers&quot; (who decide why and how data is processed) and &quot;processors&quot; (who handle data on a controller&apos;s instructions). Our role differs depending on whose data is involved:</p>
                 <ul className="space-y-2 list-disc list-inside">
                   <li><strong className="text-white/80">Customer data:</strong> Where you have signed up for an OyeChats account, we act as the <em>controller</em> of the data we collect from you to operate, bill for, and improve the Service.</li>
-                  <li><strong className="text-white/80">Visitor data:</strong> Where a Visitor interacts with a bot on a customer&apos;s website, our customer is the <em>controller</em> of that conversation data and we act as a <em>processor</em> on their behalf, governed by the Data Processing Addendum incorporated into our Terms of Service.</li>
+                  <li><strong className="text-white/80">Visitor data:</strong> Where a Visitor interacts with a bot on a customer&apos;s website, our customer is the <em>controller</em> of that conversation data and we act as a <em>processor</em> on their behalf, governed by the <a href="/legal/dpa" className="text-blue-400 hover:text-blue-300">Data Processing Addendum</a> incorporated into our Terms of Service.</li>
                 </ul>
                 <p className="mt-3">If you are a Visitor with questions about how a specific customer uses your data, please contact that customer directly. We will assist with verified requests forwarded by the controller.</p>
               </section>
