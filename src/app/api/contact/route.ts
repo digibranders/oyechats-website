@@ -180,6 +180,37 @@ function buildEmailHtml(params: {
 </html>`;
 }
 
+// ── Abuse controls (audit F12) ───────────────────────────────────────────────
+// The contact form fires a live Brevo send on every valid POST, so an
+// unthrottled endpoint lets an attacker exhaust the Brevo quota and bomb the
+// support inbox. These are best-effort (serverless instances are ephemeral and
+// horizontally scaled, so the in-memory limiter is per-instance, not a hard
+// global cap) — pair with a WAF / Turnstile for a strict guarantee. The
+// honeypot + length caps are deterministic and catch the common bot floods.
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_LEN = { name: 200, email: 320, company: 200, message: 5000 } as const;
+const _hits = new Map<string, number[]>();
+
+function _clientIp(req: NextRequest): string {
+  const xff = req.headers.get('x-forwarded-for');
+  return xff ? xff.split(',')[0].trim() : 'unknown';
+}
+
+function _isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (_hits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  _hits.set(ip, recent);
+  // Opportunistic cleanup so the map can't grow unbounded across cold-start lifetime.
+  if (_hits.size > 5000) {
+    for (const [k, v] of _hits) {
+      if (v.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) _hits.delete(k);
+    }
+  }
+  return recent.length > RATE_LIMIT_MAX;
+}
+
 export async function POST(req: NextRequest) {
   const brevoKey = process.env.BREVO_API_KEY;
   const fromAddress = process.env.EMAIL_FROM_ADDRESS ?? 'noreply@oyechats.com';
@@ -188,6 +219,11 @@ export async function POST(req: NextRequest) {
 
   if (!brevoKey) {
     return NextResponse.json({ error: 'Email service not configured' }, { status: 503 });
+  }
+
+  // Per-IP rate limit before doing any work (audit F12).
+  if (_isRateLimited(_clientIp(req))) {
+    return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
   }
 
   let body: unknown;
@@ -199,12 +235,29 @@ export async function POST(req: NextRequest) {
 
   const { name, email, company, intent, message } = body as Record<string, string>;
 
+  // Honeypot: a hidden field real users never fill. Bots that fill every field
+  // get a fake success and no email is sent (audit F12).
+  const honeypot = (body as Record<string, unknown>).website;
+  if (typeof honeypot === 'string' && honeypot.trim() !== '') {
+    return NextResponse.json({ ok: true });
+  }
+
   if (!name?.trim() || !email?.trim() || !message?.trim()) {
     return NextResponse.json({ error: 'name, email, and message are required' }, { status: 422 });
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: 'Invalid email address' }, { status: 422 });
+  }
+
+  // Length caps so a single request can't ship a huge payload / abuse the send.
+  if (
+    name.length > MAX_LEN.name ||
+    email.length > MAX_LEN.email ||
+    (company?.length ?? 0) > MAX_LEN.company ||
+    message.length > MAX_LEN.message
+  ) {
+    return NextResponse.json({ error: 'One or more fields exceed the allowed length' }, { status: 422 });
   }
 
   const intentLabel = INTENT_LABELS[intent] ?? 'General inquiry';
