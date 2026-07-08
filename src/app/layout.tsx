@@ -46,7 +46,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://oyechats.com'),
   title: {
-    default: 'OyeChats, RAG-Powered AI Chatbot & Sales Intelligence Platform',
+    default: 'OyeChats | AI Chatbot That Turns Visitors Into Pipeline',
     template: '%s | OyeChats',
   },
   description:
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://oyechats.com',
     siteName: 'OyeChats',
-    title: 'OyeChats, RAG-Powered AI Chatbot & Sales Intelligence Platform',
+    title: 'OyeChats | AI Chatbot That Turns Visitors Into Pipeline',
     description:
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: [
@@ -92,13 +92,13 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'OyeChats, RAG-Powered AI Chatbot Platform',
+        alt: 'OyeChats | AI Chatbot That Turns Visitors Into Pipeline',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OyeChats, RAG-Powered AI Chatbot',
+    title: 'OyeChats | AI Chatbot That Turns Visitors Into Pipeline',
     description:
       'RAG-powered AI chatbot with BANT sales qualification. Convert visitors into qualified pipeline automatically.',
     images: ['/og-image.png'],

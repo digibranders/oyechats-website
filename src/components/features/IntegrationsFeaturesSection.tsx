@@ -1,29 +1,7 @@
-import {
-  siWordpress, siShopify, siWebflow, siNextdotjs, siHtml5, siVuedotjs, siReact, siFramer,
-  siCalendly,
-  type SimpleIcon,
-} from 'simple-icons';
-import { CTAButton } from '@/components/shared/CTAButton';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CodeSnippet } from '@/components/shared/CodeSnippet';
-
-type BrandSvgProps = { icon: SimpleIcon; overrideColor?: string };
-
-function BrandSvg({ icon, overrideColor }: BrandSvgProps) {
-  return (
-    <svg
-      role="img"
-      aria-label={icon.title}
-      viewBox="0 0 24 24"
-      width={20}
-      height={20}
-      fill={overrideColor ?? `#${icon.hex}`}
-    >
-      <path d={icon.path} />
-    </svg>
-  );
-}
+import { IntegrationsNetwork } from './IntegrationsNetworkClient';
 
 const EMBED_SAMPLES: Record<string, { lang: string; code: string }> = {
   'Next.js': {
@@ -85,7 +63,7 @@ export function IntegrationsFeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Code snippets */}
           <div className="space-y-4">
             {Object.entries(EMBED_SAMPLES).map(([platform, { lang, code }]) => (
@@ -96,36 +74,10 @@ export function IntegrationsFeaturesSection() {
             ))}
           </div>
 
-          {/* Platform list + CTA */}
-          <div>
-            <div className="grid grid-cols-3 gap-3 mb-8">
-              {[
-                { name: 'WordPress', node: <BrandSvg icon={siWordpress} /> },
-                { name: 'Shopify',   node: <BrandSvg icon={siShopify} /> },
-                { name: 'Webflow',   node: <BrandSvg icon={siWebflow} /> },
-                { name: 'Next.js',   node: <BrandSvg icon={siNextdotjs} overrideColor="#FFFFFF" /> },
-                { name: 'HTML',      node: <BrandSvg icon={siHtml5} /> },
-                { name: 'Vue.js',    node: <BrandSvg icon={siVuedotjs} /> },
-                { name: 'React',     node: <BrandSvg icon={siReact} /> },
-                { name: 'Framer',    node: <BrandSvg icon={siFramer} overrideColor="#FFFFFF" /> },
-                { name: 'Calendly',  node: <BrandSvg icon={siCalendly} /> },
-              ].map((p) => (
-                <div key={p.name} className="glass-1 rounded-xl p-3 border border-white/6 flex flex-col items-center gap-1.5 text-center cursor-pointer hover:border-white/15 transition-colors">
-                  {p.node}
-                  <span className="text-[11px] text-white/55">{p.name}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              <div className="col-start-2">
-                <CTAButton href="/integrations" variant="ghost" size="md" className="w-full justify-center">
-                  View all integrations
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
-                </CTAButton>
-              </div>
+          {/* Animated network — natural square, sits open on the surface (no card chrome) */}
+          <div className="flex items-center justify-center border-0 bg-transparent">
+            <div className="relative w-full max-w-[500px] aspect-square border-0 bg-transparent shadow-none">
+              <IntegrationsNetwork />
             </div>
           </div>
         </div>

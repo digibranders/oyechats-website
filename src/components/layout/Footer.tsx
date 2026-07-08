@@ -10,7 +10,6 @@ const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
     { label: 'Pricing', href: '/pricing' },
     { label: 'Integrations', href: '/integrations' },
     { label: 'Changelog', href: '/changelog' },
-    { label: 'Roadmap', href: '/changelog#roadmap' },
   ],
   Solutions: [
     { label: 'For E-commerce', href: '/customers' },
@@ -24,12 +23,10 @@ const footerLinks: Record<string, Array<{ label: string; href: string }>> = {
     { label: 'API Reference', href: '/docs#api' },
     { label: 'Widget Setup', href: '/docs#widget' },
     { label: 'Webhooks', href: '/docs#webhooks' },
-    { label: 'Status', href: 'https://status.oyechats.com' },
   ],
   Company: [
     { label: 'About', href: '/about' },
     { label: 'Blog', href: '/blog' },
-    { label: 'Careers', href: '/about#careers' },
     { label: 'Contact', href: '/contact' },
     { label: 'Security', href: '/security' },
   ],
@@ -116,6 +113,7 @@ export default function Footer() {
           className="animate-brand-float block text-center select-none font-display font-semibold tracking-[-0.02em] leading-[.95]"
           style={{
             fontSize: 'clamp(3rem, 16vw, 21rem)',
+            paddingBottom: '0.15em',
             background: 'linear-gradient(172deg, rgba(255,255,255,.98) 0%, rgba(155,190,255,.72) 24%, rgba(50,100,210,.28) 58%, rgba(10,45,150,.03) 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -130,9 +128,21 @@ export default function Footer() {
 
       <div className="border-t border-white/[.04]">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <OyeChatsMark size={24} className="rounded-lg" />
             <p className="text-xs text-white/65">© {new Date().getFullYear()} OyeChats. All rights reserved.</p>
+            <Link
+              href="/changelog"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-white/60 hover:text-white hover:border-white/20 hover:bg-white/10 transition-colors"
+            >
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              </span>
+              <span className="font-medium text-white/80 group-hover:text-white">v3.2.0</span>
+              <span className="text-white/40">·</span>
+              <span>What&apos;s new</span>
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             {/* <StatusBadge status="live" /> */}

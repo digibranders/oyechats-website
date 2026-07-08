@@ -54,9 +54,9 @@ const megaMenuItems = {
     { node: <MegaBrandSvg icon={siZapier} />, label: 'Zapier', href: '/integrations' },
   ],
   changelog: [
-    { version: 'v2.4', date: 'Apr 2025', note: 'BANT behavioral scoring' },
-    { version: 'v2.3', date: 'Mar 2025', note: 'Live chat operator teams' },
-    { version: 'v2.2', date: 'Feb 2025', note: 'Hybrid search (RRF fusion)' },
+    { version: 'v3.2', date: 'Jul 2026', note: 'Auto-recrawl for knowledge base' },
+    { version: 'v3.1', date: 'Jun 2026', note: 'Global currency + billing tab' },
+    { version: 'v3.0', date: 'Apr 2026', note: 'Live chat handoff (GA)' },
   ],
 };
 
