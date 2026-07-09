@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Image from 'next/image';
+// import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
@@ -24,7 +25,7 @@ type Entry = {
   description: string;
   author: { name: string; initials: string };
   accent: Accent;
-  glyph: React.ReactNode;
+  image: { src: string; alt: string };
   href?: string;
 };
 
@@ -77,11 +78,10 @@ const ENTRIES: Entry[] = [
       'Standard-tier bots now refresh their knowledge base on a schedule. Point OyeChats at a URL once and we re-crawl it in the background whenever your docs, product pages, or pricing change. No more stale answers, no more manual re-uploads.',
     author: { name: 'OyeChats Team', initials: 'OC' },
     accent: 'blue',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <path d="M21 12a9 9 0 11-3-6.7M21 3v5h-5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Rows of books representing a knowledge base being refreshed',
+    },
   },
   {
     id: 'crawler-youtube-docs',
@@ -93,12 +93,10 @@ const ENTRIES: Entry[] = [
       'Point OyeChats at any page and it pulls in YouTube transcripts and linked PDFs, DOCX, and TXT files inline with the source. One URL, one crawl, richer context, more accurate answers.',
     author: { name: 'Steve · Ingestion', initials: 'ST' },
     accent: 'violet',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <rect x="3" y="5" width="18" height="14" rx="3" />
-        <path d="M10 9l5 3-5 3V9z" fill="currentColor" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A media production setup with video content',
+    },
   },
   {
     id: 'billing-tab',
@@ -110,13 +108,10 @@ const ENTRIES: Entry[] = [
       'Billing is now a dedicated tab, decoupled from account settings. We capture your billing country at signup and every price you see (seats, plans, top-ups, invoices) renders in your local currency from the very first load.',
     author: { name: 'OyeChats Team', initials: 'OC' },
     accent: 'emerald',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <rect x="2.5" y="6" width="19" height="12" rx="2.5" />
-        <path d="M2.5 10h19" />
-        <circle cx="7" cy="14.5" r="1" fill="currentColor" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A billing dashboard displayed on a laptop screen',
+    },
   },
   {
     id: 'currency-context',
@@ -128,12 +123,10 @@ const ENTRIES: Entry[] = [
       'The seat modal, plan picker, top-up flow, and invoices all read from a single CurrencyContext now. Switch billing country and every price in the app updates instantly. No reloads, no mismatched totals at checkout.',
     author: { name: 'Billing Squad', initials: 'BS' },
     accent: 'emerald',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M15 9a3 3 0 00-3-3 3 3 0 000 6 3 3 0 010 6 3 3 0 01-3-3M12 5v2M12 17v2" strokeLinecap="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Stacks of currency representing global pricing',
+    },
   },
   {
     id: 'security-hardening',
@@ -145,12 +138,10 @@ const ENTRIES: Entry[] = [
       'Centralized SSRF guard on the crawler and demo preview. Non-root systemd services with unit-level sandboxing. CI actions pinned to commit SHAs. API docs gated in production, WebSocket file events rate-limited, and web push with a hard timeout. Nothing you have to configure. It just runs safer.',
     author: { name: 'Security Team', initials: 'SC' },
     accent: 'rose',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <path d="M12 3l8 3v6c0 4.5-3.5 8-8 9-4.5-1-8-4.5-8-9V6l8-3z" strokeLinejoin="round" />
-        <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A padlock on a circuit board representing platform security',
+    },
   },
   {
     id: 'auth-hardening',
@@ -162,13 +153,10 @@ const ENTRIES: Entry[] = [
       'The /settings, /upload-logo, and account-credential endpoints now require a valid X-API-Key. No more soft auth paths. Live-chat sessions restored from the database are correctly tenant-scoped on reconnect, and operator presence has a database fallback when Redis is down.',
     author: { name: 'Security Team', initials: 'SC' },
     accent: 'rose',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <rect x="4" y="10" width="16" height="10" rx="2" />
-        <path d="M8 10V7a4 4 0 018 0v3" />
-        <circle cx="12" cy="15" r="1.25" fill="currentColor" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A key and lock representing authentication hardening',
+    },
   },
   {
     id: 'live-chat-ga',
@@ -180,12 +168,10 @@ const ENTRIES: Entry[] = [
       'Visitors can hand off from the bot to a real human at any point, with department routing, canned responses, and a post-chat rating. Operator presence is Redis-backed with automatic database fallback, so nobody drops off the queue when infrastructure hiccups.',
     author: { name: 'OyeChats Team', initials: 'OC' },
     accent: 'violet',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <path d="M4 6h16v10H8l-4 4V6z" strokeLinejoin="round" />
-        <path d="M8 11h.01M12 11h.01M16 11h.01" strokeLinecap="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A support operator wearing a headset for live chat handoff',
+    },
   },
   {
     id: 'auto-rollback',
@@ -197,13 +183,10 @@ const ENTRIES: Entry[] = [
       'A bad release no longer needs a human in the loop. If a deploy fails its health check, the API rolls back to the previous known-good release automatically. Renewal cron and invoice-email workers isolate per-record failures so one bad account never stalls the batch.',
     author: { name: 'Platform Team', initials: 'PL' },
     accent: 'blue',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <path d="M3 12a9 9 0 019-9c4 0 7 2 8.5 5" strokeLinecap="round" />
-        <path d="M21 3v5h-5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M12 8v4l3 2" strokeLinecap="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A network of servers representing deployment infrastructure',
+    },
   },
   {
     id: 'bant-scoring',
@@ -215,11 +198,10 @@ const ENTRIES: Entry[] = [
       'OyeChats now scores every conversation on Budget, Authority, Need, and Timing, automatically. Combined with visitor context (pages viewed, return visits, UTM, device), sales sees a qualified lead the moment intent shows up, without asking a single form question.',
     author: { name: 'OyeChats Team', initials: 'OC' },
     accent: 'amber',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <path d="M4 20V10M10 20V4M16 20v-8M22 20H2" strokeLinecap="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Sales analytics charts on a laptop screen',
+    },
   },
   {
     id: 'hybrid-search',
@@ -231,12 +213,10 @@ const ENTRIES: Entry[] = [
       'Reciprocal rank fusion now blends semantic similarity with keyword TSVECTOR search. Answers stay grounded in your docs even when the visitor uses acronyms, product codes, or phrasing your knowledge base never anticipated.',
     author: { name: 'AI Team', initials: 'AI' },
     accent: 'violet',
-    glyph: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-full w-full">
-        <circle cx="11" cy="11" r="6" />
-        <path d="M20 20l-4.5-4.5" strokeLinecap="round" />
-      </svg>
-    ),
+    image: {
+      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80',
+      alt: 'A dense visualisation of data points representing hybrid retrieval',
+    },
   },
 ];
 
@@ -276,13 +256,25 @@ export default function ChangelogPage() {
                       a.bg
                     )}
                   >
-                    {/* Grid pattern */}
+                    {/* Photo */}
+                    <Image
+                      src={entry.image.src}
+                      alt={entry.image.alt}
+                      fill
+                      sizes="(min-width: 768px) 768px, 100vw"
+                      className="object-cover opacity-45"
+                    />
+                    {/* Accent tint overlay */}
                     <div
-                      className="absolute inset-0 opacity-40"
+                      className={cn('absolute inset-0 bg-gradient-to-br mix-blend-multiply', a.bg)}
+                      aria-hidden
+                    />
+                    {/* Darken toward the bottom for readability */}
+                    <div
+                      className="absolute inset-0"
                       style={{
-                        backgroundImage:
-                          'linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)',
-                        backgroundSize: '32px 32px',
+                        background:
+                          'linear-gradient(180deg, rgba(3,13,31,0.15) 0%, rgba(3,13,31,0.55) 100%)',
                       }}
                       aria-hidden
                     />
@@ -302,19 +294,6 @@ export default function ChangelogPage() {
                       {entry.version}
                     </span>
 
-                    {/* Center glyph */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className={cn(
-                          'flex h-20 w-20 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md ring-1',
-                          a.ring,
-                          a.glow,
-                          a.text
-                        )}
-                      >
-                        <div className="h-9 w-9">{entry.glyph}</div>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Content */}
@@ -364,7 +343,7 @@ export default function ChangelogPage() {
                         </div>
                       </div>
 
-                      <Link
+                      {/* <Link
                         href={entry.href ?? `#${entry.id}`}
                         className={cn(
                           'inline-flex items-center gap-1.5 text-sm font-medium transition-colors',
@@ -376,7 +355,7 @@ export default function ChangelogPage() {
                         <svg viewBox="0 0 20 20" fill="none" className="h-3.5 w-3.5" aria-hidden>
                           <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </article>
@@ -385,7 +364,7 @@ export default function ChangelogPage() {
           </div>
 
           {/* Footer note */}
-          <div className="mx-auto max-w-3xl mt-14 text-center">
+          {/* <div className="mx-auto max-w-3xl mt-14 text-center">
             <p className="text-sm text-white/45">
               Want updates in your inbox?{' '}
               <Link href="/#newsletter" className="text-blue-300 hover:text-white transition-colors">
@@ -393,7 +372,7 @@ export default function ChangelogPage() {
               </Link>
               .
             </p>
-          </div>
+          </div> */}
         </section>
       </main>
       <Footer />

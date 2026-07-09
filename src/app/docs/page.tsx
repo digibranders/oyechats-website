@@ -404,13 +404,15 @@ export default function DocsPage() {
                     <Lightbulb className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
                     <p className="text-sm text-white/60 leading-relaxed">
                       Need the full OpenAPI spec?{' '}
-                      <Link
-                        href="/contact"
+                      <a
+                        href="/openapi.json"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
                       >
-                        Contact us
-                      </Link>{' '}
-                      and we&apos;ll send the YAML directly to your inbox.
+                        Download openapi.json
+                      </a>{' '}
+                      and drop it into Postman, Insomnia, or any OpenAPI-compatible tool.
                     </p>
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 // import { StatusBadge } from '@/components/shared/StatusBadge';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { Brain, Target, MessageCircle, BarChart3, RefreshCw, Palette } from 'lucide-react';
+import { Headphones, Target, BookOpen, MessageCircle } from 'lucide-react';
 import { siWordpress, siShopify, siWebflow, siNextdotjs, siCalendly, siZapier, type SimpleIcon } from 'simple-icons';
 
 function MegaBrandSvg({ icon, overrideColor }: { icon: SimpleIcon; overrideColor?: string }) {
@@ -30,20 +30,18 @@ function MegaBrandSvg({ icon, overrideColor }: { icon: SimpleIcon; overrideColor
 const navLinks = [
   { label: 'Product', hasMega: true },
   { label: 'Features', href: '/features' },
+  { label: 'Solutions', href: '/solutions' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Integrations', href: '/integrations' },
   { label: 'Customers', href: '/customers' },
   { label: 'Contact', href: '/contact' },
 ];
 
 const megaMenuItems = {
-  features: [
-    { icon: Brain, label: 'RAG Pipeline', desc: 'Document-aware AI with hybrid search', href: '/features#rag' },
-    { icon: Target, label: 'BANT Scoring', desc: 'Automated sales qualification', href: '/features#bant' },
-    { icon: MessageCircle, label: 'Live Chat', desc: 'Seamless bot-to-human handoff', href: '/features#live-chat' },
-    { icon: BarChart3, label: 'Analytics', desc: 'Deep visitor insights & reports', href: '/features#analytics' },
-    { icon: RefreshCw, label: 'Webhooks', desc: 'Event-driven integrations', href: '/features#webhooks' },
-    { icon: Palette, label: 'Customization', desc: 'Full widget branding control', href: '/features#customization' },
+  solutions: [
+    { icon: Headphones, label: 'Customer Support', desc: 'Answer FAQs 24/7 from your docs', href: '/solutions#customer-support' },
+    { icon: Target, label: 'Sales & Lead Gen', desc: 'Qualify with BANT, no forms', href: '/solutions#sales-lead-gen' },
+    { icon: BookOpen, label: 'Docs Assistant', desc: 'Turn every doc into a chat', href: '/solutions#docs-assistant' },
+    { icon: MessageCircle, label: 'Live Chat Handoff', desc: 'A real human when it matters', href: '/solutions#live-chat-handoff' },
   ],
   integrations: [
     { node: <MegaBrandSvg icon={siWordpress} />, label: 'WordPress', href: '/integrations' },
@@ -198,11 +196,11 @@ export default function Navbar() {
           >
             <div className="mx-auto max-w-7xl px-6 lg:px-8 py-2">
               <div className="glass-3 rounded-2xl p-6 grid grid-cols-3 gap-8">
-                {/* Features */}
+                {/* Solutions */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Features</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">Solutions</p>
                   <div className="grid grid-cols-2 gap-1.5">
-                    {megaMenuItems.features.map((item) => (
+                    {megaMenuItems.solutions.map((item) => (
                       <Link key={item.label} href={item.href}
                         className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-white/6 transition-colors group cursor-pointer"
                         onClick={() => setMegaOpen(false)}>
@@ -214,6 +212,11 @@ export default function Navbar() {
                       </Link>
                     ))}
                   </div>
+                  <Link href="/solutions" className="inline-flex items-center gap-1 mt-3 text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                    onClick={() => setMegaOpen(false)}>
+                    View all solutions
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6" /></svg>
+                  </Link>
                 </div>
                 {/* Integrations */}
                 <div>
@@ -292,6 +295,7 @@ export default function Navbar() {
               <nav className="flex flex-col gap-1">
                 {[
                   { label: 'Features', href: '/features' },
+                  { label: 'Solutions', href: '/solutions' },
                   { label: 'Pricing', href: '/pricing' },
                   { label: 'Integrations', href: '/integrations' },
                   { label: 'Customers', href: '/customers' },
