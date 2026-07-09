@@ -254,7 +254,7 @@ export const pricingFAQ = [
   },
   {
     q: 'How do I pay?',
-    a: 'We use Razorpay for Indian customers, UPI, cards, NetBanking, and wallets are all supported. Stripe is available for international payments. You can switch payment methods any time from the Billing page.',
+    a: 'We use Razorpay for checkout, UPI, cards, NetBanking, and wallets are all supported. You can switch payment methods any time from the Billing page.',
   },
   {
     q: 'Is there a free trial?',

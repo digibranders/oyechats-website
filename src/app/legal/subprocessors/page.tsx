@@ -74,13 +74,8 @@ const COMMS: Row[] = [
 
 const PAYMENTS: Row[] = [
   {
-    name: 'Stripe',
-    purpose: 'International card and bank payment processing, invoicing, and tax handling.',
-    location: 'United States / Ireland',
-  },
-  {
     name: 'Razorpay',
-    purpose: 'INR card, UPI, and net-banking payment processing for India-based customers.',
+    purpose: 'Card, UPI, net-banking, and international payment processing, along with invoicing and settlement.',
     location: 'India',
   },
 ];
