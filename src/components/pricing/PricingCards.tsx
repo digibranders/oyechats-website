@@ -176,7 +176,7 @@ export function PricingCards({ billing, tiers }: PricingCardsProps) {
     </section>
 
     <p className="text-center text-xs text-white/45 pt-6 pb-16 px-6">
-      Starter Plan include a 14-day free trial · No credit card required · Cancel anytime
+      Every account starts with a 14-day free trial · No credit card required · Cancel anytime
     </p>
     </>
   );
