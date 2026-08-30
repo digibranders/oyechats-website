@@ -52,7 +52,6 @@ export const pricingTiers: PricingTier[] = [
       '1 chatbot included (subscribe again to add more)',
       '1 operator seat (+$5/mo each extra, up to 5 total)',
       'Live chat enabled',
-      '14-day free trial',
       'Priority email support',
     ],
     cta: 'Start free trial',
@@ -258,7 +257,7 @@ export const pricingFAQ = [
   },
   {
     q: 'Is there a free trial?',
-    a: 'Yes, Starter and Standard plans include a 14-day free trial with full access to all features. No credit card required.',
+    a: 'Yes. Every new account starts on a 14-day free trial with full access on one chatbot, no credit card required. When it ends your account moves to the Free plan and nothing is deleted: your chatbot, your documents and your conversations stay exactly where they are. Your knowledge base is paused until you pick a plan, and one upgrade switches all of it back on.',
   },
   {
     q: 'What happens when I run out of credits?',
